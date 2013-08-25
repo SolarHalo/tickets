@@ -55,7 +55,6 @@ class UserService{
 			$limit =" limit $start,$page_size ";
 		}
 		$sql = "select * from admin_users order by id $limit";
-		 
 		return $this->dbutil->get_results($sql);
 	
 	 
