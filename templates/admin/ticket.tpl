@@ -24,7 +24,7 @@
 		datatype: "json",
 		mtype: "POST",	
 		height: '100%',
-		width:1500,
+		width:1000,
 		rowNum: 10,
 		rowList: [10,20,30],
 		colNames:['票务id','票务名称','票务类型',"联盟提供小图","票价","场地","时间"],
@@ -32,10 +32,12 @@
 			{name:'aw_product_id',index:'aw_product_id', width:100,hidden:true,search:false,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'product_name',index:'product_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'product_type',index:'product_type', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} ,
-			{name:'aw_thumb_url',index:'aw_thumb_url', width:80 ,search:false,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
-			{name:'display_price',index:'display_price', sorttype:"float",width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
+			{name:'aw_thumb_url',index:'aw_thumb_url', width:30 ,search:false,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
+			{name:'display_price',index:'display_price', align:"right",sorttype:"float",width:40 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
 			{name:'promotional_text',index:'promotional_text', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} , 
-			{name:'specifications',index:'specifications', sorttype:"date", formatter:"date", width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne' ]}} 
+			{name:'specifications',index:'specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['eq', 'ne'],dataInit:function(elem){  
+				jQuery(elem).datepicker();
+			}},formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d H:i:s'}} 
 		],
 		pager: "#gridPager",
 		viewrecords: true,
