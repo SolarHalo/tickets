@@ -43,6 +43,15 @@
             color: #fff;
             font-weight: bold;
         }
+        
+        .ui-pg-input{
+			width:20px;
+		}
+		.ui-pg-selbox {
+			width:60px;
+		    height:30px;
+		}
+        
     </style>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->

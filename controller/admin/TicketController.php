@@ -33,6 +33,8 @@ class TicketController extends Controller{
 	
 	public function queryTicket(){
 		
+		require_once PROJECT.DS.'framework'.DS."util".DS.'JQGridFilterUtil.php';
+		
 		//页码
 		$page = $_POST["page"];
 		if($page == null ){
@@ -44,6 +46,10 @@ class TicketController extends Controller{
 		if($rows == null ){
 			$rows = $_GET["rows"];
 		}
+		
+		$start = ($page-1)*$rows ;
+		$end = $page*$rows;
+		
 		
 		//排序索引id
 		$sidx = $_POST["sidx"];
@@ -57,20 +63,51 @@ class TicketController extends Controller{
 			$sord = $_GET["sord"];
 		}
 		
+		$filtersStr = $_POST["filters"];
+		if($filtersStr == null){
+			$filtersStr = $_GET["filters"];
+		}
+		
+		$where = JQGridFilterUtil::toSqlWhere($filtersStr);
+		
+		$counterSql = "select count(aw_product_id) as total from products " ;
+		$recordsSql = "select aw_product_id, product_name,product_type,aw_thumb_url,display_price,promotional_text,specifications from products ";
+		
+		if(!is_null($where)){
+			$counterSql = $counterSql." where ".$where;
+			$recordsSql = $recordsSql." where ".$where;
+		}
+		
+		$recordsSql = $recordsSql." limit $start ,$end" ; 
+		
+		$db = $this->getDB();
+		
+		$res = $db->get_results($counterSql);
+		$records = $res;
+		foreach ($res as $re){
+			$records = $re->total;
+			break;
+		}		
+		
+		$res = $db->get_results($recordsSql);
+		
 		$data = array();
-		for($index = 0 ;$index < 10;$index++){
+		
+		foreach ($res as $re){
 			$data[] = array(
-					"id"=>$index,
+					"id"=>$re->aw_product_id,
 					"cell"=>array(
-					$index,20-$index,30-$index,40-$index,30-$index,30-$index,30-$index,30-$index,30-$index,30-$index,30-$index,30-$index,30-$index,30-$index)
+					$re->aw_product_id,$re->product_name,$re->product_type,$re->aw_thumb_url,$re->display_price,$re->promotional_text,$re->specifications)
 			);
 		}
+		
+		$totalPage = ceil($records/$rows);
 		
 		$result = array(
 				"rows"=>$data,
 				"page"=>$page,
-				"total"=>2,
-				"records"=>100);
+				"total"=>$totalPage,
+				"records"=>$records);
 		
 		echo json_encode($result);
 	}
