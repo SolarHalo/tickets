@@ -95,23 +95,20 @@
 		  if(!$('#form').form('validate')){
 		        return;
 		     }
-		$('#form').form({
-		    url:'{{$web_root}}user/editData',
-		    type: "POST",  
-            dataType: "json", 
-		    onSubmit: function(){
-		        //进行表单验证
-		        //如果返回false阻止提交
-		    },
-		    success:function(data){
-		    	win_close();
-		    	$.messager.alert('成功','修改成功!');
-		    	$('#grid').datagrid('reload'); 
-		    	
-		    }
-		});
-		//提交表单
-		$('#form').submit();
+		  win_close();
+		$.ajax({  
+            type: "POST",  
+            dataType: "json",  
+            url: '{{$web_root}}user/editData',
+           	data: $("#form").serialize(),
+            success: function (data) {  
+            	
+		    	$.messager.alert('成功','修改成功!'); 
+             	$('#grid').datagrid('reload'); 
+            },  
+            error: function () {  
+            }  
+        });  
 	}
 	function win_close(){
 		$('#win_add').window('close'); 
@@ -161,7 +158,7 @@
 				data-options="url:'user/getpage',fitColumns:true,singleSelect:true"
 				class="easyui-datagrid" style="width: 700px; height: 350px"
 				toolbar="#toolbar" iconCls="icon-save" pagination="true"
-				toolbar="#toolbar" rownumbers="true">
+				  rownumbers="true">
 				<thead>
 					<tr>
 					<th data-options="field:'passwd',hidden:true"></th>

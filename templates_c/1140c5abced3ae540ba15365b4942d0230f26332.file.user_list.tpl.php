@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-25 13:15:47
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-25 15:13:34
          compiled from "E:\phpweb\tickets\templates\admin\user_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3102652198277b71ba6-87486437%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1140c5abced3ae540ba15365b4942d0230f26332' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\user_list.tpl',
-      1 => 1377429343,
+      1 => 1377436404,
       2 => 'file',
     ),
   ),
@@ -127,24 +127,21 @@ user/add',
 		  if(!$('#form').form('validate')){
 		        return;
 		     }
-		$('#form').form({
-		    url:'<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
+		  win_close();
+		$.ajax({  
+            type: "POST",  
+            dataType: "json",  
+            url: '<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
 user/editData',
-		    type: "POST",  
-            dataType: "json", 
-		    onSubmit: function(){
-		        //进行表单验证
-		        //如果返回false阻止提交
-		    },
-		    success:function(data){
-		    	win_close();
-		    	$.messager.alert('成功','修改成功!');
-		    	$('#grid').datagrid('reload'); 
-		    	
-		    }
-		});
-		//提交表单
-		$('#form').submit();
+           	data: $("#form").serialize(),
+            success: function (data) {  
+            	
+		    	$.messager.alert('成功','修改成功!'); 
+             	$('#grid').datagrid('reload'); 
+            },  
+            error: function () {  
+            }  
+        });  
 	}
 	function win_close(){
 		$('#win_add').window('close'); 
@@ -195,7 +192,7 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 				data-options="url:'user/getpage',fitColumns:true,singleSelect:true"
 				class="easyui-datagrid" style="width: 700px; height: 350px"
 				toolbar="#toolbar" iconCls="icon-save" pagination="true"
-				toolbar="#toolbar" rownumbers="true">
+				  rownumbers="true">
 				<thead>
 					<tr>
 					<th data-options="field:'passwd',hidden:true"></th>
