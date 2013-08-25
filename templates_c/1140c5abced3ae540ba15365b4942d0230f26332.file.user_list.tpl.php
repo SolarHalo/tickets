@@ -1,13 +1,43 @@
-{{include file ="admin/header.tpl"}} {{include file
-="admin/navibar.tpl"}} {{include file ="admin/sidebar.tpl"}}
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-25 13:15:47
+         compiled from "E:\phpweb\tickets\templates\admin\user_list.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:3102652198277b71ba6-87486437%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '1140c5abced3ae540ba15365b4942d0230f26332' => 
+    array (
+      0 => 'E:\\phpweb\\tickets\\templates\\admin\\user_list.tpl',
+      1 => 1377429343,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '3102652198277b71ba6-87486437',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_52198277bb3230_50225678',
+  'variables' => 
+  array (
+    'web_root' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_52198277bb3230_50225678')) {function content_52198277bb3230_50225678($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php echo $_smarty_tpl->getSubTemplate ("admin/navibar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php echo $_smarty_tpl->getSubTemplate ("admin/sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 
 
 <link rel="stylesheet" type="text/css"
-	href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/themes/bootstrap/easyui.css">
+	href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/bootstrap/easyui.css">
 <link rel="stylesheet" type="text/css"
-	href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
+	href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
 <script type="text/javascript"
-	src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
+	src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
 
 <script type="text/javascript">
 
@@ -51,7 +81,8 @@
 				$.ajax({  
 		            type: "POST",  
 		            dataType: "json",  
-		            url: '{{$web_root}}user/delete',
+		            url: '<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
+user/delete',
 		            data: { id: select[0].id },  
 		            success: function (data) {  
 		                $.messager.alert("消息", "删除成功!", "info");  
@@ -70,7 +101,8 @@
 		        return;
 		     }
 		$('#form').form({
-		    url:'{{$web_root}}user/add',
+		    url:'<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
+user/add',
 		    type: "POST",  
             dataType: "json", 
 		    onSubmit: function(){
@@ -96,7 +128,8 @@
 		        return;
 		     }
 		$('#form').form({
-		    url:'{{$web_root}}user/editData',
+		    url:'<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
+user/editData',
 		    type: "POST",  
             dataType: "json", 
 		    onSubmit: function(){
@@ -139,7 +172,8 @@
 	</div>
 
 	<!-- <ul class="breadcrumb">
-            <li><a href="{{$smarty.const.WEBSITE_URL}}admin/user">管理列表</a> <span class="divider">/</span></li>  
+            <li><a href="<?php echo @constant('WEBSITE_URL');?>
+admin/user">管理列表</a> <span class="divider">/</span></li>  
 			 <a title= "移除快捷菜单" href="#"><li class="active"><i class="icon-minus" method="del" url="#"></i></li></a>
 	         <a title= "加入快捷菜单" href="#"><li class="active"><i class="icon-plus" method="add" url="#"></i></li></a>
         </ul> -->
@@ -257,4 +291,5 @@
 				</div>
 			</div>
 			<!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
-			{{include file="admin/footer.tpl" }}
+			<?php echo $_smarty_tpl->getSubTemplate ("admin/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>
