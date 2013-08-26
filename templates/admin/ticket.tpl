@@ -30,12 +30,26 @@
 		colNames:['票务id','票务名称','票务类型',"联盟提供小图","票价","场地","时间"],
 		colModel:[
 			{name:'aw_product_id',index:'aw_product_id', width:100,hidden:true,search:false,searchoptions:{sopt: ['cn','eq', 'ne']}},
-			{name:'product_name',index:'product_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
-			{name:'product_type',index:'product_type', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} ,
+			{name:'product_name',index:'products.product_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
+			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
+				searchoptions:{
+					sopt: [ 'eq', 'ne'],
+					dataUrl:'{{$web_root}}admin/ticket/queryCategory',
+					buildSelect:function(str){
+						eval(" var obj = " + str);
+						var result = "<select><option value=''>请选择... ...</option>";
+						for(var i = 0 ; i < obj.length; i++){
+							result += "<option value='" + obj[i][0] + "'>" + obj[i][1] + "</option>";		
+						}		
+						result += "</select>";
+						return result;
+					}
+				}
+			} ,
 			{name:'aw_thumb_url',index:'aw_thumb_url', width:30 ,search:false,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
-			{name:'display_price',index:'display_price', align:"right",sorttype:"float",width:40 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
-			{name:'promotional_text',index:'promotional_text', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} , 
-			{name:'specifications',index:'specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['eq', 'ne'],dataInit:function(elem){  
+			{name:'display_price',index:'products.display_price', align:"right",sorttype:"float",width:40 ,search:true,searchoptions:{sopt: ['lt','le', 'eq','gt','ge' ]}} ,
+			{name:'promotional_text',index:'products.promotional_text', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} , 
+			{name:'specifications',index:'products.specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['eq', 'ne'],dataInit:function(elem){  
 				jQuery(elem).datepicker();
 			}},formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d H:i:s'}} 
 		],
