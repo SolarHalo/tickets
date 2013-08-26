@@ -19,7 +19,7 @@ class UserController  extends  Controller{
 //		$this->smarty->assign ( 'page_no', $page_no );
 //		$this->smarty->assign ( 'page_html', $page_html );
 		$this->smarty->assign ( 'oadmin_action_confirm' , "");
-		$this->smarty->display("admin/users.tpl"); 
+		$this->smarty->display("admin/user_list.tpl"); 
 	}
 	
 	
@@ -27,41 +27,69 @@ class UserController  extends  Controller{
 		$this->getSmarty(); 
 		require_once SERVICE.DS.'admin'.DS.'UserService.class.php';
 		$user_name = $real_name = $mobile = $password  = $email = $user_desc = $user_group = '';
-		extract ( $_POST, EXTR_IF_EXISTS );
-	    //如果不是post方式的提交，直接转向
-		 if(!CommonBase::isPost()){
-		 	$this->smarty->display("admin/user_add.tpl"); 
-		 	return;
-		 }
+ 
 		$userService = new UserService($this->getDB());
+		$user_name = $_POST["user_name"];
        	$exist =  $userService->getAdminByName($user_name);
-		if($exist){ 
-			 $alert_html = HtmlWrap::alert("error",ErrorMessage::USER_EXIST); 
-			 $this->smarty->assign("admin_action_alert",$alert_html);   
-		}else if($password=="" || $real_name=="" || $mobile =="" || $email =="" ){ 
-			$alert_html = HtmlWrap::alert("error",ErrorMessage::NEED_PARAM); 
-			 $this->smarty->assign("admin_action_alert",$alert_html);   
-		}else{
-			$input_data = array ('user_name' => $user_name, 'passwd' => md5($password), 'real_name' => $real_name, 'mobile' => $mobile, 'email' => $email, 'user_desc' => $user_desc );
-			$user_id = $userService->addAdUser($input_data);
-			
-			if ($user_id > 0) {
-				$input_data['password']="";
-			 
-				$alert_html = HtmlWrap::alert("success","管理员帐号已成功添加"); 
-			    $this->smarty->assign("admin_action_alert",$alert_html);   
-			}else{
-				 $alert_html = HtmlWrap::alert("error","返回的数据是$user_id"); 
-			     $this->smarty->assign("admin_action_alert",$alert_html);   
-			}
-	     }
-		 
-		 
-		$this->smarty->display("admin/user_add.tpl"); 
+       	if($exist){
+       		echo -1;
+       		return;
+       	}
+       	
+       	$input_data = array ('user_name' =>$_POST["user_name"], 'passwd' => md5($_POST["passwd"]), 'real_name' => $_POST["real_name"], 'mobile' => $_POST["mobile"] , 'email' =>  $_POST["email"], 'user_desc' => $_POST["user_desc"] );
+       	$user_id = $userService->addAdUser($input_data);
+       	echo $user_id;
+  
+	}
+	
+	public function editData(){
+		$this->getSmarty();
+		require_once SERVICE.DS.'admin'.DS.'UserService.class.php';
+	
+		$userService = new UserService($this->getDB());
+	 
+		$input_data = array ('user_name' =>$_POST["user_name"], 'passwd' => md5($_POST["passwd"]), 'real_name' => $_POST["real_name"], 'mobile' => $_POST["mobile"] , 'email' =>  $_POST["email"], 'user_desc' => $_POST["user_desc"] );
+		$input_condition = array ('id' =>$_POST["id"] );
+		
+		$user_id = $userService->edit($input_data,$input_condition);
+		echo $user_id;
+	
+	}
+	
+	public function delete(){
+		$this->getSmarty(); 
+		require_once SERVICE.DS.'admin'.DS.'UserService.class.php';
+		$userService = new UserService($this->getDB());
+		$id = $_POST['id'];
+		$user_id = $userService->deleteUser($id);
+		echo 1;
 	}
 	
 	function test($username,$password){
 		echo 'this is a test function ,username:'.$username.',password:'.$password;
 	}
 	
+	
+	function getpage(){
+		$this->getSmarty();
+		require_once SERVICE.DS.'admin'.DS.'UserService.class.php';
+		//START 数据库查询及分页数据
+		$userService = new UserService($this->getDB());
+		
+		$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+		$rows = isset($_POST['rows']) ? intval($_POST['rows']) : 10;
+		$offset = ($page-1)*$rows;
+		$result = array();
+		$row_count = $userService->countNum();
+		$result["total"] = $row_count;
+		$user_infos = $userService->userPage( $offset , $rows );
+		$items = array();
+// 		while($row = $user_infos->fetch_assoc()){
+// 			print ($row);
+// 			array_push($items, $row);
+// 		}
+		$result["rows"] = $user_infos;
+		echo json_encode($result);
+		//$this->smarty->display("admin/user_list.tpl");
+	}
 }

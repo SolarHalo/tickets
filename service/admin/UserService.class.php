@@ -30,6 +30,14 @@ class UserService{
 		return $this->dbutil->get_row("select * from admin_users where user_name='".$name."'");
 	}
 	/**
+	* 根据用户名获取用户信息
+	* Enter description here ...
+	* @param unknown_type $name
+	*/
+	function getAdminByID($id){
+		return $this->dbutil->get_row("select * from admin_users where id='".$id."'");
+	}
+	/**
 	 * 检查登录
 	 * @param unknown_type $name
 	 * @param unknown_type $password
@@ -55,7 +63,6 @@ class UserService{
 			$limit =" limit $start,$page_size ";
 		}
 		$sql = "select * from admin_users order by id $limit";
-		 
 		return $this->dbutil->get_results($sql);
 	
 	 
@@ -70,4 +77,12 @@ class UserService{
 		return	$this->dbutil->insert("admin_users", $data);
 	}
 
+	public function deleteUser($data){
+		$sql = " delete from admin_users where id= $data";
+		return $this->dbutil->get_results($sql);
+	}
+	public function edit($data,$conditions){
+		return $this->dbutil->update("admin_users",$data,$conditions);
+	}
+	
 }

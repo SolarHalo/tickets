@@ -1,6 +1,7 @@
 {{include file ="admin/header.tpl"}}
 {{include file ="admin/navibar.tpl"}}
 {{include file ="admin/sidebar.tpl"}} 
+
 <div class="content">
         
         <div class="header">
