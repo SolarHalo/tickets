@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/ui.jqgrid.css" />
-	
+<!-- 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui-custom.css" /> -->
     <script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
 	<!--script src="http://www.cnbootstrap.com/assets/js/jquery.js"></script-->
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/bootstrap/js/bootbox.min.js"></script>

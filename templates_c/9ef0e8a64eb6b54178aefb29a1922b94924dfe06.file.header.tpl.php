@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-25 06:01:17
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-26 17:36:54
          compiled from "E:\phpweb\tickets\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:76025219818ddd2944-65894916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ef0e8a64eb6b54178aefb29a1922b94924dfe06' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\header.tpl',
-      1 => 1377403267,
+      1 => 1377531410,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5219818de048a0_56790943',
   'variables' => 
   array (
     'page_title' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5219818de048a0_56790943',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5219818de048a0_56790943')) {function content_5219818de048a0_56790943($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -47,8 +47,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/css/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/css/ui.jqgrid.css" />
-	
+<!-- 	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui-custom.css" /> -->
     <script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/lib/jquery-1.8.1.min.js" ></script>
 	<!--script src="http://www.cnbootstrap.com/assets/js/jquery.js"></script-->
@@ -60,6 +63,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 /public/assets/js/other.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/js/jquery-ui.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/js/grid.locale-en.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
