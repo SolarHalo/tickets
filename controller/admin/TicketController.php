@@ -9,26 +9,18 @@ class TicketController extends Controller{
 		$this->smarty->display("admin/ticket.tpl");
 	}
 	
-	public function getDict(){
-// 		$key = $_POST["key"];
+	public function queryCategory(){
+
+		$result = array();
 		
-// 		if($key == null ){
-// 			$key = $_GET["key"];
-// 		}
+		$db = $this->getDB();
 		
+		$res = $db->get_results(" select category_id,category_name from event_category ");
 		
-// 		if($key == "forSale"){
-			$result = array();
-			$result[] = array(
-				'id'=>0,
-				'value'=>'未售'
-			);
-			$result[] = array(
-					'id'=>1,
-					'value'=>'在售'
-			);
-			echo json_encode($result);
-// 		}
+		foreach ($res as $re){
+			$result[] = array($re->category_id,$re->category_name);
+		}
+		echo json_encode($result);
 	}
 	
 	public function queryTicket(){
@@ -68,10 +60,20 @@ class TicketController extends Controller{
 			$filtersStr = $_GET["filters"];
 		}
 		
-		$where = JQGridFilterUtil::toSqlWhere($filtersStr);
+		$config = array(
+				"products.product_name"=>JQGridFilterUtil::$STRING,
+				"event_category.category_id"=>JQGridFilterUtil::$STRING,
+				"products.display_price"=>JQGridFilterUtil::$FLOAT,
+				"products.promotional_text"=>JQGridFilterUtil::$STRING,
+				"products.specifications"=>JQGridFilterUtil::$DATE
+		);
 		
-		$counterSql = "select count(aw_product_id) as total from products " ;
-		$recordsSql = "select aw_product_id, product_name,product_type,aw_thumb_url,display_price,promotional_text,specifications from products ";
+		$where = JQGridFilterUtil::toSqlWhere($filtersStr,$config);
+		
+		$counterSql = "select count(products.aw_product_id) as total from products products LEFT JOIN event_category event_category on products.category_id = event_category.category_id " ;
+		$recordsSql = "select products.aw_product_id, products.product_name,event_category.category_name,".
+			"products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications from products products ".
+			"LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id ";
 		
 		if(!is_null($where)){
 			$counterSql = $counterSql." where ".$where;
@@ -97,7 +99,7 @@ class TicketController extends Controller{
 			$data[] = array(
 					"id"=>$re->aw_product_id,
 					"cell"=>array(
-					$re->aw_product_id,$re->product_name,$re->product_type,$re->aw_thumb_url,$re->display_price,$re->promotional_text,$re->specifications)
+					$re->aw_product_id,$re->product_name,$re->category_name,$re->aw_thumb_url,$re->display_price,$re->promotional_text,$re->specifications)
 			);
 		}
 		
