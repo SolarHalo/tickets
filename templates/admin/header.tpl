@@ -63,12 +63,15 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-      {{if empty($smarty.session.aduser)}}
-         wherere {{$smarty.session.aaa}}
-	  {{/if}}
-	  		 
+  
+	
   </head>
-
+    {{if empty($smarty.session.aduser)}}
+          <script language='javascript' type='text/javascript'> 
+						window.location.href='{{$smarty.const.WEBSITE_URL}}admin/login'; 
+	    </script>
+				  
+	  {{/if}}
   <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
   <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
   <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->

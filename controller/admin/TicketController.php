@@ -2,7 +2,7 @@
 
 
 class TicketController extends Controller{
-
+ 
 	public function index(){
 		$this->getSmarty();
 		$this->smarty->assign ( 'web_root' , WEBSITE_URL);
@@ -59,6 +59,7 @@ class TicketController extends Controller{
 		if($filtersStr == null){
 			$filtersStr = $_GET["filters"];
 		}
+		 
 		
 		$config = array(
 				"products.product_name"=>JQGridFilterUtil::$STRING,

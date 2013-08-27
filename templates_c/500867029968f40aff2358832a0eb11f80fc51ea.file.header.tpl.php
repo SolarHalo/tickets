@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 15:35:29
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 16:32:07
          compiled from "G:\phpserver\tickets\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12239521c49cca0b3f1-51948194%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '500867029968f40aff2358832a0eb11f80fc51ea' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\header.tpl',
-      1 => 1377617725,
+      1 => 1377621123,
       2 => 'file',
     ),
   ),
@@ -72,7 +72,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/js/My97DatePicker/WdatePicker.js"></script>
     <!-- Demo page code -->
-
+	<!-- easyui 引入 -->
+	 <link rel="stylesheet" type="text/css" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/default/easyui.css">
+   	 <link rel="stylesheet" type="text/css" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
+	 <script type="text/javascript" src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
     <style type="text/css">
         #line-chart {
             height:300px;
@@ -104,13 +110,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-      <?php if (empty($_SESSION['aduser'])){?>
-         wherere <?php echo $_SESSION['aaa'];?>
-
-	  <?php }?>
-	  		 
+  
+	
   </head>
-
+    <?php if (empty($_SESSION['aduser'])){?>
+          <script language='javascript' type='text/javascript'> 
+						window.location.href='<?php echo @constant('WEBSITE_URL');?>
+admin/login'; 
+	    </script>
+				  
+	  <?php }?>
   <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
   <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
   <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->

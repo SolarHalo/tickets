@@ -13,7 +13,8 @@ class JQGridFilterUtil {
 			return null;
 		}
 		
-		$filters = json_decode($filtersStr);
+		//$filters = json_decode($filtersStr);
+		$filters = json_decode(str_replace("\\\"","\"",$filtersStr));
 		
 		if($filters == null){
 			return null;
