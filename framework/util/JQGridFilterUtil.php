@@ -47,7 +47,7 @@ class JQGridFilterUtil {
 	}
 	
 	static function getExp($field,$op,$val,$type){
-		if(JQGridFilterUtil::$STRING == $type){
+		if(JQGridFilterUtil::$STRING == $type && $val != null && $val != ""){
 			if($op == "cn"){
 				return "$field like '%$val%'";
 			}else if("eq" == $op){
