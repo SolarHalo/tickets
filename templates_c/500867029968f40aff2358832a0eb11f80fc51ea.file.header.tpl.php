@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 06:40:12
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 15:24:57
          compiled from "G:\phpserver\tickets\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12239521c49cca0b3f1-51948194%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '500867029968f40aff2358832a0eb11f80fc51ea' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\header.tpl',
-      1 => 1377569144,
+      1 => 1377617094,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_521c49ccb132c3_96674923',
   'variables' => 
   array (
     'page_title' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_521c49ccb132c3_96674923',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521c49ccb132c3_96674923')) {function content_521c49ccb132c3_96674923($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -104,7 +104,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    
   </head>
 
   <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
