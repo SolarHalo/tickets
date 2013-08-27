@@ -19,7 +19,7 @@ class UserController extends Controller {
 		// $this->smarty->assign ( 'page_no', $page_no );
 		// $this->smarty->assign ( 'page_html', $page_html );
 		$this->smarty->assign ( 'oadmin_action_confirm', "" );
-		$this->smarty->display ( "admin/user_jqgrid_list.tpl" );
+		$this->smarty->display ( "admin/users/user_jqgrid_list.tpl" );
 	}
 	
 	public function add() {

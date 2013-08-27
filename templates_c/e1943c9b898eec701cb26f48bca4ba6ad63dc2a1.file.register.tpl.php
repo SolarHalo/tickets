@@ -1,13 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 08:56:36
+         compiled from "G:\phpserver\tickets\templates\register.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:12574521c69c4c1bf40-66951276%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'e1943c9b898eec701cb26f48bca4ba6ad63dc2a1' => 
+    array (
+      0 => 'G:\\phpserver\\tickets\\templates\\register.tpl',
+      1 => 1377593722,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '12574521c69c4c1bf40-66951276',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_521c69c4d35fe5_80215115',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_521c69c4d35fe5_80215115')) {function content_521c69c4d35fe5_80215115($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>index</title>
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
-</head> 
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" /> 
+</head>
+
 <body>
-  {{include file='layouts/headerandsearch.tpl'}} 
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 <div class="mian">
     <div class="content">
     	<div class="login-l login">
@@ -15,26 +40,25 @@
         	<form>
             <table> 
 				<tr>
-                    <td width="320"><span><font class="addtitle">*</font>Username</span><input type="text" class="input-style3" /></td>
-                    <td><a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/layer-ioc.png" align="middle" style="padding:50px 0 0 10px;"/></a></td> 
+                    <td><span>Username</span><input type="text" class="input-style3" /></td> 
                 </tr>
                 <tr>
-                    <td width="320"><span><font class="addtitle">*</font>Email Address</span><input type="text" class="input-style3" /></td> 
+                    <td><span>Email Address</span><input type="text" class="input-style3" /></td> 
                 </tr>
 				<tr>
-                    <td width="320"><span><font class="addtitle">*</font>Password</span><input type="password" class="input-style3" /></td>  
+                    <td><span>Password</span><input type="password" class="input-style3" /></td>  
                 </tr>
                 <tr>
-                    <td width="320"><span><font class="addtitle">*</font>Password Confirmation</span><input type="password" class="input-style3" /></td>  
+                    <td><span>Password Confirmation</span><input type="password" class="input-style3" /></td>  
                 </tr>
                 <tr>
-                    <td width="320"><span>First Name</span><input type="text" class="input-style3" /></td>  
+                    <td><span>First Name</span><input type="password" class="input-style3" /></td>  
                 </tr>
                 <tr>
-                    <td width="320"><span>Last Name</span><input type="text" class="input-style3" /></td>  
+                    <td><span>Last Name</span><input type="password" class="input-style3" /></td>  
                 </tr>
                 <tr>
-                    <td width="320"><span>Birth Date</span>
+                    <td><span>Birth Date</span>
                     	<div class="controls">
 							<select id="id_birthdate_0" name="birthdate_0">
                             <option selected="selected" value="">Day</option>
@@ -193,38 +217,28 @@
                     </td>  
                 </tr>
                 <tr>
-                    <td width="320"><span>Timezone</span><input type="text" class="input-style3" /></td>  
+                    <td><span><input type="checkbox"/><font>I want to sign up for the newsletter</font></span></td>  
                 </tr>
                 <tr>
-                    <td width="320"><span><input type="checkbox"/><font>Ignore timezones (see events in local times)</font></span></td>  
+                    <td><span><input type="checkbox"/><font>I agree with <a href="#" class="link_style01">Terms and Conditions, Privacy Policy</a> and 
+                    <a href="#" class="link_style01">Cookies Policy</a> *</font></span></td>  
                 </tr>
                 <tr>
-                    <td width="320"><span><input type="checkbox"/><font> I want to sign up for the newsletter</font></span></td>  
-                </tr>
-                <tr>
-                    <td width="320"><input type="button" class="btn btn-black-2" value="Save your details" /></td>  
+                    <td><input type="button" class="input-style1" value="sign&nbsp;&nbsp;in" /></td>  
                 </tr>
             </table>          
             </form>
         </div>
         <div class="login-r login">
-        	<h6 class="layer-r">Connect to your Social Profile</h6>
+        	<h6>ARE&nbsp;&nbsp;YOU&nbsp;&nbsp;A&nbsp;&nbsp;NEW&nbsp;&nbsp;USER?</h6>
             <table> 
 				<tr>
-                    <td><span>Sign up to Search4Gigs right here...</span></td> 
-                </tr> 
-                <tr><td height="30"></td></tr>
-            </table>      
-        	<h6 class="layer-r">Calendar Settings</h6>
-            <table class="mt15"> 
-				<tr>
-                    <td><a href="#" class="btn btn-black-2"><img src="{{$smarty.const.WEBSITE_URL}}public/images/layer-ioc.png" style="vertical-align: middle;" width="17" height="17"/>&nbsp;&nbsp;Manage Layers</a>
-                    	<a href="#" class="i_ioc"><i>i</i></a>
-                    </td> 
+                    <td><span>Sign up to Search4Gigs right here...</span><a href="#" class="input-style1">register</a></td> 
                 </tr> 
                 <tr><td height="30"></td></tr>
             </table>     
         </div>
     </div> 
 </div>
- {{include file='layouts/footer.tpl'}}    
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php }} ?>

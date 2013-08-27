@@ -1,13 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 09:00:12
+         compiled from "G:\phpserver\tickets\templates\userinfo_modify.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:30098521c67aa3c39b5-29946664%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'e0f00d069ef2034fdd03e5bd941fd6459ad51166' => 
+    array (
+      0 => 'G:\\phpserver\\tickets\\templates\\userinfo_modify.tpl',
+      1 => 1377593997,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '30098521c67aa3c39b5-29946664',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_521c67aa4dcd06_23790190',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_521c67aa4dcd06_23790190')) {function content_521c67aa4dcd06_23790190($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>index</title>
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" /> 
 </head> 
 <body>
-  {{include file='layouts/headerandsearch.tpl'}} 
+  <?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 <div class="mian">
     <div class="content">
     	<div class="login-l login">
@@ -16,7 +40,8 @@
             <table> 
 				<tr>
                     <td width="320"><span><font class="addtitle">*</font>Username</span><input type="text" class="input-style3" /></td>
-                    <td><a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/layer-ioc.png" align="middle" style="padding:50px 0 0 10px;"/></a></td> 
+                    <td><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/layer-ioc.png" align="middle" style="padding:50px 0 0 10px;"/></a></td> 
                 </tr>
                 <tr>
                     <td width="320"><span><font class="addtitle">*</font>Email Address</span><input type="text" class="input-style3" /></td> 
@@ -218,7 +243,8 @@
         	<h6 class="layer-r">Calendar Settings</h6>
             <table class="mt15"> 
 				<tr>
-                    <td><a href="#" class="btn btn-black-2"><img src="{{$smarty.const.WEBSITE_URL}}public/images/layer-ioc.png" style="vertical-align: middle;" width="17" height="17"/>&nbsp;&nbsp;Manage Layers</a>
+                    <td><a href="#" class="btn btn-black-2"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/layer-ioc.png" style="vertical-align: middle;" width="17" height="17"/>&nbsp;&nbsp;Manage Layers</a>
                     	<a href="#" class="i_ioc"><i>i</i></a>
                     </td> 
                 </tr> 
@@ -227,4 +253,5 @@
         </div>
     </div> 
 </div>
- {{include file='layouts/footer.tpl'}}    
+ <?php echo $_smarty_tpl->getSubTemplate ('layouts/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+    <?php }} ?>

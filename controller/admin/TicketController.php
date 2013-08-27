@@ -6,7 +6,7 @@ class TicketController extends Controller{
 	public function index(){
 		$this->getSmarty();
 		$this->smarty->assign ( 'web_root' , WEBSITE_URL);
-		$this->smarty->display("admin/ticket.tpl");
+		$this->smarty->display("admin/ticket/ticket.tpl");
 	}
 	
 	public function queryCategory(){
