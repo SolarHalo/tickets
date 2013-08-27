@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 08:04:51
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 09:25:47
          compiled from "G:\phpserver\tickets\templates\usercarlendar_event_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18887521c5da350c828-68681888%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3a9bb68e758352ee54ecb9dcc27d66267ce5def9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\usercarlendar_event_list.tpl',
-      1 => 1377527068,
+      1 => 1377595534,
       2 => 'file',
     ),
   ),
@@ -15,50 +15,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_521c5da35d90e5_89612615',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521c5da35d90e5_89612615')) {function content_521c5da35d90e5_89612615($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>gigs_login</title>
-<link href="style/reset.css" type="text/css" rel="stylesheet" />
-<link href="style/style.css" type="text/css" rel="stylesheet" />
-</head>
-
+<title>index</title>
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" /> 
+</head> 
 <body>
-<div id="head">
-  <div> <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
-    <ul>
-      <li> <a href="#" class="input-style1">Sign up</a> <a href="#" class="input-style1">Sign In</a> </li>
-      <li class="navlist"> <a href="#"> YOUR CALENDAR<br />
-        <font>View and Manage your calendar of events</font> </a> </li>
-      <li class="navlist"> <a href="#"> EVENTS<br />
-        <font>What's on?</font> </a> </li>
-      <li class="navlogo"> <a href="#"><img src="images/logo.png" class="index-logo" /></a> </li>
-    </ul>
-  </div>
-</div>
-<div class="search">
-  <div>
-    <div>
-      <form>
-        <table>
-          <tr>
-            <td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
-            <td><input type="text" value="Search by keyword" class="searchinput textinput-w" /></td>
-            <td><input type="text" value="Search by location" class="searchinput textinput-w" /></td>
-            <td><input type="text" value="Date From" class="searchinput textinput-w2" /></td>
-            <td><input type="text" value="SDate To" class="searchinput textinput-w2" /></td>
-            <td><input type="button" value="Search" class="input-style2" /></td>
-          </tr>
-        </table>
-      </form>
-    </div>
-  </div>
-</div>
+  <?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 <div class="mian">
   <div class="content">
     <div class="events">
@@ -183,9 +156,5 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
   </div>
 </div>
-<div class="footer">
-  <div> <a href="#">User guide</a> | <a href="#">About us</a> | <a  href="#">Cookies policy</a> | <a href="#">Privacy policy</a> | <a href="#">Terms and Conditions</a> </div>
-</div>
-</body>
-</html>
-<?php }} ?>
+  <?php echo $_smarty_tpl->getSubTemplate ('layouts/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+    <?php }} ?>

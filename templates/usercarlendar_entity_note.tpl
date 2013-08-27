@@ -31,6 +31,10 @@
     <span class="fr pr"><a href="#" class="btn btn-red btn-Calendar">Delete</a></span></div>
   </div>
 </div>
+
+
+
+
 <div id="head">
   <div> <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
     <ul>
