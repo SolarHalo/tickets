@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 15:24:57
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 15:35:29
          compiled from "G:\phpserver\tickets\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12239521c49cca0b3f1-51948194%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '500867029968f40aff2358832a0eb11f80fc51ea' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\header.tpl',
-      1 => 1377617094,
+      1 => 1377617725,
       2 => 'file',
     ),
   ),
@@ -104,7 +104,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
+      <?php if (empty($_SESSION['aduser'])){?>
+         wherere <?php echo $_SESSION['aaa'];?>
+
+	  <?php }?>
+	  		 
   </head>
 
   <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
