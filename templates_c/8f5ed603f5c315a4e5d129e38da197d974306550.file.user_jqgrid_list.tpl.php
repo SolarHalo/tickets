@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-26 17:46:11
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-26 17:57:03
          compiled from "E:\phpweb\tickets\templates\admin\user_jqgrid_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:31049521b743c0f6e98-84192529%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8f5ed603f5c315a4e5d129e38da197d974306550' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\user_jqgrid_list.tpl',
-      1 => 1377531964,
+      1 => 1377532621,
       2 => 'file',
     ),
   ),
@@ -92,7 +92,7 @@ user/editData',
 	
 	// jQuery("#grid").jqGrid('navGrid','#gridPager',{del:false,add:true,edit:true},{},{},{},{multipleSearch:false});
 		
-	// jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true});
+	jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true});
 
 	 jQuery("#grid")
 	 .navGrid('#gridPager',{edit:false,add:false,del:false,search:false})

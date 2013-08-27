@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-26 17:36:54
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 16:31:04
          compiled from "E:\phpweb\tickets\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:76025219818ddd2944-65894916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ef0e8a64eb6b54178aefb29a1922b94924dfe06' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\header.tpl',
-      1 => 1377531410,
+      1 => 1377613861,
       2 => 'file',
     ),
   ),
@@ -72,7 +72,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/js/My97DatePicker/WdatePicker.js"></script>
     <!-- Demo page code -->
-
+	<!-- easyui 引入 -->
+	 <link rel="stylesheet" type="text/css" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/default/easyui.css">
+   	 <link rel="stylesheet" type="text/css" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
+	 <script type="text/javascript" src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
     <style type="text/css">
         #line-chart {
             height:300px;
