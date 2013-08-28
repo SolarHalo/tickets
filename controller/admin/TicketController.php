@@ -59,7 +59,6 @@ class TicketController extends Controller{
 		if($filtersStr == null){
 			$filtersStr = $_GET["filters"];
 		}
-		 
 		
 		$config = array(
 				"products.product_name"=>JQGridFilterUtil::$STRING,
@@ -75,13 +74,19 @@ class TicketController extends Controller{
 		$recordsSql = "select products.aw_product_id, products.product_name,event_category.category_name,".
 			"products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications from products products ".
 			"LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id ";
-		
-		if(!is_null($where)){
+
+		if(!is_null($where) && $where != ""){
 			$counterSql = $counterSql." where ".$where;
 			$recordsSql = $recordsSql." where ".$where;
 		}
 		
+		if($sidx != null && $sidx != "" && $sord != null && $sord != ""){
+			$recordsSql = $recordsSql." order by $sidx $sord ";
+		}
+		
 		$recordsSql = $recordsSql." limit $start ,$end" ; 
+		
+		
 		
 		$db = $this->getDB();
 		

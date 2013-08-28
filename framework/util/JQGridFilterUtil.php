@@ -75,7 +75,17 @@ class JQGridFilterUtil {
 			}
 			return "$field $syn $val";
 		}elseif(JQGridFilterUtil::$DATE == $type){
-			return null;
+			$syn = ">";
+			if("eq" == $op){
+				return "DATE_FORMAT($field,'%Y-%m-%d') = '$val'";
+			}elseif("ne" == $op){
+				return "DATE_FORMAT($field,'%Y-%m-%d') != '$val'";
+			}elseif("lt" == $op){
+				$syn = "<";
+			}elseif("gt" == $op){
+				$syn = ">";
+			} 
+			return "$field $syn str_to_date('$val','%Y-%m-%d')";
 		}
 	}
 }
