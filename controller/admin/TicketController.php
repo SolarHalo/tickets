@@ -5,20 +5,16 @@ class TicketController extends Controller{
  
 	public function index($param){
 		$this->getSmarty();
-<<<<<<< HEAD
-		$this->smarty->assign('web_root' , WEBSITE_URL);
-=======
 		
 		$event_id = $param[0];
 		if($event_id == null){
 			$event_id = "";
-		}
-		
+		} 
 		$this->smarty->assign ('event_id',$event_id);
 		
 		$this->smarty->assign ( 'web_root' , WEBSITE_URL);
->>>>>>> f0dd2160bd877d5f85d6f60e2737aa6c0ca01d5b
 		$this->smarty->display("admin/ticket/ticket.tpl");
+		
 	}
 	
 	public function queryCategory(){

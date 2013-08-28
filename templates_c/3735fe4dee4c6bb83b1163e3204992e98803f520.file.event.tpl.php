@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-28 15:52:52
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-28 15:59:19
          compiled from "G:\phpserver\tickets\templates\admin\event\event.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6564521e1cd4e2dbc7-70336536%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3735fe4dee4c6bb83b1163e3204992e98803f520' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\event\\event.tpl',
-      1 => 1377705124,
+      1 => 1377705367,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_521e1cd50379f9_46425080',
   'variables' => 
   array (
     'web_root' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_521e1cd50379f9_46425080',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521e1cd50379f9_46425080')) {function content_521e1cd50379f9_46425080($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
  <?php echo $_smarty_tpl->getSubTemplate ("admin/navibar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -99,7 +99,7 @@ admin/event/queryCategory',
 				}
 			},
 			{name:'description',index:'events.description', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
-			{name:'description',index:'events.description', width:80,search:false,
+			{name:'op',index:'op', width:80,search:false,sortable:false,
 				formatter:function(cellvalue, options, rowObject){
 					return "<a href=\"<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
 admin/ticket/index/?event="+cellvalue+"\">"+rowObject[1]+"</a>";
