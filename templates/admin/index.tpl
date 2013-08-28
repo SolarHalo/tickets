@@ -33,8 +33,8 @@
 		<h3>
 		 
 			<span>
-				<a href="{{$smarty.const.WEBSITE_URL}}admin/userLog">
-				  查看VIP会没登录日志
+				<a href="{{$smarty.const.WEBSITE_URL}}admin/ticket">
+				查看票务信息
 				</a>
 			</span>&nbsp; 
 			 
