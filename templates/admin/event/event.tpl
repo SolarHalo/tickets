@@ -69,7 +69,7 @@
 				}
 			},
 			{name:'description',index:'events.description', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
-			{name:'description',index:'events.description', width:80,search:false,
+			{name:'op',index:'op', width:80,search:false,sortable:false,
 				formatter:function(cellvalue, options, rowObject){
 					return "<a href=\"{{$web_root}}admin/ticket/index/?event="+cellvalue+"\">"+rowObject[1]+"</a>";
 				}
