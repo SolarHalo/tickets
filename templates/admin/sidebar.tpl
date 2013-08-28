@@ -3,6 +3,7 @@
 	       <a href="#sidebar_menu_1" class="nav-header collapsed" data-toggle="collapse"><i class="icon-th"></i>票务信息管理<i class="icon-chevron-up"></i></a>
 		 
 				<ul id="sidebar_menu_1" class="nav nav-list collapse in">
+					<li><a href="{{$smarty.const.WEBSITE_URL}}admin/event">活动信息查看</a></li>
 					<li><a href="{{$smarty.const.WEBSITE_URL}}admin/ticket">票务信息查看</a></li>
 					<li><a href="{{$smarty.const.WEBSITE_URL}}admin/ticket">票务信息总体统计</a></li>
 					 

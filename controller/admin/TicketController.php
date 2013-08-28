@@ -3,9 +3,21 @@
 
 class TicketController extends Controller{
  
-	public function index(){
+	public function index($param){
 		$this->getSmarty();
+<<<<<<< HEAD
 		$this->smarty->assign('web_root' , WEBSITE_URL);
+=======
+		
+		$event_id = $param[0];
+		if($event_id == null){
+			$event_id = "";
+		}
+		
+		$this->smarty->assign ('event_id',$event_id);
+		
+		$this->smarty->assign ( 'web_root' , WEBSITE_URL);
+>>>>>>> f0dd2160bd877d5f85d6f60e2737aa6c0ca01d5b
 		$this->smarty->display("admin/ticket/ticket.tpl");
 	}
 	
@@ -55,6 +67,12 @@ class TicketController extends Controller{
 			$sord = $_GET["sord"];
 		}
 		
+		//活动id
+		$event_id = $_POST["event_id"];
+		if($event_id == null ){
+			$event_id = $_GET["event_id"];
+		}
+		
 		$filtersStr = $_POST["filters"];
 		if($filtersStr == null){
 			$filtersStr = $_GET["filters"];
@@ -75,9 +93,18 @@ class TicketController extends Controller{
 			"products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications from products products ".
 			"LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id ";
 
+		$eventkey = " and "; 
+		
 		if(!is_null($where) && $where != ""){
 			$counterSql = $counterSql." where ".$where;
 			$recordsSql = $recordsSql." where ".$where;
+		}else{
+			$eventkey = " where " ;
+		}
+		
+		if($event_id != null && "" != $event_id){
+			$counterSql = $counterSql.$eventkey." products.parent_product_id = '".$event_id."' ";
+			$recordsSql = $recordsSql.$eventkey." products.parent_product_id = '".$event_id."' ";
 		}
 		
 		if($sidx != null && $sidx != "" && $sord != null && $sord != ""){
