@@ -49,7 +49,7 @@
 		width:1000,
 		rowNum: 20,
 		rowList: [10,20,30],
-		colNames:['活动id','活动名称','活动类型',"描述","查询票务"],
+		colNames:['活动id','活动名称','活动类型',"描述","操作"],
 		colModel:[
 			{name:'event_id',index:'events.event_id', width:100,hidden:true,search:false,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'event_name',index:'events.event_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
@@ -71,7 +71,7 @@
 			{name:'description',index:'events.description', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'op',index:'op', width:80,search:false,sortable:false,
 				formatter:function(cellvalue, options, rowObject){
-					return "<a href=\"{{$web_root}}admin/ticket/index/?event="+cellvalue+"\">"+rowObject[1]+"</a>";
+					return "<a href=\"{{$web_root}}admin/ticket/index/?event="+cellvalue+"\">查看票务</a>";
 				}
 			}
 		],
