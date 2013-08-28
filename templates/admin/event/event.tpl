@@ -9,7 +9,7 @@
 			</p>
 		</div>
 
-		<h1 class="page-title">票务信息查看</h1>
+		<h1 class="page-title">活动信息查看</h1>
 	</div>
 
 	<!-- <ul class="breadcrumb">
@@ -40,24 +40,23 @@
 		result += "</select>";
 		return result;
 	}
-
+	
 	jQuery("#grid").jqGrid({
-		url:'{{$web_root}}admin/ticket/queryTicket',
-		postData:{'event_id':'{{$event_id}}'},
+		url:'{{$web_root}}admin/event/queryEvent',
 		datatype: "json",
 		mtype: "POST",	
 		height: '100%',
 		width:1000,
 		rowNum: 20,
 		rowList: [10,20,30],
-		colNames:['票务id','票务名称','票务类型',"联盟提供小图","票价","场地","时间"],
+		colNames:['活动id','活动名称','活动类型',"描述","查询票务"],
 		colModel:[
-			{name:'aw_product_id',index:'aw_product_id', width:100,hidden:true,search:false,searchoptions:{sopt: ['cn','eq', 'ne']}},
-			{name:'product_name',index:'products.product_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
+			{name:'event_id',index:'events.event_id', width:100,hidden:true,search:false,searchoptions:{sopt: ['cn','eq', 'ne']}},
+			{name:'event_name',index:'events.event_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
 				searchoptions:{
 					sopt: [ 'eq', 'ne'],
-					dataUrl:'{{$web_root}}admin/ticket/queryCategory',
+					dataUrl:'{{$web_root}}admin/event/queryCategory',
 					buildSelect:function(str){
 						eval(" var obj = " + str);
 						var result = "<select><option value=''>请选择... ...</option>";
@@ -68,27 +67,26 @@
 						return result;
 					}
 				}
-			} ,
-			{name:'aw_thumb_url',index:'aw_thumb_url', width:30 ,search:false,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
-			{name:'display_price',index:'products.display_price', align:"right",sorttype:"float",width:40 ,search:true,searchoptions:{sopt: ['lt','le', 'eq','gt','ge' ]}} ,
-			{name:'promotional_text',index:'products.promotional_text', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} , 
-			{name:'specifications',index:'products.specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['lt','eq','gt','ne'],dataInit:function(elem){  
-				$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
-				$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
-				jQuery(elem).datepicker();
-			}},formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d H:i:s'}} 
+			},
+			{name:'description',index:'events.description', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
+			{name:'description',index:'events.description', width:80,search:false,
+				formatter:function(cellvalue, options, rowObject){
+					return "<a href=\"{{$web_root}}admin/ticket/index/?event="+cellvalue+"\">"+rowObject[1]+"</a>";
+				}
+			}
 		],
-		sortname:"products.specifications",
-		sortorder:'desc',
+		//sortname:"products.specifications",
+		//sortorder:'desc',
 		pager: "#gridPager",
 		viewrecords: true,
-		caption: "票务信息展示" 
+		caption: "活动信息展示" 
 	});
 	
 	
 	//jQuery("#grid").jqGrid('navGrid','#gridPager',{del:false,add:false,edit:false},{},{},{},{multipleSearch:false});
 		
-	jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true});
+	jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true
+	});
 	
 	</script>
  </div> 
