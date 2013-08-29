@@ -42,7 +42,7 @@
 	}
 	
 	jQuery("#grid").jqGrid({
-		url:'{{$web_root}}admin/event/queryEvent',
+		url:'{{$smarty.const.WEBSITE_URL}}admin/event/queryEvent',
 		datatype: "json",
 		mtype: "POST",	
 		height: '100%',
@@ -56,7 +56,7 @@
 			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
 				searchoptions:{
 					sopt: [ 'eq', 'ne'],
-					dataUrl:'{{$web_root}}admin/event/queryCategory',
+					dataUrl:'{{$smarty.const.WEBSITE_URL}}admin/event/queryCategory',
 					buildSelect:function(str){
 						eval(" var obj = " + str);
 						var result = "<select><option value=''>请选择... ...</option>";
@@ -71,7 +71,7 @@
 			{name:'description',index:'events.description', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'op',index:'op', width:80,search:false,sortable:false,
 				formatter:function(cellvalue, options, rowObject){
-					return "<a href=\"{{$web_root}}admin/ticket/index/?event="+cellvalue+"\">查看票务</a>";
+					return "<a href=\"{{$smarty.const.WEBSITE_URL}}admin/ticket/index/?event="+cellvalue+"\">查看票务</a>";
 				}
 			}
 		],

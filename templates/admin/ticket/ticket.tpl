@@ -42,7 +42,7 @@
 	}
 
 	jQuery("#grid").jqGrid({
-		url:'{{$web_root}}admin/ticket/queryTicket',
+		url:'{{$smarty.const.WEBSITE_URL}}admin/ticket/queryTicket',
 		postData:{'event_id':'{{$event_id}}'},
 		datatype: "json",
 		mtype: "POST",	
@@ -57,7 +57,7 @@
 			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
 				searchoptions:{
 					sopt: [ 'eq', 'ne'],
-					dataUrl:'{{$web_root}}admin/ticket/queryCategory',
+					dataUrl:'{{$smarty.const.WEBSITE_URL}}admin/ticket/queryCategory',
 					buildSelect:function(str){
 						eval(" var obj = " + str);
 						var result = "<select><option value=''>请选择... ...</option>";

@@ -12,7 +12,7 @@ class TicketController extends Controller{
 		} 
 		$this->smarty->assign ('event_id',$event_id);
 		
-		$this->smarty->assign ( 'web_root' , WEBSITE_URL);
+		//$this->smarty->assign ( 'web_root' , WEBSITE_URL);
 		$this->smarty->display("admin/ticket/ticket.tpl");
 		
 	}

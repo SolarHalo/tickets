@@ -4,7 +4,7 @@ class EventController extends Controller{
  
 	public function index(){
 		$this->getSmarty();
-		$this->smarty->assign ( 'web_root' , WEBSITE_URL);
+		//$this->smarty->assign ( 'web_root' , WEBSITE_URL);
 		$this->smarty->display("admin/event/event.tpl");
 	}
 	public function queryCategory(){
