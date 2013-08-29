@@ -33,7 +33,7 @@
  		</div>
   		<div class="modal-body">
   			<input id="eventId" name="eventId" type="hidden"/>
-    		<textarea id="eventDesc" name="eventDesc" rows="6" ></textarea>
+    		<textarea id="eventDesc" name="eventDesc" rows="8" style="width:97%;height:100%" ></textarea>
   		</div>
   		<div class="modal-footer">
     		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
