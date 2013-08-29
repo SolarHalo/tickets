@@ -1,15 +1,43 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 14:01:46
+         compiled from "D:\workspace\php\tickets\templates\usercarlendar.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:16689521c9859611640-73038461%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'b5ab2871d3757bac0c41c651844dd5335d805a48' => 
+    array (
+      0 => 'D:\\workspace\\php\\tickets\\templates\\usercarlendar.tpl',
+      1 => 1377783854,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '16689521c9859611640-73038461',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_521c98596f8e53_26286395',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_521c98596f8e53_26286395')) {function content_521c98596f8e53_26286395($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>user agenda manager</title>
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" />
-<link href='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.css' rel='stylesheet' />
-<link href='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
-<script src='{{$smarty.const.WEBSITE_URL}}public/jquery/jquery-1.9.1.min.js'></script>
-<script src='{{$smarty.const.WEBSITE_URL}}public/jquery/jquery-ui-1.10.2.custom.min.js'></script>
-<script src='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.min.js'></script>
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" />
+<link href='<?php echo @constant('WEBSITE_URL');?>
+public/fullcalendar/fullcalendar.css' rel='stylesheet' />
+<link href='<?php echo @constant('WEBSITE_URL');?>
+public/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<script src='<?php echo @constant('WEBSITE_URL');?>
+public/jquery/jquery-1.9.1.min.js'></script>
+<script src='<?php echo @constant('WEBSITE_URL');?>
+public/jquery/jquery-ui-1.10.2.custom.min.js'></script>
+<script src='<?php echo @constant('WEBSITE_URL');?>
+public/fullcalendar/fullcalendar.min.js'></script>
 <script>
 
 	$(document).ready(function() {
@@ -32,7 +60,8 @@
 				right: 'month,agendaWeek,agendaDay'
 			},
 			editable: true,
-			events: "{{$smarty.const.WEBSITE_URL}}carlendar/getUserCalEvent?userid=1"
+			events: "<?php echo @constant('WEBSITE_URL');?>
+carlendar/getUserCalEvent?userid=1"
 		});
 		
 		$("#saveEvent").click(function(){
@@ -58,7 +87,8 @@ function closewin(winname){
 </head>
 
 <body>
-{{include file='layouts/headerandsearch.tpl'}} 
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 
 <div class="mian">
     <div class="content">
@@ -72,7 +102,8 @@ function closewin(winname){
                     <a href="#" class="btn-hs2 btn-Calendar left-by">Day</a> 
                     <a href="#" class="btn-hs2 btn-Calendar by-hover">Week</a> 
                     <a href="#" class="btn-hs2 btn-Calendar">Month</a> 
-                    <a href="{{$smarty.const.WEBSITE_URL}}userevent" class="btn-hs2 btn-Calendar right-by">Agenda</a> 
+                    <a href="<?php echo @constant('WEBSITE_URL');?>
+userevent" class="btn-hs2 btn-Calendar right-by">Agenda</a> 
                 </p>
             </div>
             <div class="mt15">
@@ -97,7 +128,8 @@ function closewin(winname){
     <form>
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-tck-table mt15 ">
       <tr>
-        <td width="50" align="right" valign="top"><img src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-ioc.gif" /></td>
+        <td width="50" align="right" valign="top"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/calendar-ioc.gif" /></td>
         <td align="left">
         	<h4  class="eventname">Lorem event title</h4>
             <p class="time">Saturday, 28 July 2013 19:30 BST</p>
@@ -140,15 +172,19 @@ function closewin(winname){
        <tr>
         <td width="77" align="right" valign="middle">From&nbsp;&nbsp;</td>
         <td align="left">
-        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
-            <span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/calendar-iocx.gif" /></a></span>
+            <span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/time-iocx.gif" /></a></span>
         </td>
       </tr> 
        <tr>
         <td width="77" align="right" valign="middle">To&nbsp;&nbsp;</td>
         <td align="left">
-        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
-            <span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/calendar-iocx.gif" /></a></span>
+            <span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/time-iocx.gif" /></a></span>
         </td>
       </tr> 
        <tr>
@@ -183,4 +219,5 @@ function closewin(winname){
   </div>
 </div>
 
-{{include file='layouts/footer.tpl'}} 
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php }} ?>

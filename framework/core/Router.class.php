@@ -85,11 +85,17 @@
 					);
 					return $this->uriarray;
 			}else if(count($urlArray) == 2){
+				//处理用?分割参数的情况
+				$parmStrArr = explode("?", $urlArray[1]);
+				$parmArr = array();
+				if(count($parmStrArr)==2){
+					$parmArr = $this->paramToArray($parmStrArr[1]);
+				}
 				  $this->uriarray = array(
 					    "dir"               => "",
 					    "controler"         => $urlArray[0],
-					    "method"            => $urlArray[1],
-					    "param"             => array()
+					    "method"            => $parmStrArr[0],
+					    "param"             => $parmArr
 					);
 					return $this->uriarray;
 			}else if(count($urlArray) == 3){
@@ -128,11 +134,17 @@
 					);
 					return $this->uriarray;
 			}else if(count($urlArray) == 3){
+				//处理用?分割参数的情况
+				$parmStrArr = explode("?", $urlArray[2]);
+				$parmArr = array();
+				if(count($parmStrArr)==2){
+					$parmArr = $this->paramToArray($parmStrArr[1]);
+				}
 				  $this->uriarray = array(
 					    "dir"               => "admin",
 					    "controler"         => $urlArray[1],
-					    "method"            => $urlArray[2],
-					    "param"             => array()
+					    "method"            => $parmStrArr[0],
+					    "param"             => $parmArr
 					);
 					return $this->uriarray;
 			}else{

@@ -73,7 +73,8 @@ var defaults = {
 		today: 'today',
 		month: 'month',
 		week: 'week',
-		day: 'day'
+		day: 'day',
+		agenda:'agenda'
 	},
 	
 	// jquery-ui theming
