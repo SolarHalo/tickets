@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 09:42:45
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 14:29:20
          compiled from "G:\phpserver\tickets\templates\register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12574521c69c4c1bf40-66951276%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1943c9b898eec701cb26f48bca4ba6ad63dc2a1' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\register.tpl',
-      1 => 1377769362,
+      1 => 1377786553,
       2 => 'file',
     ),
   ),
@@ -17,6 +17,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_521c69c4d35fe5_80215115',
+  'variables' => 
+  array (
+    'errortip' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521c69c4d35fe5_80215115')) {function content_521c69c4d35fe5_80215115($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30,7 +34,20 @@ public/style/reset.css" type="text/css" rel="stylesheet" />
 public/style/style.css" type="text/css" rel="stylesheet" /> 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
-
+<style type="text/css">
+.alert{
+padding-top: 14px;
+padding-bottom: 14px;
+color: #b94a48;
+background-color: #f2dede;
+border-color: #eed3d7;
+margin-bottom: 5px;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 20px;
+ 
+}
+</style>
 </head>
 
 <body>
@@ -40,11 +57,13 @@ public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" />
     <div class="content">
     	<div class="login-l login">
         	<h6>REGISTER&nbsp;&nbsp;FOR&nbsp;&nbsp;SEARCH4GIGS</h6>
+        	<?php echo $_smarty_tpl->tpl_vars['errortip']->value;?>
+
         	<form  id="registerform" action="<?php echo @constant('WEBSITE_URL');?>
 /register/handreg" method="post">
             <table> 
 				<tr>
-                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"/></td> 
+                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" /></td> 
                 </tr>
                 <tr>
                     <td><span>Email Address</span><input type="text" class="input-style3 validate[required,custom[email]] text-input" name="email" /></td> 

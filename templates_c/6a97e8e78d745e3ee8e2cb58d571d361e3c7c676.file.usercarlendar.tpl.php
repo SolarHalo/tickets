@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 09:58:25
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 14:07:37
          compiled from "G:\phpserver\tickets\templates\usercarlendar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11541521c647f90fdb6-69881549%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6a97e8e78d745e3ee8e2cb58d571d361e3c7c676' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\usercarlendar.tpl',
-      1 => 1377597501,
+      1 => 1377785218,
       2 => 'file',
     ),
   ),
@@ -53,59 +53,30 @@ public/fullcalendar/fullcalendar.min.js'></script>
 		var m = date.getMonth();
 		var y = date.getFullYear();
 		
-		$('#calendar').fullCalendar({
+		var calendar = $('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
 			editable: true,
-			events: [
-				{
-					title: 'All Day Event',
-					start: new Date(y, m, 1)
-				},
-				{
-					title: 'Long Event',
-					start: new Date(y, m, d-5),
-					end: new Date(y, m, d-2)
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d-3, 16, 0),
-					allDay: false
-				},
-				{
-					id: 999,
-					title: 'Repeating Event',
-					start: new Date(y, m, d+4, 16, 0),
-					allDay: false
-				},
-				{
-					title: 'Meeting',
-					start: new Date(y, m, d, 10, 30),
-					allDay: false
-				},
-				{
-					title: 'Lunch',
-					start: new Date(y, m, d, 12, 0),
-					end: new Date(y, m, d, 14, 0),
-					allDay: false
-				},
-				{
-					title: 'Birthday Party',
-					start: new Date(y, m, d+1, 19, 0),
-					end: new Date(y, m, d+1, 22, 30),
-					allDay: false
-				},
-				{
-					title: 'Click for Google',
-					start: new Date(y, m, 28),
-					end: new Date(y, m, 29),
-					url: 'http://google.com/'
-				}
-			]
+			events: "<?php echo @constant('WEBSITE_URL');?>
+carlendar/getUserCalEvent?userid=1"
+		});
+		
+		$("#saveEvent").click(function(){
+			var title = $("#title").val();
+			calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: new Date(y, m, d,20,0),
+							end: new Date(y, m, d,21,0),
+							allDay:false
+						},
+						true // make the event "stick"
+					);
+			closewin('tcbox_addentity');
+					
 		});
 		
 	});
@@ -189,7 +160,7 @@ public/images/calendar-ioc.gif" /></td>
       <tr>
         <td width="77" align="right" valign="middle">Title&nbsp;&nbsp;</td>
         <td align="left">
-        	<span class="inputborder"><input type="text" class="input-style4 textinput-w3" /></span>
+        	<span class="inputborder"><input type="text" class="input-style4 textinput-w3" id="title"/></span>
         </td>
       </tr>
        <tr>
@@ -243,7 +214,7 @@ public/images/time-iocx.gif" /></a></span>
     </table> 
     </form> 
     <div class="row3 map gigs_top">
-        <span class="fl"><a href="#" class="btn btn-black-2 btn-Calendar ml15">Save</a><font><a href="#" class="cancel">cancel</a></font></span> 
+        <span class="fl"><a href="#" class="btn btn-black-2 btn-Calendar ml15" id="saveEvent">Save</a><font><a href="#" class="cancel">cancel</a></font></span> 
     </div>
   </div>
 </div>

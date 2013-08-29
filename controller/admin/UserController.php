@@ -76,7 +76,7 @@ class UserController extends Controller {
 		require_once SERVICE . DS . 'admin' . DS . 'UserService.class.php';
 		$userService = new UserService ( $this->getDB () );
 		$id = $_POST ['id'];
-		$user_id = $userService->deleteUser ( $id );
+		$user_id = $userService->deleteUser( $id );
 		echo 1;
 	}
 	

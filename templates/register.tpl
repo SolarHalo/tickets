@@ -6,7 +6,20 @@
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
-
+<style type="text/css">
+.alert{
+padding-top: 14px;
+padding-bottom: 14px;
+color: #b94a48;
+background-color: #f2dede;
+border-color: #eed3d7;
+margin-bottom: 5px;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+font-size: 14px;
+line-height: 20px;
+ 
+}
+</style>
 </head>
 
 <body>
@@ -15,6 +28,7 @@
     <div class="content">
     	<div class="login-l login">
         	<h6>REGISTER&nbsp;&nbsp;FOR&nbsp;&nbsp;SEARCH4GIGS</h6>
+        	{{$errortip}}
         	<form  id="registerform" action="{{$smarty.const.WEBSITE_URL}}/register/handreg" method="post">
             <table> 
 				<tr>
