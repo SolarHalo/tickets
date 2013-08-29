@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 14:29:20
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 16:00:26
          compiled from "G:\phpserver\tickets\templates\register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12574521c69c4c1bf40-66951276%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1943c9b898eec701cb26f48bca4ba6ad63dc2a1' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\register.tpl',
-      1 => 1377786553,
+      1 => 1377792010,
       2 => 'file',
     ),
   ),
@@ -60,7 +60,7 @@ line-height: 20px;
         	<?php echo $_smarty_tpl->tpl_vars['errortip']->value;?>
 
         	<form  id="registerform" action="<?php echo @constant('WEBSITE_URL');?>
-/register/handreg" method="post">
+register/handreg" method="post">
             <table> 
 				<tr>
                     <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" /></td> 
@@ -69,10 +69,10 @@ line-height: 20px;
                     <td><span>Email Address</span><input type="text" class="input-style3 validate[required,custom[email]] text-input" name="email" /></td> 
                 </tr>
 				<tr>
-                    <td><span>Password</span><input type="password" class="input-style3 validate[required] text-input" id="password" name="password"/></td>  
+                    <td><span>Password</span><input type="password" class="input-style3 validate[required,minSize[6]] text-input" id="password" name="password"/></td>  
                 </tr>
                 <tr>
-                    <td><span>Password Confirmation</span><input type="password" class="input-style3 validate[required,equals[password]] text-input" name="repassword" /></td>  
+                    <td><span>Password Confirmation</span><input type="password" class="input-style3 validate[required,equals[password],minSize[6]] text-input" name="repassword" /></td>  
                 </tr>
                 <tr>
                     <td><span>First Name</span><input type="text" class="input-style3 validate[required] text-input" name="firstname"/></td>  
@@ -83,7 +83,7 @@ line-height: 20px;
                 <tr>
                     <td><span>Birth Date</span>
                     	<div class="controls">
-							<select id="id_birthdate_0" name="birthdate_0" class="validate[required]" name="day">
+							<select id="id_birthdate_0" name="day" class="validate[required]" >
                             <option selected="selected" value="">Day</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -117,7 +117,7 @@ line-height: 20px;
                             <option value="30">30</option>
                             <option value="31">31</option>
                             </select>
-                            <select id="id_birthdate_1" name="birthdate_1"  class="validate[required]" name="month">
+                            <select id="id_birthdate_1" class="validate[required]" name="month">
                             <option selected="selected" value="" >Month</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -132,7 +132,7 @@ line-height: 20px;
                             <option value="11">11</option>
                             <option value="12">12</option>
                             </select>
-                            <select id="id_birthdate_2" name="birthdate_2"  class="validate[required]" name="year">
+                            <select id="id_birthdate_2"  class="validate[required]" name="year">
                             <option selected="selected" value="">Year</option>
                             <option value="2013">2013</option>
                             <option value="2012">2012</option>
@@ -249,7 +249,7 @@ line-height: 20px;
                     <a href="#" class="link_style01">Cookies Policy</a> *</font></span></td>  
                 </tr>
                 <tr>
-                    <td><input type="submit" class="input-style1 submit" value="sign&nbsp;&nbsp;in" /></td>  
+                    <td><input type="submit" class="input-style1 submit" value="REGISTER" /></td>  
                 </tr>
             </table>          
             </form>
@@ -258,7 +258,8 @@ line-height: 20px;
         	<h6>ARE&nbsp;&nbsp;YOU&nbsp;&nbsp;A&nbsp;&nbsp;NEW&nbsp;&nbsp;USER?</h6>
             <table> 
 				<tr>
-                    <td><span>Sign up to Search4Gigs right here...</span><a href="#" class="input-style1">register</a></td> 
+                    <td><span>Sign up to Search4Gigs right here...</span><a href="<?php echo @constant('WEBSITE_URL');?>
+login" class="input-style1">SIGN IN</a></td> 
                 </tr> 
                 <tr><td height="30"></td></tr>
             </table>     

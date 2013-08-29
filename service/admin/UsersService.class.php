@@ -26,7 +26,7 @@ class UsersService{
 		 
 		return $admin; 
 	}
-   public function addAdUser($data){
+   public function addUser($data){
 		return	$this->dbutil->insert("users", $data);
 	}
    /**
@@ -43,6 +43,7 @@ class UsersService{
 	 * @param unknown_type $name
 	 */
 	function getEmailByName($email){
+		
 		return $this->dbutil->get_row("select * from users where email='".$email."'");
 	}
 	public function userPage($start , $page_size ){
