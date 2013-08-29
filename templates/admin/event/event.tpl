@@ -107,8 +107,8 @@
 				formatter:function(cellvalue, options, rowObject){
 					var res =  "<a href=\"{{$smarty.const.WEBSITE_URL}}admin/ticket/index/?event="+cellvalue+"\">查看票务</a> | ";
 					
-					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"');\">修改活动描述</a>";
-					$("#eventId").val(cellvalue);
+					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"','"+rowObject[3]+"');\">修改活动描述</a>";
+					
 					return res ;
 				}
 			}
@@ -125,8 +125,10 @@
 		
 	jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true
 	});
-	function mdfdesc(id){
-		 console.log(id);
+	function mdfdesc(id,desc){
+		console.log(id);
+		$("#eventId").val(id);
+		$("#eventDesc").val(desc);
 		$('#myModal').modal('show');
 	 };
 	</script>
