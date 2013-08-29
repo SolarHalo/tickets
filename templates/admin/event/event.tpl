@@ -26,6 +26,20 @@
 	<table id="grid"></table>
 	<div clsss='a' id="gridPager"></div>
 	
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    		<h3 id="myModalLabel">修改活动描述</h3>
+ 		</div>
+  		<div class="modal-body">
+    		<textarea name=""></textarea>
+  		</div>
+  		<div class="modal-footer">
+    		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    		<button class="btn btn-primary">Save changes</button>
+  		</div>
+	</div>
+	
 	<script type="text/javascript">
 	
 	function buildSelect(str){
@@ -71,7 +85,10 @@
 			{name:'description',index:'events.description', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'op',index:'op', width:80,search:false,sortable:false,
 				formatter:function(cellvalue, options, rowObject){
-					return "<a href=\"{{$smarty.const.WEBSITE_URL}}admin/ticket/index/?event="+cellvalue+"\">查看票务</a>";
+					var res =  "<a href=\"{{$smarty.const.WEBSITE_URL}}admin/ticket/index/?event="+cellvalue+"\">查看票务</a> | ";
+					
+					res += "<a href=\"#myModal\" role=\"button\" class=\"btn\" data-toggle=\"modal\">修改活动描述</a>";
+					return res ;
 				}
 			}
 		],
