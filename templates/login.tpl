@@ -5,6 +5,8 @@
 <title>index</title>
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
+<link href="{{$smarty.const.WEBSITE_URL}}public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
+
 </head>
 
 <body>
@@ -13,19 +15,19 @@
     <div class="content">
     	<div class="login-l login">
         	<h6>sign&nbsp;&nbsp;in</h6>
-        	<form>
+        	<form id="loginform">
             <table> 
 				<tr>
-                    <td><span>Username</span><input type="text" class="input-style3" /></td> 
+                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"   autofocus="true" /></td> 
                 </tr>
 				<tr>
-                    <td><span>Password<a href="#">Forgotten your password?</a></span><input type="password" class="input-style3" /></td>  
+                    <td><span>Password<a href="#">Forgotten your password?</a></span><input type="password" class="input-style3 validate[required] text-input " /></td>  
                 </tr>
                 <tr>
                     <td><span><input type="checkbox"/><font>Remember Me</font></span></td>  
                 </tr>
                 <tr>
-                    <td><input type="button" class="input-style1" value="sign&nbsp;&nbsp;in" /></td>  
+                    <td><input type="submit" class="input-style1" value="sign&nbsp;&nbsp;in" /></td>  
                 </tr>
             </table>          
             </form>
@@ -38,8 +40,29 @@
                 </tr> 
                 <tr><td height="30"></td></tr>
             </table>     
+             <h6>OR.....</h6>
+            <table class="bor-none"> 
+				<tr>
+                    <td><a href="#" class="btn btn-blue btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
+                </tr>
+                <tr>
+                    <td><a href="#" class="btn btn-lc btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/in_iocn.gif" /> Log in with Linkedln</a></td> 
+                </tr>
+                <tr>
+                    <td><a href="#" class="btn btn-hui btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/tt_iocn.gif" /> Log in with Twitter</a></td> 
+                </tr>  
+            </table>       
         </div>
     </div>
 	<div class="h-blackbg"></div>
 </div>
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine-en.js" type="text/javascript"></script>
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine.js" type="text/javascript"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){
+	// binds form submission and fields to the validation engine
+	$("#loginform").validationEngine();
+}); 
+</script>
 {{include file='layouts/footer.tpl'}} 

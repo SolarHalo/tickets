@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 08:39:48
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 08:24:18
          compiled from "G:\phpserver\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28905521c65d4aa37b3-57099622%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4fc9ad758920aaa4926b2b4d8b5229b81cc343e9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1377592724,
+      1 => 1377764656,
       2 => 'file',
     ),
   ),
@@ -15,18 +15,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_521c65d4ac0440_60316161',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521c65d4ac0440_60316161')) {function content_521c65d4ac0440_60316161($_smarty_tpl) {?><div id="head">
 	<div>
         <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
         <ul>
+           <?php if (empty($_SESSION['user'])){?>
+            <li>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+register" class="input-style1">Sign up</a>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+login" class="input-style1">Sign In</a>
+            </li>
+            <?php }else{ ?>
             <li class="navuserlogin">
                 <span class="username"><div>Mr Igor Diez</div><span>0</span></span>
                 <a href="#"  class="btn btn-range btn-Calendar out">Log Out</a> 
             </li>
+            <?php }?>
+            
             <li class="navlist">
                 <a href="#">
                     YOUR CALENDAR<br /> 
