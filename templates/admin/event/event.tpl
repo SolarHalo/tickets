@@ -32,16 +32,36 @@
     		<h3 id="myModalLabel">修改活动描述</h3>
  		</div>
   		<div class="modal-body">
-    		<textarea name=""></textarea>
+  			<input id="eventId" name="eventId" type="hidden"/>
+    		<textarea id="eventDesc" name="eventDesc" rows="6" ></textarea>
   		</div>
   		<div class="modal-footer">
     		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    		<button class="btn btn-primary">Save changes</button>
+    		<button id="saveDesc" class="btn btn-primary">保存</button>
   		</div>
 	</div>
 	
 	<script type="text/javascript">
-	
+
+	$("#saveDesc").click(function(){
+		
+		var eventId = $("#eventId").val();
+		
+		var eventDesc = $("#eventDesc").val();
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}admin/event/updateEvent',
+			{'eventId':eventId,'eventDesc':eventDesc},
+			function(obj){
+				if(obj.success){
+					$('#myModal').modal('hide');
+					$("#grid").trigger("reloadGrid");//执行reload
+				}
+			},
+			"json"
+		);
+		
+	});
+
 	function buildSelect(str){
 		eval("var obj = "+str);
 		var result = "<select>";
@@ -88,6 +108,7 @@
 					var res =  "<a href=\"{{$smarty.const.WEBSITE_URL}}admin/ticket/index/?event="+cellvalue+"\">查看票务</a> | ";
 					
 					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"');\">修改活动描述</a>";
+					$("#eventId").val(cellvalue);
 					return res ;
 				}
 			}
