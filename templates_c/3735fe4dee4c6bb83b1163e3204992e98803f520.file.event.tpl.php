@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 14:47:24
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 16:07:28
          compiled from "G:\phpserver\tickets\templates\admin\event\event.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6564521e1cd4e2dbc7-70336536%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3735fe4dee4c6bb83b1163e3204992e98803f520' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\event\\event.tpl',
-      1 => 1377787642,
+      1 => 1377792442,
       2 => 'file',
     ),
   ),
@@ -56,16 +56,37 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
     		<h3 id="myModalLabel">修改活动描述</h3>
  		</div>
   		<div class="modal-body">
-    		<textarea name=""></textarea>
+  			<input id="eventId" name="eventId" type="hidden"/>
+    		<textarea id="eventDesc" name="eventDesc" class="input-xxlarge" rows="6" ></textarea>
   		</div>
   		<div class="modal-footer">
     		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    		<button class="btn btn-primary">Save changes</button>
+    		<button id="saveDesc" class="btn btn-primary">保存</button>
   		</div>
 	</div>
 	
 	<script type="text/javascript">
-	
+
+	$("#saveDesc").click(function(){
+		
+		var eventId = $("#eventId").val();
+		
+		var eventDesc = $("#eventDesc").val();
+		$.post(
+			'<?php echo @constant('WEBSITE_URL');?>
+admin/event/updateEvent',
+			{'eventId':eventId,'eventDesc':eventDesc},
+			function(obj){
+				if(obj.success){
+					$('#myModal').modal('hide');
+					$("#grid").trigger("reloadGrid");//执行reload
+				}
+			},
+			"json"
+		);
+		
+	});
+
 	function buildSelect(str){
 		eval("var obj = "+str);
 		var result = "<select>";
@@ -114,7 +135,8 @@ admin/event/queryCategory',
 					var res =  "<a href=\"<?php echo @constant('WEBSITE_URL');?>
 admin/ticket/index/?event="+cellvalue+"\">查看票务</a> | ";
 					
-					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"');\">修改活动描述</a>";
+					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"','"+rowObject[3]+"');\">修改活动描述</a>";
+					
 					return res ;
 				}
 			}
@@ -131,8 +153,10 @@ admin/ticket/index/?event="+cellvalue+"\">查看票务</a> | ";
 		
 	jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true
 	});
-	function mdfdesc(id){
-		 console.log(id);
+	function mdfdesc(id,desc){
+		console.log(id);
+		$("#eventId").val(id);
+		$("#eventDesc").val(desc);
 		$('#myModal').modal('show');
 	 };
 	</script>
