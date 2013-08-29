@@ -21,6 +21,26 @@ class EventController extends Controller{
 		echo json_encode($result);
 	}
 	
+	public function updateEvent(){
+		require_once SERVICE . DS . 'admin' . DS . 'EventService.class.php';
+		require_once SERVICE . DS . 'admin' . DS . 'TicketService.class.php';
+		
+		$eventId = $_POST["eventId"];
+		$eventDesc = $_POST["eventDesc"];
+		
+		$db = $this->getDB ();
+		
+		$eventService = new EventService( $db );
+		$ticketService = new TicketService( $db );
+		
+		$eventService->updateEvent(array("description"=>$eventDesc), array("event_id"=>$eventId));
+		$ticketService->updateEvent(array("description"=>$eventDesc), array("parent_product_id"=>$eventId));
+		
+		$result = array("success"=>true);
+		
+		echo json_encode($result);
+	}
+	
 	public function queryEvent(){
 	
 		require_once PROJECT.DS.'framework'.DS."util".DS.'JQGridFilterUtil.php';
