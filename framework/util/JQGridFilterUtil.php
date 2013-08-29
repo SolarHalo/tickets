@@ -13,7 +13,8 @@ class JQGridFilterUtil {
 			return null;
 		}
 		
-		$filters = json_decode($filtersStr);
+		//$filters = json_decode($filtersStr);
+		$filters = json_decode(str_replace("\\\"","\"",$filtersStr));
 		
 		if($filters == null){
 			return null;
@@ -47,7 +48,7 @@ class JQGridFilterUtil {
 	}
 	
 	static function getExp($field,$op,$val,$type){
-		if(JQGridFilterUtil::$STRING == $type){
+		if(JQGridFilterUtil::$STRING == $type && $val != null && $val != ""){
 			if($op == "cn"){
 				return "$field like '%$val%'";
 			}else if("eq" == $op){
@@ -74,7 +75,17 @@ class JQGridFilterUtil {
 			}
 			return "$field $syn $val";
 		}elseif(JQGridFilterUtil::$DATE == $type){
-			return null;
+			$syn = ">";
+			if("eq" == $op){
+				return "DATE_FORMAT($field,'%Y-%m-%d') = '$val'";
+			}elseif("ne" == $op){
+				return "DATE_FORMAT($field,'%Y-%m-%d') != '$val'";
+			}elseif("lt" == $op){
+				$syn = "<";
+			}elseif("gt" == $op){
+				$syn = ">";
+			} 
+			return "$field $syn str_to_date('$val','%Y-%m-%d')";
 		}
 	}
 }

@@ -24,6 +24,7 @@ class LoginController extends  Controller{
 				if ($user_info) { 
 					//可以处理其他用户登录以后的事情
 					//可以处理用户登录日志 
+					$_SESSION['aduser']=$user_info;
 					CommonBase::jumpUrl ( 'admin/index' );
 				}else{
 					$alert_html = HtmlWrap::alert("error",ErrorMessage::USER_OR_PWD_WRONG); 

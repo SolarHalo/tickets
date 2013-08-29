@@ -1,5 +1,5 @@
 <?php
-class UserService{
+class AdminuserService{
 	
 	public  $dbutil;
     function __construct($dbutil){
@@ -28,6 +28,14 @@ class UserService{
 	 */
 	function getAdminByName($name){
 		return $this->dbutil->get_row("select * from admin_users where user_name='".$name."'");
+	}
+	/**
+	* 根据用户名获取用户信息
+	* Enter description here ...
+	* @param unknown_type $name
+	*/
+	function getAdminByID($id){
+		return $this->dbutil->get_row("select * from admin_users where id='".$id."'");
 	}
 	/**
 	 * 检查登录
@@ -71,7 +79,10 @@ class UserService{
 
 	public function deleteUser($data){
 		$sql = " delete from admin_users where id= $data";
-		print($sql);
 		return $this->dbutil->get_results($sql);
 	}
+	public function edit($data,$conditions){
+		return $this->dbutil->update("admin_users",$data,$conditions);
+	}
+	
 }

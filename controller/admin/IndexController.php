@@ -1,7 +1,7 @@
 <?php
 class IndexController extends  Controller{
 	public function index(){ 
-		 $this->getSmarty(); 
+		 $this->getSmarty();  
  		 $this->smarty->display("admin/index.tpl"); 
 	}
 }

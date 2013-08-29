@@ -28,7 +28,10 @@
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.jqGrid.min.js"></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/My97DatePicker/WdatePicker.js"></script>
     <!-- Demo page code -->
-
+	<!-- easyui 引入 -->
+	 <link rel="stylesheet" type="text/css" href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/themes/default/easyui.css">
+   	 <link rel="stylesheet" type="text/css" href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
+	 <script type="text/javascript" src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
     <style type="text/css">
         #line-chart {
             height:300px;
@@ -60,9 +63,15 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+  
+	
   </head>
-
+    {{if empty($smarty.session.aduser)}}
+          <script language='javascript' type='text/javascript'> 
+						window.location.href='{{$smarty.const.WEBSITE_URL}}admin/login'; 
+	    </script>
+				  
+	  {{/if}}
   <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
   <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
   <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->

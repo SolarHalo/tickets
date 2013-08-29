@@ -5,6 +5,8 @@
 <title>index</title>
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
+<link href="{{$smarty.const.WEBSITE_URL}}public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
+
 </head>
 
 <body>
@@ -13,30 +15,30 @@
     <div class="content">
     	<div class="login-l login">
         	<h6>REGISTER&nbsp;&nbsp;FOR&nbsp;&nbsp;SEARCH4GIGS</h6>
-        	<form>
+        	<form  id="registerform" action="{{$smarty.const.WEBSITE_URL}}/register/handreg" method="post">
             <table> 
 				<tr>
-                    <td><span>Username</span><input type="text" class="input-style3" /></td> 
+                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" /></td> 
                 </tr>
                 <tr>
-                    <td><span>Email Address</span><input type="text" class="input-style3" /></td> 
+                    <td><span>Email Address</span><input type="text" class="input-style3 validate[required,custom[email]] text-input" name="email" /></td> 
                 </tr>
 				<tr>
-                    <td><span>Password</span><input type="password" class="input-style3" /></td>  
+                    <td><span>Password</span><input type="password" class="input-style3 validate[required] text-input" id="password" name="password"/></td>  
                 </tr>
                 <tr>
-                    <td><span>Password Confirmation</span><input type="password" class="input-style3" /></td>  
+                    <td><span>Password Confirmation</span><input type="password" class="input-style3 validate[required,equals[password]] text-input" name="repassword" /></td>  
                 </tr>
                 <tr>
-                    <td><span>First Name</span><input type="password" class="input-style3" /></td>  
+                    <td><span>First Name</span><input type="text" class="input-style3 validate[required] text-input" name="firstname"/></td>  
                 </tr>
                 <tr>
-                    <td><span>Last Name</span><input type="password" class="input-style3" /></td>  
+                    <td><span>Last Name</span><input type="text" class="input-style3 validate[required] text-input" name="lastname"/></td>  
                 </tr>
                 <tr>
                     <td><span>Birth Date</span>
                     	<div class="controls">
-							<select id="id_birthdate_0" name="birthdate_0">
+							<select id="id_birthdate_0" name="birthdate_0" class="validate[required]" name="day">
                             <option selected="selected" value="">Day</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -70,8 +72,8 @@
                             <option value="30">30</option>
                             <option value="31">31</option>
                             </select>
-                            <select id="id_birthdate_1" name="birthdate_1">
-                            <option selected="selected" value="">Month</option>
+                            <select id="id_birthdate_1" name="birthdate_1"  class="validate[required]" name="month">
+                            <option selected="selected" value="" >Month</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -85,7 +87,7 @@
                             <option value="11">11</option>
                             <option value="12">12</option>
                             </select>
-                            <select id="id_birthdate_2" name="birthdate_2">
+                            <select id="id_birthdate_2" name="birthdate_2"  class="validate[required]" name="year">
                             <option selected="selected" value="">Year</option>
                             <option value="2013">2013</option>
                             <option value="2012">2012</option>
@@ -193,14 +195,16 @@
                     </td>  
                 </tr>
                 <tr>
-                    <td><span><input type="checkbox"/><font>I want to sign up for the newsletter</font></span></td>  
+                    <td><span><input type="checkbox" name="letter" value="1" checked/><font>I want to sign up for the newsletter</font></span></td>  
                 </tr>
                 <tr>
-                    <td><span><input type="checkbox"/><font>I agree with <a href="#" class="link_style01">Terms and Conditions, Privacy Policy</a> and 
+                    <td><span><input class="validate[required] checkbox" type="checkbox" id="agree" name="agree" checked/>
+                    
+                    <font>I agree with <a href="#" class="link_style01">Terms and Conditions, Privacy Policy</a> and 
                     <a href="#" class="link_style01">Cookies Policy</a> *</font></span></td>  
                 </tr>
                 <tr>
-                    <td><input type="button" class="input-style1" value="sign&nbsp;&nbsp;in" /></td>  
+                    <td><input type="submit" class="input-style1 submit" value="sign&nbsp;&nbsp;in" /></td>  
                 </tr>
             </table>          
             </form>
@@ -213,7 +217,29 @@
                 </tr> 
                 <tr><td height="30"></td></tr>
             </table>     
+            <h6>OR.....</h6>
+            <table class="bor-none"> 
+				<tr>
+                    <td><a href="#" class="btn btn-blue btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
+                </tr>
+                <tr>
+                    <td><a href="#" class="btn btn-lc btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/in_iocn.gif" /> Log in with Linkedln</a></td> 
+                </tr>
+                <tr>
+                    <td><a href="#" class="btn btn-hui btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/tt_iocn.gif" /> Log in with Twitter</a></td> 
+                </tr>  
+            </table>       
         </div>
     </div> 
 </div>
+
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine-en.js" type="text/javascript"></script>
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine.js" type="text/javascript"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){
+	// binds form submission and fields to the validation engine
+	$("#registerform").validationEngine();
+}); 
+</script>
 {{include file='layouts/footer.tpl'}} 

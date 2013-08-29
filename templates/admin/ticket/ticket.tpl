@@ -40,9 +40,10 @@
 		result += "</select>";
 		return result;
 	}
-	
+
 	jQuery("#grid").jqGrid({
-		url:'{{$web_root}}admin/ticket/queryTicket',
+		url:'{{$smarty.const.WEBSITE_URL}}admin/ticket/queryTicket',
+		postData:{'event_id':'{{$event_id}}'},
 		datatype: "json",
 		mtype: "POST",	
 		height: '100%',
@@ -56,7 +57,7 @@
 			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
 				searchoptions:{
 					sopt: [ 'eq', 'ne'],
-					dataUrl:'{{$web_root}}admin/ticket/queryCategory',
+					dataUrl:'{{$smarty.const.WEBSITE_URL}}admin/ticket/queryCategory',
 					buildSelect:function(str){
 						eval(" var obj = " + str);
 						var result = "<select><option value=''>请选择... ...</option>";
@@ -71,10 +72,14 @@
 			{name:'aw_thumb_url',index:'aw_thumb_url', width:30 ,search:false,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
 			{name:'display_price',index:'products.display_price', align:"right",sorttype:"float",width:40 ,search:true,searchoptions:{sopt: ['lt','le', 'eq','gt','ge' ]}} ,
 			{name:'promotional_text',index:'products.promotional_text', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} , 
-			{name:'specifications',index:'products.specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['eq', 'ne'],dataInit:function(elem){  
+			{name:'specifications',index:'products.specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['lt','eq','gt','ne'],dataInit:function(elem){  
+				$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
+				$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 				jQuery(elem).datepicker();
 			}},formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d H:i:s'}} 
 		],
+		sortname:"products.specifications",
+		sortorder:'desc',
 		pager: "#gridPager",
 		viewrecords: true,
 		caption: "票务信息展示" 

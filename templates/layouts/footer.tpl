@@ -7,6 +7,6 @@
         <a href="#">Terms and Conditions</a>
     </div>
 </div>
- 
+
 </body>
 </html>   

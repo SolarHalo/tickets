@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 06:40:12
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 16:46:30
          compiled from "G:\phpserver\tickets\templates\admin\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2094521c49cc52e4b0-89877786%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '86bb8f27f56656bdfcb92365c3ba373bcd3b5885' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\index.tpl',
-      1 => 1377182238,
+      1 => 1377621978,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_521c49cc97bf64_91914777',
   'variables' => 
   array (
     'admin_action_alert' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'user_info' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_521c49cc97bf64_91914777',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521c49cc97bf64_91914777')) {function content_521c49cc97bf64_91914777($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
@@ -66,8 +66,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		 
 			<span>
 				<a href="<?php echo @constant('WEBSITE_URL');?>
-admin/userLog">
-				  查看VIP会没登录日志
+admin/ticket">
+				查看票务信息
 				</a>
 			</span>&nbsp; 
 			 

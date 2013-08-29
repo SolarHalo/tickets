@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 06:59:51
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-28 16:05:45
          compiled from "G:\phpserver\tickets\templates\admin\ticket\ticket.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13128521c4cf5bd13b9-51465648%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '41c3104b2dd3cbc57c4f767146608fad2e887c37' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\ticket\\ticket.tpl',
-      1 => 1377586788,
+      1 => 1377705124,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'web_root' => 0,
+    'event_id' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -68,10 +69,12 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 		result += "</select>";
 		return result;
 	}
-	
+
 	jQuery("#grid").jqGrid({
 		url:'<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
 admin/ticket/queryTicket',
+		postData:{'event_id':'<?php echo $_smarty_tpl->tpl_vars['event_id']->value;?>
+'},
 		datatype: "json",
 		mtype: "POST",	
 		height: '100%',
@@ -101,10 +104,14 @@ admin/ticket/queryCategory',
 			{name:'aw_thumb_url',index:'aw_thumb_url', width:30 ,search:false,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
 			{name:'display_price',index:'products.display_price', align:"right",sorttype:"float",width:40 ,search:true,searchoptions:{sopt: ['lt','le', 'eq','gt','ge' ]}} ,
 			{name:'promotional_text',index:'products.promotional_text', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} , 
-			{name:'specifications',index:'products.specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['eq', 'ne'],dataInit:function(elem){  
+			{name:'specifications',index:'products.specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['lt','eq','gt','ne'],dataInit:function(elem){  
+				$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
+				$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 				jQuery(elem).datepicker();
 			}},formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d H:i:s'}} 
 		],
+		sortname:"products.specifications",
+		sortorder:'desc',
 		pager: "#gridPager",
 		viewrecords: true,
 		caption: "票务信息展示" 

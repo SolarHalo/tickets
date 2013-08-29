@@ -63,7 +63,7 @@
 	
 	// jQuery("#grid").jqGrid('navGrid','#gridPager',{del:false,add:true,edit:true},{},{},{},{multipleSearch:false});
 		
-	// jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true});
+	jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true});
 
 	 jQuery("#grid")
 	 .navGrid('#gridPager',{edit:false,add:false,del:false,search:false})

@@ -4,5 +4,14 @@ class RegisterController extends  Controller{
 		 $this->getSmarty(); 
  		 $this->smarty->display("register.tpl"); 
 	}
-   
+   public function handreg(){ 
+		 $this->getSmarty(); 
+		 
+		 
+		 
+		 
+		 
+		 
+ 		 $this->smarty->display("register.tpl"); 
+	}
 }
