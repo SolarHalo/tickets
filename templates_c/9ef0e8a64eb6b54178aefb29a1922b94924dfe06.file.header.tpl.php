@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 16:31:04
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-28 16:37:02
          compiled from "E:\phpweb\tickets\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:76025219818ddd2944-65894916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ef0e8a64eb6b54178aefb29a1922b94924dfe06' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\header.tpl',
-      1 => 1377613861,
+      1 => 1377700441,
       2 => 'file',
     ),
   ),
@@ -110,9 +110,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+  
+	
   </head>
-
+    <?php if (empty($_SESSION['aduser'])){?>
+          <script language='javascript' type='text/javascript'> 
+						window.location.href='<?php echo @constant('WEBSITE_URL');?>
+admin/login'; 
+	    </script>
+				  
+	  <?php }?>
   <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
   <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
   <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-26 17:29:00
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 16:09:38
          compiled from "E:\phpweb\tickets\templates\admin\navibar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:166752198277bbd515-12245088%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1ede3d218031663489da43e37e8dc3211b4f1879' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\navibar.tpl',
-      1 => 1377530900,
+      1 => 1377782799,
       2 => 'file',
     ),
   ),
@@ -60,7 +60,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					
 					<li id="fat-menu" class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i> admin
+                            <i class="icon-user"></i> <?php echo $_SESSION['aduser']->user_name;?>
+
                             <i class="icon-caret-down"></i>
                         </a>
 
