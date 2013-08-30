@@ -1,13 +1,13 @@
 <?php
 class RegisterController extends  Controller{
 	public function index(){ 
-		 $this->getSmarty(); 
- 		 $this->smarty->display("register.tpl"); 
-	}
-   public function handreg(){ 
-		 $this->getSmarty(); 
-		
-		 $email = $_POST ["email"];
+	 $smaryt = $this->getSmarty();
+		 //如果不是post方式的提交，直接转向
+		 if(!CommonBase::isPost()){
+		 	 $this->smarty->display("register.tpl"); 
+		 	return;
+		 }
+		  $email = $_POST ["email"];
 		 if(empty($email)){
 		 		$this->smarty->assign("errortip",$this->userExsist('you must write register form!!!!'));
 		 		
@@ -34,15 +34,27 @@ class RegisterController extends  Controller{
 				'email' => $_POST["email"],
 				'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) 
 		  );
-		  $userService->addUser($user);
-		    
-		    $this->smarty->assign("errortip",$this->userExsist(' register success!!!!'));
+		   $userService->addUser($user);
+		   
+		    require_once COMMON.DS.'SendMailUtil.class.php';
+            SendMailUtil::sendmail("welcome register search4gigs",$_POST["username"]+",regiter success",$email);
+            
+		    $this->smarty->assign("errortip",$this->userSuccess(' register success!!!!'));
 		 	$this->smarty->display("register.tpl"); 
+ 		
+	}
+   public function handreg(){ 
+		 $this->getSmarty(); 
+		
+		
 		 
 		 
  		 
 	}
   public function userExsist($msg){
-  	return "<div class='alert'>$msg</div>";
+  	return "<div class='alert alert-error'>$msg</div>";
+  }
+ public function userSuccess($msg){
+  	return "<div class='alert alert-success'>$msg</div>";
   }
 }

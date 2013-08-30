@@ -6,6 +6,7 @@
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
+<link href="{{$smarty.const.WEBSITE_URL}}public/style/func.css" type="text/css" rel="stylesheet" /> 
 
 </head>
 
@@ -15,16 +16,17 @@
     <div class="content">
     	<div class="login-l login">
         	<h6>sign&nbsp;&nbsp;in</h6>
-        	<form id="loginform">
+        	{{$errortip}}
+        	<form id="loginform" method="post">
             <table> 
 				<tr>
-                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"   autofocus="true" /></td> 
+                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"   autofocus="true" name="user_name"/></td> 
                 </tr>
 				<tr>
-                    <td><span>Password<a href="#">Forgotten your password?</a></span><input type="password" class="input-style3 validate[required] text-input " /></td>  
+                    <td><span>Password<a href="#">Forgotten your password?</a></span><input type="password" class="input-style3 validate[required] text-input " name="password" /></td>  
                 </tr>
                 <tr>
-                    <td><span><input type="checkbox"/><font>Remember Me</font></span></td>  
+                    <td><span><input type="checkbox" name="remember" value="1"/><font>Remember Me</font></span></td>  
                 </tr>
                 <tr>
                     <td><input type="submit" class="input-style1" value="sign&nbsp;&nbsp;in" /></td>  
@@ -36,7 +38,7 @@
         	<h6>ARE&nbsp;&nbsp;YOU&nbsp;&nbsp;A&nbsp;&nbsp;NEW&nbsp;&nbsp;USER?</h6>
             <table> 
 				<tr>
-                    <td><span>Sign up to Search4Gigs right here...</span><a href="#" class="input-style1">register</a></td> 
+                    <td><span>Sign up to Search4Gigs right here...</span><a href="{{$smarty.const.WEBSITE_URL}}register" class="input-style1">register</a></td> 
                 </tr> 
                 <tr><td height="30"></td></tr>
             </table>     

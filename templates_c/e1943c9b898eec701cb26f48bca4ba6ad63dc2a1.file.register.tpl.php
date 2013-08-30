@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 16:00:26
+<?php /* Smarty version Smarty-3.1.13, created on 2013-08-30 07:06:09
          compiled from "G:\phpserver\tickets\templates\register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12574521c69c4c1bf40-66951276%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1943c9b898eec701cb26f48bca4ba6ad63dc2a1' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\register.tpl',
-      1 => 1377792010,
+      1 => 1377845761,
       2 => 'file',
     ),
   ),
@@ -34,20 +34,9 @@ public/style/reset.css" type="text/css" rel="stylesheet" />
 public/style/style.css" type="text/css" rel="stylesheet" /> 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
-<style type="text/css">
-.alert{
-padding-top: 14px;
-padding-bottom: 14px;
-color: #b94a48;
-background-color: #f2dede;
-border-color: #eed3d7;
-margin-bottom: 5px;
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 14px;
-line-height: 20px;
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/func.css" type="text/css" rel="stylesheet" /> 
  
-}
-</style>
 </head>
 
 <body>
@@ -60,7 +49,7 @@ line-height: 20px;
         	<?php echo $_smarty_tpl->tpl_vars['errortip']->value;?>
 
         	<form  id="registerform" action="<?php echo @constant('WEBSITE_URL');?>
-register/handreg" method="post">
+register" method="post">
             <table> 
 				<tr>
                     <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" /></td> 

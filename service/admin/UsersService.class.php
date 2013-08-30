@@ -7,7 +7,7 @@ class UsersService{
 	} 
    public  function checkPassword($username,$passwd){
 		if($username == "testadmin" and $passwd == "testadmin"){
-			 $arr = array('user_name'=>"testadmin", 'passwd'=>'testadmin');
+			 $arr = array('username'=>"testadmin", 'password'=>'testadmin');
 			$admin = (Object)$arr;
 			return $admin;
 		}
@@ -15,7 +15,7 @@ class UsersService{
 		//连接数据库查询用户名，密码
 	     $admin = $this->getUserByName($username);
 		if($admin){
-			if($admin->passwd == $md5_pwd){
+			if($admin->password == $md5_pwd){
 				return $admin;
 			}else{
 				return false;
@@ -35,7 +35,7 @@ class UsersService{
 	 * @param unknown_type $name
 	 */
 	function getUserByName($name){
-		return $this->dbutil->get_row("select * from users where user_name='".$name."'");
+		return $this->dbutil->get_row("select * from users where username='".$name."'");
 	}
   /**
 	 * 根据email获取用户信息
