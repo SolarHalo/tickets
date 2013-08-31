@@ -37,7 +37,7 @@ class RegisterController extends  Controller{
 		   $userService->addUser($user);
 		   
 		    require_once COMMON.DS.'SendMailUtil.class.php';
-            SendMailUtil::sendmail("welcome register search4gigs",$_POST["username"]+",regiter success",$email);
+            SendMailUtil::sendmail("welcome register search4gigs",$_POST["username"].",regiter success",$email);
             
 		    $this->smarty->assign("errortip",$this->userSuccess(' register success!!!!'));
 		 	$this->smarty->display("register.tpl"); 
