@@ -37,7 +37,6 @@
 
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
-		$('#toDate').datepicker('option', 'maxDate','2013-09-25');  
 	});
 	function check( ){
 		var keyword = $("#keyword").val();
