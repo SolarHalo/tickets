@@ -1,70 +1,69 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 06:42:32
+         compiled from "G:\phpserver\tickets\templates\product_list.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:155925222e1d81bc6d8-07125637%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'f08735facbbf56be95be98e325db278aa384489e' => 
+    array (
+      0 => 'G:\\phpserver\\tickets\\templates\\product_list.tpl',
+      1 => 1377527068,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '155925222e1d81bc6d8-07125637',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5222e1d8275b27_92496300',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5222e1d8275b27_92496300')) {function content_5222e1d8275b27_92496300($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
-	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
-	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
-	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
-	
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
-	
-	<script  type="text/javascript">
-	
-	function seatch(){
-		var keyword = $("#keyword").val();
-		var location = $("#location").val();
-		var fromDate = $("#fromDate").val();
-		var toDate = $("#toDate").val();
-		
-		if(keyword == "Search by keyword"){
-			keyword = "";
-		}
-		
-		if("Search by location" == location){
-			location = "";
-		}
-		
-		if("Date From" == fromDate){
-			fromDate = "";
-		}
-		
-		if("SDate To" == toDate){
-			toDate = "";
-		}
-		
-		$.post(
-			'{{$smarty.const.WEBSITE_URL}}ticket/search',
-			{'keyword':keyword,'location':location,"fromDate":fromDate,"toDate":toDate},
-			function(obj){
-				
-				//alert(obj.length);
-			},
-			"json"
-		);
-	}
-	
-	$(function($) {
-		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
-		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
-		$("#fromDate" ).datepicker();
-		$("#toDate" ).datepicker();
-		
-		seatch();
-		
-	});
-	</script>
-</head> 
+<title>gigs_login</title>
+<link href="style/reset.css" type="text/css" rel="stylesheet" />
+<link href="style/style.css" type="text/css" rel="stylesheet" />
+</head>
+
 <body>
-{{include file='layouts/headerandsearch.tpl'}} 
+<div id="head">
+  <div> <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
+    <ul>
+      <li> <a href="#" class="input-style1">Sign up</a> <a href="#" class="input-style1">Sign In</a> </li>
+      <li class="navlist"> <a href="#"> YOUR CALENDAR<br />
+        <font>View and Manage your calendar of events</font> </a> </li>
+      <li class="navlist"> <a href="#"> EVENTS<br />
+        <font>What's on?</font> </a> </li>
+      <li class="navlogo"> <a href="#"><img src="images/logo.png" class="index-logo" /></a> </li>
+    </ul>
+  </div>
+</div>
+<div class="search">
+  <div>
+    <div>
+      <form>
+        <table>
+          <tr>
+            <td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
+            <td><input type="text" value="Search by keyword" class="searchinput textinput-w" /></td>
+            <td><input type="text" value="Search by location" class="searchinput textinput-w" /></td>
+            <td><input type="text" value="Date From" class="searchinput textinput-w2" /></td>
+            <td><input type="text" value="SDate To" class="searchinput textinput-w2" /></td>
+            <td><input type="button" value="Search" class="input-style2" /></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
 <div class="mian">
   <div class="content">
     <div class="events">
       <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
-      <div class="events-l mt15"> <img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" width="160" height="265" class="img-sidebar" />
+      <div class="events-l mt15"> <img src="photo/photo1.gif" width="160" height="265" class="img-sidebar" />
         <ul class="gigs-title map">
           <span>Categories</span>
           <li><a href="#">All Caegories(44)</a></li>
@@ -94,9 +93,7 @@
                     <tr>
                       <td class="tdC">Wendnesday<br />
                         <span>30 OCT</span><br />
-                        <font>20.00</font>
-                        <a href="#" class="time2">53 Dates</a>  
-                      </td>
+                        <font>20.00</font></td>
                       <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
                       <td>Entertainment > Comedy<br />
                         <span>Jason Manford</span><br />
@@ -116,9 +113,7 @@
                     <tr>
                       <td class="tdC">Wendnesday<br />
                         <span>30 OCT</span><br />
-                        <font>20.00</font>
-                      	<a href="#" class="time2">53 Dates</a>  
-                      </td>
+                        <font>20.00</font></td>
                       <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
                       <td>Entertainment > Comedy<br />
                         <span>Jason Manford</span><br />
@@ -138,9 +133,7 @@
                     <tr>
                       <td class="tdC">Wendnesday<br />
                         <span>30 OCT</span><br />
-                        <font>20.00</font>
-                        <a href="#" class="time2">53 Dates</a>  
-                      </td>
+                        <font>20.00</font></td>
                       <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
                       <td>Entertainment > Comedy<br />
                         <span>Jason Manford</span><br />
@@ -160,9 +153,7 @@
                     <tr>
                       <td class="tdC">Wendnesday<br />
                         <span>30 OCT</span><br />
-                        <font>20.00</font>
-                        <a href="#" class="time2">53 Dates</a>  
-                      </td>
+                        <font>20.00</font></td>
                       <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
                       <td>Entertainment > Comedy<br />
                         <span>Jason Manford</span><br />
@@ -182,9 +173,7 @@
                     <tr>
                       <td class="tdC">Wendnesday<br />
                         <span>30 OCT</span><br />
-                       <font>20.00</font>
-                        <a href="#" class="time2">53 Dates</a>  
-                      </td>
+                        <font>20.00</font></td>
                       <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
                       <td>Entertainment > Comedy<br />
                         <span>Jason Manford</span><br />
@@ -198,7 +187,7 @@
               <div class="table-xian"></div>
             </td>
           </tr>
-             <tr>
+          <tr>
             <td>
             <p class="mt15 gigs-fy"> 
             <a href="#" class="btn-hs btn-Calendar">1</a> 
@@ -210,9 +199,8 @@
             <a href="#" class="btn-hs btn-Calendar fontcolor">&gt;</a> 
             <a href="#" class="btn-hs btn-Calendar fontcolor">&gt;&gt;</a>
             </p> <span class="fy-size">Showing 1 of 18,098 pages</span> </td>
-          </tr>
-          <br />
-		  <br />
+          </tr><br />
+				<br />
 
         </table>
       </div>
@@ -235,4 +223,9 @@
     </div>
   </div>
 </div>
-{{include file='layouts/footer.tpl'}} 
+<div class="footer">
+  <div> <a href="#">User guide</a> | <a href="#">About us</a> | <a  href="#">Cookies policy</a> | <a href="#">Privacy policy</a> | <a href="#">Terms and Conditions</a> </div>
+</div>
+</body>
+</html>
+<?php }} ?>

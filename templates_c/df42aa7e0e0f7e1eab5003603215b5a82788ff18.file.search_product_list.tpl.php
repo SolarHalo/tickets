@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 08:43:50
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 06:46:38
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1377593028,
+      1 => 1378017994,
       2 => 'file',
     ),
   ),
@@ -24,10 +24,68 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>index</title>
-<link href="<?php echo @constant('WEBSITE_URL');?>
+	<link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
-<link href="<?php echo @constant('WEBSITE_URL');?>
+	<link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/style.css" type="text/css" rel="stylesheet" /> 
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
+	
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-1.8.1.min.js" ></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
+	
+	<script  type="text/javascript">
+	
+	function seatch(){
+		var keyword = $("#keyword").val();
+		var location = $("#location").val();
+		var fromDate = $("#fromDate").val();
+		var toDate = $("#toDate").val();
+		
+		if(keyword == "Search by keyword"){
+			keyword = "";
+		}
+		
+		if("Search by location" == location){
+			location = "";
+		}
+		
+		if("Date From" == fromDate){
+			fromDate = "";
+		}
+		
+		if("SDate To" == toDate){
+			toDate = "";
+		}
+		
+		$.post(
+			'<?php echo @constant('WEBSITE_URL');?>
+ticket/search',
+			{'keyword':keyword,'location':location,"fromDate":fromDate,"toDate":toDate},
+			function(obj){
+				
+				//alert(obj.length);
+			},
+			"json"
+		);
+	}
+	
+	$(function($) {
+		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
+		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+		$("#fromDate" ).datepicker();
+		$("#toDate" ).datepicker();
+		
+		seatch();
+		
+	});
+	</script>
 </head> 
 <body>
 <?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -171,6 +229,19 @@ public/photo/photo1.gif" width="160" height="265" class="img-sidebar" />
               <div class="table-xian"></div>
             </td>
           </tr>
+             <tr>
+            <td>
+            <p class="mt15 gigs-fy"> 
+            <a href="#" class="btn-hs btn-Calendar">1</a> 
+            <a href="#" class="btn-hs btn-Calendar">2</a> 
+            <a href="#" class="btn-hs btn-Calendar">3</a> 
+            <a href="#" class="btn-hs btn-Calendar">4</a> 
+            <a href="#" class="btn-hs btn-Calendar">5</a> 
+            <a href="#" class="btn-hs btn-Calendar">6</a> 
+            <a href="#" class="btn-hs btn-Calendar fontcolor">&gt;</a> 
+            <a href="#" class="btn-hs btn-Calendar fontcolor">&gt;&gt;</a>
+            </p> <span class="fy-size">Showing 1 of 18,098 pages</span> </td>
+          </tr>
           <br />
 		  <br />
 
@@ -178,7 +249,7 @@ public/photo/photo1.gif" width="160" height="265" class="img-sidebar" />
       </div>
       <div class="events-r mt15">
         <div class="r-row rw-bg2"> <br />
-          &nbsp;ddd <br />
+          &nbsp; <br />
           &nbsp; <br />
           &nbsp; <br />
           &nbsp; <br />
