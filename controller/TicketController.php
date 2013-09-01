@@ -23,6 +23,10 @@ class TicketController extends  Controller{
 		
 		$pager = $_POST["pager"];
 		$pageSize = $_POST["pageSize"];
+		$cat = $_POST["cat"];
+		if($cat == null){
+			$cat = "";
+		}
 		
 		if($pager == null){
 			$pager = 1;
@@ -38,17 +42,34 @@ class TicketController extends  Controller{
 			"products.aw_product_id, products.product_name,event_category.category_name,".
 			"products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications,products.description from products products ".
 			"LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id ";
-		
+		$categorySql = "select event_category.category_id ,event_category.category_name ,products.total from event_category event_category LEFT JOIN ".
+			"(select COUNT(category_id) as total,category_id from products " ;
+
 		$hasWhere = false;
 		
 		if($keyword != null && $keyword != ""){
 			if(!$hasWhere){
 				$counterSql = $counterSql." where products.product_name like '%$keyword%' ";
 				$recordsSql = $recordsSql." where products.product_name like '%$keyword%' ";
+				$categorySql = $categorySql." where product_name like '%$keyword%' ";
 				$hasWhere = true;
 			}else{
 				$counterSql = $counterSql." and products.product_name like '%$keyword%' ";
 				$recordsSql = $recordsSql." and products.product_name like '%$keyword%' ";
+				$categorySql = $categorySql." and product_name like '%$keyword%' ";
+			}
+		}
+		
+		if($cat != null && "" != $cat){
+			if(!$hasWhere){
+				$counterSql = $counterSql." where products.category_id = '$cat' ";
+				$recordsSql = $recordsSql." where products.category_id = '$cat' ";
+				//$categorySql = $categorySql." where category_id = '$cat' ";
+				$hasWhere = true;
+			}else{
+				$counterSql = $counterSql." and products.category_id = '$cat' ";
+				$recordsSql = $recordsSql." and products.category_id = '$cat' ";
+				//$categorySql = $categorySql." and category_id = '$cat' ";
 			}
 		}
 		
@@ -56,10 +77,12 @@ class TicketController extends  Controller{
 			if(!$hasWhere){
 				$counterSql = $counterSql." where products.promotional_text like '%$location%' ";
 				$recordsSql = $recordsSql." where products.promotional_text like '%$location%' ";
+				$categorySql = $categorySql." where promotional_text like '%$location%' ";
 				$hasWhere = true;
 			}else{
 				$counterSql = $counterSql." and products.promotional_text like '%$location%' ";
 				$recordsSql = $recordsSql." and products.promotional_text like '%$location%' ";
+				$categorySql = $categorySql." and promotional_text like '%$location%' ";
 			}
 		}
 		
@@ -67,10 +90,12 @@ class TicketController extends  Controller{
 			if(!$hasWhere){
 				$counterSql = $counterSql." where  products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 				$recordsSql = $recordsSql." where  products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+				$categorySql = $categorySql." where  specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 				$hasWhere = true;
 			}else{
 				$counterSql = $counterSql." and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 				$recordsSql = $recordsSql." and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+				$categorySql = $categorySql." and specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 			}
 		}
 		
@@ -78,14 +103,17 @@ class TicketController extends  Controller{
 			if(!$hasWhere){
 				$counterSql = $counterSql." where products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 				$recordsSql = $recordsSql." where products.specifications < str_to_date($toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+				$categorySql = $categorySql." where specifications < str_to_date($toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 				$hasWhere = true;
 			}else{
 				$counterSql = $counterSql." and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 				$recordsSql = $recordsSql." and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+				$categorySql = $categorySql." and specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 			}
 		}
 		
 		$recordsSql = $recordsSql." limit $start,$pageSize";
+		$categorySql = $categorySql." GROUP BY category_id ) products on products.category_id = event_category.category_id ";
 		
 		$db = $this->getDB();
 		
@@ -96,10 +124,22 @@ class TicketController extends  Controller{
 			break;
 		}
 		
+		$res = $db->get_results($categorySql);
+		$cats =array();
+		foreach ($res as $re){
+			$num = $re->total;
+			if($num == null){
+				$num = 0;
+			}
+			$cats[] = array(
+					"category_id"=>$re->category_id,
+					"category_name"=>$re->category_name,
+					"total"=>$num
+			);
+		}
+		
 		$res = $db->get_results($recordsSql);
-		
 		$data = array();
-		
 		foreach ($res as $re){
 			$data[] = array(
 					"week"=>$re->week,
@@ -121,12 +161,13 @@ class TicketController extends  Controller{
 		
 		$result = array(
 				"pager"=>$pager,
-				"sql"=>$recordsSql,
+				"cat"=>$cat,
 				"totalPage"=>$totalPage,
 				"counter"=>$records,
 				"pageSize"=>$pageSize,
 				"sql"=>$recordsSql,
-				"data"=>$data
+				"data"=>$data,
+				"categories"=>$cats
 		);
 		echo json_encode($result);
 	}
