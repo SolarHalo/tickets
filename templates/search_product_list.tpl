@@ -3,8 +3,60 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>index</title>
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
+	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
+	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
+	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
+	
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
+	
+	<script  type="text/javascript">
+	
+	function seatch(){
+		var keyword = $("#keyword").val();
+		var location = $("#location").val();
+		var fromDate = $("#fromDate").val();
+		var toDate = $("#toDate").val();
+		
+		if(keyword == "Search by keyword"){
+			keyword = "";
+		}
+		
+		if("Search by location" == location){
+			location = "";
+		}
+		
+		if("Date From" == fromDate){
+			fromDate = "";
+		}
+		
+		if("SDate To" == toDate){
+			toDate = "";
+		}
+		
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}ticket/search',
+			{'keyword':keyword,'location':location,"fromDate":fromDate,"toDate":toDate},
+			function(obj){
+				
+				//alert(obj.length);
+			},
+			"json"
+		);
+	}
+	
+	$(function($) {
+		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
+		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+		$("#fromDate" ).datepicker();
+		$("#toDate" ).datepicker();
+		
+		seatch();
+		
+	});
+	</script>
 </head> 
 <body>
 {{include file='layouts/headerandsearch.tpl'}} 
