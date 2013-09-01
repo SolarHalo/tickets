@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 06:46:38
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 13:11:32
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1378017994,
+      1 => 1378041064,
       2 => 'file',
     ),
   ),
@@ -42,7 +42,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 	
 	<script  type="text/javascript">
 	
-	function seatch(){
+	function search( pager ,pageSize){
 		var keyword = $("#keyword").val();
 		var location = $("#location").val();
 		var fromDate = $("#fromDate").val();
@@ -64,25 +64,122 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 			toDate = "";
 		}
 		
+		if(pager == undefined || pager == null){
+			pager = 1;
+		}
+		
+		if(pageSize == undefined || pageSize == null){
+			pageSize = 10;
+		}
+		
+		var postData = {'keyword':keyword,'location':location,"fromDate":fromDate,"toDate":toDate,"pager":pager,"pageSize":pageSize};
+		
 		$.post(
 			'<?php echo @constant('WEBSITE_URL');?>
 ticket/search',
-			{'keyword':keyword,'location':location,"fromDate":fromDate,"toDate":toDate},
+			postData,
 			function(obj){
+				//生成列表
+				$("#totalCounter").html("We have found "+obj.counter+" events");
+				$("#list-result").empty();
+				var html = "";
+				var data = obj.data;
 				
-				//alert(obj.length);
+				for(var key in data){
+					html+="<tr><td><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table list-tablep\">";
+				
+					html += "<tr>" +
+						"<td class=\"tdC\">"+data[key].week+"<br />" +
+                        "	<span>"+ data[key].date +" "+data[key].month+"</span><br />" +
+                        "	<font>"+ data[key].time +"</font>" +
+                        "	<a href=\"#\" class=\"time2\">53 Dates</a></td>"+  
+                      	"<td><img src=\""+data[key].aw_thumb_url+"\" width=\"92\" height=\"92\" class=\"btn\" /></td>" +
+                      	"<td>"+data[key].category_name+" > Comedy<br />" +
+                        "<span>"+data[key].product_name+"</span><br />" +
+                        data[key].description+ "</td>"+
+                    "</tr>" +
+                    "<tr>"+
+                    "  	<td colspan=\"2\">&nbsp;</td>"+
+                    "  	<td>"+
+                    "		<p class=\"mt15\">"+
+                    "			<a href=\"#\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
+                    "			<a href=\"#\" class=\"back btn btn-black\"><strong>Buy Tickets</strong></a>"+
+                    "		</p></td></tr>"; 
+                    
+                    html+="</table><div class=\"table-xian\"></div></td> </tr>";
+                    
+				}
+				
+				//生成分页				
+				var pager = obj.pager;
+				var totalPage = obj.totalPage;
+				
+				html += "<tr><td><p class=\"mt15 gigs-fy\"> ";
+				
+				if(pager != 1){
+					html += "<a href=\"javascript:search(1)\" class=\"btn-hs btn-Calendar fontcolor\">&lt;&lt;</a>"+
+            			"<a href=\"javascript:search("+(pager-1)+")\" class=\"btn-hs btn-Calendar fontcolor\">&lt;</a> ";
+				}
+				
+				var display = 9;
+				if(totalPage < display ){
+					display = totalPage;
+				}
+				
+				var start = pager - parseInt(display/2);
+				if(start < 1){
+					start = 1 ;
+				}
+				var end = start + display - 1;
+				
+				if(end > totalPage){
+					end = totalPage;
+					start = end - display ;
+					if(start < 1){
+						start = 1;
+					}
+				}
+				
+				for( ; start <= end ; start++){
+					html += "<a href=\"javascript:search("+start+")\" class=\"btn-hs btn-Calendar\">"+start+"</a>"; 
+				}
+				
+				 
+				if(pager != totalPage){
+					html += "<a href=\"javascript:search("+(pager+1)+")\" class=\"btn-hs btn-Calendar fontcolor\">&gt;</a>"+ 
+	            		"<a href=\"javascript:search("+totalPage+")\" class=\"btn-hs btn-Calendar fontcolor\">&gt;&gt;</a>";
+	            }
+            	html += "</p> <span class=\"fy-size\">Showing "+ pager+" of "+totalPage+" pages</span> </td></tr>";
+				
+				
+				$("#list-result").html(html);
 			},
 			"json"
 		);
 	}
 	
+	var setting = null;
 	$(function($) {
+		setting = function(){
+			var toDate = $("#toDate").val();
+			var fromDate = $("#fromDate").val();
+			
+			if(toDate != null && "" != toDate && "SDate To" != toDate){
+				$('#fromDate').datepicker('option', 'maxDate',toDate);  
+			}
+			
+			if(fromDate != null && "" != fromDate && "Date From" != fromDate){
+				$('#toDate').datepicker('option', 'minDate',fromDate);  
+			}
+			
+		}
+	
 		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
 		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
 		
-		seatch();
+		search();
 		
 	});
 	</script>
@@ -113,12 +210,14 @@ public/photo/photo1.gif" width="160" height="265" class="img-sidebar" />
         </ul>
       </div>
       <div class="events-c2">
-        <div class=" gigs_k map"> <span class="aigs_k_title">We have found 18,278 events</span> <strong>sort By:</strong>
+        <div class=" gigs_k map"> <span class="aigs_k_title" id="totalCounter" >We have found 18,278 events</span> <strong>sort By:</strong>
           <select name="" class="id_3">
             <option>Best Match</option>
           </select>
         </div>
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <table id="list-result" width="100%" border="0" cellspacing="0" cellpadding="0">
+        
+        <!--
           <tr>
             <td>
             	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
@@ -242,9 +341,7 @@ public/photo/photo1.gif" width="160" height="265" class="img-sidebar" />
             <a href="#" class="btn-hs btn-Calendar fontcolor">&gt;&gt;</a>
             </p> <span class="fy-size">Showing 1 of 18,098 pages</span> </td>
           </tr>
-          <br />
-		  <br />
-
+--> 	
         </table>
       </div>
       <div class="events-r mt15">
