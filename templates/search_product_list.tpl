@@ -105,7 +105,7 @@
 				
 				if(end > totalPage){
 					end = totalPage;
-					start = end - display ;
+					start = end - display + 1;
 					if(start < 1){
 						start = 1;
 					}
@@ -115,9 +115,9 @@
 					html += "<a href=\"javascript:search("+start+")\" class=\"btn-hs btn-Calendar\">"+start+"</a>"; 
 				}
 				
-				 
+				var temp = parseInt(pager)+1;
 				if(pager != totalPage){
-					html += "<a href=\"javascript:search("+(pager+1)+")\" class=\"btn-hs btn-Calendar fontcolor\">&gt;</a>"+ 
+					html += "<a href=\"javascript:search("+temp+")\" class=\"btn-hs btn-Calendar fontcolor\">&gt;</a>"+ 
 	            		"<a href=\"javascript:search("+totalPage+")\" class=\"btn-hs btn-Calendar fontcolor\">&gt;&gt;</a>";
 	            }
             	html += "</p> <span class=\"fy-size\">Showing "+ pager+" of "+totalPage+" pages</span> </td></tr>";
