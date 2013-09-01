@@ -35,6 +35,8 @@
 		$("input[id='edit_id']").val(select[0].id);
 		$("input[id='edit_title']").val(select[0].title);
 		$("input[id='edit_url']").val(select[0].url);
+		$("input[id='edit_product_time']").val(select[0].product_time);
+		
 		$("textarea[id='edit_desc']").val(select[0].desc);
 		$("select[id='edit_showindex']").val(select[0].showindex);
 	}
@@ -130,7 +132,7 @@
 			<!--- START 以上内容不需更改，保证该TPL页内的标签匹配即可 --->
 			<table id="grid"
 				data-options="url:'{{$smarty.const.WEBSITE_URL}}admin/imgcarousel/getpage',fitColumns:true,singleSelect:true"
-				class="easyui-datagrid" style="width: 700px; height: 350px"
+				class="easyui-datagrid" style="width: 700px; height: 370px"
 				toolbar="#toolbar" iconCls="icon-save" pagination="true"
 				rownumbers="true">
 				<thead>
@@ -139,11 +141,10 @@
 						<th data-options="field:'title',width:100">Title名称</th>
 						<th data-options="field:'url',width:100">地址</th>
 						<th data-options="field:'imgname',width:100">图片名称</th>
+						<th data-options="field:'product_time',width:100">时间</th>
 						<th data-options="field:'showindex',width:100">显示位置</th>
 						<th data-options="field:'updatetime',width:100">最后修改时间</th>
 						<th data-options="field:'desc',width:100">描述</th>
-
-
 					</tr>
 				</thead>
 			</table>
@@ -157,7 +158,7 @@
 			</div>
 
 			<div id="win_add" class="easyui-window" title="添加"
-				style="width: 600px; height: 400px"
+				style="width: 600px; height: 425px"
 				data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,modal:true">
 				<div class="easyui-layout" data-options="fit:true">
 					<form id="form" method="post" target="if" class="form-horizontal"
@@ -194,11 +195,12 @@
 						<!-- 						</div> -->
 
 						<div class="control-group">
-								<label class="control-label" for="Text input">Url:</label>
-								<div class="controls">
-									<input id="url" name="url"></textarea>
-								</div>
+							<label class="control-label" for="Text input">Url:</label>
+							<div class="controls">
+								<input id="url" name="url"></input>
 							</div>
+						</div>
+
 						<div class="control-group">
 							<label class="control-label" for="Text input">显示位置:</label>
 							<div class="controls">
@@ -223,7 +225,12 @@
 								</select>
 							</div>
 						</div>
-
+						<div class="control-group">
+							<label class="control-label" for="Text input">时间:</label>
+							<div class="controls">
+								<input id="product_time" name="product_time"></input>
+							</div>
+						</div>
 
 						<div class="control-group">
 							<label class="control-label" for="Text input">描述:</label>
@@ -239,14 +246,14 @@
 						</div>
 
 					</form>
-					<iframe name="if" src="" width=600px height="35" frameborder=0
+					<iframe name="if" src="" width=600px height="0" frameborder=0
 						SCROLLING="no" style="display: NONE"></iframe>
 				</div>
 
 
 
 				<div id="win_edit" class="easyui-window" title="修改"
-					style="width: 600px; height: 400px"
+					style="width: 600px; height: 425px"
 					data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,modal:true">
 					<div class="easyui-layout" data-options="fit:true">
 
@@ -269,13 +276,6 @@
 							</div>
 
 							<div class="control-group">
-								<label class="control-label" for="Text input">Url:</label>
-								<div class="controls">
-									<input id="edit_url" name="url"></textarea>
-								</div>
-							</div>
-
-							<div class="control-group">
 								<label class="control-label" for="Text input">图片选择:</label>
 								<div class="controls">
 									<input type="file" id="file" name="file"
@@ -283,14 +283,14 @@
 								</div>
 							</div>
 
-							<!-- 						<div class="control-group"> -->
-							<!-- 							<label class="control-label" for="Text input">ImageName:</label> -->
-							<!-- 							<div class="controls"> -->
-							<!-- 								<input type="text" class="easyui-validatebox" -->
-							<!-- 									data-options="required:true" id="imgname" name="Imgname" -->
-							<!-- 									placeholder="input img name!"> -->
-							<!-- 							</div> -->
-							<!-- 						</div> -->
+							<div class="control-group">
+								<label class="control-label" for="Text input">Url:</label>
+								<div class="controls">
+									<input id="edit_url" name="url">
+									</textarea>
+								</div>
+							</div>
+
 
 							<div class="control-group">
 								<label class="control-label" for="Text input">显示位置:</label>
@@ -317,7 +317,12 @@
 								</div>
 							</div>
 
-
+							<div class="control-group">
+								<label class="control-label" for="Text input">时间:</label>
+								<div class="controls">
+									<input id="edit_product_time" name="product_time"></input>
+								</div>
+							</div>
 							<div class="control-group">
 								<label class="control-label" for="Text input">描述:</label>
 								<div class="controls">
@@ -332,7 +337,7 @@
 									style="width: 100px;" class="btn">取消</button>
 							</div>
 						</form>
-						<iframe name="if" src="" width=600px height="35" frameborder=0
+						<iframe name="if" src="" width=600px height="0" frameborder=0
 							SCROLLING="no" style="display: NONE"></iframe>
 					</div>
 				</div>

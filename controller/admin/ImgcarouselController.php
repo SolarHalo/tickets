@@ -91,6 +91,7 @@ class ImgcarouselController extends Controller {
 								'imgname' => $file_name,
 								'showindex' => $_POST ["showindex"],
 								'updatetime' => date ( 'Y-m-d H:i:s' ),
+								'product_time' =>  $_POST ["product_time"],
 								'desc' => $_POST ["desc"] 
 						);
 						$id = $imgService->addItem ( $input_data );
@@ -157,10 +158,11 @@ class ImgcarouselController extends Controller {
 						$returnValue = "存在相同title的记录，请修改title！";
 					
 					} else {
-						
-						print($value->url);
-						unlink($value->url);
+						$item = $imgService->getAdminByID($id);
 						$dirroot = "uploads/arousel/";
+						unlink($dirroot .$item->imgname);
+						
+						
 						$filename = explode ( ".", $_FILES ['file'] ['name'] );
 						
 						$filename [0] = strtotime ( date ( 'Y-m-d' ) ) . "-" . rand (); // 设置随机数长度
@@ -178,6 +180,7 @@ class ImgcarouselController extends Controller {
 								'imgname' => $file_name,
 								'showindex' => $_POST ["showindex"],
 								'updatetime' => date ( 'Y-m-d H:i:s' ),
+								'product_time' =>  $_POST ["product_time"], 
 								'desc' => $_POST ["desc"] 
 						);
 						
@@ -203,6 +206,10 @@ class ImgcarouselController extends Controller {
 		require_once SERVICE . DS . 'admin' . DS . 'ImgcarouserlService.class.php';
 		$imgService = new ImgcarouserlService ( $this->getDB () );
 		$id = $_POST ['id'];
+		
+		$item = $imgService->getAdminByID($id);
+		$dirroot = "uploads/arousel/";
+		unlink($dirroot .$item->imgname);
 		$user_id = $imgService->deleteItem ( $id );
 		echo 1;
 	}
