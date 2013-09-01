@@ -87,7 +87,7 @@ class ImgcarouselController extends Controller {
 						$input_data = array (
 								'id' => md5 ( uniqid () ),
 								'title' => $_POST ["title"],
-								'url' => $uploadfile,
+								'url' =>$_POST ["url"],
 								'imgname' => $file_name,
 								'showindex' => $_POST ["showindex"],
 								'updatetime' => date ( 'Y-m-d H:i:s' ),
@@ -174,7 +174,7 @@ class ImgcarouselController extends Controller {
 						$desc = $_POST ["desc"];
 						$input_data = array (
 								'title' => $_POST ["title"],
-								'url' => $uploadfile,
+								'url' => $_POST ["url"],
 								'imgname' => $file_name,
 								'showindex' => $_POST ["showindex"],
 								'updatetime' => date ( 'Y-m-d H:i:s' ),

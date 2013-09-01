@@ -34,6 +34,7 @@
 
 		$("input[id='edit_id']").val(select[0].id);
 		$("input[id='edit_title']").val(select[0].title);
+		$("input[id='edit_url']").val(select[0].url);
 		$("textarea[id='edit_desc']").val(select[0].desc);
 		$("select[id='edit_showindex']").val(select[0].showindex);
 	}
@@ -151,13 +152,12 @@
 				<a href="#" class="easyui-linkbutton" iconCls="icon-add"
 					plain="true" onclick="addWindow()">添加</a> <a href="#"
 					class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-					onclick="editWindow()">修改</a> <a href="#"
-					class="easyui-linkbutton" iconCls="icon-remove" plain="true"
-					onclick="deleteItem()">删除</a>
+					onclick="editWindow()">修改</a> <a href="#" class="easyui-linkbutton"
+					iconCls="icon-remove" plain="true" onclick="deleteItem()">删除</a>
 			</div>
 
 			<div id="win_add" class="easyui-window" title="添加"
-				style="width: 600px; height: 350px"
+				style="width: 600px; height: 400px"
 				data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,modal:true">
 				<div class="easyui-layout" data-options="fit:true">
 					<form id="form" method="post" target="if" class="form-horizontal"
@@ -179,8 +179,8 @@
 						<div class="control-group">
 							<label class="control-label" for="Text input">图片选择:</label>
 							<div class="controls">
-								<input type="file" id="file" name="file" class="easyui-validatebox"  
-									placeholder="图片选择:!">
+								<input type="file" id="file" name="file"
+									class="easyui-validatebox" placeholder="图片选择:!">
 							</div>
 						</div>
 
@@ -194,10 +194,15 @@
 						<!-- 						</div> -->
 
 						<div class="control-group">
+								<label class="control-label" for="Text input">Url:</label>
+								<div class="controls">
+									<input id="url" name="url"></textarea>
+								</div>
+							</div>
+						<div class="control-group">
 							<label class="control-label" for="Text input">显示位置:</label>
 							<div class="controls">
-								<select id="showindex"  name="showindex"
-									 >
+								<select id="showindex" name="showindex">
 									<option selected="selected">1</option>
 									<option>2</option>
 									<option>3</option>
@@ -232,98 +237,104 @@
 							<button type="button" onclick="win_close()" style="width: 100px;"
 								class="btn">取消</button>
 						</div>
-					 
+
 					</form>
-					 <iframe name="if" src="" width=600px height="35" frameborder=0  SCROLLING="no" style="display:NONE"></iframe>  
+					<iframe name="if" src="" width=600px height="35" frameborder=0
+						SCROLLING="no" style="display: NONE"></iframe>
 				</div>
-				
-				
-				
+
+
+
 				<div id="win_edit" class="easyui-window" title="修改"
-				style="width: 600px; height: 350px"  
-				data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,modal:true">
-				<div class="easyui-layout" data-options="fit:true">
-					
-					
-					<form id="form_edit" method="post" target="if" class="form-horizontal"
-						enctype="multipart/form-data"
-						action="{{$web_root}}imgcarousel/editData">
-						
-						
-						
-						<div class="control-group" hidden="true">
-							<input type="text" id="edit_id" name="id" hidden="true">
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="Text input">Title名称:</label>
-							<div class="controls">
-								<input type="text" class="easyui-validatebox"
-									data-options="required:true" id="edit_title" name="title"
-									　>
+					style="width: 600px; height: 400px"
+					data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,modal:true">
+					<div class="easyui-layout" data-options="fit:true">
+
+
+						<form id="form_edit" method="post" target="if"
+							class="form-horizontal" enctype="multipart/form-data"
+							action="{{$web_root}}imgcarousel/editData">
+
+
+
+							<div class="control-group" hidden="true">
+								<input type="text" id="edit_id" name="id" hidden="true">
 							</div>
-						</div>
-
-
-						<div class="control-group">
-							<label class="control-label" for="Text input">图片选择:</label>
-							<div class="controls">
-								<input type="file" id="file" name="file" class="easyui-validatebox"  
-									 >
+							<div class="control-group">
+								<label class="control-label" for="Text input">Title名称:</label>
+								<div class="controls">
+									<input type="text" class="easyui-validatebox"
+										data-options="required:true" id="edit_title" name="title"　>
+								</div>
 							</div>
-						</div>
 
-						<!-- 						<div class="control-group"> -->
-						<!-- 							<label class="control-label" for="Text input">ImageName:</label> -->
-						<!-- 							<div class="controls"> -->
-						<!-- 								<input type="text" class="easyui-validatebox" -->
-						<!-- 									data-options="required:true" id="imgname" name="Imgname" -->
-						<!-- 									placeholder="input img name!"> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-
-						<div class="control-group">
-							<label class="control-label" for="Text input">显示位置:</label>
-							<div class="controls">
-								<select id="edit_showindex"  name="showindex"
-									 >
-									<option selected="selected">1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>6</option>
-									<option>7</option>
-									<option>8</option>
-									<option>9</option>
-									<option>10</option>
-									<option>11</option>
-									<option>12</option>
-									<option>13</option>
-									<option>14</option>
-									<option>15</option>
-									<option>16</option>
-									<option>17</option>
-								</select>
+							<div class="control-group">
+								<label class="control-label" for="Text input">Url:</label>
+								<div class="controls">
+									<input id="edit_url" name="url"></textarea>
+								</div>
 							</div>
-						</div>
 
-
-						<div class="control-group">
-							<label class="control-label" for="Text input">描述:</label>
-							<div class="controls">
-								<textarea rows="2" id="edit_desc" name="desc"></textarea>
+							<div class="control-group">
+								<label class="control-label" for="Text input">图片选择:</label>
+								<div class="controls">
+									<input type="file" id="file" name="file"
+										class="easyui-validatebox">
+								</div>
 							</div>
-						</div>
-					 
-						<div class="form-actions" id="div_edit">
-							<button type="submit" style="width: 100px;"
-								class="btn btn-primary"   >修改</button>
-							<button type="button" onclick="win_close()" style="width: 100px;"
-								class="btn">取消</button>
-						</div>
-					</form>
-					 <iframe name="if" src="" width=600px height="35" frameborder=0  SCROLLING="no" style="display:NONE"></iframe>  
+
+							<!-- 						<div class="control-group"> -->
+							<!-- 							<label class="control-label" for="Text input">ImageName:</label> -->
+							<!-- 							<div class="controls"> -->
+							<!-- 								<input type="text" class="easyui-validatebox" -->
+							<!-- 									data-options="required:true" id="imgname" name="Imgname" -->
+							<!-- 									placeholder="input img name!"> -->
+							<!-- 							</div> -->
+							<!-- 						</div> -->
+
+							<div class="control-group">
+								<label class="control-label" for="Text input">显示位置:</label>
+								<div class="controls">
+									<select id="edit_showindex" name="showindex">
+										<option selected="selected">1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
+										<option>7</option>
+										<option>8</option>
+										<option>9</option>
+										<option>10</option>
+										<option>11</option>
+										<option>12</option>
+										<option>13</option>
+										<option>14</option>
+										<option>15</option>
+										<option>16</option>
+										<option>17</option>
+									</select>
+								</div>
+							</div>
+
+
+							<div class="control-group">
+								<label class="control-label" for="Text input">描述:</label>
+								<div class="controls">
+									<textarea rows="2" id="edit_desc" name="desc"></textarea>
+								</div>
+							</div>
+
+							<div class="form-actions" id="div_edit">
+								<button type="submit" style="width: 100px;"
+									class="btn btn-primary">修改</button>
+								<button type="button" onclick="win_close()"
+									style="width: 100px;" class="btn">取消</button>
+							</div>
+						</form>
+						<iframe name="if" src="" width=600px height="35" frameborder=0
+							SCROLLING="no" style="display: NONE"></iframe>
+					</div>
 				</div>
-			</div>
-			<!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
-			{{include file="admin/footer.tpl" }}
+				<!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
+				{{include file="admin/footer.tpl" }}
