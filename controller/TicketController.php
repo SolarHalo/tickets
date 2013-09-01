@@ -64,11 +64,25 @@ class TicketController extends  Controller{
 		}
 		
 		if($fromDate != null && $fromDate != ""){
-				
+			if(!$hasWhere){
+				$counterSql = $counterSql." where  products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+				$recordsSql = $recordsSql." where  products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+				$hasWhere = true;
+			}else{
+				$counterSql = $counterSql." and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+				$recordsSql = $recordsSql." and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+			}
 		}
 		
 		if($toDate != null && $toDate != ""){
-				
+			if(!$hasWhere){
+				$counterSql = $counterSql." where products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+				$recordsSql = $recordsSql." where products.specifications < str_to_date($toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+				$hasWhere = true;
+			}else{
+				$counterSql = $counterSql." and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+				$recordsSql = $recordsSql." and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+			}
 		}
 		
 		$recordsSql = $recordsSql." limit $start,$pageSize";
@@ -111,6 +125,7 @@ class TicketController extends  Controller{
 				"totalPage"=>$totalPage,
 				"counter"=>$records,
 				"pageSize"=>$pageSize,
+				"sql"=>$recordsSql,
 				"data"=>$data
 		);
 		echo json_encode($result);

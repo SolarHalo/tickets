@@ -51,7 +51,6 @@
 			postData,
 			function(obj){
 				//生成列表
-				
 				$("#totalCounter").html("We have found "+obj.counter+" events");
 				$("#list-result").empty();
 				var html = "";
@@ -109,7 +108,7 @@
 				}
 				start = end - display ;
 				
-				if(start < 0){
+				if(start < 1){
 					start = 1;
 				}
 				
@@ -131,7 +130,22 @@
 		);
 	}
 	
+	var setting = null;
 	$(function($) {
+		setting = function(){
+			var toDate = $("#toDate").val();
+			var fromDate = $("#fromDate").val();
+			
+			if(toDate != null && "" != toDate && "SDate To" != toDate){
+				$('#fromDate').datepicker('option', 'maxDate',toDate);  
+			}
+			
+			if(fromDate != null && "" != fromDate && "Date From" != fromDate){
+				$('#toDate').datepicker('option', 'minDate',fromDate);  
+			}
+			
+		}
+	
 		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
 		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 		$("#fromDate" ).datepicker();
