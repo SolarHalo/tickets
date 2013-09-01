@@ -63,4 +63,10 @@ class ImgcarouserlService{
 		return $this->dbutil->get_row("select * from img_carousel where id='".$id."' and title !='".$title."'");
 	}
 	
+	public function getIndexPage($limit){
+		$sql = "SELECT * FROM img_carousel ORDER BY showindex LIMIT $limit";
+		return $this->dbutil->get_results($sql);
+	}
+	
+	
 }

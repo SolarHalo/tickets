@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 16:09:54
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 09:27:48
          compiled from "E:\phpweb\tickets\templates\admin\ticket\ticket.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:29848521f563231a842-52134862%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5fcb1818e3041ec1fdf6b0c014da341f5b601289' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\ticket\\ticket.tpl',
-      1 => 1377782799,
+      1 => 1377886289,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_521f563235b4a8_42302976',
   'variables' => 
   array (
-    'web_root' => 0,
     'event_id' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_521f563235b4a8_42302976',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521f563235b4a8_42302976')) {function content_521f563235b4a8_42302976($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
  <?php echo $_smarty_tpl->getSubTemplate ("admin/navibar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -71,7 +70,7 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 	}
 
 	jQuery("#grid").jqGrid({
-		url:'<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
+		url:'<?php echo @constant('WEBSITE_URL');?>
 admin/ticket/queryTicket',
 		postData:{'event_id':'<?php echo $_smarty_tpl->tpl_vars['event_id']->value;?>
 '},
@@ -88,7 +87,7 @@ admin/ticket/queryTicket',
 			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
 				searchoptions:{
 					sopt: [ 'eq', 'ne'],
-					dataUrl:'<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
+					dataUrl:'<?php echo @constant('WEBSITE_URL');?>
 admin/ticket/queryCategory',
 					buildSelect:function(str){
 						eval(" var obj = " + str);
