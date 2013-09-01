@@ -105,11 +105,10 @@
 				
 				if(end > totalPage){
 					end = totalPage;
-				}
-				start = end - display ;
-				
-				if(start < 1){
-					start = 1;
+					start = end - display ;
+					if(start < 1){
+						start = 1;
+					}
 				}
 				
 				for( ; start <= end ; start++){
