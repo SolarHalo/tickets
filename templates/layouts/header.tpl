@@ -13,12 +13,56 @@
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
 	
 	<script  type="text/javascript">
+	
+	var setting = null;
+	
 	$(function($) {
+	
+		 setting = function(){
+			var toDate = $("#toDate").val();
+			var fromDate = $("#fromDate").val();
+			
+			if(toDate != null && "" != toDate && "SDate To" != toDate){
+				$('#fromDate').datepicker('option', 'maxDate',toDate);  
+			}
+			
+			if(fromDate != null && "" != fromDate && "Date From" != fromDate){
+				$('#toDate').datepicker('option', 'minDate',fromDate);  
+			}
+			
+		}
+		
 		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
 		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
+		$('#toDate').datepicker('option', 'maxDate','2013-09-25');  
 	});
+	function check( ){
+		var keyword = $("#keyword").val();
+		var location = $("#location").val();
+		var fromDate = $("#fromDate").val();
+		var toDate = $("#toDate").val();
+		
+		if(keyword == "Search by keyword"){
+			$("#keyword").val("");
+		}
+		
+		if("Search by location" == location){
+			$("#location").val("");
+		}
+		
+		if("Date From" == fromDate){
+			$("#fromDate").val("");
+		}
+		
+		if("SDate To" == toDate){
+			$("#toDate").val("");
+		}
+		
+		return true;
+	}
 	</script>
 	
 </head>
@@ -64,9 +108,9 @@
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
                     	<td><input type="text" name="keyword" value="Search by keyword" class="searchinput textinput-w" /></td>
                         <td><input type="text" name="location" value="Search by location" class="searchinput textinput-w" /></td>
-                        <td><input type="text" name="fromDate" id="fromDate" value="Date From" class="searchinput textinput-w2" /></td>
-                        <td><input type="text" name="toDate" id="toDate" value="SDate To" class="searchinput textinput-w2" /></td>
-                        <td><input type="submit" value="Search" class="input-style2" /></td>
+                        <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" /></td>
+                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+                        <td><input type="submit" value="Search" onclick="check()" class="input-style2" /></td>
                     </tr>
                 </table>
             </form>

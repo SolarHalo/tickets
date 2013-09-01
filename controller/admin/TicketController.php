@@ -107,7 +107,7 @@ class TicketController extends Controller{
 			$recordsSql = $recordsSql." order by $sidx $sord ";
 		}
 		
-		$recordsSql = $recordsSql." limit $start ,$end" ; 
+		$recordsSql = $recordsSql." limit $start ,$rows" ; 
 		
 		
 		
