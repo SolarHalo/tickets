@@ -67,6 +67,14 @@ class DbUtil{
 	}
 	
 	/**
+	 * 获取自增主键
+	 * @return number
+	 */
+	function getInsertId(){
+		return $this->insert_id;
+	}
+	
+	/**
 	 * 初始化编码
 	 * Enter description here ...
 	 */
