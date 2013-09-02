@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 13:11:32
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 14:54:11
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1378041064,
+      1 => 1378047235,
       2 => 'file',
     ),
   ),
@@ -134,7 +134,7 @@ ticket/search',
 				
 				if(end > totalPage){
 					end = totalPage;
-					start = end - display ;
+					start = end - display + 1;
 					if(start < 1){
 						start = 1;
 					}
@@ -144,9 +144,9 @@ ticket/search',
 					html += "<a href=\"javascript:search("+start+")\" class=\"btn-hs btn-Calendar\">"+start+"</a>"; 
 				}
 				
-				 
+				var temp = parseInt(pager)+1;
 				if(pager != totalPage){
-					html += "<a href=\"javascript:search("+(pager+1)+")\" class=\"btn-hs btn-Calendar fontcolor\">&gt;</a>"+ 
+					html += "<a href=\"javascript:search("+temp+")\" class=\"btn-hs btn-Calendar fontcolor\">&gt;</a>"+ 
 	            		"<a href=\"javascript:search("+totalPage+")\" class=\"btn-hs btn-Calendar fontcolor\">&gt;&gt;</a>";
 	            }
             	html += "</p> <span class=\"fy-size\">Showing "+ pager+" of "+totalPage+" pages</span> </td></tr>";

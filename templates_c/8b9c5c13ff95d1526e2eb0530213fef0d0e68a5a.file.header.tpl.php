@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 13:11:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 14:54:06
          compiled from "G:\phpserver\tickets\templates\layouts\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20897521c591a720310-02750838%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b9c5c13ff95d1526e2eb0530213fef0d0e68a5a' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1378041064,
+      1 => 1378047235,
       2 => 'file',
     ),
   ),
@@ -65,7 +65,6 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
-		$('#toDate').datepicker('option', 'maxDate','2013-09-25');  
 	});
 	function check( ){
 		var keyword = $("#keyword").val();
