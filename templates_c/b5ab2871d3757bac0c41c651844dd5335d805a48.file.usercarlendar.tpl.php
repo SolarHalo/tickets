@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 14:01:46
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 13:22:37
          compiled from "D:\workspace\php\tickets\templates\usercarlendar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16689521c9859611640-73038461%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b5ab2871d3757bac0c41c651844dd5335d805a48' => 
     array (
       0 => 'D:\\workspace\\php\\tickets\\templates\\usercarlendar.tpl',
-      1 => 1377783854,
+      1 => 1378128151,
       2 => 'file',
     ),
   ),
@@ -24,6 +24,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>user agenda manager</title>
+
+
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo @constant('WEBSITE_URL');?>
@@ -32,28 +34,47 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 public/fullcalendar/fullcalendar.css' rel='stylesheet' />
 <link href='<?php echo @constant('WEBSITE_URL');?>
 public/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/assets/css/jquery.timepicker.css" type="text/css" rel="stylesheet" />
+
 <script src='<?php echo @constant('WEBSITE_URL');?>
 public/jquery/jquery-1.9.1.min.js'></script>
 <script src='<?php echo @constant('WEBSITE_URL');?>
 public/jquery/jquery-ui-1.10.2.custom.min.js'></script>
 <script src='<?php echo @constant('WEBSITE_URL');?>
+public/js/usercalendar.js'></script>
+<script src='<?php echo @constant('WEBSITE_URL');?>
 public/fullcalendar/fullcalendar.min.js'></script>
-<script>
+<script src='<?php echo @constant('WEBSITE_URL');?>
+public/assets/js/My97DatePicker/WdatePicker.js'></script>
 
+<script src='<?php echo @constant('WEBSITE_URL');?>
+public/assets/js/jquery.timepicker.js'></script>
+
+
+
+<script>
+   
 	$(document).ready(function() {
-        
+        var calendar;
 		$("#tcbox").hide();
 		$("#tcbox_addentity").hide();
         $("#newcaledar").click(function(){$("#tcbox_addentity").show();});
-      
+        $("#saveEvent").bind('click',submitEvent);
+		displayevent();
 		
-		//carlendar
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
+		$('#fromtime').timepicker({'timeFormat': 'H:i:s' });
+		$('#totime').timepicker({'timeFormat': 'H:i:s' });
 		
-		var calendar = $('#calendar').fullCalendar({
+		
+	});
+	function closewin(winname){
+		  $("#"+winname).hide();
+	}
+	
+	function displayevent(){
+		
+		calendar = $('#calendar').fullCalendar({
 			header: {
 				left: 'prev,next today',
 				center: 'title',
@@ -61,28 +82,135 @@ public/fullcalendar/fullcalendar.min.js'></script>
 			},
 			editable: true,
 			events: "<?php echo @constant('WEBSITE_URL');?>
-carlendar/getUserCalEvent?userid=1"
+carlendar/getUserCalEvent"
 		});
-		
-		$("#saveEvent").click(function(){
-			var title = $("#title").val();
-			calendar.fullCalendar('renderEvent',
-						{
-							title: title,
-							start: new Date(y, m, d,20,0),
-							end: new Date(y, m, d,21,0),
-							allDay:false
-						},
-						true // make the event "stick"
-					);
+	
+}
+
+function submitEvent(){
+	var title = $("#title").val();
+	
+	var allday = $("#allday").prop("checked");
+	var fromdate = $("#fromdate").val();
+	var fromtime = $("#fromtime").val();
+	var todate = $("#todate").val();
+	var totime = $("#totime").val();
+	var note = $("#note").val();
+	var rember = $("#rember").attr("checked")==true?'1':'2';
+	var location = $("#location").val();
+	var from = fromdate;
+	var to = todate;
+	if(allday==true){
+		if($.trim(fromdate).length<1){
+			from = new Date();
+			from.setHours(0);
+			from.setMinutes(0);
+			from.setSeconds(0);
+			
+			from = from.pattern("yyyy-MM-dd HH:mm:ss");
+	        to = "";
+		}else{
+			from = fromdate+" 00:00:00";
+			to = "";
+		}
+	}else{
+		if($.trim(fromdate).length<0){
+			alert("请填写起始时间");
+			return ;
+		}
+		if(fromtime.length<1){
+			fromtime = "00:00:00";
+		}
+		from = fromdate+" "+fromtime;
+		if(totime.length<0){
+			totime = "00:00:00";
+		}
+		to = todate+" "+totime;
+	}
+	
+	
+	var entry = {};
+	entry.entrytitle = title;
+	entry.entryfrom = $.trim(from);
+	entry.entryto = $.trim(to);
+	entry.entrylocation = location;
+	entry.entrynote = note;
+	entry.emailreminder = rember==true?'1':'2';
+	var param = {"entry":entry,"type":1};
+	
+	$.ajax({
+		url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/addEvent",
+		type:"post",
+		data:param,
+		success:function(data){
+		alert(from+"---"+to+"--title:"+title);
+			//新增数据成功，关闭窗口，将事件显示在日历上
 			closewin('tcbox_addentity');
-					
-		});
+			calendar.fullCalendar('renderEvent',
+					{
+						title: title,
+						start: new Date(from),
+						end: new Date(to),
+						allDay:allday
+					},
+					true // make the event "stick"
+				);
+		
+		},
+		error:function(){
+			alert("add event fail");
+		}
 		
 	});
-function closewin(winname){
-	  $("#"+winname).hide();;
+	
+	
 }
+
+
+/**
+日期格式化
+ *  yyyy-MM-dd hh:mm:ss
+ *	(new Date()).pattern("yyyy-MM-dd hh:mm:ss.S")==> 2006-07-02 08:09:04.423      
+ * (new Date()).pattern("yyyy-MM-dd E HH:mm:ss") ==> 2009-03-10 二 20:09:04      
+ * (new Date()).pattern("yyyy-MM-dd EE hh:mm:ss") ==> 2009-03-10 周二 08:09:04      
+ * (new Date()).pattern("yyyy-MM-dd EEE hh:mm:ss") ==> 2009-03-10 星期二 08:09:04      
+ * (new Date()).pattern("yyyy-M-d h:m:s.S") ==> 2006-7-2 8:9:4.18
+*/
+Date.prototype.pattern=function(fmt) {         
+    var o = {         
+    "M+" : this.getMonth()+1, //月份         
+    "d+" : this.getDate(), //日         
+    "h+" : this.getHours()%12 == 0 ? 12 : this.getHours()%12, //小时         
+    "H+" : this.getHours(), //小时         
+    "m+" : this.getMinutes(), //分         
+    "s+" : this.getSeconds(), //秒         
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度         
+    "S" : this.getMilliseconds() //毫秒         
+    };         
+    var week = {         
+    "0" : "/u65e5",         
+    "1" : "/u4e00",         
+    "2" : "/u4e8c",         
+    "3" : "/u4e09",         
+    "4" : "/u56db",         
+    "5" : "/u4e94",         
+    "6" : "/u516d"        
+    };         
+    if(/(y+)/.test(fmt)){         
+        fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));         
+    }         
+    if(/(E+)/.test(fmt)){         
+        fmt=fmt.replace(RegExp.$1, ((RegExp.$1.length>1) ? (RegExp.$1.length>2 ? "/u661f/u671f" : "/u5468") : "")+week[this.getDay()+""]);         
+    }         
+    for(var k in o){         
+        if(new RegExp("("+ k +")").test(fmt)){         
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));         
+        }         
+    }         
+    return fmt;         
+}
+
 </script>
 </head>
 
@@ -95,7 +223,7 @@ function closewin(winname){
     	<div class="events">
         	<div class="gigs-1">
                 <span>
-                    <a href="#" class="fl btn btn-black-2" id="newcaledar" >New Calendar Entry</a>
+                    <a href="javascript:void(0);" class="fl btn btn-black-2" id="newcaledar" >New Calendar Entry</a>
                     <a href="#" class="fl btn btn-black-3">Export your Calendar</a>
                 </span>
                 <p class=" mt15 gigs-top-xx fr"> 
@@ -160,37 +288,37 @@ public/images/calendar-ioc.gif" /></td>
       <tr>
         <td width="77" align="right" valign="middle">Title&nbsp;&nbsp;</td>
         <td align="left">
-        	<span class="inputborder"><input type="text" class="input-style4 textinput-w3" id="title"/></span>
+        	<span class="inputborder"><input type="text" class="input-style4 textinput-w3" id="title" /></span>
         </td>
       </tr>
        <tr>
         <td width="77" align="right" valign="middle">&nbsp;</td>
         <td align="left">
-        	<input type="checkbox" align="middle"><span class="fontsize12">&nbsp;&nbsp;&nbsp;All Day</span>
+        	<input type="checkbox" align="middle" id="allday" ><span class="fontsize12">&nbsp;&nbsp;&nbsp;All Day</span>
         </td>
       </tr> 
        <tr>
         <td width="77" align="right" valign="middle">From&nbsp;&nbsp;</td>
         <td align="left">
-        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="fromdate" onclick="WdatePicker()" readOnly="true"/><a href="javascript:void(0);"><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/calendar-iocx.gif" /></a></span>
-            <span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+            <span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="fromtime" /><a href="javascript:void(0);" ><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/time-iocx.gif" /></a></span>
         </td>
       </tr> 
        <tr>
         <td width="77" align="right" valign="middle">To&nbsp;&nbsp;</td>
         <td align="left">
-        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="todate" onclick="WdatePicker()" readOnly="true"/><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/calendar-iocx.gif" /></a></span>
-            <span class="inputborder"><input type="text" class="input-style4 textinput-w4" /><a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+            <span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="totime"/><a href="javascript:void(0);"><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/time-iocx.gif" /></a></span>
         </td>
       </tr> 
        <tr>
         <td width="77" align="right" valign="middle">Location&nbsp;&nbsp;</td>
         <td align="left">
-        		<span class="inputborder"><input type="text" class="input-style4 textinput-w3" /></span>
+        		<span class="inputborder"><input type="text" class="input-style4 textinput-w3" id="location"/></span>
         </td>
       </tr> 
        <tr>
@@ -202,19 +330,19 @@ public/images/time-iocx.gif" /></a></span>
        <tr>
         <td width="77" align="right" valign="middle">Note&nbsp;&nbsp;</td>
         <td align="left">
-        		<span class="inputborder"><textarea style="height:80px" class="input-style4 textinput-w3"></textarea></span>
+        		<span class="inputborder"><textarea id="note" style="height:80px" class="input-style4 textinput-w3"></textarea></span>
         </td>
       </tr> 
        <tr>
         <td width="77" align="right" valign="middle">&nbsp;</td>
         <td align="left">
-        	<input type="checkbox" align="middle"><span class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span>
+        	<input type="checkbox" align="middle" id="rember"><span class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span>
         </td>
       </tr> 
     </table> 
     </form> 
     <div class="row3 map gigs_top">
-        <span class="fl"><a href="#" class="btn btn-black-2 btn-Calendar ml15" id="saveEvent">Save</a><font><a href="#" class="cancel">cancel</a></font></span> 
+        <span class="fl"><a href="javascript:void(0);" class="btn btn-black-2 btn-Calendar ml15" id="saveEvent">Save</a><font><a href="#" class="cancel">cancel</a></font></span> 
     </div>
   </div>
 </div>

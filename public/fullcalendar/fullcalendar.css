@@ -13,11 +13,6 @@
 .fc table {
 	border-collapse: collapse;
 	border-spacing: 0;
-	background:#fff;
-	border-bottom:1px solid #e0e0e0;
-	border-top:1px solid #e0e0e0;
-	margin-bottom:15px;
-	height:65px;
 	}
 	
 html .fc,
@@ -62,9 +57,6 @@ html .fc,
 .fc-header-title h2 {
 	margin-top: 0;
 	white-space: nowrap;
-	font-size:26px;
-	font-family:"Titillium"; 
-	line-height:65px;
 	}
 	
 .fc .fc-header-space {
@@ -260,16 +252,15 @@ html .fc,
 ------------------------------------------------------------------------*/
 	 
 .fc-event {
-	/*border: 1px solid #3a87ad;  default BORDER color */
-	background-color: #195cc0; /* default BACKGROUND color */
+	border: 1px solid #3a87ad; /* default BORDER color */
+	background-color: #3a87ad; /* default BACKGROUND color */
 	color: #fff;               /* default TEXT color */
-	font-size:12px;
+	font-size: .85em;
 	cursor: default;
 	}
 
 a.fc-event {
 	text-decoration: none;
-	background-color: #f58b35;  
 	}
 	
 a.fc-event,
@@ -307,12 +298,10 @@ a.fc-event,
 ------------------------------------------------------------------------*/
 
 .fc-event-hori {
-	border-radius: 5px 5px 5px 5px;
-    margin: 0 5px 0 7px !important;
-    padding: 0 10px;
-    width: 88px !important;
+	border-width: 1px 0;
+	margin-bottom: 1px;
 	}
-/*
+
 .fc-ltr .fc-event-hori.fc-event-start,
 .fc-rtl .fc-event-hori.fc-event-end {
 	border-left-width: 1px;
@@ -326,7 +315,7 @@ a.fc-event,
 	border-top-right-radius: 3px;
 	border-bottom-right-radius: 3px;
 	}
-	*/
+	
 /* resizable */
 	
 .fc-event-hori .ui-resizable-e {
@@ -398,7 +387,7 @@ table.fc-border-separate {
 	
 .fc-grid .fc-day-number {
 	float: right;
-	padding: 0 7px;
+	padding: 0 2px;
 	}
 	
 .fc-grid .fc-other-month .fc-day-number {
@@ -586,59 +575,5 @@ table.fc-border-separate {
 .fc-agenda .ui-resizable-resizing { /* TODO: better selector */
 	_overflow: hidden;
 	}
-
-.fc-day div{
-	border:1px solid #fff;
-	background-image: linear-gradient(to bottom, #f6f6f6, #dfdfdf);
-	min-height:122px!important; 
-	}
-.fc-day div.fc-day-number,.fc-day div.fc-day-content,.fc-day div.fc-day-content div{
-	border:none;
-	background-image: none;
-	min-height:22px!important;
-	line-height:22px;
-	}
-.fc-other-month div{
-	background-image:linear-gradient(to bottom, #f4f4f4, #f4f4f4);}
-
-.fc-day-number{
-	font-size:18px;
-	}
-.fc-widget-header{
-	height:30px;
-	line-height:30px;
-	font-size:14px;
-	background:#f3f3f3;
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	
 	
