@@ -1,57 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>gigs_login</title>
-<link href="style/reset.css" type="text/css" rel="stylesheet" />
-<link href="style/style.css" type="text/css" rel="stylesheet" />
-</head>
+﻿{{include file='layouts/headersearch.tpl'}} 
 
-<body>
-<div id="head">
-	<div>
-        <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
-        <ul>
-            <li>
-                <a href="#" class="input-style1">Sign up</a>
-                <a href="#" class="input-style1">Sign In</a>
-            </li>
-            <li class="navlist">
-                <a href="#">
-                    YOUR CALENDAR<br /> 
-                    <font>View and Manage your calendar of events</font>
-                </a>
-            </li>
-            <li class="navlist">
-                <a href="#">
-                    EVENTS<br /> 
-                    <font>What's on?</font>
-                </a>
-            </li>
-            <li class="navlogo">
-                <a href="#"><img src="images/logo.png" class="index-logo" /></a>
-            </li>
-        </ul>
-    </div>
-</div>
-<div class="search">
-	<div>
-    	<div>
-        	<form>
-            	<table>
-                	<tr>
-                    	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
-                    	<td><input type="text" value="Search by keyword" class="searchinput textinput-w" /></td>
-                        <td><input type="text" value="Search by location" class="searchinput textinput-w" /></td>
-                        <td><input type="text" value="Date From" class="searchinput textinput-w2" /></td>
-                        <td><input type="text" value="SDate To" class="searchinput textinput-w2" /></td>
-                        <td><input type="button" value="Search" class="input-style2" /></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-    </div>
-</div>
+<script  type="text/javascript">
+	var postData = {'id':'{{$id}}'};
+	$(function($) {
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}ticket/queryById',
+			postData,
+			function(obj){
+				var html = "<h1>" + obj.product_name +"</h1>" +
+                    "<p class=\"add\">"+obj.promotional_text+"</p>" +
+                    "<p class=\"time\">"+ obj.time+" BST <a href=\"#\">+ 1 more dates</a></p>" +
+                    "<p class=\"mt15\"><a href=\"#\" class=\"btn btn-range\">Add to Calendar</a></p>" ;
+				$("#info-show").html(html);
+				
+				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />"+
+	                "<ul class=\"share\">" +
+	                "	<li><a href=\"#\"><img src=\"images/ioc01.gif\" /></a></li>"+
+	                "   <li><a href=\"#\"><img src=\"images/ioc02.gif\" /></a></li>"+
+	                "   <li><a href=\"#\"><img src=\"images/ioc03.gif\" /></a></li>"+
+	                "   <li><a href=\"#\"><img src=\"images/ioc04.gif\" /></a></li>"+
+	                "   <li><a href=\"#\"><img src=\"images/ioc05.gif\" /></a></li>"+
+	                "   <li><a href=\"#\"><img src=\"images/ioc06.gif\" /></a></li>"+
+	                "</ul>";
+				$("#img-list").html(str);
+			},
+			"json"
+		);
+	});
+</script>
 <div class="mian">
     <div class="content">
     	<div class="events">
@@ -59,7 +35,7 @@
             	<span><a href="#">Home</a>  /  <a href="#">Search</a>  /  The Big Guns</a></span>
                 <a href="#" class="back btn btn-black">&lt;&lt;Search Results</a>
             </div>
-        	<div class="events-l mt15">
+        	<div class="events-l mt15" id='img-list'>
             	<img src="photo/photo.gif" width="160" height="265" class="img-sidebar" />
                 <ul class="share">
                 	<li><a href="#"><img src="images/ioc01.gif" /></a></li>
@@ -71,11 +47,14 @@
                 </ul>
             </div>
             <div class="events-c">
-            	<div class="row">
+            	<div class="row" id="info-show">
+            		<!--
             		<h1>The Big Guns</h1>
                     <p class="add">Princes Hall, Princes Way, Aldershot, GU11 1NX, Hampshire, UK</p>
                     <p class="time">Saturday, 31 Aug 2013 19:30 BST <a href="#">+ 1 more dates</a></p>
                     <p class="mt15"><a href="#" class="btn btn-range">Add to Calendar</a></p>
+                    
+                    -->
                 </div>
                 <div class="hr mt15"></div>
                 <div class="row2 mt15"> 

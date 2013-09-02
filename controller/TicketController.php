@@ -15,6 +15,44 @@ class TicketController extends  Controller{
  		$this->smarty->display("search_product_list.tpl"); 
 	}
 	
+	
+	public function info($param){
+
+		$id = $param[0];
+		$this->getSmarty();
+		
+		$this->smarty->assign ( 'id', $id );
+		$this->smarty->display("product_info.tpl");
+	}
+	
+	public function queryById(){
+		
+		$id = $_POST["id"];
+		$result = array();
+		
+		$sql = "select DATE_FORMAT(products.specifications,\"%W %d %b %Y %H:%i\") as time,products.aw_product_id, products.product_name,".
+			"event_category.category_name,products.aw_thumb_url,products.aw_image_url,products.display_price,products.promotional_text,products.specifications,products.description ".
+			"from products products LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id where products.aw_product_id = '$id' ";
+		
+		$db = $this->getDB();
+		$res = $db->get_results($sql);
+		
+		foreach ($res as $re){
+			$result =  array(
+					"time"=>$re->time,
+					"aw_product_id"=>$re->aw_product_id,
+					"category_name"=>$re->category_name,
+					"promotional_text"=>$re->promotional_text,
+					"aw_image_url"=>$re->aw_image_url,
+					
+					"product_name"=>$re->product_name
+			);
+			break;
+		}
+		
+		echo json_encode($result);
+	}
+	
 	public function search(){
 		$fromDate = $_POST["fromDate"];
 		$toDate = $_POST["toDate"];

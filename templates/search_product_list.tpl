@@ -78,9 +78,9 @@
                         "	<span>"+ data[key].date +" "+data[key].month+"</span><br />" +
                         "	<font>"+ data[key].time +"</font>" +
                         "	<a href=\"#\" class=\"time2\">53 Dates</a></td>"+  
-                      	"<td><img src=\""+data[key].aw_thumb_url+"\" width=\"92\" height=\"92\" class=\"btn\" /></td>" +
+                      	"<td><a href='{{$smarty.const.WEBSITE_URL}}ticket/info/?id="+data[key].aw_product_id+"'><img src=\""+data[key].aw_thumb_url+"\" width=\"92\" height=\"92\" class=\"btn\" /></a></td>" +
                       	"<td>"+data[key].category_name+" > Comedy<br />" +
-                        "<span>"+data[key].product_name+"</span><br />" +
+                        "<span><a href='{{$smarty.const.WEBSITE_URL}}ticket/info/?id="+data[key].aw_product_id+"' >"+data[key].product_name+"</a></span><br />" +
                         data[key].description+ "</td>"+
                     "</tr>" +
                     "<tr>"+
