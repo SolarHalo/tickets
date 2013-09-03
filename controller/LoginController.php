@@ -25,7 +25,10 @@ class LoginController extends  Controller{
 	   public function userExsist($msg){
 	  	  return "<div class='alert alert-error'>$msg</div>";
 	  }
-	 
+	  public function loginout(){
+	  	   $_SESSION['user'] = null;
+	        CommonBase::jumpUrl ( 'index' );
+	  }
 	  public function testsendmail(){
 	    	echo "send";
 	  	 require_once COMMON.DS.'SendMailUtil.class.php'; 

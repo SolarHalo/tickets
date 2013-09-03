@@ -1,16 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 09:07:11
+         compiled from "G:\phpserver\tickets\templates\layouts\headersearch.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:161765225a6bf557608-52804434%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'e866ab81b287941706b70fb5637b58663bd214c9' => 
+    array (
+      0 => 'G:\\phpserver\\tickets\\templates\\layouts\\headersearch.tpl',
+      1 => 1378135281,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '161765225a6bf557608-52804434',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5225a6bf65df81_97576484',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5225a6bf65df81_97576484')) {function content_5225a6bf65df81_97576484($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>index</title>
-	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
-	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
-	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
+	<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+	<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" /> 
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
 	
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-1.8.1.min.js" ></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
 	
 	<script  type="text/javascript">
 	
@@ -71,17 +99,10 @@
 	<div>
         <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
         <ul>
-            {{if empty($smarty.session.user) }}
-            <li>
-                <a href="{{$smarty.const.WEBSITE_URL}}register" class="input-style1">Sign up</a>
-                <a href="{{$smarty.const.WEBSITE_URL}}login" class="input-style1">Sign In</a>
+            <li class="navuserlogin">
+                <span class="username"><div>Mr Igor Diez</div><span>0</span></span>
+                <a href="#"  class="btn btn-range btn-Calendar out">Log Out</a> 
             </li>
-            {{else}}
-          <li class="navuserlogin">
-                <span class="username"><div>{{$smarty.session.user->username}}</div><span>0</span></span>
-                <a href="{{$smarty.const.WEBSITE_URL}}login/loginout"  class="btn btn-range btn-Calendar out">Log Out</a> 
-            </li>
-            {{/if}}
             <li class="navlist">
                 <a href="#">
                     YOUR CALENDAR<br /> 
@@ -95,20 +116,17 @@
                 </a>
             </li>
             <li class="navlogo">
-                <a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/logo.png" class="index-logo" /></a>
+                <a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/logo.png" class="index-logo" /></a>
             </li>
         </ul>
-    </div>
-</div>
-<div class="index_banner">
-	<div>
-    	<a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/topbanner.png" /></a>
     </div>
 </div>
 <div id="indexsearch" class="search">
 	<div>
     	<div>
-        	<form action="{{$smarty.const.WEBSITE_URL}}ticket" method="post">
+        	<form action="<?php echo @constant('WEBSITE_URL');?>
+ticket" method="post">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
@@ -122,4 +140,4 @@
             </form>
         </div>
     </div>
-</div>
+</div><?php }} ?>

@@ -8,9 +8,9 @@
                 <a href="{{$smarty.const.WEBSITE_URL}}login" class="input-style1">Sign In</a>
             </li>
             {{else}}
-            <li class="navuserlogin">
-                <span class="username"><div>Mr Igor Diez</div><span>0</span></span>
-                <a href="#"  class="btn btn-range btn-Calendar out">Log Out</a> 
+          <li class="navuserlogin">
+                <span class="username"><div>{{$smarty.session.user->username}}</div><span>0</span></span>
+                <a href="{{$smarty.const.WEBSITE_URL}}login/loginout"  class="btn btn-range btn-Calendar out">Log Out</a> 
             </li>
             {{/if}}
             

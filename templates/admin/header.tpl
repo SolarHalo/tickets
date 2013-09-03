@@ -49,13 +49,18 @@
             font-weight: bold;
         }
         
-        .ui-pg-input{
-			width:20px;
-		}
-		.ui-pg-selbox {
-			width:60px;
-		    height:30px;
-		}
+input.ui-pg-input {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    line-height: normal
+}
+select.ui-pg-selbox {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    line-height: normal
+}
         
     </style>
 

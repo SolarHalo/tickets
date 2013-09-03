@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 16:32:07
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 09:12:30
          compiled from "G:\phpserver\tickets\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12239521c49cca0b3f1-51948194%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '500867029968f40aff2358832a0eb11f80fc51ea' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\header.tpl',
-      1 => 1377621123,
+      1 => 1378199540,
       2 => 'file',
     ),
   ),
@@ -96,13 +96,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             font-weight: bold;
         }
         
-        .ui-pg-input{
-			width:20px;
-		}
-		.ui-pg-selbox {
-			width:60px;
-		    height:30px;
-		}
+input.ui-pg-input {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    line-height: normal
+}
+select.ui-pg-selbox {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    line-height: normal
+}
         
     </style>
 
