@@ -44,7 +44,6 @@ class TicketController extends  Controller{
 					"category_name"=>$re->category_name,
 					"promotional_text"=>$re->promotional_text,
 					"aw_image_url"=>$re->aw_image_url,
-					
 					"product_name"=>$re->product_name
 			);
 			break;
