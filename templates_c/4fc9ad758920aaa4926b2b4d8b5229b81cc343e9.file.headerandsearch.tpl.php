@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 13:11:21
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 10:16:36
          compiled from "G:\phpserver\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28905521c65d4aa37b3-57099622%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4fc9ad758920aaa4926b2b4d8b5229b81cc343e9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1378041064,
+      1 => 1378200563,
       2 => 'file',
     ),
   ),
@@ -38,9 +38,11 @@ register" class="input-style1">Sign up</a>
 login" class="input-style1">Sign In</a>
             </li>
             <?php }else{ ?>
-            <li class="navuserlogin">
-                <span class="username"><div>Mr Igor Diez</div><span>0</span></span>
-                <a href="#"  class="btn btn-range btn-Calendar out">Log Out</a> 
+          <li class="navuserlogin">
+                <span class="username"><div><?php echo $_SESSION['user']->username;?>
+</div><span>0</span></span>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+login/loginout"  class="btn btn-range btn-Calendar out">Log Out</a> 
             </li>
             <?php }?>
             
