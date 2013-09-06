@@ -40,7 +40,6 @@
 			
 	}
 	function removeUser(){
-
 		$.messager.confirm('删除确定','确定要删除当前选择的记录!',function(r){
 		    if (r){
 		    	var select = getSelectUser();
