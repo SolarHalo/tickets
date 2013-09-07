@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 14:06:15
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-02 13:40:57
          compiled from "D:\workspace\php\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24598521c98597078d1-35785418%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cb39c8a59305fcb7fe3dede3af4ba4c4624f6523' => 
     array (
       0 => 'D:\\workspace\\php\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1377785005,
+      1 => 1378128800,
       2 => 'file',
     ),
   ),
@@ -17,6 +17,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_521c98597189b3_26348465',
+  'variables' => 
+  array (
+    'keyword' => 0,
+    'location' => 0,
+    'fromDate' => 0,
+    'toDate' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521c98597189b3_26348465')) {function content_521c98597189b3_26348465($_smarty_tpl) {?><div id="head">
@@ -59,18 +66,20 @@ public/images/logo.png" class="index-logo" /></a>
 <div class="search">
 	<div>
     	<div>
-        	<form>
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
-                    	<td><input type="text" value="Search by keyword" class="searchinput textinput-w" /></td>
-                        <td><input type="text" value="Search by location" class="searchinput textinput-w" /></td>
-                        <td><input type="text" value="Date From" class="searchinput textinput-w2" /></td>
-                        <td><input type="text" value="SDate To" class="searchinput textinput-w2" /></td>
-                        <td><input type="button" value="Search" class="input-style2" /></td>
+                    	<td><input type="text" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
+" class="searchinput textinput-w" /></td>
+                        <td><input type="text" name="location" id="location" value="<?php echo $_smarty_tpl->tpl_vars['location']->value;?>
+" class="searchinput textinput-w" /></td>
+                        <td><input type="text" name="fromDate" id="fromDate" value="<?php echo $_smarty_tpl->tpl_vars['fromDate']->value;?>
+" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+                        <td><input type="text" name="toDate" id="toDate" value="<?php echo $_smarty_tpl->tpl_vars['toDate']->value;?>
+" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+                        <td><input type="button" onclick="search()" value="Search" class="input-style2" /></td>
                     </tr>
                 </table>
-            </form>
         </div>
     </div>
 </div><?php }} ?>

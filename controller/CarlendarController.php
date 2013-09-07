@@ -22,14 +22,12 @@ class CarlendarController extends  Controller{
 		$productid = $_POST['productid'];
 		$userid = $_SESSION['user']->id;
 		$entry = json_decode(json_encode($entry));
-// 		echo $entry.'---type:'.$type.'--userid:'.$userid.',entrytime:'.$entry->entryfrom.',entryto:'.$entry[entryto].',--------entrytitle:'.$entry["entrytitle"].'-----------,emailreminder:'.$entry->emailreminder;
 		if($type==1){
 			//自定义事件
  			echo $service->saveCustomEvent($entry, $userid);
 		}else{
-			$service->saveuserentrys($productid, $userid);
+			echo $service->saveuserentrys($productid, $userid);
 		}
-// 		echo 'success';
 	}
 	
 	/**
@@ -46,49 +44,42 @@ class CarlendarController extends  Controller{
 		$userevents = $service->getUserCalEvent($userid);
 		echo json_encode($userevents);    
 		
-		
-		  /* $year = date('Y');
-		$month = date('m');
-	echo json_encode(array(
+	}
 	
-		array(
-			'id' => 111,
-			'title' => "Event1",
-			'start' => "$year-$month-10",
-			'url' => "http://yahoo.com/"
-		),
+	/**
+	 * 根据日历事件id删除事件，并删除中间表
+	 */
+	public function deleteEventById(){
+		require_once SERVICE . DS . 'CarlendarService.class.php';
+		$service = new CarlendarService($this->getDB ());
 		
-		array(
-			'id' => 222,
-			'title' => "Event2",
-			'start' => "$year-$month-20",
-			'end' => "$year-$month-22",
-			'url' => "http://yahoo.com/"
-		),
-		array(
-			'title'=>"All Day Event",
-			'start'=>"$year-$month-1"
-	    ),
-		array(
-			'title'=>"Long Event",
-			'start'=>"$year-$month-2",
-			'end'=>"$year-$month-5"
-		),
-		array(
-			'id'=>999,
-			'title'=>"Repeating Event",
-			'start'=>"$year-$month-3",
-			'allDay'=>false
-		),
-		array(
-			'title'=>"click for google",
-			'start'=>"$year-$month-23",
-			'end'=>"year-$month-25",
-			'url'=>"http://google.com/"			
-	    )
-			));   */
+		$type = $_POST['type'];
+		$entryid = $_POST['entryid'];
+		$productid = $_POST['productid'];
+		$userid = $_SESSION['user']->id;
 		
+		if($type==1){
+			//删除自定义事件
+			$service->deleteCustomEventById($entryid, $userid);
+		}else{
+			$service->deleteUserEntry($productid, $userid);
+		}
+		echo "success";
 		
+	}
+	
+	/**
+	 * 更新自定义事件
+	 * @param unknown $entry
+	 */
+	public function updateCustomEventById($entry){
+		require_once SERVICE . DS . 'CarlendarService.class.php';
+		$service = new CarlendarService($this->getDB ());
+		
+		$entry = $_POST['entry'];
+		$entry = json_decode(json_encode($entry));
+		
+		$service->updateCustomEventById($entry);
 	}
 	
 }

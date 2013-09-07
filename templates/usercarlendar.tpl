@@ -7,35 +7,54 @@
 
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" />
+<link href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery.ui.datepicker.css" type="text/css" rel="stylesheet" />
 <link href='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.css' rel='stylesheet' />
 <link href='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery-ui.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery.timepicker.css" type="text/css" rel="stylesheet" />
+
 
 <script src='{{$smarty.const.WEBSITE_URL}}public/jquery/jquery-1.9.1.min.js'></script>
 <script src='{{$smarty.const.WEBSITE_URL}}public/jquery/jquery-ui-1.10.2.custom.min.js'></script>
 <script src='{{$smarty.const.WEBSITE_URL}}public/js/usercalendar.js'></script>
 <script src='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.min.js'></script>
-<script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/My97DatePicker/WdatePicker.js'></script>
+
+<script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery-ui.js'></script>
 
 <script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery.timepicker.js'></script>
 
 
 
+
 <script>
+   
+   
    
 	$(document).ready(function() {
         var calendar;
 		$("#tcbox").hide();
 		$("#tcbox_addentity").hide();
-        $("#newcaledar").click(function(){$("#tcbox_addentity").show();});
+        $("#newcaledar").click(function(){$("#tcbox_addentity").show();clearWinData();$("#saveEvent").removeAttr('un')});
         $("#saveEvent").bind('click',submitEvent);
 		displayevent();
+		
+		$("#fromdate").datepicker({dateFormat:'yy-mm-dd'});  
+		$("#todate").datepicker({dateFormat:'yy-mm-dd'});
 		
 		$('#fromtime').timepicker({'timeFormat': 'H:i:s' });
 		$('#totime').timepicker({'timeFormat': 'H:i:s' });
 		
+		$('.updateBtn').click(function(){
+		    closewin('tcbox');
+		    clearWinData();
+			popUpdateWin(currentCalEvent);
+		});
 		
+		$("#delBtn").bind('click',deleteCalEvent);
 	});
+	
+	var currentCalEvent;
+	
 	function closewin(winname){
 		  $("#"+winname).hide();
 	}
@@ -49,7 +68,15 @@
 				right: 'month,agendaWeek,agendaDay'
 			},
 			editable: true,
-			events: "{{$smarty.const.WEBSITE_URL}}carlendar/getUserCalEvent"
+			events: "{{$smarty.const.WEBSITE_URL}}carlendar/getUserCalEvent",
+			eventClick: function(calEvent, jsEvent, view) {
+				popupDetailWin(calEvent);
+		        //alert('Event: ' + calEvent.title+"--"+calEvent.start+"--"+calEvent.end+"--"+calEvent.entrynote);
+		
+				//change color
+		        $(this).css('border-color', 'red');
+		
+		    }
 		});
 	
 }
@@ -63,7 +90,7 @@ function submitEvent(){
 	var todate = $("#todate").val();
 	var totime = $("#totime").val();
 	var note = $("#note").val();
-	var rember = $("#rember").attr("checked")==true?'1':'2';
+	var rember = $("#rember").prop("checked")==true?'1':'2';
 	var location = $("#location").val();
 	var from = fromdate;
 	var to = todate;
@@ -77,8 +104,9 @@ function submitEvent(){
 			from = from.pattern("yyyy-MM-dd HH:mm:ss");
 	        to = "";
 		}else{
-			from = fromdate+" 00:00:00";
-			to = "";
+			//from = fromdate+" 00:00:00";
+			from = fromdate;
+			to = todate;
 		}
 	}else{
 		if($.trim(fromdate).length<0){
@@ -89,10 +117,15 @@ function submitEvent(){
 			fromtime = "00:00:00";
 		}
 		from = fromdate+" "+fromtime;
-		if(totime.length<0){
+		if(totime.length<1){
 			totime = "00:00:00";
 		}
-		to = todate+" "+totime;
+		if(todate.length<1){
+			to = todate;
+		}else{
+			to = todate+" "+totime;
+		}
+		
 	}
 	
 	
@@ -103,20 +136,34 @@ function submitEvent(){
 	entry.entrylocation = location;
 	entry.entrynote = note;
 	entry.emailreminder = rember==true?'1':'2';
+	var entryid = $("#saveEvent").attr("un");
+	
+	var url;
+	if(entryid!=null){
+		entry.entryid = entryid;
+		url = "{{$smarty.const.WEBSITE_URL}}carlendar/updateCustomEventById";
+	}else{
+		url = "{{$smarty.const.WEBSITE_URL}}carlendar/addEvent";
+	}
 	var param = {"entry":entry,"type":1};
 	
 	$.ajax({
-		url:"{{$smarty.const.WEBSITE_URL}}carlendar/addEvent",
+		url:url,
 		type:"post",
 		data:param,
 		success:function(data){
 			//新增数据成功，关闭窗口，将事件显示在日历上
 			closewin('tcbox_addentity');
+			if(entryid!=null){
+				calendar.fullCalendar("removeEvents",currentCalEvent.id);
+				calendar.fullCalendar("rerenderEvents");
+			}
 			calendar.fullCalendar('renderEvent',
 					{
+						id:data,
 						title: title,
 						start: new Date(from),
-						end: new Date(to),
+						end: to.length<1?null:new Date(to),
 						allDay:allday
 					},
 					true // make the event "stick"
@@ -124,13 +171,121 @@ function submitEvent(){
 		
 		},
 		error:function(){
-			alert("add event fail");
+			alert("update event fail");
 		}
 		
 	});
 	
 	
 }
+
+function clearWinData(){
+	$("#title").val("");
+	$("#allday").prop("checked",false);
+	$("#fromdate").val("");
+	$("#fromtime").val("");
+	$("#todate").val("");
+	$("#totime").val("");
+	$("#note").val("");
+	$("#rember").prop("checked",false);
+	$("#location").val("");
+	
+}
+
+
+function popupDetailWin(calEvent){
+  	$("#tcbox").show();
+	$(".eventname").html(calEvent.title);
+	var from;
+	var to ;
+	if(calEvent.end!=null){
+		var fromtime = calEvent.start.pattern("HH:mm");
+		var totime = calEvent.end.pattern("HH:mm");
+		if(fromtime=="00:00"&&fromtime==totime){
+			from = calEvent.start.toDateString();
+			to = calEvent.end.toDateString();
+		}else if(totime!="00:00"){
+			to = calEvent.end.toString();
+			from = calEvent.start.toString();
+		}
+		$("#fromtime").val(calEvent.start.pattern("HH:mm"));
+		
+		$("#todate").val(calEvent.end.pattern("yyyy-MM-dd"));
+		$("#totime").val(calEvent.end.pattern("HH:mm"));
+		
+	}else{
+		from = calEvent.start.toDateString();
+	}
+	var timeduration ;
+	if(to!=null){
+		timeduration = from+" - "+to;
+	}else{
+		timeduration = from;
+	}
+	$("#timeduration").html(timeduration);
+	
+	currentCalEvent = calEvent;
+}
+
+function popUpdateWin(calEvent){
+	$("#tcbox_addentity").show();
+	$("#title").val(calEvent.title);
+	$("#allday").prop("checked",false);
+	$("#fromdate").val(calEvent.start.pattern("yyyy-MM-dd"));
+	if(calEvent.end!=null){
+		var fromtime = calEvent.start.pattern("HH:mm");
+		var totime = calEvent.end.pattern("HH:mm");
+		
+		if(fromtime=="00:00"&&totime==fromtime){
+			$("#allday").prop("checked",true);
+		}else{
+			$("#fromtime").val(calEvent.start.pattern("HH:mm"));
+			$("#totime").val(calEvent.end.pattern("HH:mm"));
+		}
+		$("#todate").val(calEvent.end.pattern("yyyy-MM-dd"));
+	}else{
+		$("#allday").prop("checked",true);
+	}
+	$("#note").val(calEvent.entrynote);
+	var reminder = calEvent.emailreminder;
+	$("#rember").prop("checked",reminder=='1'?true:false);
+	$("#location").val(calEvent.entrylocation);
+	
+	$("#saveEvent").attr("un",calEvent.id);
+}
+
+function deleteCalEvent(){
+	
+	var param={"type":1,"entryid":currentCalEvent.id};
+	$.ajax({
+		url:"{{$smarty.const.WEBSITE_URL}}carlendar/deleteEventById",
+		type:"post",
+		data:param,
+		success:function(data){
+		    closewin('tcbox');
+			calendar.fullCalendar("removeEvents",currentCalEvent.id);
+			calendar.fullCalendar("rerenderEvents");
+		
+		},
+		error:function(){
+			alert("delete event fail");
+		}
+		
+	});
+	
+}
+
+function openBrowse(){ 
+	//$("#fileSel").click();
+	document.getElementById("fileSel").click();
+	var filename = $("#fileSel").val();
+	if(filename==null){
+		filename = "&nbsp;&nbsp;&nbsp;No File Chosen";
+	}else{
+		filename = "&nbsp;&nbsp;&nbsp;"+filename;
+	}
+	$("#filename").html(filename);
+} 
 
 
 /**
@@ -222,19 +377,19 @@ Date.prototype.pattern=function(fmt) {
         <td width="50" align="right" valign="top"><img src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-ioc.gif" /></td>
         <td align="left">
         	<h4  class="eventname">Lorem event title</h4>
-            <p class="time">Saturday, 28 July 2013 19:30 BST</p>
+            <p class="time" id="timeduration">Saturday, 28 July 2013 19:30 BST</p>
         </td>
       </tr> 
     </table>
     <table>
     	 <tr>
-            <td class="time">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Add a Note</a></td> 
+            <td class="time">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0);" class="updateBtn">Add a Note</a></td> 
           </tr>
     </table>
     </form> 
     <div class="row3 map gigs_top">
-        <span class="fl"><a href="#" class="btn btn-blue btn-Calendar ml15">Save</a><font><a href="#" class="cancel">cancel</a></font></span>
-        <span class="fr pr"><a href="#" class="btn btn-red btn-Calendar">Delete</a></span>
+        <span class="fl"><a href="javascript:void(0);" class="btn btn-blue btn-Calendar ml15 updateBtn" >Save</a><font><a href="javascript:void(0);" class="cancel" onclick="javascript:closewin('tcbox');">cancel</a></font></span>
+        <span class="fr pr"><a href="javascript:void(0);" class="btn btn-red btn-Calendar" id="delBtn">Delete</a></span>
     </div>
   </div>
 </div>
@@ -262,14 +417,14 @@ Date.prototype.pattern=function(fmt) {
        <tr>
         <td width="77" align="right" valign="middle">From&nbsp;&nbsp;</td>
         <td align="left">
-        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="fromdate" onclick="WdatePicker()" readOnly="true"/><a href="javascript:void(0);"><img src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
+        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="fromdate"  readOnly="true"/><a href="javascript:void(0);"><img src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
             <span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="fromtime" /><a href="javascript:void(0);" ><img src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
         </td>
       </tr> 
        <tr>
         <td width="77" align="right" valign="middle">To&nbsp;&nbsp;</td>
         <td align="left">
-        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="todate" onclick="WdatePicker()" readOnly="true"/><a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
+        	<span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="todate" readOnly="true"/><a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
             <span class="inputborder"><input type="text" class="input-style4 textinput-w4" id="totime"/><a href="javascript:void(0);"><img src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
         </td>
       </tr> 
@@ -282,12 +437,14 @@ Date.prototype.pattern=function(fmt) {
        <tr>
         <td width="77" align="right" valign="middle">Note&nbsp;&nbsp;</td>
         <td align="left">
-        		  <input type="button" runat="server" value="" id="file" /><span class="fontsize12">&nbsp;&nbsp;&nbsp;No File Chosen</span>
+        	<input type="file"  id="fileSel" style="display:none"/>
+        	<input type="button" runat="server" id="file" value="" onclick="javascript:openBrowse();"/><span id="filename" class="fontsize12">&nbsp;&nbsp;&nbsp;No File Chosen</span>
         </td>
       </tr> 
        <tr>
         <td width="77" align="right" valign="middle">Note&nbsp;&nbsp;</td>
         <td align="left">
+       			
         		<span class="inputborder"><textarea id="note" style="height:80px" class="input-style4 textinput-w3"></textarea></span>
         </td>
       </tr> 
@@ -300,7 +457,7 @@ Date.prototype.pattern=function(fmt) {
     </table> 
     </form> 
     <div class="row3 map gigs_top">
-        <span class="fl"><a href="javascript:void(0);" class="btn btn-black-2 btn-Calendar ml15" id="saveEvent">Save</a><font><a href="#" class="cancel">cancel</a></font></span> 
+        <span class="fl"><a href="javascript:void(0);" class="btn btn-black-2 btn-Calendar ml15" id="saveEvent">Save</a><font><a href="javascript:void(0);" class="cancel" onclick="javascript:closewin('tcbox_addentity');">cancel</a></font></span> 
     </div>
   </div>
 </div>
