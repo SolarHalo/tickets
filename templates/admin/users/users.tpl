@@ -47,13 +47,18 @@
 					
 			   <!--- END --->
         </div>
+        
+        <div style="width: 700px; height: 350px">
+        	{{include file="map.tpl" }}
+        
+        </div>
     </div>
 
  
 <!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
 {{include file="admin/footer.tpl" }}
 <script type="text/javascript">
-
+searchaddress("北京小学");
  function  dateTimeFormat(value, rec, index) {
     if (value == undefined) {
         return "";

@@ -16,7 +16,8 @@
 	
 	var setting = null;
 	
-	$(function($) { 
+	$(function($) {
+	
 		 setting = function(){
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
@@ -82,13 +83,13 @@
             </li>
             {{/if}}
             <li class="navlist">
-                <a href="{{$smarty.const.WEBSITE_URL}}carlendar">
+                <a href="#">
                     YOUR CALENDAR<br /> 
                     <font>View and Manage your calendar of events</font>
                 </a>
             </li>
             <li class="navlist">
-                <a href="{{$smarty.const.WEBSITE_URL}}ticket">
+                <a href="#">
                     EVENTS<br /> 
                     <font>What's on?</font>
                 </a>
@@ -97,11 +98,6 @@
                 <a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/logo.png" class="index-logo" /></a>
             </li>
         </ul>
-    </div>
-</div>
-<div class="index_banner">
-	<div>
-    	<a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/topbanner.png" /></a>
     </div>
 </div>
 <div id="indexsearch" class="search">

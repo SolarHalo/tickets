@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 16:07:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-01 06:49:54
          compiled from "G:\phpserver\tickets\templates\admin\event\event.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6564521e1cd4e2dbc7-70336536%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3735fe4dee4c6bb83b1163e3204992e98803f520' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\event\\event.tpl',
-      1 => 1377792442,
+      1 => 1377793033,
       2 => 'file',
     ),
   ),
@@ -57,7 +57,11 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
  		</div>
   		<div class="modal-body">
   			<input id="eventId" name="eventId" type="hidden"/>
+<!-- 
     		<textarea id="eventDesc" name="eventDesc" class="input-xxlarge" rows="6" ></textarea>
+ -->
+    		<textarea id="eventDesc" name="eventDesc" rows="8" style="width:97%;height:100%" ></textarea>
+ 
   		</div>
   		<div class="modal-footer">
     		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>

@@ -1,7 +1,7 @@
 <?php 
 session_start(); 
 
-header("Content-type: image/png"); 
+header("Content-type: image/gif"); 
  
 $im = imagecreatetruecolor(80, 28);
 $english = array(2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','j','k','m','n','p','q','r','s','t','u','v','w','x','y','z');
@@ -37,7 +37,7 @@ for($i=0;$i<150;$i++){
 }
 
 // 输出图片 
-imagepng($im); 
+imagegif($im); 
 imagedestroy($im); 
 
 //var_dump($text);

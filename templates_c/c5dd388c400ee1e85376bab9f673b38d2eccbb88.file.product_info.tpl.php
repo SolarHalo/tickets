@@ -1,10 +1,38 @@
-﻿{{include file='layouts/headersearch.tpl'}} 
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 09:07:11
+         compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
+    array (
+      0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
+      1 => 1378135281,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '93315225a6bf457402-04173806',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'id' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5225a6bf53c504_69706401',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5225a6bf53c504_69706401')) {function content_5225a6bf53c504_69706401($_smarty_tpl) {?>﻿<?php echo $_smarty_tpl->getSubTemplate ('layouts/headersearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 
 <script  type="text/javascript">
-	var postData = {'id':'{{$id}}'};
+	var postData = {'id':'<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+'};
 	$(function($) {
 		$.post(
-			'{{$smarty.const.WEBSITE_URL}}ticket/queryById',
+			'<?php echo @constant('WEBSITE_URL');?>
+ticket/queryById',
 			postData,
 			function(obj){
 				var html = "<h1>" + obj.product_name +"</h1>" +
@@ -111,4 +139,4 @@
     </div>
 </div>
 </body>
-</html>     
+</html>     <?php }} ?>
