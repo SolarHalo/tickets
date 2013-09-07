@@ -32,6 +32,32 @@
         </ul>
     </div>
 </div>
+<script  type="text/javascript">
+$(function($) {
+	function mouseEvent(objId,objVal){
+		
+				var foucusFun = function(){
+					if($("#"+objId).val() == objVal){
+						$("#"+objId).val("");
+					}
+				}
+				
+				$("#"+objId).focus(foucusFun);
+					
+				$("#"+objId).blur(function(){
+					if("" == $("#"+objId).val()){
+						$("#"+objId).val(objVal);
+					}
+				});
+			}
+			
+			mouseEvent("keyword","Search by keyword");
+			mouseEvent("location","Search by location");
+			mouseEvent("fromDate","Date From");
+			mouseEvent("toDate","SDate To");
+});
+		
+			</script>
 <div class="search">
 	<div>
     	<div>

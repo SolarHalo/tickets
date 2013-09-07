@@ -7,6 +7,19 @@ class TicketController extends  Controller{
 		$location = $_POST["location"];
 		$this->getSmarty(); 
 		
+		if($keyword == null || $keyword == ""){
+			$keyword = "Search by keyword" ;
+		}
+		if($location == null || $location == "" ){
+			$location = "Search by location";
+		}
+		if($fromDate == null || $fromDate == ""){
+			$fromDate = "Date From";
+		}
+		if($toDate == null || $toDate == "" ){
+			$toDate = "SDate To";
+		}
+		
 		$this->smarty->assign ( 'keyword', $keyword );
 		$this->smarty->assign ( 'location', $location );
 		$this->smarty->assign ( 'fromDate', $fromDate );
@@ -20,6 +33,11 @@ class TicketController extends  Controller{
 
 		$id = $param[0];
 		$this->getSmarty();
+		
+		$this->smarty->assign ( 'keyword', "Search by keyword" );
+		$this->smarty->assign ( 'location', "Search by location" );
+		$this->smarty->assign ( 'fromDate', "Date From" );
+		$this->smarty->assign ( 'toDate', "SDate To" );
 		
 		$this->smarty->assign ( 'id', $id );
 		$this->smarty->display("product_info.tpl");
