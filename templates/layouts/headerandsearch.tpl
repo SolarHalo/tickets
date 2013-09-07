@@ -15,13 +15,13 @@
             {{/if}}
             
             <li class="navlist">
-                <a href="#">
+                <a href="{{$smarty.const.WEBSITE_URL}}carlendar">
                     YOUR CALENDAR<br /> 
                     <font>View and Manage your calendar of events</font>
                 </a>
             </li>
             <li class="navlist">
-                <a href="#">
+                <a href="{{$smarty.const.WEBSITE_URL}}ticket">
                     EVENTS<br /> 
                     <font>What's on?</font>
                 </a>
