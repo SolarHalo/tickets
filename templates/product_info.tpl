@@ -14,7 +14,7 @@
 	
 	<script  type="text/javascript">
 	
-	var setting = null;
+	var setting = null; 
 	
 	$(function($) {
 	
