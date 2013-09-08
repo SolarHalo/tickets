@@ -195,7 +195,15 @@ class TicketController extends  Controller{
 		
 		$res = $db->get_results($recordsSql);
 		$data = array();
+		
+		$descLen = 40 ;
 		foreach ($res as $re){
+			
+			$desc = $re->description;
+			if($desc != null && strlen($desc) > $descLen){
+				$desc = substr($desc,0,$descLen)."... ...";
+			}
+
 			$data[] = array(
 					"week"=>$re->week,
 					"month"=>$re->month,
@@ -206,7 +214,7 @@ class TicketController extends  Controller{
 					"aw_thumb_url"=>$re->aw_thumb_url,
 					"category_name"=>$re->category_name,
 					"promotional_text"=>$re->promotional_text,
-					"description"=>$re->description,
+					"description"=>$desc,
 					"display_price"=>$re->display_price
 					
 			);
