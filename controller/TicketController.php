@@ -70,6 +70,20 @@ class TicketController extends  Controller{
 		echo json_encode($result);
 	}
 	
+	public function addCalendat(){
+		$pid = $_POST["pid"];
+		
+		$db = $this->getDB();
+		$user = $_SESSION['user'];
+		
+		$result = array("success"=>true,"res"=>false);
+		if($user != null){
+			$db->insert("userentrys", array("userid"=>$user->userid,"productid"=>$pid));
+			$result = array("success"=>true,"res"=>true);
+		}
+		echo json_encode($result);
+	}
+	
 	public function search(){
 		$fromDate = $_POST["fromDate"];
 		$toDate = $_POST["toDate"];

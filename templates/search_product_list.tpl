@@ -14,6 +14,22 @@
 	
 	<script  type="text/javascript">
 	
+	function addCalendat(pid){
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}ticket/addCalendat',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					alert("success");
+				}else{
+					alert("failed");
+				}
+				
+			},
+			"json"
+		);
+	} 
+	
 	function search( pager, cat,pageSize){
 		var keyword = $("#keyword").val();
 		var location = $("#location").val();
@@ -87,8 +103,8 @@
                     "  	<td colspan=\"2\">&nbsp;</td>"+
                     "  	<td>"+
                     "		<p class=\"mt15\">"+
-                    "			<a href=\"#\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
-                    "			<a href=\"#\" class=\"back btn btn-black\"><strong>Buy Tickets</strong></a>"+
+                    "			<a href=\"javascript:addCalendat('"+data[key].aw_product_id+"')\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
+                    "			<a href=\"javascript:\" class=\"back btn btn-black\"><strong>Buy Tickets</strong></a>"+
                     "		</p></td></tr>"; 
                     
                     html+="</table><div class=\"table-xian\"></div></td> </tr>";
