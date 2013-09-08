@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 09:30:00
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-08 13:31:40
          compiled from "G:\phpserver\tickets\templates\layouts\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20897521c591a720310-02750838%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b9c5c13ff95d1526e2eb0530213fef0d0e68a5a' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1378200597,
+      1 => 1378646821,
       2 => 'file',
     ),
   ),
@@ -42,10 +42,8 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 	
 	<script  type="text/javascript">
 	
-	var setting = null;
-	
+	var setting = null; 
 	$(function($) {
-	
 		 setting = function(){
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
@@ -65,7 +63,34 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
+		
+			
+		function mouseEvent(objId,objVal){
+	
+			var foucusFun = function(){
+				if($("#"+objId).val() == objVal){
+					$("#"+objId).val("");
+				}
+			}
+			
+			$("#"+objId).focus(foucusFun);
+				
+			$("#"+objId).blur(function(){
+				if("" == $("#"+objId).val()){
+					$("#"+objId).val(objVal);
+				}
+			});
+		}
+		
+		mouseEvent("keyword","Search by keyword");
+		mouseEvent("location","Search by location");
+		mouseEvent("fromDate","Date From");
+		mouseEvent("toDate","SDate To");
 	});
+
+
+	
+		
 	function check( ){
 		var keyword = $("#keyword").val();
 		var location = $("#location").val();
@@ -115,13 +140,15 @@ login/loginout"  class="btn btn-range btn-Calendar out">Log Out</a>
             </li>
             <?php }?>
             <li class="navlist">
-                <a href="#">
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+carlendar">
                     YOUR CALENDAR<br /> 
                     <font>View and Manage your calendar of events</font>
                 </a>
             </li>
             <li class="navlist">
-                <a href="#">
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+ticket">
                     EVENTS<br /> 
                     <font>What's on?</font>
                 </a>
@@ -147,8 +174,8 @@ ticket" method="post">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
-                    	<td><input type="text" name="keyword" value="Search by keyword" class="searchinput textinput-w" /></td>
-                        <td><input type="text" name="location" value="Search by location" class="searchinput textinput-w" /></td>
+                    	<td><input type="text" id="keyword" name="keyword" value="Search by keyword" class="searchinput textinput-w" /></td>
+                        <td><input type="text" id="location" name="location" value="Search by location" class="searchinput textinput-w" /></td>
                         <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" /></td>
                         <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
                         <td><input type="submit" value="Search" onclick="check()" class="input-style2" /></td>

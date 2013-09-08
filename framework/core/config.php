@@ -1,3 +1,4 @@
+ 
 <?php 
 
 error_reporting(E_ERROR | E_PARSE);
@@ -18,7 +19,7 @@ $CONFIG['DB']= array(
     'db_host'           =>      '127.0.0.1',
     'db_user'           =>      'root', 
     'db_password'       =>      'root',
-    'db_database'       =>      'test', 
+    'db_database'       =>      'events', 
     'db_table_prefix'   =>      'app_',
     'db_charset'        =>      'urf8'   
 );
@@ -44,3 +45,4 @@ $CONFIG['WEBSERVICE']= array(
     "userName" 			=> "trendy",
     "passWord" 			=> "webvip_7uj*IK-2013"
 );
+ 

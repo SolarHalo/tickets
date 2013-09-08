@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-06 16:16:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-08 13:31:35
          compiled from "G:\phpserver\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28905521c65d4aa37b3-57099622%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4fc9ad758920aaa4926b2b4d8b5229b81cc343e9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1378482928,
+      1 => 1378646700,
       2 => 'file',
     ),
   ),
@@ -67,6 +67,32 @@ public/images/logo.png" class="index-logo" /></a>
         </ul>
     </div>
 </div>
+<script  type="text/javascript">
+$(function($) {
+	function mouseEvent(objId,objVal){
+		
+				var foucusFun = function(){
+					if($("#"+objId).val() == objVal){
+						$("#"+objId).val("");
+					}
+				}
+				
+				$("#"+objId).focus(foucusFun);
+					
+				$("#"+objId).blur(function(){
+					if("" == $("#"+objId).val()){
+						$("#"+objId).val(objVal);
+					}
+				});
+			}
+			
+			mouseEvent("keyword","Search by keyword");
+			mouseEvent("location","Search by location");
+			mouseEvent("fromDate","Date From");
+			mouseEvent("toDate","SDate To");
+});
+		
+			</script>
 <div class="search">
 	<div>
     	<div>
