@@ -74,14 +74,14 @@ class TicketController extends  Controller{
 	
 		$db = $this->getDB();
 	
-		$res = $db->get_results("select click_count,merchant_deep_link from products where aw_product_id='$pid'");
+		$res = $db->get_results("select click_count,aw_deep_link from products where aw_product_id='$pid'");
 	
 		$result = array("success"=>true,"res"=>false);
 	
 		$count = 0;
 	
 		foreach ($res as $re){
-			$result = array("success"=>true,"res"=>true,"href"=>$re->merchant_deep_link);
+			$result = array("success"=>true,"res"=>true,"href"=>$re->aw_deep_link);
 			$count = $re->click_count;
 			break;
 		}
