@@ -16,7 +16,7 @@ ini_set('include_path', ini_get('include_path').PATH_SEPARATOR.SMARTY_DIR);
 
  
 $CONFIG['DB']= array(
-    'db_host'           =>      '127.0.0.1',
+    'db_host'           =>      '109.123.92.158',
     'db_user'           =>      'root', 
     'db_password'       =>      'root',
     'db_database'       =>      'events', 

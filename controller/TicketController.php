@@ -69,6 +69,32 @@ class TicketController extends  Controller{
 		
 		echo json_encode($result);
 	}
+	public function buyTickets(){
+		$pid = $_POST["pid"];
+	
+		$db = $this->getDB();
+	
+		$res = $db->get_results("select click_count,merchant_deep_link from products where aw_product_id='$pid'");
+	
+		$result = array("success"=>true,"res"=>false);
+	
+		$count = 0;
+	
+		foreach ($res as $re){
+			$result = array("success"=>true,"res"=>true,"href"=>$re->merchant_deep_link);
+			$count = $re->click_count;
+			break;
+		}
+	
+		if($count == null || $count == ""){
+			$count = 0;
+		}
+	
+		$db->update("products", array('click_count'=>$count+1), array("aw_product_id"=>$pid));
+		echo json_encode($result);
+	
+	}
+	
 	
 	public function addCalendat(){
 		$pid = $_POST["pid"];

@@ -14,6 +14,22 @@
 	
 	<script  type="text/javascript">
 	
+	function buyTickets(pid){
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}ticket/buyTickets',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					window.location.href = obj.href;
+				}else{
+					alert("failed");
+				}
+				
+			},
+			"json"
+		);
+	}
+	
 	function addCalendat(pid){
 		$.post(
 			'{{$smarty.const.WEBSITE_URL}}ticket/addCalendat',
@@ -104,7 +120,7 @@
                     "  	<td>"+
                     "		<p class=\"mt15\">"+
                     "			<a href=\"javascript:addCalendat('"+data[key].aw_product_id+"')\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
-                    "			<a href=\"javascript:\" class=\"back btn btn-black\"><strong>Buy Tickets</strong></a>"+
+                    "			<a href=\"javascript:buyTickets('"+data[key].aw_product_id+"')\" class=\"back btn btn-black\"><strong>Buy Tickets</strong></a>"+
                     "		</p></td></tr>"; 
                     
                     html+="</table><div class=\"table-xian\"></div></td> </tr>";
