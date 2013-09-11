@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li class="navlogo">
-                <a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/logo.png" class="index-logo" /></a>
+                <a href="{{$smarty.const.WEBSITE_URL}}"><img src="{{$smarty.const.WEBSITE_URL}}public/images/logo.png" class="index-logo" /></a>
             </li>
         </ul>
     </div>
@@ -35,7 +35,7 @@
 <script  type="text/javascript">
 $(function($) {
 	function mouseEvent(objId,objVal){
-		
+		   
 				var foucusFun = function(){
 					if($("#"+objId).val() == objVal){
 						$("#"+objId).val("");
@@ -60,7 +60,7 @@ $(function($) {
 			</script>
 <div class="search">
 	<div>
-    	<div>
+    	<div><form action="{{$smarty.const.WEBSITE_URL}}ticket" name="searchform" method="post">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
@@ -68,9 +68,10 @@ $(function($) {
                         <td><input type="text" name="location" id="location" value="{{$location}}" class="searchinput textinput-w" /></td>
                         <td><input type="text" name="fromDate" id="fromDate" value="{{$fromDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
                         <td><input type="text" name="toDate" id="toDate" value="{{$toDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
-                        <td><input type="button" onclick="search()" value="Search" class="input-style2" /></td>
+                        <td><input type="submit"   value="Search" class="input-style2" /></td>
                     </tr>
                 </table>
+               </form>
         </div>
     </div>
 </div>

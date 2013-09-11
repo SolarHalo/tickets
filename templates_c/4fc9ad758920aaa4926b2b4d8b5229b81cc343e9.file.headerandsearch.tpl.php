@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-08 13:31:35
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-11 05:07:28
          compiled from "G:\phpserver\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28905521c65d4aa37b3-57099622%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4fc9ad758920aaa4926b2b4d8b5229b81cc343e9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1378646700,
+      1 => 1378876033,
       2 => 'file',
     ),
   ),
@@ -61,7 +61,8 @@ ticket">
                 </a>
             </li>
             <li class="navlogo">
-                <a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+"><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/logo.png" class="index-logo" /></a>
             </li>
         </ul>
@@ -70,7 +71,7 @@ public/images/logo.png" class="index-logo" /></a>
 <script  type="text/javascript">
 $(function($) {
 	function mouseEvent(objId,objVal){
-		
+		   
 				var foucusFun = function(){
 					if($("#"+objId).val() == objVal){
 						$("#"+objId).val("");
@@ -95,7 +96,8 @@ $(function($) {
 			</script>
 <div class="search">
 	<div>
-    	<div>
+    	<div><form action="<?php echo @constant('WEBSITE_URL');?>
+ticket" name="searchform" method="post">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
@@ -107,9 +109,10 @@ $(function($) {
 " onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
                         <td><input type="text" name="toDate" id="toDate" value="<?php echo $_smarty_tpl->tpl_vars['toDate']->value;?>
 " onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
-                        <td><input type="button" onclick="search()" value="Search" class="input-style2" /></td>
+                        <td><input type="submit"   value="Search" class="input-style2" /></td>
                     </tr>
                 </table>
+               </form>
         </div>
     </div>
 </div><?php }} ?>

@@ -1,5 +1,5 @@
-﻿{{include file='layouts/header.tpl'}} 
-<div class="mian">
+{{include file='layouts/header.tpl'}} 
+<div class="mian"> 
     <div id="indexcontent" class="content">
     	 <DIV class="main-wrap">
             <DIV id="slide-box">

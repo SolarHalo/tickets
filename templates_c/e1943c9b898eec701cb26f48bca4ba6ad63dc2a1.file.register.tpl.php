@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-30 07:06:09
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-11 04:54:25
          compiled from "G:\phpserver\tickets\templates\register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12574521c69c4c1bf40-66951276%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1943c9b898eec701cb26f48bca4ba6ad63dc2a1' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\register.tpl',
-      1 => 1377845761,
+      1 => 1378875247,
       2 => 'file',
     ),
   ),
@@ -36,6 +36,18 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/func.css" type="text/css" rel="stylesheet" /> 
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
+<script src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery-1.10.1.min.js" type="text/javascript"></script> 
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script>
  
 </head>
 

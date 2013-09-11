@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-08 13:31:40
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-11 05:07:33
          compiled from "G:\phpserver\tickets\templates\layouts\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20897521c591a720310-02750838%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b9c5c13ff95d1526e2eb0530213fef0d0e68a5a' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1378646821,
+      1 => 1378876039,
       2 => 'file',
     ),
   ),
@@ -154,7 +154,8 @@ ticket">
                 </a>
             </li>
             <li class="navlogo">
-                <a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+"><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/logo.png" class="index-logo" /></a>
             </li>
         </ul>

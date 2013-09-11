@@ -120,7 +120,7 @@
                 </a>
             </li>
             <li class="navlogo">
-                <a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/logo.png" class="index-logo" /></a>
+                <a href="{{$smarty.const.WEBSITE_URL}}"><img src="{{$smarty.const.WEBSITE_URL}}public/images/logo.png" class="index-logo" /></a>
             </li>
         </ul>
     </div>

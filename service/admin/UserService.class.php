@@ -8,6 +8,7 @@ class UserService{
 	public  function checkPassword($username,$passwd){
 		if($username == "testadmin" and $passwd == "testadmin"){
 			 $arr = array('user_name'=>"testadmin", 'passwd'=>'testadmin');
+			 
 			$admin = (Object)$arr;
 			return $admin;
 		}

@@ -22,7 +22,10 @@
 <script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery-ui.js'></script>
 
 <script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery.timepicker.js'></script>
+<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
 
+<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
 
 
 
