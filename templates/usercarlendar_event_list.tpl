@@ -5,6 +5,67 @@
 <title>index</title>
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
+
+<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
+
+
+<script>
+
+	$(document).ready(function() {
+		$.ajax({
+			url:"{{$smarty.const.WEBSITE_URL}}userevent/getAllUserEvent",
+			datatype: "json",
+			success:function(data){
+				var html = "";
+				var obj = eval('(' + data + ')');
+				
+				
+				for(var i=0;i<obj.length;i++){
+				
+					var catory_name = obj[i].category_name;
+					if(catory_name==null){
+					 catory_name = "";
+					}
+					
+					var descr = obj[i].descr;
+					if(descr==null){
+						descr="";
+					}
+					
+					var fromdate = strToDate(obj[i].fromtime);
+					
+					html+="<tr><td><div class='row4 map'> <span>"+fromdate.toDateString()+"</span></div></td></tr><tr><td><div class=\"table-xian\"></div></td></tr>";
+					html+="<tr>"+
+           " <td class=\"tdT\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table map\">"+
+                "<tr class=\"tdT\">"+
+                  "<td><p><a href=\"#\" class=\"list-time timebtn_bg\">"+fromdate.toTimeString()+"</a></p></td>"+
+                 " <td><img src="+obj[i].imgurl+" width=\"92\" height=\"92\" class=\"btn\" /></td>"+
+                  "<td>"+catory_name+" > Comedy<br />"+
+                  "  <span>"+obj[i].ename+"</span><br />"+
+                  descr+".</td>"+
+               " </tr>"+
+               " <tr>"+
+                  "<td colspan=\"3\"><div class=\"table-xian\"></div></td>"+
+               " </tr>"+
+             " </table></td>"+
+          "</tr>";
+				}
+				$("#userEvents").html(html);
+			},
+			error:function(){
+				alert("getData failed");
+			}
+		});
+	});
+	
+	
+	//string 转 date
+	function strToDate(sdate){
+    	var d = new Date(Date.parse(sdate.replace(/-/g,"/"))); 
+    	return d;
+	}
+</script>
+
 </head> 
 <body>
   {{include file='layouts/headerandsearch.tpl'}} 
@@ -20,7 +81,9 @@
             </p></div>
       <div class="table-xian mt15"></div>
       <div class="events-c3">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      
+        <table id="userEvents" width="100%" border="0" cellspacing="0" cellpadding="0">
+      <!--
           <tr>
             <td><div class="row4 map"> <span>24th July</span></div></td>
           </tr>
@@ -111,6 +174,7 @@
                 </tr>
               </table></td>
           </tr>
+        -->
         </table>
       </div>
       <div class="events-r mt15">

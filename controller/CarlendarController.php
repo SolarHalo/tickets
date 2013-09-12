@@ -86,4 +86,14 @@ class CarlendarController extends  Controller{
 		$service->updateCustomEventById($entry);
 	}
 	
+	/**
+	 * 获取用户所有票务事件以及自定义事件
+	 */
+	/* public function getAllUserEvent(){
+		require_once SERVICE . DS . 'CarlendarService.class.php';
+		$service = new CarlendarService($this->getDB ());
+		
+		echo json_encode($service->getAllUserEvent());
+	}  */
+	
 }

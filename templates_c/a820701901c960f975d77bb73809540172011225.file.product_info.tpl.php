@@ -1,30 +1,138 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 15:45:12
+         compiled from "F:\PHP_WorkSapce\tickets\templates\product_info.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:302555231cbec2155e1-51561933%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'a820701901c960f975d77bb73809540172011225' => 
+    array (
+      0 => 'F:\\PHP_WorkSapce\\tickets\\templates\\product_info.tpl',
+      1 => 1379000709,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '302555231cbec2155e1-51561933',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5231cbed1e10d9_98039083',
+  'variables' => 
+  array (
+    'id' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5231cbed1e10d9_98039083')) {function content_5231cbed1e10d9_98039083($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>index</title>
-	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
-	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
-	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
+	<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+	<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" /> 
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
 	
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
- 
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-1.8.1.min.js" ></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
+	
+	<script  type="text/javascript">
+	
+	var setting = null; 
+	
+	$(function($) {
+	
+		 setting = function(){
+			var toDate = $("#toDate").val();
+			var fromDate = $("#fromDate").val();
+			
+			if(toDate != null && "" != toDate && "SDate To" != toDate){
+				$('#fromDate').datepicker('option', 'maxDate',toDate);  
+			}
+			
+			if(fromDate != null && "" != fromDate && "Date From" != fromDate){
+				$('#toDate').datepicker('option', 'minDate',fromDate);  
+			}
+			
+		}
+		
+		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
+		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+
+		$("#fromDate" ).datepicker();
+		$("#toDate" ).datepicker();
+		
+		/*function mouseEvent(objId,objVal){
+	
+			var foucusFun = function(){
+				if($("#"+objId).val() == objVal){
+					$("#"+objId).val("");
+				}
+			}
+			
+			$("#"+objId).focus(foucusFun);
+				
+			$("#"+objId).blur(function(){
+				if("" == $("#"+objId).val()){
+					$("#"+objId).val(objVal);
+				}
+			});
+		}
+		
+		mouseEvent("keyword","Search by keyword");
+		mouseEvent("location","Search by location");
+		mouseEvent("fromDate","Date From");
+		mouseEvent("toDate","SDate To");*/
+	});
+	function check( ){
+		var keyword = $("#keyword").val();
+		var location = $("#location").val();
+		var fromDate = $("#fromDate").val();
+		var toDate = $("#toDate").val();
+		
+		if(keyword == "Search by keyword"){
+			$("#keyword").val("");
+		}
+		
+		if("Search by location" == location){
+			$("#location").val("");
+		}
+		
+		if("Date From" == fromDate){
+			$("#fromDate").val("");
+		}
+		
+		if("SDate To" == toDate){
+			$("#toDate").val("");
+		}
+		
+		return true;
+	}
+	</script>
+	
 </head>
 
 <body>
 
 
-﻿{{include file='layouts/headerandsearch.tpl'}} 
+﻿<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 
 <script  type="text/javascript">
-	var postData = {'id':'{{$id}}'};
+	var postData = {'id':'<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+'};
 	$(function($) {
 		$.post(
-			'{{$smarty.const.WEBSITE_URL}}ticket/queryById',
+			'<?php echo @constant('WEBSITE_URL');?>
+ticket/queryById',
 			postData,
 			function(obj){
 				var html = "<h1>" + obj.product_name +"</h1>" +
@@ -34,12 +142,18 @@
 				$("#info-show").html(html);
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +
-//	                "	<li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc01.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc02.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc03.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc04.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc05.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc06.gif\" /></a></li>"+
+//	                "	<li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc01.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc02.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc03.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc04.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc05.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
 				$("#img-list").before(str);
 			},
@@ -94,8 +208,10 @@
                 <div class="row3 map">
                 	<span>View Map</span>
                     <div class="mt15" style="width: 407px; height: 339px">
-                    	<!-- <img src="{{$smarty.const.WEBSITE_URL}}/public/photo/mapphoto.png" /> -->
-                    	{{include file="map.tpl" }}
+                    	<!-- <img src="<?php echo @constant('WEBSITE_URL');?>
+/public/photo/mapphoto.png" /> -->
+                    	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
                     </div>
                 </div>
             </div>
@@ -135,4 +251,4 @@
 searchaddress("北京小学");
 </script>
 </body>
-</html>     
+</html>     <?php }} ?>

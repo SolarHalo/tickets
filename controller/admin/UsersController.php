@@ -8,7 +8,7 @@ class UsersController extends Controller {
 		$this->getSmarty ();
 		require_once SERVICE . DS . 'admin' . DS . 'UsersService.class.php';
 		// START 数据库查询及分页数据
-		$userService = new UsersService( $this->getDB () );
+		$userService = new UsersServic1e( $this->getDB () );
 		$page = isset ( $_POST ['page'] ) ? intval ( $_POST ['page'] ) : 1;
 		$rows = isset ( $_POST ['rows'] ) ? intval ( $_POST ['rows'] ) : 10;
 		$offset = ($page - 1) * $rows;

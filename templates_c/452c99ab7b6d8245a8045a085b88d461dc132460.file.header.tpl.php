@@ -1,25 +1,25 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 15:53:21
-         compiled from "E:\phpweb\tickets\templates\layouts\header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:29259521cac278edac9-74421513%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-10 09:09:29
+         compiled from "D:\workspace\php\tickets\templates\layouts\header.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:32285522ee1c9967b79-61196351%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '4c4f65794d7eae96d1722ae1b3426825597045e7' => 
+    '452c99ab7b6d8245a8045a085b88d461dc132460' => 
     array (
-      0 => 'E:\\phpweb\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1378300832,
+      0 => 'D:\\workspace\\php\\tickets\\templates\\layouts\\header.tpl',
+      1 => 1378562505,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '29259521cac278edac9-74421513',
+  'nocache_hash' => '32285522ee1c9967b79-61196351',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_521cac278fb1d2_57169527',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_522ee1c9a2ffb8_98600140',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_521cac278fb1d2_57169527')) {function content_521cac278fb1d2_57169527($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_522ee1c9a2ffb8_98600140')) {function content_522ee1c9a2ffb8_98600140($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,8 +44,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 	
 	var setting = null;
 	
-	$(function($) {
-	
+	$(function($) { 
 		 setting = function(){
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
@@ -99,18 +98,31 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 	<div>
         <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
         <ul>
-            <li class="navuserlogin">
-                <span class="username"><div>Mr Igor Diez</div><span>0</span></span>
-                <a href="#"  class="btn btn-range btn-Calendar out">Log Out</a> 
+            <?php if (empty($_SESSION['user'])){?>
+            <li>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+register" class="input-style1">Sign up</a>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+login" class="input-style1">Sign In</a>
             </li>
+            <?php }else{ ?>
+          <li class="navuserlogin">
+                <span class="username"><div><?php echo $_SESSION['user']->username;?>
+</div><span>0</span></span>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+login/loginout"  class="btn btn-range btn-Calendar out">Log Out</a> 
+            </li>
+            <?php }?>
             <li class="navlist">
-                <a href="#">
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+carlendar">
                     YOUR CALENDAR<br /> 
                     <font>View and Manage your calendar of events</font>
                 </a>
             </li>
             <li class="navlist">
-                <a href="#">
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+ticket">
                     EVENTS<br /> 
                     <font>What's on?</font>
                 </a>
