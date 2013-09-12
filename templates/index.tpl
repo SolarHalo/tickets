@@ -1,5 +1,5 @@
-﻿{{include file='layouts/header.tpl'}} 
-<div class="mian">
+{{include file='layouts/header.tpl'}} 
+<div class="mian"> 
     <div id="indexcontent" class="content">
     	 <DIV class="main-wrap">
             <DIV id="slide-box">
@@ -28,7 +28,7 @@
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3>live  at  the  apollo6</h3>
@@ -37,7 +37,7 @@
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3>live  at  the  apollo6</h3>
@@ -46,7 +46,7 @@
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3>live  at  the  apollo6</h3>
@@ -55,7 +55,7 @@
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
         </div>
         <div class="row6">
@@ -65,7 +65,7 @@
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="{{$smarty.const.WEBSITE_URL}}public/images/index-ioc02.gif" />add   to   calendar</h3> 
@@ -73,7 +73,7 @@
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="{{$smarty.const.WEBSITE_URL}}public/images/index-ioc03.gif" />iphone  /  android  app</h3> 
@@ -81,7 +81,7 @@
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="{{$smarty.const.WEBSITE_URL}}public/images/index-ioc04.gif" />view  video</h3> 
@@ -89,7 +89,7 @@
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
         </div> 
     </div> 

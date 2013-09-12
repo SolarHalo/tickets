@@ -14,17 +14,16 @@ class UsersService{
 		$md5_pwd = md5($passwd);
 		//连接数据库查询用户名，密码
 	     $admin = $this->getUserByName($username);
+	     
 		if($admin){
-			if($admin->password == $md5_pwd){
+			if($admin->password == $md5_pwd){ 
 				return $admin;
 			}else{
 				return false;
 			}
 		}else{
 			return false;
-		}
-		 
-		return $admin; 
+		} 
 	}
    public function addUser($data){
 		return	$this->dbutil->insert("users", $data);

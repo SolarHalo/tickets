@@ -14,9 +14,8 @@
 	
 	<script  type="text/javascript">
 	
-	var setting = null;
-	
-	$(function($) { 
+	var setting = null; 
+	$(function($) {
 		 setting = function(){
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
@@ -36,7 +35,34 @@
 
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
+		
+			
+		function mouseEvent(objId,objVal){
+	
+			var foucusFun = function(){
+				if($("#"+objId).val() == objVal){
+					$("#"+objId).val("");
+				}
+			}
+			
+			$("#"+objId).focus(foucusFun);
+				
+			$("#"+objId).blur(function(){
+				if("" == $("#"+objId).val()){
+					$("#"+objId).val(objVal);
+				}
+			});
+		}
+		
+		mouseEvent("keyword","Search by keyword");
+		mouseEvent("location","Search by location");
+		mouseEvent("fromDate","Date From");
+		mouseEvent("toDate","SDate To");
 	});
+
+
+	
+		
 	function check( ){
 		var keyword = $("#keyword").val();
 		var location = $("#location").val();
@@ -72,7 +98,7 @@
         <ul>
             {{if empty($smarty.session.user) }}
             <li>
-                <a href="{{$smarty.const.WEBSITE_URL}}register" class="input-style1">Sign up</a>
+                <a href="{{$smarty.const.WEBSITE_URL}}register" class="input-style1">Sign up{{$smarty.session.user->username}} </a>
                 <a href="{{$smarty.const.WEBSITE_URL}}login" class="input-style1">Sign In</a>
             </li>
             {{else}}
@@ -94,7 +120,7 @@
                 </a>
             </li>
             <li class="navlogo">
-                <a href="#"><img src="{{$smarty.const.WEBSITE_URL}}public/images/logo.png" class="index-logo" /></a>
+                <a href="{{$smarty.const.WEBSITE_URL}}"><img src="{{$smarty.const.WEBSITE_URL}}public/images/logo.png" class="index-logo" /></a>
             </li>
         </ul>
     </div>
@@ -111,10 +137,10 @@
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
-                    	<td><input type="text" name="keyword" value="Search by keyword" class="searchinput textinput-w" /></td>
-                        <td><input type="text" name="location" value="Search by location" class="searchinput textinput-w" /></td>
-                        <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" /></td>
-                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+                    	<td><input type="text" id="keyword" name="keyword" value="Search by keyword" class="searchinput textinput-w" tabindex=1 /></td>
+                        <td><input type="text" id="location" name="location" value="Search by location" class="searchinput textinput-w" tabindex=2/></td>
+                        <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" tabindex=3/></td>
+                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=4/></td>
                         <td><input type="submit" value="Search" onclick="check()" class="input-style2" /></td>
                     </tr>
                 </table>

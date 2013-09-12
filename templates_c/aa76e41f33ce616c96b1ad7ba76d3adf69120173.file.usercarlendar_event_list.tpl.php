@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-10 14:20:46
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 13:21:50
          compiled from "D:\workspace\php\tickets\templates\usercarlendar_event_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15236521c987955f802-10109075%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'aa76e41f33ce616c96b1ad7ba76d3adf69120173' => 
     array (
       0 => 'D:\\workspace\\php\\tickets\\templates\\usercarlendar_event_list.tpl',
-      1 => 1378822843,
+      1 => 1378992106,
       2 => 'file',
     ),
   ),
@@ -38,7 +38,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 	$(document).ready(function() {
 		$.ajax({
 			url:"<?php echo @constant('WEBSITE_URL');?>
-carlendar/getAllUserEvent",
+userevent/getAllUserEvent",
 			datatype: "json",
 			success:function(data){
 				var html = "";

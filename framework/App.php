@@ -25,7 +25,6 @@ class App{
 		if (!file_exists($filePath)) {
             die("Con't find the Constroller file!!! <br>the filepath is ".$filePath);
         }   
-        session_start();  
         require_once  $filePath;
 		$class = $route->getControllerClassName();
 		$method = $route->getMethodName();

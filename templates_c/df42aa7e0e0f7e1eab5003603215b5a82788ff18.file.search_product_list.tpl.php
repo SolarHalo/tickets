@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 09:05:46
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 07:34:24
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1378135281,
+      1 => 1378971255,
       2 => 'file',
     ),
   ),
@@ -41,6 +41,41 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/js/jquery.ui.datepicker.js"></script>
 	
 	<script  type="text/javascript">
+	
+	function buyTickets(pid){
+		$.post(
+			'<?php echo @constant('WEBSITE_URL');?>
+ticket/buyTickets',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					window.location.href = obj.href;
+				}else{
+					alert("failed");
+				}
+				
+			},
+			"json"
+		);
+	}
+	
+	function addCalendat(pid){
+		$.post(
+			'<?php echo @constant('WEBSITE_URL');?>
+ticket/addCalendat',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					alert("success");
+				}else{
+					window.location.href="<?php echo @constant('WEBSITE_URL');?>
+login";
+				}
+				
+			},
+			"json"
+		);
+	} 
 	
 	function search( pager, cat,pageSize){
 		var keyword = $("#keyword").val();
@@ -100,7 +135,7 @@ ticket/search',
 				$("#cat-list").html(str);
 				
 				for(var key in data){
-					html+="<tr><td><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table list-tablep\">";
+					html+="<tr><td><table  border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table list-tablep\">";
 				
 					html += "<tr>" +
 						"<td class=\"tdC\">"+data[key].week+"<br />" +
@@ -118,8 +153,9 @@ ticket/info/?id="+data[key].aw_product_id+"' >"+data[key].product_name+"</a></sp
                     "  	<td colspan=\"2\">&nbsp;</td>"+
                     "  	<td>"+
                     "		<p class=\"mt15\">"+
-                    "			<a href=\"#\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
-                    "			<a href=\"#\" class=\"back btn btn-black\"><strong>Buy Tickets</strong></a>"+
+                    "			<a href=\"javascript:addCalendat('"+data[key].aw_product_id+"')\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
+                    "			<a href=\"<?php echo @constant('WEBSITE_URL');?>
+buyticket/index/pid="+data[key].aw_product_id+"\" class=\"back btn btn-black\" target='_blank'><strong>Buy Tickets</strong></a>"+
                     "		</p></td></tr>"; 
                     
                     html+="</table><div class=\"table-xian\"></div></td> </tr>";

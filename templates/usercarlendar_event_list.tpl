@@ -13,7 +13,7 @@
 
 	$(document).ready(function() {
 		$.ajax({
-			url:"{{$smarty.const.WEBSITE_URL}}carlendar/getAllUserEvent",
+			url:"{{$smarty.const.WEBSITE_URL}}userevent/getAllUserEvent",
 			datatype: "json",
 			success:function(data){
 				var html = "";

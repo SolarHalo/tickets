@@ -1,4 +1,24 @@
-﻿{{include file='layouts/headersearch.tpl'}} 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>index</title>
+	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
+	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
+	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
+	
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
+ 
+</head>
+
+<body>
+
+
+﻿{{include file='layouts/headerandsearch.tpl'}} 
 
 <script  type="text/javascript">
 	var postData = {'id':'{{$id}}'};
@@ -73,8 +93,9 @@
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
-                    <div class="mt15">
-                    	<img src="photo/mapphoto.png" />
+                    <div class="mt15" style="width: 407px; height: 339px">
+                    	<!-- <img src="{{$smarty.const.WEBSITE_URL}}/public/photo/mapphoto.png" /> -->
+                    	{{include file="map.tpl" }}
                     </div>
                 </div>
             </div>
@@ -110,5 +131,8 @@
         <a href="#">Terms and Conditions</a>
     </div>
 </div>
+<script type="text/javascript">
+searchaddress("北京小学");
+</script>
 </body>
 </html>     

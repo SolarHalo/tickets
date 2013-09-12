@@ -14,6 +14,38 @@
 	
 	<script  type="text/javascript">
 	
+	function buyTickets(pid){
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}ticket/buyTickets',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					window.location.href = obj.href;
+				}else{
+					alert("failed");
+				}
+				
+			},
+			"json"
+		);
+	}
+	
+	function addCalendat(pid){
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}ticket/addCalendat',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					alert("success");
+				}else{
+					window.location.href="{{$smarty.const.WEBSITE_URL}}login";
+				}
+				
+			},
+			"json"
+		);
+	} 
+	
 	function search( pager, cat,pageSize){
 		var keyword = $("#keyword").val();
 		var location = $("#location").val();
@@ -71,7 +103,7 @@
 				$("#cat-list").html(str);
 				
 				for(var key in data){
-					html+="<tr><td><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table list-tablep\">";
+					html+="<tr><td><table  border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table list-tablep\">";
 				
 					html += "<tr>" +
 						"<td class=\"tdC\">"+data[key].week+"<br />" +
@@ -87,8 +119,8 @@
                     "  	<td colspan=\"2\">&nbsp;</td>"+
                     "  	<td>"+
                     "		<p class=\"mt15\">"+
-                    "			<a href=\"#\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
-                    "			<a href=\"#\" class=\"back btn btn-black\"><strong>Buy Tickets</strong></a>"+
+                    "			<a href=\"javascript:addCalendat('"+data[key].aw_product_id+"')\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
+                    "			<a href=\"{{$smarty.const.WEBSITE_URL}}buyticket/index/pid="+data[key].aw_product_id+"\" class=\"back btn btn-black\" target='_blank'><strong>Buy Tickets</strong></a>"+
                     "		</p></td></tr>"; 
                     
                     html+="</table><div class=\"table-xian\"></div></td> </tr>";

@@ -21,33 +21,26 @@
 <div class="mian">
     <div class="content">
     	<div class="article">
-        	<h5>Daybees Privacy Policy</h5>
+        	<h5>jump to buy ticket page</h5>
             <p>
-            	Taptron Limited ("We") are committed to protecting and respecting your privacy.
+            	please wait <span id="mes">2</span> second ...
             </p>
-            <p>
-            	This policy (together with our terms of use and cookie policy sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us. 
-                Please read the following carefully to understand our views and practices regarding your personal data and how we will treat it.
-            </p>
-            <h5>Daybees Privacy Policy</h5>
-            <p>
-            	Taptron Limited ("We") are committed to protecting and respecting your privacy.
-            </p>
-            <ul>
-            	<li>
-                	Information that you provide by filling in forms and registration details on our site Daybees.com (and such related domain names) ("our site"). 
-                    This includes information provided at the time of registering to use our site, subscribing to our service, posting material, interacting with our  
-                    site or requesting further services.
-                </li>
-      			<li>
-                	 If you contact us, we may keep a record of that correspondence.
-                </li>
-                <li>
-                	 We may also ask you to complete surveys that we use for research purposes, although you do not have to respond to them.
-                </li>
-            </ul>
+            
         </div>
     </div>
 	<div class="h-blackbg"></div>
 </div>
+<script type="text/javascript">
+var i = 2;
+var intervalid;
+intervalid = setInterval("fun()", 1000);
+function fun() {
+    if (i == 0) {
+        window.location.href = "{{$ticketurl}}";
+        clearInterval(intervalid);
+    }
+    document.getElementById("mes").innerHTML = i;
+    i--; 
+}
+</script>
 {{include file='layouts/footer.tpl'}}  

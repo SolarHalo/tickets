@@ -1,8 +1,9 @@
+ 
 <?php 
 
-error_reporting(E_ERROR | E_PARSE);
+//error_reporting(E_ERROR | E_PARSE);
 //error_reporting(E_ALL & ~E_STRICT & ~E_DEPRECATED);
-ini_set("display_errors", 0);
+//ini_set("display_errors", 0);
 //define('SMARTY_DIR', PROJECT.'/framework/lib/Smarty-3.1.13/libs/');
 //  
 define('ADMIN_TITLE', "后台管理中心");
@@ -15,7 +16,7 @@ ini_set('include_path', ini_get('include_path').PATH_SEPARATOR.SMARTY_DIR);
 
  
 $CONFIG['DB']= array(
-    'db_host'           =>      '127.0.0.1',
+    'db_host'           =>      '109.123.92.158',
     'db_user'           =>      'root', 
     'db_password'       =>      'root',
     'db_database'       =>      'events', 
@@ -44,3 +45,4 @@ $CONFIG['WEBSERVICE']= array(
     "userName" 			=> "trendy",
     "passWord" 			=> "webvip_7uj*IK-2013"
 );
+ 

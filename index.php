@@ -1,4 +1,5 @@
 <?php
+session_start();  
 define('ROOT',dirname(dirname(__FILE__))); //项目部署目录的上一级 
 define('PROJECT',dirname(__FILE__));       //项目部署目录
 define('DS',DIRECTORY_SEPARATOR );         //系统提供文件路径分隔符  
