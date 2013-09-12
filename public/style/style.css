@@ -1066,13 +1066,15 @@ a.right-by{
 	}
 
 .tdC .time2{ 
-	display:none;
+	visbility:hidden;
 	}
 .list-tablep:hover .tdC .time2{ 
-	display:block;
+	visbility:visible;
 	}
 
-
+.list-tablep tr td p.mt15{
+width:250px;
+}
 .index_banner{
 	width:100%;
 	background:url(../images/indextopbannerbg.gif);}
@@ -1218,6 +1220,35 @@ textarea.textinput-w3{
 div.slideBox{ position:relative; width:670px; height:300px; overflow:hidden;}
 div.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
 div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
+/*====================20130902=================*/
+
+.article{
+	padding:30px;
+	font-family:"Titillium";
+	color:#666;
+	font-size:14px;
+	}
+
+.article h5{
+	font-size:24px;
+	color:#000;
+	padding:5px 0 10px;
+	font-family:"Titillium";
+	line-height:100%;
+	}
+.article p{
+	padding-bottom:15px;
+	line-height:1.7em;
+	}
+
+.article ul{
+	padding:0 0 15px 15px;
+	}
+.article ul li{
+	list-style:disc;
+	text-indent:-0.3px;
+	}
+
 
 
 

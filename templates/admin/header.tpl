@@ -49,13 +49,18 @@
             font-weight: bold;
         }
         
-        .ui-pg-input{
-			width:20px;
-		}
-		.ui-pg-selbox {
-			width:60px;
-		    height:30px;
-		}
+input.ui-pg-input {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    line-height: normal
+}
+select.ui-pg-selbox {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+    line-height: normal
+}
         
     </style>
 
@@ -76,4 +81,4 @@
   <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
   <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
   <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
-  <!--[if (gt IE 9)|!(IE)]><!--> 
+  <!--[if (gt IE 9)|!(IE)]><!-->  

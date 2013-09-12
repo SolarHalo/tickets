@@ -18,7 +18,7 @@ class RegisterController extends  Controller{
 		
 		 $user = $userService->getEmailByName($email);
 		  
-		 if(!empty($user)){
+		 if(!empty($user->usrname)){
 		 	 
 		 	$this->smarty->assign("errortip",$this->userExsist('this user has all ready exsist!!!!'));
 		 	$this->smarty->display("register.tpl"); 

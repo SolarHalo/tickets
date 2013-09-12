@@ -2,7 +2,7 @@
 class IndexController extends Controller {
 	public function index() {
 		$this->getSmarty ();
-		
+	 
 		require_once SERVICE . DS . 'admin' . DS . 'ImgcarouserlService.class.php';
 		// START 数据库查询及分页数据
 		$imgService = new ImgcarouserlService ( $this->getDB () );
@@ -29,7 +29,7 @@ class IndexController extends Controller {
 			$this->smarty->assign ( 'imagesources', $source );
 		
 		}
-		
+	  
 		$this->smarty->display ( "index.tpl" );
 	}
 	

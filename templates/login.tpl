@@ -2,28 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
+<title>login</title>
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/func.css" type="text/css" rel="stylesheet" /> 
-
-</head>
-
-<body>
+<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js" type="text/javascript"></script> 
+<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
+<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
+<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
+</head> 
+<body> 
 {{include file='layouts/headerandsearch.tpl'}} 
 <div class="mian">
     <div class="content">
     	<div class="login-l login">
         	<h6>sign&nbsp;&nbsp;in</h6>
         	{{$errortip}}
-        	<form id="loginform" method="post">
+        	<form id="loginform" name="loginform" method="post">
             <table> 
 				<tr>
-                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"   autofocus="true" name="user_name"/></td> 
+                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"   autofocus="true" name="user_name" tabindex=1 /></td> 
                 </tr>
 				<tr>
-                    <td><span>Password<a href="#">Forgotten your password?</a></span><input type="password" class="input-style3 validate[required] text-input " name="password" /></td>  
+                    <td><span>Password<a href="#">Forgotten your password?</a></span><input type="password" class="input-style3 validate[required] text-input " name="password" tabindex=2/></td>  
                 </tr>
                 <tr>
                     <td><span><input type="checkbox" name="remember" value="1"/><font>Remember Me</font></span></td>  
@@ -58,9 +62,11 @@
     </div>
 	<div class="h-blackbg"></div>
 </div>
-<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 <script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine-en.js" type="text/javascript"></script>
-<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine.js" type="text/javascript"></script> 
+
+
+	
 <script type="text/javascript"> 
 $(document).ready(function(){
 	// binds form submission and fields to the validation engine

@@ -7,6 +7,19 @@ class TicketController extends  Controller{
 		$location = $_POST["location"];
 		$this->getSmarty(); 
 		
+		if($keyword == null || $keyword == ""){
+			$keyword = "Search by keyword" ;
+		}
+		if($location == null || $location == "" ){
+			$location = "Search by location";
+		}
+		if($fromDate == null || $fromDate == ""){
+			$fromDate = "Date From";
+		}
+		if($toDate == null || $toDate == "" ){
+			$toDate = "SDate To";
+		}
+		
 		$this->smarty->assign ( 'keyword', $keyword );
 		$this->smarty->assign ( 'location', $location );
 		$this->smarty->assign ( 'fromDate', $fromDate );
@@ -20,6 +33,11 @@ class TicketController extends  Controller{
 
 		$id = $param[0];
 		$this->getSmarty();
+		
+		$this->smarty->assign ( 'keyword', "Search by keyword" );
+		$this->smarty->assign ( 'location', "Search by location" );
+		$this->smarty->assign ( 'fromDate', "Date From" );
+		$this->smarty->assign ( 'toDate', "SDate To" );
 		
 		$this->smarty->assign ( 'id', $id );
 		$this->smarty->display("product_info.tpl");
@@ -49,6 +67,47 @@ class TicketController extends  Controller{
 			break;
 		}
 		
+		echo json_encode($result);
+	}
+	public function buyTickets(){
+		$pid = $_POST["pid"];
+	
+		$db = $this->getDB();
+	
+		$res = $db->get_results("select click_count,aw_deep_link from products where aw_product_id='$pid'");
+	
+		$result = array("success"=>true,"res"=>false);
+	
+		$count = 0;
+	
+		foreach ($res as $re){
+			$result = array("success"=>true,"res"=>true,"href"=>$re->aw_deep_link);
+			$count = $re->click_count;
+			break;
+		}
+	
+		if($count == null || $count == ""){
+			$count = 0;
+		}
+	
+		$db->update("products", array('click_count'=>$count+1), array("aw_product_id"=>$pid));
+		echo json_encode($result);
+	
+	}
+	
+	
+	public function addCalendat(){
+		$pid = $_POST["pid"];
+		
+		$db = $this->getDB();
+		$user = $_SESSION['user'];
+		
+		$result = array("success"=>true,"res"=>false);
+		 
+		if($user != null){
+			$db->insert("userentrys", array("userid"=>$user->userid,"productid"=>$pid,"entrytype"=>2));
+			$result = array("success"=>true,"res"=>true);
+		} 
 		echo json_encode($result);
 	}
 	
@@ -177,7 +236,15 @@ class TicketController extends  Controller{
 		
 		$res = $db->get_results($recordsSql);
 		$data = array();
+		
+		$descLen = 40 ;
 		foreach ($res as $re){
+			
+			$desc = $re->description;
+			if($desc != null && strlen($desc) > $descLen){
+				$desc = substr($desc,0,$descLen)."... ...";
+			}
+
 			$data[] = array(
 					"week"=>$re->week,
 					"month"=>$re->month,
@@ -188,7 +255,7 @@ class TicketController extends  Controller{
 					"aw_thumb_url"=>$re->aw_thumb_url,
 					"category_name"=>$re->category_name,
 					"promotional_text"=>$re->promotional_text,
-					"description"=>$re->description,
+					"description"=>$desc,
 					"display_price"=>$re->display_price
 					
 			);
