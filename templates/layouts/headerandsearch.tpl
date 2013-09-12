@@ -64,10 +64,10 @@ $(function($) {
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
-                    	<td><input type="text" name="keyword" id="keyword" value="{{$keyword}}" class="searchinput textinput-w" /></td>
-                        <td><input type="text" name="location" id="location" value="{{$location}}" class="searchinput textinput-w" /></td>
-                        <td><input type="text" name="fromDate" id="fromDate" value="{{$fromDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
-                        <td><input type="text" name="toDate" id="toDate" value="{{$toDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+                    	<td><input type="text" name="keyword" id="keyword" value="{{$keyword}}" class="searchinput textinput-w" tabindex=3 /></td>
+                        <td><input type="text" name="location" id="location" value="{{$location}}" class="searchinput textinput-w" tabindex=4/></td>
+                        <td><input type="text" name="fromDate" id="fromDate" value="{{$fromDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=5/></td>
+                        <td><input type="text" name="toDate" id="toDate" value="{{$toDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=6/></td>
                         <td><input type="submit"   value="Search" class="input-style2" /></td>
                     </tr>
                 </table>

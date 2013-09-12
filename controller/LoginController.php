@@ -12,11 +12,16 @@ class LoginController extends  Controller{
 		     extract ( $_POST, EXTR_IF_EXISTS );  
 			 require_once SERVICE.DS.'admin'.DS.'UsersService.class.php';
 			 $userSerivce = new UsersService($this->getDB());
-			 $user_info = $userSerivce->checkPassword ( $user_name, $password );
-			
-			if ($user_info) { 
-				 $_SESSION['user']=$user_info;
-				 CommonBase::jumpUrl ( 'index' );
+			 $user_info = $userSerivce->checkPassword($user_name, $password );
+		       
+			if (!empty($user_info->username)) { 
+				$_SESSION['user'] = $user_info;
+				$url = WEBSITE_URL."index";  
+	     	        	 	$redirect = "<script language='javascript' type='text/javascript'>";  
+							$redirect .= "window.location.href='$url'";  
+							$redirect .= "</script>";  
+					echo $redirect;
+			 
 			 }else{ 
 				 $this->smarty->assign("errortip",$this->userExsist("username or password error"));   
 			 } 
@@ -26,8 +31,13 @@ class LoginController extends  Controller{
 	  	  return "<div class='alert alert-error'>$msg</div>";
 	  }
 	  public function loginout(){
-	  	   $_SESSION['user'] = null;
-	        CommonBase::jumpUrl ( 'index' );
+	  	   $_SESSION['user'] = null; 
+			$url = WEBSITE_URL."index";  
+	     	        	 	$redirect = "<script language='javascript' type='text/javascript'>";  
+							$redirect .= "window.location.href='$url'";  
+							$redirect .= "</script>";  
+					echo $redirect;
+		 
 	  }
 	  public function testsendmail(){
 	    	echo "send";

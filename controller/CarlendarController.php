@@ -1,10 +1,14 @@
 <?php
 class CarlendarController extends  Controller{
-	public function index(){ 
-		$user->id = 1;
-		$user->username = 'dhy';
-		//临时session
-		$_SESSION['user'] = $user;
+	public function index(){
+		$user = $_SESSION['user']; 
+		    if(empty($user->username)){
+				$url = WEBSITE_URL."login";  
+		     	        	 	$redirect = "<script language='javascript' type='text/javascript'>";  
+								$redirect .= "window.location.href='$url'";  
+								$redirect .= "</script>";  
+						echo $redirect;
+			} 
 		 $this->getSmarty(); 
  		 $this->smarty->display("usercarlendar.tpl"); 
 	}
@@ -20,7 +24,7 @@ class CarlendarController extends  Controller{
 		$type = $_POST['type'];
 		$entry = $_POST['entry'];
 		$productid = $_POST['productid'];
-		$userid = $_SESSION['user']->id;
+		$userid = $_SESSION['user']->userid;
 		$entry = json_decode(json_encode($entry));
 		if($type==1){
 			//自定义事件
@@ -37,7 +41,7 @@ class CarlendarController extends  Controller{
 		if(empty($_SESSION['user'])){
 			return;
 		}
-		 $userid = $_SESSION['user']->id; 
+		 $userid = $_SESSION['user']->userid; 
 		
 		require_once SERVICE . DS . 'CarlendarService.class.php';
 		$service = new CarlendarService($this->getDB ());
@@ -56,7 +60,7 @@ class CarlendarController extends  Controller{
 		$type = $_POST['type'];
 		$entryid = $_POST['entryid'];
 		$productid = $_POST['productid'];
-		$userid = $_SESSION['user']->id;
+		$userid = $_SESSION['user']->userid;
 		
 		if($type==1){
 			//删除自定义事件

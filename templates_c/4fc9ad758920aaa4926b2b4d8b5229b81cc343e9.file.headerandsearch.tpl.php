@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-11 05:07:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 04:18:49
          compiled from "G:\phpserver\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28905521c65d4aa37b3-57099622%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4fc9ad758920aaa4926b2b4d8b5229b81cc343e9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1378876033,
+      1 => 1378959526,
       2 => 'file',
     ),
   ),
@@ -102,13 +102,13 @@ ticket" name="searchform" method="post">
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
                     	<td><input type="text" name="keyword" id="keyword" value="<?php echo $_smarty_tpl->tpl_vars['keyword']->value;?>
-" class="searchinput textinput-w" /></td>
+" class="searchinput textinput-w" tabindex=3 /></td>
                         <td><input type="text" name="location" id="location" value="<?php echo $_smarty_tpl->tpl_vars['location']->value;?>
-" class="searchinput textinput-w" /></td>
+" class="searchinput textinput-w" tabindex=4/></td>
                         <td><input type="text" name="fromDate" id="fromDate" value="<?php echo $_smarty_tpl->tpl_vars['fromDate']->value;?>
-" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=5/></td>
                         <td><input type="text" name="toDate" id="toDate" value="<?php echo $_smarty_tpl->tpl_vars['toDate']->value;?>
-" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=6/></td>
                         <td><input type="submit"   value="Search" class="input-style2" /></td>
                     </tr>
                 </table>

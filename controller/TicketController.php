@@ -103,10 +103,11 @@ class TicketController extends  Controller{
 		$user = $_SESSION['user'];
 		
 		$result = array("success"=>true,"res"=>false);
+		 
 		if($user != null){
-			$db->insert("userentrys", array("userid"=>$user->userid,"productid"=>$pid));
+			$db->insert("userentrys", array("userid"=>$user->userid,"productid"=>$pid,"entrytype"=>2));
 			$result = array("success"=>true,"res"=>true);
-		}
+		} 
 		echo json_encode($result);
 	}
 	

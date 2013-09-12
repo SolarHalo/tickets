@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-11 05:07:33
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 04:10:37
          compiled from "G:\phpserver\tickets\templates\layouts\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20897521c591a720310-02750838%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b9c5c13ff95d1526e2eb0530213fef0d0e68a5a' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1378876039,
+      1 => 1378959031,
       2 => 'file',
     ),
   ),
@@ -127,7 +127,8 @@ public/style/style.css" type="text/css" rel="stylesheet" />
             <?php if (empty($_SESSION['user'])){?>
             <li>
                 <a href="<?php echo @constant('WEBSITE_URL');?>
-register" class="input-style1">Sign up</a>
+register" class="input-style1">Sign up<?php echo $_SESSION['user']->username;?>
+ </a>
                 <a href="<?php echo @constant('WEBSITE_URL');?>
 login" class="input-style1">Sign In</a>
             </li>
@@ -175,10 +176,10 @@ ticket" method="post">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
-                    	<td><input type="text" id="keyword" name="keyword" value="Search by keyword" class="searchinput textinput-w" /></td>
-                        <td><input type="text" id="location" name="location" value="Search by location" class="searchinput textinput-w" /></td>
-                        <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" /></td>
-                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+                    	<td><input type="text" id="keyword" name="keyword" value="Search by keyword" class="searchinput textinput-w" tabindex=1 /></td>
+                        <td><input type="text" id="location" name="location" value="Search by location" class="searchinput textinput-w" tabindex=2/></td>
+                        <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" tabindex=3/></td>
+                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=4/></td>
                         <td><input type="submit" value="Search" onclick="check()" class="input-style2" /></td>
                     </tr>
                 </table>

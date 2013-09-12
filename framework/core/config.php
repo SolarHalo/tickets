@@ -1,9 +1,9 @@
  
 <?php 
 
-error_reporting(E_ERROR | E_PARSE);
+//error_reporting(E_ERROR | E_PARSE);
 //error_reporting(E_ALL & ~E_STRICT & ~E_DEPRECATED);
-ini_set("display_errors", 0);
+//ini_set("display_errors", 0);
 //define('SMARTY_DIR', PROJECT.'/framework/lib/Smarty-3.1.13/libs/');
 //  
 define('ADMIN_TITLE', "后台管理中心");
