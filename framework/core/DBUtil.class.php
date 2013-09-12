@@ -44,7 +44,7 @@ class DbUtil{
 	 * @param 数据库名 $dbname
 	 */
 	function DbUtil($hostname, $username, $password, $dbname){
-		return $this->__construct($hostname, $username, $password, $dbname);
+		return $this->init($hostname, $username, $password, $dbname);
 	}
 	
 	/**
@@ -55,7 +55,7 @@ class DbUtil{
 	 * @param unknown_type $password
 	 * @param unknown_type $dbname
 	 */
-	function __construct($hostname, $username, $password, $dbname){
+	function init($hostname, $username, $password, $dbname){
 		$this->dbhost = $hostname;
 		$this->dbname = $dbname;
 		$this->dbpassword = $password;

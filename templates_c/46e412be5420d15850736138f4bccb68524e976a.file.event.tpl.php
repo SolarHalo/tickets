@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 16:10:36
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-10 16:27:52
          compiled from "E:\phpweb\tickets\templates\admin\event\event.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:9457521f565cb67d69-40973644%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '46e412be5420d15850736138f4bccb68524e976a' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\event\\event.tpl',
-      1 => 1377782799,
+      1 => 1377886289,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'variables' => 
-  array (
-    'web_root' => 0,
-  ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_521f565cbae4e8_36626639',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521f565cbae4e8_36626639')) {function content_521f565cbae4e8_36626639($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
  <?php echo $_smarty_tpl->getSubTemplate ("admin/navibar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -54,8 +50,47 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 	<table id="grid"></table>
 	<div clsss='a' id="gridPager"></div>
 	
-	<script type="text/javascript">
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+    		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    		<h3 id="myModalLabel">修改活动描述</h3>
+ 		</div>
+  		<div class="modal-body">
+  			<input id="eventId" name="eventId" type="hidden"/>
+<!-- 
+    		<textarea id="eventDesc" name="eventDesc" class="input-xxlarge" rows="6" ></textarea>
+ -->
+    		<textarea id="eventDesc" name="eventDesc" rows="8" style="width:97%;height:100%" ></textarea>
+ 
+  		</div>
+  		<div class="modal-footer">
+    		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    		<button id="saveDesc" class="btn btn-primary">保存</button>
+  		</div>
+	</div>
 	
+	<script type="text/javascript">
+
+	$("#saveDesc").click(function(){
+		
+		var eventId = $("#eventId").val();
+		
+		var eventDesc = $("#eventDesc").val();
+		$.post(
+			'<?php echo @constant('WEBSITE_URL');?>
+admin/event/updateEvent',
+			{'eventId':eventId,'eventDesc':eventDesc},
+			function(obj){
+				if(obj.success){
+					$('#myModal').modal('hide');
+					$("#grid").trigger("reloadGrid");//执行reload
+				}
+			},
+			"json"
+		);
+		
+	});
+
 	function buildSelect(str){
 		eval("var obj = "+str);
 		var result = "<select>";
@@ -70,7 +105,7 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 	}
 	
 	jQuery("#grid").jqGrid({
-		url:'<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
+		url:'<?php echo @constant('WEBSITE_URL');?>
 admin/event/queryEvent',
 		datatype: "json",
 		mtype: "POST",	
@@ -85,7 +120,7 @@ admin/event/queryEvent',
 			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
 				searchoptions:{
 					sopt: [ 'eq', 'ne'],
-					dataUrl:'<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
+					dataUrl:'<?php echo @constant('WEBSITE_URL');?>
 admin/event/queryCategory',
 					buildSelect:function(str){
 						eval(" var obj = " + str);
@@ -101,8 +136,12 @@ admin/event/queryCategory',
 			{name:'description',index:'events.description', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'op',index:'op', width:80,search:false,sortable:false,
 				formatter:function(cellvalue, options, rowObject){
-					return "<a href=\"<?php echo $_smarty_tpl->tpl_vars['web_root']->value;?>
-admin/ticket/index/?event="+cellvalue+"\">查看票务</a>";
+					var res =  "<a href=\"<?php echo @constant('WEBSITE_URL');?>
+admin/ticket/index/?event="+cellvalue+"\">查看票务</a> | ";
+					
+					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"','"+rowObject[3]+"');\">修改活动描述</a>";
+					
+					return res ;
 				}
 			}
 		],
@@ -118,7 +157,12 @@ admin/ticket/index/?event="+cellvalue+"\">查看票务</a>";
 		
 	jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true
 	});
-	
+	function mdfdesc(id,desc){
+		console.log(id);
+		$("#eventId").val(id);
+		$("#eventDesc").val(desc);
+		$('#myModal').modal('show');
+	 };
 	</script>
  </div> 
  </div>
