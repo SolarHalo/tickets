@@ -76,6 +76,7 @@ class TicketController extends Controller{
 		
 		$config = array(
 				"products.product_name"=>JQGridFilterUtil::$STRING,
+				"aw_product_id"=>JQGridFilterUtil::$STRING,
 				"event_category.category_id"=>JQGridFilterUtil::$STRING,
 				"products.display_price"=>JQGridFilterUtil::$FLOAT,
 				"products.promotional_text"=>JQGridFilterUtil::$STRING,

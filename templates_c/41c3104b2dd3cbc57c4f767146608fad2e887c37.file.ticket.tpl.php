@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-29 14:00:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 15:47:48
          compiled from "G:\phpserver\tickets\templates\admin\ticket\ticket.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13128521c4cf5bd13b9-51465648%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '41c3104b2dd3cbc57c4f767146608fad2e887c37' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\ticket\\ticket.tpl',
-      1 => 1377784781,
+      1 => 1379000865,
       2 => 'file',
     ),
   ),
@@ -55,6 +55,11 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 	<div clsss='a' id="gridPager"></div>
 	
 	<script type="text/javascript">
+	function currencyFmatter( cellvalue, options, rowObject ) {
+	    // do something here
+	    console.log(cellvalue);
+	    return "<button class='btn'>查看详情<buttton>";
+	}
 	
 	function buildSelect(str){
 		eval("var obj = "+str);
@@ -80,9 +85,9 @@ admin/ticket/queryTicket',
 		width:1000,
 		rowNum: 20,
 		rowList: [10,20,30],
-		colNames:['票务id','票务名称','票务类型',"联盟提供小图","票价","场地","时间"],
+		colNames:['票务编号','票务名称','票务类型',"联盟提供小图","票价","场地","时间","操作"],
 		colModel:[
-			{name:'aw_product_id',index:'aw_product_id', width:100,hidden:true,search:false,searchoptions:{sopt: ['cn','eq', 'ne']}},
+			{name:'aw_product_id',index:'aw_product_id', width:50,hidden:false,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'product_name',index:'products.product_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
 				searchoptions:{
@@ -100,14 +105,16 @@ admin/ticket/queryCategory',
 					}
 				}
 			} ,
-			{name:'aw_thumb_url',index:'aw_thumb_url', width:30 ,search:false,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
+			{name:'aw_thumb_url',index:'aw_thumb_url', width:30 ,search:false,hidden:true,searchoptions:{sopt: ['cn','eq', 'ne' ]}} ,
 			{name:'display_price',index:'products.display_price', align:"right",sorttype:"float",width:40 ,search:true,searchoptions:{sopt: ['lt','le', 'eq','gt','ge' ]}} ,
 			{name:'promotional_text',index:'products.promotional_text', width:80 ,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}} , 
 			{name:'specifications',index:'products.specifications', sorttype:"date", formatter:"date", width:50 ,search:true,searchoptions:{sopt: ['lt','eq','gt','ne'],dataInit:function(elem){  
 				$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
 				$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 				jQuery(elem).datepicker();
-			}},formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d H:i:s'}} 
+			}},formatoptions: {srcformat:'Y-m-d H:i:s',newformat:'Y-m-d H:i:s'}},
+			{name:'aw_product_id',index:'aw_product_id', width:50,search:false,formatter:currencyFmatter}
+		
 		],
 		sortname:"products.specifications",
 		sortorder:'desc',
