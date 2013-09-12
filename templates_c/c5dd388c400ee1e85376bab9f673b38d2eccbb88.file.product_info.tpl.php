@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-03 09:07:11
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-11 04:47:05
          compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
-      1 => 1378135281,
+      1 => 1378872476,
       2 => 'file',
     ),
   ),
@@ -15,15 +15,48 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5225a6bf53c504_69706401',
   'variables' => 
   array (
     'id' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5225a6bf53c504_69706401',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5225a6bf53c504_69706401')) {function content_5225a6bf53c504_69706401($_smarty_tpl) {?>﻿<?php echo $_smarty_tpl->getSubTemplate ('layouts/headersearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_5225a6bf53c504_69706401')) {function content_5225a6bf53c504_69706401($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>index</title>
+	<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+	<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" /> 
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
+	
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-1.8.1.min.js" ></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script>
+	
+	<script  type="text/javascript">
+	
+	
+	</script>
+	
+</head>
+
+<body>
+
+
+﻿<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
  
 
 <script  type="text/javascript">
@@ -101,8 +134,11 @@ ticket/queryById',
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
-                    <div class="mt15">
-                    	<img src="photo/mapphoto.png" />
+                    <div class="mt15" style="width: 407px; height: 339px">
+                    	<!-- <img src="<?php echo @constant('WEBSITE_URL');?>
+/public/photo/mapphoto.png" /> -->
+                    	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
                     </div>
                 </div>
             </div>
@@ -138,5 +174,8 @@ ticket/queryById',
         <a href="#">Terms and Conditions</a>
     </div>
 </div>
+<script type="text/javascript">
+searchaddress("北京小学");
+</script>
 </body>
 </html>     <?php }} ?>

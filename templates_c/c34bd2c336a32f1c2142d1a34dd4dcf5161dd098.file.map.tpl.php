@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-04 17:20:02
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-04 17:39:11
          compiled from "E:\phpweb\tickets\templates\map.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:119665225e736142f67-83673444%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c34bd2c336a32f1c2142d1a34dd4dcf5161dd098' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\map.tpl',
-      1 => 1378307994,
+      1 => 1378308311,
       2 => 'file',
     ),
   ),
@@ -97,7 +97,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
   	                    var point = results[i].geometry.location;  
   	                    map.setCenter(point);  
   	                    var marker =  mark(map,point,results[i].formatted_address);
-    	                google.maps.event.addListener(marker, 'click', toggleBounce);
+    	               // google.maps.event.addListener(marker, 'click', toggleBounce);
   	                    }
   	                   
   	                }  
@@ -108,15 +108,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
   	    }
       }  
 
-
-  function toggleBounce() {
-
-    if (marker.getAnimation() != null) {
-      marker.setAnimation(null);
-    } else {
-      marker.setAnimation(google.maps.Animation.BOUNCE);
-    }
-  }
+ 
       /**
       *设置地图的等级
       */ 

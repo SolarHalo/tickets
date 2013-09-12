@@ -69,6 +69,32 @@ class TicketController extends  Controller{
 		
 		echo json_encode($result);
 	}
+	public function buyTickets(){
+		$pid = $_POST["pid"];
+	
+		$db = $this->getDB();
+	
+		$res = $db->get_results("select click_count,aw_deep_link from products where aw_product_id='$pid'");
+	
+		$result = array("success"=>true,"res"=>false);
+	
+		$count = 0;
+	
+		foreach ($res as $re){
+			$result = array("success"=>true,"res"=>true,"href"=>$re->aw_deep_link);
+			$count = $re->click_count;
+			break;
+		}
+	
+		if($count == null || $count == ""){
+			$count = 0;
+		}
+	
+		$db->update("products", array('click_count'=>$count+1), array("aw_product_id"=>$pid));
+		echo json_encode($result);
+	
+	}
+	
 	
 	public function addCalendat(){
 		$pid = $_POST["pid"];
@@ -77,10 +103,11 @@ class TicketController extends  Controller{
 		$user = $_SESSION['user'];
 		
 		$result = array("success"=>true,"res"=>false);
+		 
 		if($user != null){
-			$db->insert("userentrys", array("userid"=>$user->userid,"productid"=>$pid));
+			$db->insert("userentrys", array("userid"=>$user->userid,"productid"=>$pid,"entrytype"=>2));
 			$result = array("success"=>true,"res"=>true);
-		}
+		} 
 		echo json_encode($result);
 	}
 	

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-30 07:06:09
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 07:36:11
          compiled from "G:\phpserver\tickets\templates\register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:12574521c69c4c1bf40-66951276%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1943c9b898eec701cb26f48bca4ba6ad63dc2a1' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\register.tpl',
-      1 => 1377845761,
+      1 => 1378971368,
       2 => 'file',
     ),
   ),
@@ -36,6 +36,18 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/func.css" type="text/css" rel="stylesheet" /> 
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
+<script src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery-1.10.1.min.js" type="text/javascript"></script> 
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script>
  
 </head>
 
@@ -52,27 +64,27 @@ public/style/func.css" type="text/css" rel="stylesheet" />
 register" method="post">
             <table> 
 				<tr>
-                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" /></td> 
+                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" tabindex=11 /></td> 
                 </tr>
                 <tr>
-                    <td><span>Email Address</span><input type="text" class="input-style3 validate[required,custom[email]] text-input" name="email" /></td> 
+                    <td><span>Email Address</span><input type="text" class="input-style3 validate[required,custom[email]] text-input" name="email" tabindex=12/></td> 
                 </tr>
 				<tr>
-                    <td><span>Password</span><input type="password" class="input-style3 validate[required,minSize[6]] text-input" id="password" name="password"/></td>  
+                    <td><span>Password</span><input type="password" class="input-style3 validate[required,minSize[6]] text-input" id="password" name="password" tabindex=13/></td>  
                 </tr>
                 <tr>
-                    <td><span>Password Confirmation</span><input type="password" class="input-style3 validate[required,equals[password],minSize[6]] text-input" name="repassword" /></td>  
+                    <td><span>Password Confirmation</span><input type="password" class="input-style3 validate[required,equals[password],minSize[6]] text-input" name="repassword" tabindex=14/></td>  
                 </tr>
                 <tr>
-                    <td><span>First Name</span><input type="text" class="input-style3 validate[required] text-input" name="firstname"/></td>  
+                    <td><span>First Name</span><input type="text" class="input-style3 validate[required] text-input" name="firstname" tabindex=15/></td>  
                 </tr>
                 <tr>
-                    <td><span>Last Name</span><input type="text" class="input-style3 validate[required] text-input" name="lastname"/></td>  
+                    <td><span>Last Name</span><input type="text" class="input-style3 validate[required] text-input" name="lastname" tabindex=16/></td>  
                 </tr>
                 <tr>
                     <td><span>Birth Date</span>
                     	<div class="controls">
-							<select id="id_birthdate_0" name="day" class="validate[required]" >
+							<select id="id_birthdate_0" name="day" class="validate[required]" tabindex=17 >
                             <option selected="selected" value="">Day</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -106,7 +118,7 @@ register" method="post">
                             <option value="30">30</option>
                             <option value="31">31</option>
                             </select>
-                            <select id="id_birthdate_1" class="validate[required]" name="month">
+                            <select id="id_birthdate_1" class="validate[required]" name="month" tabindex=18>
                             <option selected="selected" value="" >Month</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -121,7 +133,7 @@ register" method="post">
                             <option value="11">11</option>
                             <option value="12">12</option>
                             </select>
-                            <select id="id_birthdate_2"  class="validate[required]" name="year">
+                            <select id="id_birthdate_2"  class="validate[required]" name="year" tabindex=19>
                             <option selected="selected" value="">Year</option>
                             <option value="2013">2013</option>
                             <option value="2012">2012</option>
@@ -238,7 +250,7 @@ register" method="post">
                     <a href="#" class="link_style01">Cookies Policy</a> *</font></span></td>  
                 </tr>
                 <tr>
-                    <td><input type="submit" class="input-style1 submit" value="REGISTER" /></td>  
+                    <td><input type="submit" class="input-style1 submit" value="REGISTER" tabindex=20/></td>  
                 </tr>
             </table>          
             </form>

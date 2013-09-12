@@ -8,8 +8,21 @@
 		}
 		
 		public function getUserCalEvent($userid){
-			$sql = "select e.entryid id,entrytitle title,entryfrom start,entryto end,entrynote,entrylocation,emailreminder,entryimg from userentrys ue,entry e where ue.userentryid='$userid' and ue.entryid=e.entryid and e.entryfrom is not null";
-			$results = $this->dbutil->get_results($sql);
+			//get custom event
+			$sql = "select e.entryid id,entrytitle title,entryfrom start,entryto end,entrynote,entrylocation,emailreminder,entryimg from userentrys ue,entry e where ue.userid='$userid' and ue.entryid=e.entryid and ue.entrytype=1 and e.entryfrom is not null";
+			$custem_results = $this->dbutil->get_results($sql);
+			//get product event
+			$sql = "select p.aw_product_id id,p.product_name title,p.specifications start,p.promotional_text entrylocation from userentrys ue,products p where ue.userid='$userid' and ue.productid=p.aw_product_id  and ue.entrytype=2 and p.specifications is not null";
+			$product_results = $this->dbutil->get_results($sql);
+			//set product event color is #fb7b0e
+			//you can see http://arshaw.com/fullcalendar/docs/event_data/Event_Object/
+			for($i=0;$i<count($product_results);$i++){
+			   $product_tmp =$product_results[$i];
+			   $product_tmp->color="#fb7b0e";
+			   $product_results[$i]=$product_tmp;
+			}
+			//merge custom and product event
+			$results = array_merge($custem_results,$product_results);
 			return $results;
 		}
 		
@@ -47,7 +60,7 @@
 			
 			//将用户自定义事件新增到关系表userentrys
 			$entryid = $this->dbutil->getInsertId();
-			$sql = "insert into userentrys(userentryid,entryid,entrytype) values($userid,'$entryid','1')";
+			$sql = "insert into userentrys(userid,entryid,entrytype) values('$userid','$entryid','1')"; 
 			$this->dbutil->query($sql);
 			return $entryid;
 
@@ -99,6 +112,8 @@
 			$this->dbutil->query($sql);
 			
 		}
+		
+		
 	}
 
 ?>

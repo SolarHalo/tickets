@@ -11,81 +11,8 @@
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
-	
-	<script  type="text/javascript">
-	
-	var setting = null; 
-	
-	$(function($) {
-	
-		 setting = function(){
-			var toDate = $("#toDate").val();
-			var fromDate = $("#fromDate").val();
-			
-			if(toDate != null && "" != toDate && "SDate To" != toDate){
-				$('#fromDate').datepicker('option', 'maxDate',toDate);  
-			}
-			
-			if(fromDate != null && "" != fromDate && "Date From" != fromDate){
-				$('#toDate').datepicker('option', 'minDate',fromDate);  
-			}
-			
-		}
-		
-		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
-		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
-
-		$("#fromDate" ).datepicker();
-		$("#toDate" ).datepicker();
-		
-		/*function mouseEvent(objId,objVal){
-	
-			var foucusFun = function(){
-				if($("#"+objId).val() == objVal){
-					$("#"+objId).val("");
-				}
-			}
-			
-			$("#"+objId).focus(foucusFun);
-				
-			$("#"+objId).blur(function(){
-				if("" == $("#"+objId).val()){
-					$("#"+objId).val(objVal);
-				}
-			});
-		}
-		
-		mouseEvent("keyword","Search by keyword");
-		mouseEvent("location","Search by location");
-		mouseEvent("fromDate","Date From");
-		mouseEvent("toDate","SDate To");*/
-	});
-	function check( ){
-		var keyword = $("#keyword").val();
-		var location = $("#location").val();
-		var fromDate = $("#fromDate").val();
-		var toDate = $("#toDate").val();
-		
-		if(keyword == "Search by keyword"){
-			$("#keyword").val("");
-		}
-		
-		if("Search by location" == location){
-			$("#location").val("");
-		}
-		
-		if("Date From" == fromDate){
-			$("#fromDate").val("");
-		}
-		
-		if("SDate To" == toDate){
-			$("#toDate").val("");
-		}
-		
-		return true;
-	}
-	</script>
-	
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
+ 
 </head>
 
 <body>

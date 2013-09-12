@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>user agenda manager</title>
-
+<title>user agenda manager</title> 
 
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" />
@@ -11,10 +10,8 @@
 <link href='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.css' rel='stylesheet' />
 <link href='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
 <link href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery-ui.css" type="text/css" rel="stylesheet" />
-<link href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery.timepicker.css" type="text/css" rel="stylesheet" />
-
-
-<script src='{{$smarty.const.WEBSITE_URL}}public/jquery/jquery-1.9.1.min.js'></script>
+<link href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery.timepicker.css" type="text/css" rel="stylesheet" /> 
+<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js" type="text/javascript"></script> 
 <script src='{{$smarty.const.WEBSITE_URL}}public/jquery/jquery-ui-1.10.2.custom.min.js'></script>
 <script src='{{$smarty.const.WEBSITE_URL}}public/js/usercalendar.js'></script>
 <script src='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.min.js'></script>
@@ -22,14 +19,10 @@
 <script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery-ui.js'></script>
 
 <script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery.timepicker.js'></script>
-
-
-
-
-<script>
-   
-   
-   
+<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" /> 
+<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script> 
+<script>  
 	$(document).ready(function() {
         var calendar;
 		$("#tcbox").hide();
@@ -152,6 +145,7 @@ function submitEvent(){
 		type:"post",
 		data:param,
 		success:function(data){
+			console.log(data);
 			//新增数据成功，关闭窗口，将事件显示在日历上
 			closewin('tcbox_addentity');
 			if(entryid!=null){
@@ -346,9 +340,7 @@ Date.prototype.pattern=function(fmt) {
                     <a href="#" class="fl btn btn-black-3">Export your Calendar</a>
                 </span>
                 <p class=" mt15 gigs-top-xx fr"> 
-                    <a href="#" class="btn-hs2 btn-Calendar left-by">Day</a> 
-                    <a href="#" class="btn-hs2 btn-Calendar by-hover">Week</a> 
-                    <a href="#" class="btn-hs2 btn-Calendar">Month</a> 
+                    
                     <a href="{{$smarty.const.WEBSITE_URL}}userevent" class="btn-hs2 btn-Calendar right-by">Agenda</a> 
                 </p>
             </div>

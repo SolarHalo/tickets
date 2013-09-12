@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-09 13:59:14
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 09:06:50
          compiled from "G:\phpserver\tickets\templates\usercarlendar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11541521c647f90fdb6-69881549%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6a97e8e78d745e3ee8e2cb58d571d361e3c7c676' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\usercarlendar.tpl',
-      1 => 1378564944,
+      1 => 1378976807,
       2 => 'file',
     ),
   ),
@@ -23,8 +23,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>user agenda manager</title>
-
+<title>user agenda manager</title> 
 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
@@ -39,11 +38,9 @@ public/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/assets/css/jquery-ui.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo @constant('WEBSITE_URL');?>
-public/assets/css/jquery.timepicker.css" type="text/css" rel="stylesheet" />
-
-
-<script src='<?php echo @constant('WEBSITE_URL');?>
-public/jquery/jquery-1.9.1.min.js'></script>
+public/assets/css/jquery.timepicker.css" type="text/css" rel="stylesheet" /> 
+<script src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery-1.10.1.min.js" type="text/javascript"></script> 
 <script src='<?php echo @constant('WEBSITE_URL');?>
 public/jquery/jquery-ui-1.10.2.custom.min.js'></script>
 <script src='<?php echo @constant('WEBSITE_URL');?>
@@ -56,14 +53,13 @@ public/assets/js/jquery-ui.js'></script>
 
 <script src='<?php echo @constant('WEBSITE_URL');?>
 public/assets/js/jquery.timepicker.js'></script>
-
-
-
-
-<script>
-   
-   
-   
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" /> 
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script> 
+<script>  
 	$(document).ready(function() {
         var calendar;
 		$("#tcbox").hide();
@@ -189,6 +185,7 @@ carlendar/addEvent";
 		type:"post",
 		data:param,
 		success:function(data){
+			console.log(data);
 			//新增数据成功，关闭窗口，将事件显示在日历上
 			closewin('tcbox_addentity');
 			if(entryid!=null){
@@ -385,9 +382,7 @@ Date.prototype.pattern=function(fmt) {
                     <a href="#" class="fl btn btn-black-3">Export your Calendar</a>
                 </span>
                 <p class=" mt15 gigs-top-xx fr"> 
-                    <a href="#" class="btn-hs2 btn-Calendar left-by">Day</a> 
-                    <a href="#" class="btn-hs2 btn-Calendar by-hover">Week</a> 
-                    <a href="#" class="btn-hs2 btn-Calendar">Month</a> 
+                    
                     <a href="<?php echo @constant('WEBSITE_URL');?>
 userevent" class="btn-hs2 btn-Calendar right-by">Agenda</a> 
                 </p>
