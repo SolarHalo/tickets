@@ -1,10 +1,10 @@
 <?php
 class CarlendarController extends  Controller{
 	public function index(){ 
-		$user->id = 1;
+		$user->userid = 1;
 		$user->username = 'dhy';
 		//临时session
-		$_SESSION['user'] = $user;
+		$_SESSION['user'] = $user; 
 		 $this->getSmarty(); 
  		 $this->smarty->display("usercarlendar.tpl"); 
 	}
@@ -37,7 +37,7 @@ class CarlendarController extends  Controller{
 		if(empty($_SESSION['user'])){
 			return;
 		}
-		 $userid = $_SESSION['user']->id; 
+		 $userid = $_SESSION['user']->userid; 
 		
 		require_once SERVICE . DS . 'CarlendarService.class.php';
 		$service = new CarlendarService($this->getDB ());
@@ -56,7 +56,7 @@ class CarlendarController extends  Controller{
 		$type = $_POST['type'];
 		$entryid = $_POST['entryid'];
 		$productid = $_POST['productid'];
-		$userid = $_SESSION['user']->id;
+		$userid = $_SESSION['user']->userid; 
 		
 		if($type==1){
 			//删除自定义事件
@@ -81,5 +81,15 @@ class CarlendarController extends  Controller{
 		
 		$service->updateCustomEventById($entry);
 	}
+	
+	/**
+	 * 获取用户所有票务事件以及自定义事件
+	 */
+	public function getAllUserEvent(){
+		require_once SERVICE . DS . 'CarlendarService.class.php';
+		$service = new CarlendarService($this->getDB ());
+		
+		echo json_encode($service->getAllUserEvent());
+	} 
 	
 }

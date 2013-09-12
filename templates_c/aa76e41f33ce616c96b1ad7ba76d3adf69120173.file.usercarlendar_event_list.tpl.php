@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 12:15:53
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-10 14:20:46
          compiled from "D:\workspace\php\tickets\templates\usercarlendar_event_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:15236521c987955f802-10109075%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'aa76e41f33ce616c96b1ad7ba76d3adf69120173' => 
     array (
       0 => 'D:\\workspace\\php\\tickets\\templates\\usercarlendar_event_list.tpl',
-      1 => 1377605471,
+      1 => 1378822843,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_521c98795ca947_02890847',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521c98795ca947_02890847')) {function content_521c98795ca947_02890847($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,6 +28,69 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/style.css" type="text/css" rel="stylesheet" /> 
+
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-1.8.1.min.js" ></script>
+
+
+<script>
+
+	$(document).ready(function() {
+		$.ajax({
+			url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/getAllUserEvent",
+			datatype: "json",
+			success:function(data){
+				var html = "";
+				var obj = eval('(' + data + ')');
+				
+				
+				for(var i=0;i<obj.length;i++){
+				
+					var catory_name = obj[i].category_name;
+					if(catory_name==null){
+					 catory_name = "";
+					}
+					
+					var descr = obj[i].descr;
+					if(descr==null){
+						descr="";
+					}
+					
+					var fromdate = strToDate(obj[i].fromtime);
+					
+					html+="<tr><td><div class='row4 map'> <span>"+fromdate.toDateString()+"</span></div></td></tr><tr><td><div class=\"table-xian\"></div></td></tr>";
+					html+="<tr>"+
+           " <td class=\"tdT\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table map\">"+
+                "<tr class=\"tdT\">"+
+                  "<td><p><a href=\"#\" class=\"list-time timebtn_bg\">"+fromdate.toTimeString()+"</a></p></td>"+
+                 " <td><img src="+obj[i].imgurl+" width=\"92\" height=\"92\" class=\"btn\" /></td>"+
+                  "<td>"+catory_name+" > Comedy<br />"+
+                  "  <span>"+obj[i].ename+"</span><br />"+
+                  descr+".</td>"+
+               " </tr>"+
+               " <tr>"+
+                  "<td colspan=\"3\"><div class=\"table-xian\"></div></td>"+
+               " </tr>"+
+             " </table></td>"+
+          "</tr>";
+				}
+				$("#userEvents").html(html);
+			},
+			error:function(){
+				alert("getData failed");
+			}
+		});
+	});
+	
+	
+	//string 转 date
+	function strToDate(sdate){
+    	var d = new Date(Date.parse(sdate.replace(/-/g,"/"))); 
+    	return d;
+	}
+</script>
+
 </head> 
 <body>
   <?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -44,7 +107,9 @@ public/style/style.css" type="text/css" rel="stylesheet" />
             </p></div>
       <div class="table-xian mt15"></div>
       <div class="events-c3">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      
+        <table id="userEvents" width="100%" border="0" cellspacing="0" cellpadding="0">
+      <!--
           <tr>
             <td><div class="row4 map"> <span>24th July</span></div></td>
           </tr>
@@ -135,6 +200,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
                 </tr>
               </table></td>
           </tr>
+        -->
         </table>
       </div>
       <div class="events-r mt15">
