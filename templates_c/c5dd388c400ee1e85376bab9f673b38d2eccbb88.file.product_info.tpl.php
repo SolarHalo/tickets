@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-11 04:47:05
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 16:03:45
          compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
-      1 => 1378872476,
+      1 => 1379001707,
       2 => 'file',
     ),
   ),
@@ -45,12 +45,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/js/jquery.ui.datepicker.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/js/searchform.js"></script>
-	
-	<script  type="text/javascript">
-	
-	
-	</script>
-	
+ 
 </head>
 
 <body>
@@ -73,17 +68,22 @@ ticket/queryById',
                     "<p class=\"time\">"+ obj.time+" BST <a href=\"#\">+ 1 more dates</a></p>" +
                     "<p class=\"mt15\"><a href=\"#\" class=\"btn btn-range\">Add to Calendar</a></p>" ;
 				$("#info-show").html(html);
-				
-				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />"+
-	                "<ul class=\"share\">" +
-	                "	<li><a href=\"#\"><img src=\"images/ioc01.gif\" /></a></li>"+
-	                "   <li><a href=\"#\"><img src=\"images/ioc02.gif\" /></a></li>"+
-	                "   <li><a href=\"#\"><img src=\"images/ioc03.gif\" /></a></li>"+
-	                "   <li><a href=\"#\"><img src=\"images/ioc04.gif\" /></a></li>"+
-	                "   <li><a href=\"#\"><img src=\"images/ioc05.gif\" /></a></li>"+
-	                "   <li><a href=\"#\"><img src=\"images/ioc06.gif\" /></a></li>"+
-	                "</ul>";
-				$("#img-list").html(str);
+				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
+//	                "<ul class=\"share\">" +
+//	                "	<li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc01.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc02.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc03.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc04.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc05.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc06.gif\" /></a></li>"+
+//	                "</ul>";
+				$("#img-list").before(str);
 			},
 			"json"
 		);
@@ -97,15 +97,16 @@ ticket/queryById',
                 <a href="#" class="back btn btn-black">&lt;&lt;Search Results</a>
             </div>
         	<div class="events-l mt15" id='img-list'>
-            	<img src="photo/photo.gif" width="160" height="265" class="img-sidebar" />
-                <ul class="share">
-                	<li><a href="#"><img src="images/ioc01.gif" /></a></li>
-                    <li><a href="#"><img src="images/ioc02.gif" /></a></li>
-                    <li><a href="#"><img src="images/ioc03.gif" /></a></li>
-                    <li><a href="#"><img src="images/ioc04.gif" /></a></li>
-                    <li><a href="#"><img src="images/ioc05.gif" /></a></li>
-                    <li><a href="#"><img src="images/ioc06.gif" /></a></li>
-                </ul>
+				<!-- AddThis Button BEGIN -->
+				<div class="addthis_toolbox addthis_default_style ">
+					<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+					<a class="addthis_button_tweet"></a> 
+					<a class="addthis_button_pinterest_pinit"></a> 
+					<a class="addthis_counter addthis_pill_style"></a>
+				</div>
+				<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-522dce200590139f"></script>
+				<!-- AddThis Button END -->
             </div>
             <div class="events-c">
             	<div class="row" id="info-show">

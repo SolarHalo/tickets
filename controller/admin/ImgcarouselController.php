@@ -62,17 +62,16 @@ class ImgcarouselController extends Controller {
 						break;
 				}
 			} else {
-				if ($_FILES ['file'] ['type'] == 'image/jpeg' or $_FILES ['file'] ['type'] == 'image/pjpeg' or $_FILES ['file'] ['type'] == 'image/gif' && $_FILES ['file'] ['size'] < 20480) {
+				if ($_FILES ['file'] ['type'] == 'image/jpeg' or $_FILES ['file'] ['type'] == 'image/pjpeg' or $_FILES ['file'] ['type'] == 'image/gif' or  $_FILES ['file'] ['type'] == 'image/png'  && $_FILES ['file'] ['size'] < 20480) {
 					
 					$title = $_POST ["title"];
 					
 					$value = $imgService->getAdminByName ( $title );
-					if ($value) {
+					if ($value) { 
 						$returnValue = "存在相同title的记录，请修改title！";
 					
-					} else {
-						
-						$dirroot = "uploads/arousel/";
+					} else { 
+						$dirroot =  PROJECT.DS."uploads/arousel/";
 						$filename = explode ( ".", $_FILES ['file'] ['name'] );
 						
 						$filename [0] = strtotime ( date ( 'Y-m-d' ) ) . "-" . rand (); // 设置随机数长度
@@ -99,7 +98,7 @@ class ImgcarouselController extends Controller {
 						$returnValue = "添加成功 ";
 					}
 				} else {
-					$returnValue = " 请上传小于2MB的jpeg或Gif类型的附件); ";
+					$returnValue = " 请上传小于2MB的jpeg或Gif类型的附件); 此文件类型为：".$_FILES ['file'] ['type'] ."大小为:".$_FILES ['file'] ['size'];
 				}
 			}
 		} else {
@@ -149,8 +148,8 @@ class ImgcarouselController extends Controller {
 						break;
 				}
 			} else {
-				if ($_FILES ['file'] ['type'] == 'image/jpeg' or $_FILES ['file'] ['type'] == 'image/pjpeg' or $_FILES ['file'] ['type'] == 'image/gif' && $_FILES ['file'] ['size'] < 20480) {
-					
+				if ($_FILES ['file'] ['type'] == 'image/jpeg' or $_FILES ['file'] ['type'] == 'image/pjpeg' or $_FILES ['file'] ['type'] == 'image/gif' or  $_FILES ['file'] ['type'] == 'image/png'  && $_FILES ['file'] ['size'] < 20480) {
+									
 					$title = $_POST ["title"];
 					$id = $_POST ["id"];
 					$value = $imgService->valiteTitle($id, $title);
@@ -159,7 +158,7 @@ class ImgcarouselController extends Controller {
 					
 					} else {
 						$item = $imgService->getAdminByID($id);
-						$dirroot = "uploads/arousel/";
+						$dirroot = PROJECT.DS."uploads/arousel/";
 						unlink($dirroot .$item->imgname);
 						
 						
@@ -192,8 +191,8 @@ class ImgcarouselController extends Controller {
 						$returnValue = "修改成功 ";
 					}
 				} else {
-					$returnValue = " 请上传小于2MB的jpeg或Gif类型的附件); ";
-				}
+					$returnValue = " 请上传小于2MB的jpeg或Gif类型的附件); 此文件类型为：".$_FILES ['file'] ['type'] ."大小为:".$_FILES ['file'] ['size'];
+									}
 			}
 		} else {
 			$returnValue = " 请上传文件！ ";
