@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 04:18:41
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 07:53:49
          compiled from "G:\phpserver\tickets\templates\admin\ticket\ticket.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13128521c4cf5bd13b9-51465648%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '41c3104b2dd3cbc57c4f767146608fad2e887c37' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\ticket\\ticket.tpl',
-      1 => 1379305117,
+      1 => 1379318014,
       2 => 'file',
     ),
   ),
@@ -87,10 +87,11 @@ admin/ticket/showproductinfo',
 				{'id':id},
 				function(obj){
 					var i =0;
+					$("#mybody").html("");    
+					 
 					for(attribute in obj){  
 						i++;
-						  //添加一行
-						  
+						  //添加一行 
 						 var mytable = document.getElementById("mybody");    
 						 var trlength= $("#producttable").find("tr").length
 						 console.log(trlength); 

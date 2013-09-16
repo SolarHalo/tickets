@@ -58,10 +58,11 @@
 				{'id':id},
 				function(obj){
 					var i =0;
+					$("#mybody").html("");    
+					 
 					for(attribute in obj){  
 						i++;
-						  //添加一行
-						  
+						  //添加一行 
 						 var mytable = document.getElementById("mybody");    
 						 var trlength= $("#producttable").find("tr").length
 						 console.log(trlength); 
