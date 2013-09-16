@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-10 14:40:47
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-15 12:14:02
          compiled from "F:\PHP_WorkSapce\tickets\templates\layouts\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:31193522f2f6f19eb33-84317723%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '32e3135f06b396417871d1fcd16dee3bcf4a03b6' => 
     array (
       0 => 'F:\\PHP_WorkSapce\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1378734089,
+      1 => 1379001288,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_522f2f6f387486_30370923',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_522f2f6f387486_30370923')) {function content_522f2f6f387486_30370923($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -127,7 +127,8 @@ public/style/style.css" type="text/css" rel="stylesheet" />
             <?php if (empty($_SESSION['user'])){?>
             <li>
                 <a href="<?php echo @constant('WEBSITE_URL');?>
-register" class="input-style1">Sign up</a>
+register" class="input-style1">Sign up<?php echo $_SESSION['user']->username;?>
+ </a>
                 <a href="<?php echo @constant('WEBSITE_URL');?>
 login" class="input-style1">Sign In</a>
             </li>
@@ -154,7 +155,8 @@ ticket">
                 </a>
             </li>
             <li class="navlogo">
-                <a href="#"><img src="<?php echo @constant('WEBSITE_URL');?>
+                <a href="<?php echo @constant('WEBSITE_URL');?>
+"><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/logo.png" class="index-logo" /></a>
             </li>
         </ul>
@@ -174,10 +176,10 @@ ticket" method="post">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
-                    	<td><input type="text" id="keyword" name="keyword" value="Search by keyword" class="searchinput textinput-w" /></td>
-                        <td><input type="text" id="location" name="location" value="Search by location" class="searchinput textinput-w" /></td>
-                        <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" /></td>
-                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" /></td>
+                    	<td><input type="text" id="keyword" name="keyword" value="Search by keyword" class="searchinput textinput-w" tabindex=1 /></td>
+                        <td><input type="text" id="location" name="location" value="Search by location" class="searchinput textinput-w" tabindex=2/></td>
+                        <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" tabindex=3/></td>
+                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=4/></td>
                         <td><input type="submit" value="Search" onclick="check()" class="input-style2" /></td>
                     </tr>
                 </table>
