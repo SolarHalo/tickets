@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 15:47:48
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 04:18:41
          compiled from "G:\phpserver\tickets\templates\admin\ticket\ticket.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13128521c4cf5bd13b9-51465648%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '41c3104b2dd3cbc57c4f767146608fad2e887c37' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\ticket\\ticket.tpl',
-      1 => 1379000865,
+      1 => 1379305117,
       2 => 'file',
     ),
   ),
@@ -38,7 +38,27 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
 		<h1 class="page-title">票务信息查看</h1>
 	</div>
-
+	 
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">票务详细信息</h3>
+  </div>
+  <div class="modal-body">
+    <p><table class='table' id="producttable">
+	    		 <thead><tr><td>属性名称</td><td>属性值</td></tr></thead>
+	    		  <tbody id="mybody">     
+	            </tbody>  
+	    		</table></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+    <button class="btn btn-primary">保存</button>
+  </div>
+</div>
+	 
 	<!-- <ul class="breadcrumb">
             <li><a href="<?php echo @constant('WEBSITE_URL');?>
 admin/user">管理列表</a> <span class="divider">/</span></li>  
@@ -54,13 +74,40 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 	<table id="grid"></table>
 	<div clsss='a' id="gridPager"></div>
 	
-	<script type="text/javascript">
-	function currencyFmatter( cellvalue, options, rowObject ) {
-	    // do something here
-	    console.log(cellvalue);
-	    return "<button class='btn'>查看详情<buttton>";
-	}
+
 	
+	<script type="text/javascript">
+	function currencyFmatter(cellvalue, options, rowObject) { 
+	    return "<button class='btn' id='showdesc' onclick='showdesc(\""+rowObject[0]+"\");'>查看详情<buttton>";
+	}
+	function showdesc(id){
+		$.post(
+				'<?php echo @constant('WEBSITE_URL');?>
+admin/ticket/showproductinfo',
+				{'id':id},
+				function(obj){
+					var i =0;
+					for(attribute in obj){  
+						i++;
+						  //添加一行
+						  
+						 var mytable = document.getElementById("mybody");    
+						 var trlength= $("#producttable").find("tr").length
+						 console.log(trlength); 
+				          var newTr = mytable.insertRow(trlength-1);     
+				          newTr.setAttribute("id","tr"+i);   
+				        //添加两列
+				        var newTd0 = newTr.insertCell();
+				        var newTd1 = newTr.insertCell();
+				        //设置列内容和属性
+				        newTd1.innerText = attribute; 
+				        newTd0.innerText= obj[attribute];
+					} 
+				},
+				"json"
+			);
+		$('#myModal').modal('show');
+	}
 	function buildSelect(str){
 		eval("var obj = "+str);
 		var result = "<select>";
