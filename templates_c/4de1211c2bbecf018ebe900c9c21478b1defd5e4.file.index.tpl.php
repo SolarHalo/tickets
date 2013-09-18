@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-05 17:12:47
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 16:22:28
          compiled from "E:\phpweb\tickets\templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:5914521cac27883628-33413200%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4de1211c2bbecf018ebe900c9c21478b1defd5e4' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\index.tpl',
-      1 => 1378392707,
+      1 => 1378995457,
       2 => 'file',
     ),
   ),
@@ -23,9 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_521cac278e46d5_95776753')) {function content_521cac278e46d5_95776753($_smarty_tpl) {?>﻿<?php echo $_smarty_tpl->getSubTemplate ('layouts/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_521cac278e46d5_95776753')) {function content_521cac278e46d5_95776753($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('layouts/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
  
-<div class="mian">
+<div class="mian"> 
     <div id="indexcontent" class="content">
     	 <DIV class="main-wrap">
             <DIV id="slide-box">
@@ -55,7 +55,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="<?php echo @constant('WEBSITE_URL');?>
+about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3>live  at  the  apollo6</h3>
@@ -64,7 +65,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="<?php echo @constant('WEBSITE_URL');?>
+about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3>live  at  the  apollo6</h3>
@@ -73,7 +75,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="<?php echo @constant('WEBSITE_URL');?>
+about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3>live  at  the  apollo6</h3>
@@ -82,7 +85,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="<?php echo @constant('WEBSITE_URL');?>
+about" class="a-but">View Details</A>
             </div>
         </div>
         <div class="row6">
@@ -93,7 +97,8 @@ public/images/index-ioc01.gif" />find   an   event</h3>
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="<?php echo @constant('WEBSITE_URL');?>
+about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="<?php echo @constant('WEBSITE_URL');?>
@@ -102,7 +107,8 @@ public/images/index-ioc02.gif" />add   to   calendar</h3>
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="<?php echo @constant('WEBSITE_URL');?>
+about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="<?php echo @constant('WEBSITE_URL');?>
@@ -111,7 +117,8 @@ public/images/index-ioc03.gif" />iphone  /  android  app</h3>
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="<?php echo @constant('WEBSITE_URL');?>
+about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="<?php echo @constant('WEBSITE_URL');?>
@@ -120,7 +127,8 @@ public/images/index-ioc04.gif" />view  video</h3>
                     consectetur adipisicing elit, sed 
                     do eiusmod tempor incididunt
                 </p>
-                <A href="#" class="a-but">View Details</A>
+                <A href="<?php echo @constant('WEBSITE_URL');?>
+about" class="a-but">View Details</A>
             </div>
         </div> 
     </div> 

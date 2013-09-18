@@ -33,65 +33,18 @@
 	src='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.min.js'></script>
 
 <script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery-ui.js'></script>
+
 <script
 	src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery.timepicker.js'></script>
-
 <link rel="stylesheet"
 	href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
 <link rel="stylesheet"
 	href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
 <script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
-<script type="text/javascript"
-	src="{{$smarty.const.WEBSITE_URL}}public/assets/lib/ajaxupload.js"></script>
+<script type="text/javascript" src="{{$smarty.const.WEBSITE_URL}}public/assets/lib/ajaxupload.js"></script>
 
 <script>  
-
-	//文件上传组件处理
-	jQuery(function () {
-   	 	var button = jQuery('#selectfile'), interval;//绑定事件
-    	var load = new AjaxUpload(button, {//绑定AjaxUpload
-        action: "{{$smarty.const.WEBSITE_URL}}fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP等
-        type:"POST",//提交方式
-        data:{//还可以提交的值
-            module:"ajaxupload",
-            type:jQuery("#__mstype__").attr("value"),
-        },
-        autoSubmit:true,//选择文件后,是否自动提交.这里可以变成true,自己去看看效果吧.
-        name:'msUploadFile',//提交的名字
-        onChange:function(file,ext){//当选择文件后执行的方法,ext存在文件后续,可以在这里判断文件格式
-			$("#file_show").attr("value",file);
-        },
-        onSubmit: function (file, ext) {//提交文件时执行的方法
-        	if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
-				//ext是后缀名
-        		button.value = "正在上传…";
-        		button.disabled = "disabled";
-			}else{	
-				alert("不支持的文件格式！只能上传jpg|jpeg|png|gif") ;
-				return false;
-			}
-        },
-        onComplete: function (file, response) {//文件提交完成后可执行的方法
-            button.text('浏览');
-            this.enable();
-			var data=eval("("+response+")");
-			if(data.type==0){
-				alert(data.message)
-			}else{
-				$("#entryimg").val(data.filename);
-			}
-        }
-    });
-	//	var submit=jQuery('#subm').click(function(){//触发提交的事件.与autoSubmit的设置有关,是否采用
-//			load.submit();
-//	});
-});
-
-
-
-
 	$(document).ready(function() {
-
         var calendar;
 		$("#tcbox").hide();
 		$("#tcbox_addentity").hide();
@@ -128,6 +81,7 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
+			editable: true,
 			selectable: true,
 			events: "{{$smarty.const.WEBSITE_URL}}carlendar/getUserCalEvent",
 			eventClick: function(calEvent, jsEvent, view) {
@@ -153,7 +107,13 @@
 			//		);
 			//	}  
 				calendar.fullCalendar('unselect');
-			} 
+			},
+			eventDragStart:function(event,jsEvent,ui,view) { 
+			//	if(event)
+			},
+			eventDragStop:function( event, jsEvent, ui, view ) { 
+				calendar.fullCalendar('renderEvent',event);
+			 }
 		});
 	
 }
@@ -177,9 +137,11 @@ function submitEvent(){
 			from.setHours(0);
 			from.setMinutes(0);
 			from.setSeconds(0);
+			
 			from = from.pattern("yyyy-MM-dd HH:mm:ss");
 	        to = "";
 		}else{
+			//from = fromdate+" 00:00:00";
 			from = fromdate;
 			to = todate;
 		}
@@ -210,9 +172,7 @@ function submitEvent(){
 	entry.entryto = $.trim(to);
 	entry.entrylocation = location;
 	entry.entrynote = note;
-	entry.entryimg =  $("#entryimg").val();
 	entry.emailreminder = rember==true?'1':'2';
-	
 	var entryid = $("#saveEvent").attr("un");
 	
 	var url;
@@ -229,27 +189,28 @@ function submitEvent(){
 		type:"post",
 		data:param,
 		success:function(data){
+			console.log(data);
 			//新增数据成功，关闭窗口，将事件显示在日历上
 			closewin('tcbox_addentity');
-			console.log(entryid);
 			if(entryid!=null){
 				calendar.fullCalendar("removeEvents",currentCalEvent.id);
 				calendar.fullCalendar("rerenderEvents");
-				data = entryid;
 			}
-			 
-			console.log(data,title,new Date(from.replace(/-/g,  '/')),allday,from ,from.replace(/-/g,  '/'))
+		
 			calendar.fullCalendar('renderEvent',
 					{
-						id:$.trim(data),
+						id:data,
 						title: title,
-						start: new Date(from.replace(/-/g,  '/')),
-						end: to.length<1?null:new  Date(to.replace(/-/g, '/')),
+						start: new Date(from),
+						end: to.length<1?null:new Date(to),
 						allDay:allday,
 						entrynote:note
 					},
 					true // make the event "stick"
 				);
+
+			fileupload();
+		
 		},
 		error:function(){
 			alert("update event fail");
@@ -257,20 +218,13 @@ function submitEvent(){
 		
 	});
 }
- 
 
-/*
- * 检测对象是否是空对象(不包含任何可读属性)。
- * 方法既检测对象本身的属性，也检测从原型继承的属性(因此没有使hasOwnProperty)。
- */
-function isEmpty(obj)
-{
-    for (var name in obj) 
-    {
-        return false;
-    }
-    return true;
-};
+function fileupload(){
+
+	$("fileloadform").submit();
+}
+
+
 function clickCalendarItem(start,end,allday){
 	clearWinData();
 	$("#tcbox_addentity").show();
@@ -284,6 +238,7 @@ function clickCalendarItem(start,end,allday){
 		$("#fromtime").val(start.pattern("HH:mm"));
 		$("#totime").val(end.pattern("HH:mm"));
 	}
+	alert($("#location").val());
 }
 
 function clearWinData(){
@@ -294,71 +249,44 @@ function clearWinData(){
 	$("#todate").val("");
 	$("#totime").val("");
 	$("#note").val("");
-	$("#location").attr("value","");
-	
-	$("#entryimg").val("");
-	$("#entryimg").val("");
-	$("#file_show").attr("value","");
-	
+	$("#location").val("");
 	$("#rember").prop("checked",false);
 }
 
 
 function popupDetailWin(calEvent){
-	var param;
-	if(calEvent.color == "#fb7b0e"){
-		 param={"type":2,"entryid":calEvent.id};
-	}else{
-		 param={"type":1,"entryid":calEvent.id};
-	}	
-	$.ajax({
-		url:"{{$smarty.const.WEBSITE_URL}}carlendar/getEventById",
-		type:"post",
-		data:param,
-		success:function(data){
-		    calEvent = eval('(' + data + ')');
-			calendar.fullCalendar("removeEvents",calEvent.id);
-		    calendar.fullCalendar("renderEvent",calEvent);
-		    $("#tcbox").show();
-			$(".eventname").html(calEvent.title);
-			var from;
-			var to ;
-			if(calEvent.end!=null){
-				var fromtime = calEvent.start.pattern("HH:mm");
-				var totime = calEvent.end.pattern("HH:mm");
-				if(fromtime=="00:00"&&fromtime==totime){
-					from = calEvent.start.toDateString();
-					to = calEvent.end.toDateString();
-				}else if(totime!="00:00"){
-					to = calEvent.end.toString();
-					from = calEvent.start.toString();
-				}
-				$("#fromtime").val(calEvent.start.pattern("HH:mm"));
-				
-				$("#todate").val(calEvent.end.pattern("yyyy-MM-dd"));
-				$("#totime").val(calEvent.end.pattern("HH:mm"));
-				
-			}else{
-				from = calEvent.start.toString();
-			}
-			var timeduration ;
-			if(to!=null){
-				timeduration = from+" - "+to;
-			}else{
-				timeduration = from;
-			}
-			$("#timeduration").html(timeduration);
-			$("#note_show").val(calEvent.entrynote);
-			$("#entryimg").attr("src","{{$smarty.const.WEBSITE_URL}}"+calEvent.entryimg);
-			currentCalEvent = calEvent;
-		},
-		error:function(){
-			alert("get event fail");
+
+  	$("#tcbox").show();
+	$(".eventname").html(calEvent.title);
+	var from;
+	var to ;
+	if(calEvent.end!=null){
+		var fromtime = calEvent.start.pattern("HH:mm");
+		var totime = calEvent.end.pattern("HH:mm");
+		if(fromtime=="00:00"&&fromtime==totime){
+			from = calEvent.start.toDateString();
+			to = calEvent.end.toDateString();
+		}else if(totime!="00:00"){
+			to = calEvent.end.toString();
+			from = calEvent.start.toString();
 		}
+		$("#fromtime").val(calEvent.start.pattern("HH:mm"));
 		
-	});
-	
-  	
+		$("#todate").val(calEvent.end.pattern("yyyy-MM-dd"));
+		$("#totime").val(calEvent.end.pattern("HH:mm"));
+		
+	}else{
+		from = calEvent.start.toDateString();
+	}
+	var timeduration ;
+	if(to!=null){
+		timeduration = from+" - "+to;
+	}else{
+		timeduration = from;
+	}
+	$("#timeduration").html(timeduration);
+	$("#note_show").val(calEvent.entrynote);
+	currentCalEvent = calEvent;
 }
 
 function popUpdateWin(calEvent){
@@ -512,7 +440,7 @@ Date.prototype.pattern=function(fmt) {
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					class="gigs-tck-table mt15 ">
 					<tr>
-						<td width="50" align="right" valign="top"><img id="entryimg" height="110" width="110" 
+						<td width="50" align="right" valign="top"><img
 							src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-ioc.gif" /></td>
 						<td align="left">
 							<h4 class="eventname">Lorem event title</h4>
@@ -549,68 +477,76 @@ Date.prototype.pattern=function(fmt) {
 				<span class="fl pl">Edit Entry</span><a href="#" class="fr pr"
 					onclick="javascript:closewin('tcbox_addentity');">X</a>
 			</div>
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				class="table-edit mt15" style="border: none;">
-				<tr>
-					<td width="77" align="right" valign="middle">Title&nbsp;&nbsp;</td>
-					<td align="left"><span class="inputborder"><input type="text"
-							class="input-style4 textinput-w3" id="title" /></span></td>
-				</tr>
-				<tr>
-					<td width="77" align="right" valign="middle">&nbsp;</td>
-					<td align="left"><input type="checkbox" align="middle" id="allday"><span
-							class="fontsize12">&nbsp;&nbsp;&nbsp;All Day</span></td>
-				</tr>
-				<tr>
-					<td width="77" align="right" valign="middle">From&nbsp;&nbsp;</td>
-					<td align="left"><span class="inputborder"><input type="text"
-							class="input-style4 textinput-w4" id="fromdate" readOnly="true" /><a
-							href="javascript:void(0);"><img
-								src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
-						<span class="inputborder"><input type="text"
-							class="input-style4 textinput-w4" id="fromtime" /><a
-							href="javascript:void(0);"><img
-								src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
-					</td>
-				</tr>
-				<tr>
-					<td width="77" align="right" valign="middle">To&nbsp;&nbsp;</td>
-					<td align="left"><span class="inputborder"><input type="text"
-							class="input-style4 textinput-w4" id="todate" readOnly="true" /><a
-							href="#"><img
-								src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
-						<span class="inputborder"><input type="text"
-							class="input-style4 textinput-w4" id="totime" /><a
-							href="javascript:void(0);"><img
-								src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
-					</td>
-				</tr>
-				<tr>
-					<td width="77" align="right" valign="middle">Location&nbsp;&nbsp;</td>
-					<td align="left"><span class="inputborder"><input type="text"
-							class="input-style4 textinput-w3" id="location" /></span></td>
-				</tr>
-				<tr>
-					<td width="77" align="right" valign="middle">Image&nbsp;&nbsp;</td>
-
-					<td align="left"><span class="inputborder"><input type="text"
-							id="file_show" class="input-style4 textinput-w3" readOnly="true" /></span>
-						<input type="button" class="btn btn-small" id="selectfile"
-						value="选择上传文件" /> <input type="text" id="entryimg"
-						style="display: none;"></input></td>
-				</tr>
-				<tr>
-					<td width="77" align="right" valign="middle">Note&nbsp;&nbsp;</td>
-					<td align="left"><span class="inputborder"><textarea id="note"
-								style="height: 80px" class="input-style4 textinput-w3"></textarea></span>
-					</td>
-				</tr>
-				<tr>
-					<td width="77" align="right" valign="middle">&nbsp;</td>
-					<td align="left"><input type="checkbox" align="middle" id="rember"><span
-							class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span></td>
-				</tr>
-			</table>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0"
+					class="table-edit mt15" style="border: none;">
+					<tr>
+						<td width="77" align="right" valign="middle">Title&nbsp;&nbsp;</td>
+						<td align="left"><span class="inputborder"><input type="text"
+								class="input-style4 textinput-w3" id="title" /></span></td>
+					</tr>
+					<tr>
+						<td width="77" align="right" valign="middle">&nbsp;</td>
+						<td align="left"><input type="checkbox" align="middle" id="allday"><span
+								class="fontsize12">&nbsp;&nbsp;&nbsp;All Day</span></td>
+					</tr>
+					<tr>
+						<td width="77" align="right" valign="middle">From&nbsp;&nbsp;</td>
+						<td align="left"><span class="inputborder"><input type="text"
+								class="input-style4 textinput-w4" id="fromdate" readOnly="true" /><a
+								href="javascript:void(0);"><img
+									src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
+							<span class="inputborder"><input type="text"
+								class="input-style4 textinput-w4" id="fromtime" /><a
+								href="javascript:void(0);"><img
+									src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="77" align="right" valign="middle">To&nbsp;&nbsp;</td>
+						<td align="left"><span class="inputborder"><input type="text"
+								class="input-style4 textinput-w4" id="todate" readOnly="true" /><a
+								href="#"><img
+									src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
+							<span class="inputborder"><input type="text"
+								class="input-style4 textinput-w4" id="totime" /><a
+								href="javascript:void(0);"><img
+									src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="77" align="right" valign="middle">Location&nbsp;&nbsp;</td>
+						<td align="left"><span class="inputborder"><input type="text"
+								class="input-style4 textinput-w3" id="location" /></span></td>
+					</tr>
+					<tr>
+						<td width="77" align="right" valign="middle">Image&nbsp;&nbsp;</td>
+						<td align="left">
+							<form action="{{$smarty.const.WEBSITE_URL}}fileupload/loadfile"
+								id="fileloadform" encType="multipart/form-data" method="post"
+								target="file_frame">
+								<input name="filename" type="file"> <input id="file_entryid"
+									style="display: none">
+							<input type="submit" id="subfile"    style="display: none" />
+							</form> <iframe name='file_frame' id="file_frame"
+								style='display: none'></iframe> <!-- <input type="file" id="fileSel"
+							style="display: none" /> 
+					 		<input type="button" runat="server" 
+							id="file" value="" onclick="javascript:openBrowse();" /><span
+ 							id="filename" class="fontsize12">&nbsp;&nbsp;&nbsp;No File Chosen</span> -->
+						</td>
+					</tr>
+					<tr>
+						<td width="77" align="right" valign="middle">Note&nbsp;&nbsp;</td>
+						<td align="left"><span class="inputborder"><textarea id="note"
+									style="height: 80px" class="input-style4 textinput-w3"></textarea></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="77" align="right" valign="middle">&nbsp;</td>
+						<td align="left"><input type="checkbox" align="middle" id="rember"><span
+								class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span></td>
+					</tr>
+				</table>
 			<div class="row3 map gigs_top">
 				<span class="fl"><a href="javascript:void(0);"
 					class="btn btn-black-2 btn-Calendar ml15" id="saveEvent">Save</a><font><a
