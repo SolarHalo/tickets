@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 15:45:12
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 13:52:11
          compiled from "F:\PHP_WorkSapce\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:302555231cbec2155e1-51561933%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a820701901c960f975d77bb73809540172011225' => 
     array (
       0 => 'F:\\PHP_WorkSapce\\tickets\\templates\\product_info.tpl',
-      1 => 1379000709,
+      1 => 1379339526,
       2 => 'file',
     ),
   ),
@@ -43,81 +43,9 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/js/jquery-ui.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/js/jquery.ui.datepicker.js"></script>
-	
-	<script  type="text/javascript">
-	
-	var setting = null; 
-	
-	$(function($) {
-	
-		 setting = function(){
-			var toDate = $("#toDate").val();
-			var fromDate = $("#fromDate").val();
-			
-			if(toDate != null && "" != toDate && "SDate To" != toDate){
-				$('#fromDate').datepicker('option', 'maxDate',toDate);  
-			}
-			
-			if(fromDate != null && "" != fromDate && "Date From" != fromDate){
-				$('#toDate').datepicker('option', 'minDate',fromDate);  
-			}
-			
-		}
-		
-		$.datepicker.regional['zh-CN'] = {dateFormat: 'yy-mm-dd'};
-		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
-
-		$("#fromDate" ).datepicker();
-		$("#toDate" ).datepicker();
-		
-		/*function mouseEvent(objId,objVal){
-	
-			var foucusFun = function(){
-				if($("#"+objId).val() == objVal){
-					$("#"+objId).val("");
-				}
-			}
-			
-			$("#"+objId).focus(foucusFun);
-				
-			$("#"+objId).blur(function(){
-				if("" == $("#"+objId).val()){
-					$("#"+objId).val(objVal);
-				}
-			});
-		}
-		
-		mouseEvent("keyword","Search by keyword");
-		mouseEvent("location","Search by location");
-		mouseEvent("fromDate","Date From");
-		mouseEvent("toDate","SDate To");*/
-	});
-	function check( ){
-		var keyword = $("#keyword").val();
-		var location = $("#location").val();
-		var fromDate = $("#fromDate").val();
-		var toDate = $("#toDate").val();
-		
-		if(keyword == "Search by keyword"){
-			$("#keyword").val("");
-		}
-		
-		if("Search by location" == location){
-			$("#location").val("");
-		}
-		
-		if("Date From" == fromDate){
-			$("#fromDate").val("");
-		}
-		
-		if("SDate To" == toDate){
-			$("#toDate").val("");
-		}
-		
-		return true;
-	}
-	</script>
-	
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script>
+ 
 </head>
 
 <body>
@@ -170,14 +98,29 @@ ticket/queryById',
             </div>
         	<div class="events-l mt15" id='img-list'>
 				<!-- AddThis Button BEGIN -->
-				<div class="addthis_toolbox addthis_default_style ">
-					<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-					<a class="addthis_button_tweet"></a> 
-					<a class="addthis_button_pinterest_pinit"></a> 
-					<a class="addthis_counter addthis_pill_style"></a>
-				</div>
-				<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-				<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-522dce200590139f"></script>
+			<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+			<a class="addthis_button_preferred_1"></a>
+			<a class="addthis_button_preferred_2"></a>
+			<a class="addthis_button_preferred_3"></a>
+			<a class="addthis_button_preferred_4"></a>
+			<a class="addthis_button_compact"></a>
+			<a class="addthis_counter addthis_bubble_style"></a>
+			</div>
+			<script type="text/javascript">
+
+		//	var addthis_share = {
+				//	
+				//		url : 'https://mail.google.com',
+			//			title: 'scknaslkcnalksncaksnclasncaknclksnc',
+			//			description: 'skcaskclaknscklasnclkansclkansclkansclkanscknaskcnaslkcnaskcnlsakncaksnclkasncl',
+			//		}
+//						var addthis_config =
+//						{
+//						   ui_508_compliant: true
+//						}
+		var addthis_config = {"data_track_addressbar":true};
+			</script>
+			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-522dce200590139f"></script>
 				<!-- AddThis Button END -->
             </div>
             <div class="events-c">

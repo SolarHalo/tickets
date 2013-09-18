@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 09:06:50
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 10:21:04
          compiled from "G:\phpserver\tickets\templates\usercarlendar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11541521c647f90fdb6-69881549%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6a97e8e78d745e3ee8e2cb58d571d361e3c7c676' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\usercarlendar.tpl',
-      1 => 1378976807,
+      1 => 1379326861,
       2 => 'file',
     ),
   ),
@@ -95,7 +95,7 @@ public/assets/js/jquery.timepicker.js'></script>
 			header: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
+				right: 'month,agendaWeek,agendaDay,resourceDay'
 			},
 			editable: true,
 			events: "<?php echo @constant('WEBSITE_URL');?>
@@ -107,7 +107,42 @@ carlendar/getUserCalEvent",
 				//change color
 		        $(this).css('border-color', 'red');
 		
-		    }
+		    },
+			select: function(start, end, allDay, jsEvent, view, resource) {
+				var title = prompt('event title:');
+
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay,
+							resource: resource.id
+						},
+						true // make the event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+			resourceRender: function(resource, element, view) {
+				// this is triggered when the resource is rendered, just like eventRender
+			},
+			eventDrop: function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) { 
+				alert('event moved to '+event.start+' to '+event.resource);
+			},
+			eventResize: function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ) { 
+				alert('event was resized, new endtime: '+event.end);
+			},
+			eventClick: function ( event, jsEvent, view )  {
+				alert('event '+event.title+' was left clicked');
+			},
+			eventRender: function( event, element, view ) { 
+
+			},
+			windowResize: function( view ) {
+				calendar.fullCalendar('option', 'height', $(window).height() - 40);
+			}
 		});
 	
 }
