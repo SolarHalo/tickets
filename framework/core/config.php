@@ -13,7 +13,7 @@ define('WEBSITE_URL','http://localhost/');
  
 //for include smarty 
 ini_set('include_path', ini_get('include_path').PATH_SEPARATOR.SMARTY_DIR);
-
+ 
 $CONFIG['DB']= array(
 		'db_host'           =>      'localhost',
 		'db_user'           =>      'root',

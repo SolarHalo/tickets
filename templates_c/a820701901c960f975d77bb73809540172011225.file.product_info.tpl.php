@@ -1,29 +1,29 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 14:02:07
-         compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 13:52:11
+         compiled from "F:\PHP_WorkSapce\tickets\templates\product_info.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:302555231cbec2155e1-51561933%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
+    'a820701901c960f975d77bb73809540172011225' => 
     array (
-      0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
-      1 => 1379339983,
+      0 => 'F:\\PHP_WorkSapce\\tickets\\templates\\product_info.tpl',
+      1 => 1379339526,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '93315225a6bf457402-04173806',
+  'nocache_hash' => '302555231cbec2155e1-51561933',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5225a6bf53c504_69706401',
+  'unifunc' => 'content_5231cbed1e10d9_98039083',
   'variables' => 
   array (
     'id' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5225a6bf53c504_69706401')) {function content_5225a6bf53c504_69706401($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5231cbed1e10d9_98039083')) {function content_5231cbed1e10d9_98039083($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -106,7 +106,20 @@ ticket/queryById',
 			<a class="addthis_button_compact"></a>
 			<a class="addthis_counter addthis_bubble_style"></a>
 			</div>
-			<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+			<script type="text/javascript">
+
+		//	var addthis_share = {
+				//	
+				//		url : 'https://mail.google.com',
+			//			title: 'scknaslkcnalksncaksnclasncaknclksnc',
+			//			description: 'skcaskclaknscklasnclkansclkansclkansclkanscknaskcnaslkcnaskcnlsakncaksnclkasncl',
+			//		}
+//						var addthis_config =
+//						{
+//						   ui_508_compliant: true
+//						}
+		var addthis_config = {"data_track_addressbar":true};
+			</script>
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-522dce200590139f"></script>
 				<!-- AddThis Button END -->
             </div>

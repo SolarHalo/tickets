@@ -76,6 +76,7 @@ class TicketController extends Controller{
 		
 		$config = array(
 				"products.product_name"=>JQGridFilterUtil::$STRING,
+				"aw_product_id"=>JQGridFilterUtil::$STRING,
 				"event_category.category_id"=>JQGridFilterUtil::$STRING,
 				"products.display_price"=>JQGridFilterUtil::$FLOAT,
 				"products.promotional_text"=>JQGridFilterUtil::$STRING,
@@ -139,6 +140,49 @@ class TicketController extends Controller{
 				"page"=>$page,
 				"total"=>$totalPage,
 				"records"=>$records);
+		
+		echo json_encode($result);
+	}
+	
+	function showproductinfo(){
+		$id = $_POST["id"];
+		$result = array();
+		
+		$sql = "select products.*,event_category.category_name category_name ".
+			"from products products LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id where products.aw_product_id = '$id' ";
+		
+		$db = $this->getDB();
+		$res = $db->get_results($sql);
+		
+		foreach ($res as $re){
+			$result =  array(
+					"aw_product_id"=>$re->aw_product_id,
+					"product_name"=>$re->product_name,
+					"product_type"=>$re->product_type,
+					"aw_deep_link"=>$re->aw_deep_link,
+					"aw_image_url"=>$re->aw_image_url,
+					"aw_thumb_url"=>$re->aw_thumb_url,
+					"description"=>$re->description,
+					"display_price"=>$re->display_price,
+					"in_stock"=>$re->in_stock,
+					"is_hot_pick"=>$re->is_hot_pick,
+					"is_for_sale"=>$re->is_for_sale,
+					"language"=>$re->language,
+					"parent_product_id"=>$re->parent_product_id,
+					"promotional_text"=>$re->promotional_text,
+					"specifications"=>$re->specifications,
+					"stock_quantity"=>$re->stock_quantity,
+					"valid_from"=>$re->valid_from,
+					"valid_to"=>$re->valid_to,
+					"merchant_image_url"=>$re->merchant_image_url,
+					"merchant_thumb_url"=>$re->merchant_thumb_url,
+					"merchant_id"=>$re->merchant_id,
+					"ean"=>$re->ean,
+					"click_count"=>$re->click_count
+					 
+			);
+			break;
+		}
 		
 		echo json_encode($result);
 	}
