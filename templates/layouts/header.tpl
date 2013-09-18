@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
+<title>Search4gigs – Music, tickets and cultural events on your calendar.</title>
+<meta name="description" content="Search4gigs – Search and find tickets for all types of events. Search and add sport, music or cultural events to your calendar." />
+<meta name="keywords" content="Search4gigs, events, sport events, music events, cultural events, manage calendar, music tickets, online tickets." />
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
