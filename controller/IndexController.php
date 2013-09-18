@@ -13,14 +13,14 @@ class IndexController extends Controller {
 			foreach ( $items as $item ) {
 		 
 				$source .= "
- 		<LI><A href=\".$item->url\"  target=\"_blank\"><IMG src= \"uploads/arousel/$item->imgname\"/></A>
+ 		<LI><A href=\"$item->url\"  target=\"_blank\"><IMG src= \"uploads/arousel/$item->imgname\"/></A>
  		<div>
  		<h3>$item->title</h3>
  		<span class=\"time\">$item->product_time</span>
  		
  		<p> $item->desc
  		</p>
- 			<A href=\".$item->url\" class=\"a-but\">View Details</A>
+ 			<A href=\"$item->url\" class=\"a-but\">View Details</A>
  		</div>
  		</LI>
  		";
