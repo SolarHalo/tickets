@@ -46,124 +46,29 @@
 		);
 	} 
 	
-	function search( pager, cat,pageSize){
+	function search(url,pageSize){
 		var keyword = $("#keyword").val();
 		var location = $("#location").val();
 		var fromDate = $("#fromDate").val();
 		var toDate = $("#toDate").val();
 		
-		if(keyword == "Search by keyword"){
+		if(keyword == null || keyword == undefined || keyword == "Search by keyword"){
 			keyword = "";
 		}
 		
-		if("Search by location" == location){
+		if(location == null || location == undefined || "Search by location" == location){
 			location = "";
 		}
 		
-		if("Date From" == fromDate){
-			fromDate = "";
-		}
-		
-		if("SDate To" == toDate){
+		if(toDate == null || toDate == undefined || "SDate To" == toDate){
 			toDate = "";
 		}
 		
-		if(pager == undefined || pager == null){
-			pager = 1;
+		if(fromDate == null || fromDate == undefined || "Date From" == fromDate){
+			fromDate = "";
 		}
 		
-		if(cat == undefined || cat == null ){
-			cat="";
-		}
-		
-		if(pageSize == undefined || pageSize == null){
-			pageSize = 10;
-		}
-		
-		var postData = {'keyword':keyword,'location':location,"fromDate":fromDate,"toDate":toDate,"pager":pager,"pageSize":pageSize,'cat':cat};
-		
-		$.get(
-			'{{$smarty.const.WEBSITE_URL}}ticket/search/?pid='+cat,
-			postData,
-			function(obj){
-				//生成列表
-				$("#totalCounter").html("We have found "+obj.counter+" events");
-				$("#list-result").empty();
-				var html = "";
-				var data = obj.data;
-				
-				
-				for(var key in data){
-					html+="<tr><td><table  border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table list-tablep\">";
-				
-					html += "<tr>" +
-						"<td class=\"tdC\">"+data[key].week+"<br />" +
-                        "	<span>"+ data[key].date +" "+data[key].month+"</span><br />" +
-                        "	<font>"+ data[key].time +"</font>" +
-                        "	<a href=\"#\" class=\"time2\">53 Dates</a></td>"+  
-                      	"<td><a href='{{$smarty.const.WEBSITE_URL}}ticket/info/?id="+data[key].aw_product_id+"'><img src=\""+data[key].aw_thumb_url+"\" width=\"92\" height=\"92\" class=\"btn\" /></a></td>" +
-                      	"<td>"+data[key].category_name+" > Comedy<br />" +
-                        "<span><a href='{{$smarty.const.WEBSITE_URL}}ticket/info/?id="+data[key].aw_product_id+"' >"+data[key].product_name+"</a></span><br />" +
-                        data[key].description+ "</td>"+
-                    "</tr>" +
-                    "<tr>"+
-                    "  	<td colspan=\"2\">&nbsp;</td>"+
-                    "  	<td>"+
-                    "		<p class=\"mt15\">"+
-                    "			<a href=\"javascript:addCalendat('"+data[key].aw_product_id+"')\" class=\"btn btn-range btn-Calendar\">Add to Calendat</a>"+
-                    "			<a href=\"{{$smarty.const.WEBSITE_URL}}buyticket/index/pid="+data[key].aw_product_id+"\" class=\"back btn btn-black\" target='_blank'><strong>Buy Tickets</strong></a>"+
-                    "		</p></td></tr>"; 
-                    
-                    html+="</table><div class=\"table-xian\"></div></td> </tr>";
-                    
-				}
-				
-				//生成分页				
-				var pager = obj.pager;
-				var totalPage = obj.totalPage;
-				
-				html += "<tr><td><p class=\"mt15 gigs-fy\"> ";
-				
-				if(pager != 1){
-					html += "<a href=\"javascript:search(1,'"+cat+"')\" class=\"btn-hs btn-Calendar fontcolor\">&lt;&lt;</a>"+
-            			"<a href=\"javascript:search("+(pager-1)+",'"+cat+"')\" class=\"btn-hs btn-Calendar fontcolor\">&lt;</a> ";
-				}
-				
-				var display = 9;
-				if(totalPage < display ){
-					display = totalPage;
-				}
-				
-				var start = pager - parseInt(display/2);
-				if(start < 1){
-					start = 1 ;
-				}
-				var end = start + display - 1;
-				
-				if(end > totalPage){
-					end = totalPage;
-					start = end - display + 1;
-					if(start < 1){
-						start = 1;
-					}
-				}
-				
-				for( ; start <= end ; start++){
-					html += "<a href=\"javascript:search("+start+",'"+cat+"')\" class=\"btn-hs btn-Calendar\">"+start+"</a>"; 
-				}
-				
-				var temp = parseInt(pager)+1;
-				if(pager != totalPage){
-					html += "<a href=\"javascript:search("+temp+",'"+cat+"')\" class=\"btn-hs btn-Calendar fontcolor\">&gt;</a>"+ 
-	            		"<a href=\"javascript:search("+totalPage+",'"+cat+"')\" class=\"btn-hs btn-Calendar fontcolor\">&gt;&gt;</a>";
-	            }
-            	html += "</p> <span class=\"fy-size\">Showing "+ pager+" of "+totalPage+" pages</span> </td></tr>";
-				
-				
-				$("#list-result").html(html);
-			},
-			"json"
-		);
+		window.location.href = url + "&keyword=" + keyword + "&location=" + location + "&fromDate=" + fromDate + "&toDate="+toDate;
 	}
 	
 	var setting = null;
@@ -187,8 +92,6 @@
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
 		
-		//search();
-		
 	});
 	</script>
 </head> 
@@ -203,13 +106,13 @@
          	<span>Categories</span>
          	
          	{{foreach $cats as $c}}
-         	 	<li><a href="{{$smarty.const.WEBSITE_URL}}/ticket/index/?cat={{$c['category_id']}}">{{$c['category_name']}}({{$c['total']}})</a></li>
+         	 	<li><a href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$c['category_id']}}')">{{$c['category_name']}}({{$c['total']}})</a></li>
          	{{/foreach}}
         </ul>
        
       </div>
       <div class="events-c2">
-        <div class=" gigs_k map"> <span class="aigs_k_title" id="totalCounter" >We have found 18,278 events</span> <strong>sort By:</strong>
+        <div class=" gigs_k map"> <span class="aigs_k_title" id="totalCounter" >We have found {{$totalEvent}} events</span> <strong>sort By:</strong>
           <select name="" class="id_3">
             <option>Best Match</option>
           </select>
@@ -256,24 +159,33 @@
 	          	</td>
 	    	</tr>   	
        {{/foreach}}
-        <!--
-     
-             <tr>
-            <td>
-            <p class="mt15 gigs-fy"> 
-            <a href="#" class="btn-hs btn-Calendar">1</a> 
-            <a href="#" class="btn-hs btn-Calendar">2</a> 
-            <a href="#" class="btn-hs btn-Calendar">3</a> 
-            <a href="#" class="btn-hs btn-Calendar">4</a> 
-            <a href="#" class="btn-hs btn-Calendar">5</a> 
-            <a href="#" class="btn-hs btn-Calendar">6</a> 
-            <a href="#" class="btn-hs btn-Calendar fontcolor">&gt;</a> 
-            <a href="#" class="btn-hs btn-Calendar fontcolor">&gt;&gt;</a>
-            </p> <span class="fy-size">Showing 1 of 18,098 pages</span> </td>
-          </tr>
---> 	
+     		<tr>
+	            <td>
+	             {{if $totalEvent != 0}}
+	           	 <p class="mt15 gigs-fy"> 
+
+		           	{{if $pager != 1}}
+		           		<a href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager=1')" class="btn-hs btn-Calendar fontcolor">&lt;&lt;</a> 
+		            	<a href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$pager-1}}')" class="btn-hs btn-Calendar fontcolor">&lt;</a>
+		           	{{/if}}
+		           
+		           	{{foreach from=$pagers item=index}}
+		           		<a href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$index}}')" class="btn-hs btn-Calendar">{{$index}}</a> 
+		           	{{/foreach}}
+		           	
+		           	{{if $pager != $totalPage}}
+			      		<a href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$pager+1}}')" class="btn-hs btn-Calendar fontcolor">&gt;</a> 
+			            <a href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$totalPage}}')" class="btn-hs btn-Calendar fontcolor">&gt;&gt;</a>
+			       	{{/if}}
+			   	
+			       	
+	            </p>
+	            <span class="fy-size">Showing {{$pager}} of {{$totalPage}} pages</span> </td>
+	            {{/if}} 
+	          </tr>
         </table>
       </div>
+      
       <div class="events-r mt15">
         <div class="r-row rw-bg2"> <br />
           &nbsp; <br />
