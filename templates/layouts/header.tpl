@@ -133,7 +133,7 @@
 <div id="indexsearch" class="search">
 	<div>
     	<div>
-        	<form action="{{$smarty.const.WEBSITE_URL}}ticket" method="post">
+        	<form action="{{$smarty.const.WEBSITE_URL}}ticket/index/" method="get">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>

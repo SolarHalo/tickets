@@ -82,8 +82,8 @@
 		
 		var postData = {'keyword':keyword,'location':location,"fromDate":fromDate,"toDate":toDate,"pager":pager,"pageSize":pageSize,'cat':cat};
 		
-		$.post(
-			'{{$smarty.const.WEBSITE_URL}}ticket/search',
+		$.get(
+			'{{$smarty.const.WEBSITE_URL}}ticket/search/?pid='+cat,
 			postData,
 			function(obj){
 				//生成列表
@@ -92,15 +92,6 @@
 				var html = "";
 				var data = obj.data;
 				
-				var categories = obj.categories;
-				var str = "";
-				var totalCat = 0 ;
-				for(var key in categories){
-					totalCat += parseInt(categories[key].total);
-					str += "<li><a href=\"javascript:search(1,'"+categories[key].category_id+"')\">"+categories[key].category_name +"("+ categories[key].total +")</a></li>";
-				}
-				str = "<span>Categories</span><li><a href=\"javascript:search(1,'')\">All Caegories("+ totalCat +")</a></li>"+str;
-				$("#cat-list").html(str);
 				
 				for(var key in data){
 					html+="<tr><td><table  border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table list-tablep\">";
@@ -196,7 +187,7 @@
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
 		
-		search();
+		//search();
 		
 	});
 	</script>
@@ -209,21 +200,11 @@
       <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
       <div class="events-l mt15"> <img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" width="160" height="265" class="img-sidebar" />
         <ul id="cat-list" class="gigs-title map">
-        	<!--
-          <span>Categories</span>
-          <li><a href="#">All Caegories(44)</a></li>
-          <li><a href="#">Culture(31)</a></li>
-          <li><a href="#">Entertainment(10)</a></li>
-          <li><a href="#">Family(23)</a></li>
-          <li><a href="#">General(9)</a></li>
-          <li><a href="#" class="act">Sport& Outdoor(24)</a>
-          <ul class="gigs-ti-2">
-            <li><a href="#">Football</a></li>
-            <li><a href="#" class="act2">Tennis</a></li>
-            <li><a href="#">Golf</a></li>
-            <li><a href="#">Cycling</a></li>
-          </ul></li>
-           -->
+         	<span>Categories</span>
+         	
+         	{{foreach $cats as $c}}
+         	 	<li><a href="{{$smarty.const.WEBSITE_URL}}/ticket/index/?cat={{$c['category_id']}}">{{$c['category_name']}}({{$c['total']}})</a></li>
+         	{{/foreach}}
         </ul>
        
       </div>
@@ -235,117 +216,48 @@
         </div>
         <table id="list-result" width="100%" border="0" cellspacing="0" cellpadding="0">
         
+       
+       {{foreach $data as $d}}
+       	
+	       	<tr>
+	       		<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
+		        		<tr>
+		               		<td class="tdC">{{$d['week']}}<br />
+		                  		<span>{{$d['date']}}</span><br />
+		                        <font>{{$d['time']}}</font>
+		                        <a href="#" class="time2">53 Dates</a>  
+		               		</td>
+		               		<td>
+	                      		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}">
+	                      			<img src="{{$d['aw_thumb_url']}}" width="92" height="92" class="btn" />
+	                      		</a>
+	                      	</td>
+	                      	<td>{{$d['category_name']}} > Comedy<br />
+	                        	<span>
+	                        		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}">
+		                      			{{$d['product_name']}}
+		                      		</a>
+	                        	</span><br />
+	                        		
+	                        </td>
+		               	</tr>
+	                	<tr>
+	                		<td colspan="2">&nbsp;</td>
+	                      	<td>
+	                      		<p class="mt15">
+	                      			<a href="javascript:addCalendat(\'{{$d['aw_product_id']}}\')" class="btn btn-range btn-Calendar">Add to Calendat</a>
+	                      			<a href="{{$smarty.const.WEBSITE_URL}}buyticket/index/pid={{$d['aw_product_id']}}" class="back btn btn-black"><strong>Buy Tickets</strong></a>
+	                      		</p>
+	                      	</td>
+	                	</tr> 
+	              	</table>
+	              	<div class="table-xian"></div>
+	          	</td>
+	    	</tr>   	
+       {{/foreach}}
         <!--
-          <tr>
-            <td>
-            	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
-                    <tr>
-                      <td class="tdC">Wendnesday<br />
-                        <span>30 OCT</span><br />
-                        <font>20.00</font>
-                        <a href="#" class="time2">53 Dates</a>  
-                      </td>
-                      <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
-                      <td>Entertainment > Comedy<br />
-                        <span>Jason Manford</span><br />
-                        Bournemouth lnternational Center,Exeter Road, Bournemouth. BH2 5BH,Dorset UK.</td>
-                    </tr>
-                	<tr>
-                      <td colspan="2">&nbsp;</td>
-                      <td><p class="mt15"><a href="#" class="btn btn-range btn-Calendar">Add to Calendat</a><a href="#" class="back btn btn-black"><strong>Buy Tickets</strong></a></p></td>
-                    </tr> 
-              </table>
-              <div class="table-xian"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-            	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
-                    <tr>
-                      <td class="tdC">Wendnesday<br />
-                        <span>30 OCT</span><br />
-                        <font>20.00</font>
-                      	<a href="#" class="time2">53 Dates</a>  
-                      </td>
-                      <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
-                      <td>Entertainment > Comedy<br />
-                        <span>Jason Manford</span><br />
-                        Bournemouth lnternational Center,Exeter Road, Bournemouth. BH2 5BH,Dorset UK.</td>
-                    </tr>
-                	<tr>
-                      <td colspan="2">&nbsp;</td>
-                      <td><p class="mt15"><a href="#" class="btn btn-range btn-Calendar">Add to Calendat</a><a href="#" class="back btn btn-black"><strong>Buy Tickets</strong></a></p></td>
-                    </tr> 
-              </table>
-              <div class="table-xian"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-            	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
-                    <tr>
-                      <td class="tdC">Wendnesday<br />
-                        <span>30 OCT</span><br />
-                        <font>20.00</font>
-                        <a href="#" class="time2">53 Dates</a>  
-                      </td>
-                      <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
-                      <td>Entertainment > Comedy<br />
-                        <span>Jason Manford</span><br />
-                        Bournemouth lnternational Center,Exeter Road, Bournemouth. BH2 5BH,Dorset UK.</td>
-                    </tr>
-                	<tr>
-                      <td colspan="2">&nbsp;</td>
-                      <td><p class="mt15"><a href="#" class="btn btn-range btn-Calendar">Add to Calendat</a><a href="#" class="back btn btn-black"><strong>Buy Tickets</strong></a></p></td>
-                    </tr> 
-              </table>
-              <div class="table-xian"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-            	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
-                    <tr>
-                      <td class="tdC">Wendnesday<br />
-                        <span>30 OCT</span><br />
-                        <font>20.00</font>
-                        <a href="#" class="time2">53 Dates</a>  
-                      </td>
-                      <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
-                      <td>Entertainment > Comedy<br />
-                        <span>Jason Manford</span><br />
-                        Bournemouth lnternational Center,Exeter Road, Bournemouth. BH2 5BH,Dorset UK.</td>
-                    </tr>
-                	<tr>
-                      <td colspan="2">&nbsp;</td>
-                      <td><p class="mt15"><a href="#" class="btn btn-range btn-Calendar">Add to Calendat</a><a href="#" class="back btn btn-black"><strong>Buy Tickets</strong></a></p></td>
-                    </tr> 
-              </table>
-              <div class="table-xian"></div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-            	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
-                    <tr>
-                      <td class="tdC">Wendnesday<br />
-                        <span>30 OCT</span><br />
-                       <font>20.00</font>
-                        <a href="#" class="time2">53 Dates</a>  
-                      </td>
-                      <td><img src="photo/photo2.gif" width="92" height="92" class="btn" /></td>
-                      <td>Entertainment > Comedy<br />
-                        <span>Jason Manford</span><br />
-                        Bournemouth lnternational Center,Exeter Road, Bournemouth. BH2 5BH,Dorset UK.</td>
-                    </tr>
-                	<tr>
-                      <td colspan="2">&nbsp;</td>
-                      <td><p class="mt15"><a href="#" class="btn btn-range btn-Calendar">Add to Calendat</a><a href="#" class="back btn btn-black"><strong>Buy Tickets</strong></a></p></td>
-                    </tr> 
-              </table>
-              <div class="table-xian"></div>
-            </td>
-          </tr>
+     
              <tr>
             <td>
             <p class="mt15 gigs-fy"> 
