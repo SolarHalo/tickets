@@ -34,7 +34,7 @@ class CarlendarService {
 			$product_results = $this->dbutil->get_results ( $sql );
 		}
 		if ($type == 2) {
-			$sql = "select p.aw_product_id id,p.product_name title,p.specifications start,p.promotional_text entrylocation from userentrys ue,products p where   p.aw_product_id ='$id'   ";
+			$sql = "select p.aw_product_id id,p.product_name title,p.specifications start,p.promotional_text entrylocation ,p.aw_image_url entryimg ,ue.note entrynote ,ue.emailflag emailreminder from userentrys ue,products p where   p.aw_product_id ='$id' and ue.productid=p.aw_product_id   ";
 			$product_results = $this->dbutil->get_results ( $sql );
 			for($i = 0; $i < count ( $product_results ); $i ++) {
 				$product_tmp = $product_results [$i];
@@ -149,6 +149,18 @@ class CarlendarService {
 		$this->dbutil->query ( $sql );
 	
 	}
+	public function editeComEventNote($userid,$note,$rember,$proid) {
+		$sql = "update userentrys set note='$note',emailflag='$rember' where userid='$userid' and productid='$proid'";
+		print ($sql);
+		$this->dbutil->query ( $sql );
+	}
+	
+	public function deleteComEventNote($userid,$proid) {
+		$sql = "update userentrys set note='',emailflag='2' where userid='$userid' and productid='$proid'";
+		print ($sql);
+		$this->dbutil->query ( $sql );
+	}
+	
 
 }
 

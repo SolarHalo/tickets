@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 16:25:00
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-19 15:08:09
          compiled from "E:\phpweb\tickets\templates\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:56675231cebc842c00-68333407%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ee7ef75b94d8c7214038635f2afb42c3d78c6348' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\login.tpl',
-      1 => 1378995457,
+      1 => 1379519829,
       2 => 'file',
     ),
   ),
@@ -15,19 +15,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_5231cebc8ffd79_13454605',
   'variables' => 
   array (
     'errortip' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_5231cebc8ffd79_13454605',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5231cebc8ffd79_13454605')) {function content_5231cebc8ffd79_13454605($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>login</title>
+<title>Search4gigs Login – Music, tickets and cultural events on your calendar.</title>
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo @constant('WEBSITE_URL');?>
