@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 16:22:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-19 15:08:06
          compiled from "E:\phpweb\tickets\templates\layouts\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:29259521cac278edac9-74421513%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4c4f65794d7eae96d1722ae1b3426825597045e7' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1378995457,
+      1 => 1379519829,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
+<title>Search4gigs – Music, tickets and cultural events on your calendar.</title>
+<meta name="description" content="Search4gigs – Search and find tickets for all types of events. Search and add sport, music or cultural events to your calendar." />
+<meta name="keywords" content="Search4gigs, events, sport events, music events, cultural events, manage calendar, music tickets, online tickets." />
 	<link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="<?php echo @constant('WEBSITE_URL');?>
@@ -172,7 +174,7 @@ public/images/topbanner.png" /></a>
 	<div>
     	<div>
         	<form action="<?php echo @constant('WEBSITE_URL');?>
-ticket" method="post">
+ticket/index/" method="get">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>

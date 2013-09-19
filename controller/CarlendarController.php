@@ -54,6 +54,33 @@ class CarlendarController extends  Controller{
 		
 	}
 	
+	public function editeComEventNote(){
+		if(empty($_SESSION['user'])){
+			return;
+		}
+		$userid = $_SESSION['user']->userid;
+	
+		require_once SERVICE . DS . 'CarlendarService.class.php';
+		$service = new CarlendarService($this->getDB ());
+		
+		$note = $_POST['note'];
+		$rember = $_POST['rember'];
+		$proid = $_POST['id'];
+		$userevents = $service->editeComEventNote($userid,$note,$rember,$proid);
+		echo json_encode($userevents);
+	}
+	public function deleteComEventNote(){
+		if(empty($_SESSION['user'])){
+			return;
+		}
+		$userid = $_SESSION['user']->userid;
+	
+		require_once SERVICE . DS . 'CarlendarService.class.php';
+		$service = new CarlendarService($this->getDB ());
+		$proid = $_POST['id'];
+		$userevents = $service->deleteComEventNote($userid,$proid);
+		echo json_encode($userevents);
+	}
 	/**
 	 * 根据日历事件id删除事件，并删除中间表
 	 */
@@ -70,7 +97,7 @@ class CarlendarController extends  Controller{
 			//删除自定义事件
 			$service->deleteCustomEventById($entryid, $userid);
 		}else{
-			$service->deleteUserEntry($productid, $userid);
+			$service->deleteUserEntry($entryid, $userid);
 		}
 		echo "success";
 		

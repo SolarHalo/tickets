@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 17:43:39
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-19 16:30:06
          compiled from "E:\phpweb\tickets\templates\usercarlendar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:60465231d15b7d7ba1-94253852%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c27cb1530946a43d658b06a7f21bf2cf50cf0e47' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\usercarlendar.tpl',
-      1 => 1379518920,
+      1 => 1379601000,
       2 => 'file',
     ),
   ),
@@ -134,6 +134,7 @@ fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP�
         var calendar;
 		$("#tcbox").hide();
 		$("#tcbox_addentity").hide();
+		$("#tCevent_box").hide();
         $("#newcaledar").click(function(){$("#tcbox_addentity").show();clearWinData();$("#saveEvent").removeAttr('un')});
         $("#saveEvent").bind('click',submitEvent);
 		displayevent();
@@ -151,6 +152,9 @@ fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP�
 		});
 		
 		$("#delBtn").bind('click',deleteCalEvent);
+		$("#saveComEventNote").bind('click',submitComEventNote);
+		$("#deleteComEventNote").bind('click',deleteComEventNote);
+		
 	});
 	
 	var currentCalEvent;
@@ -197,6 +201,7 @@ carlendar/getUserCalEvent",
 		});
 	
 }
+
 
 function submitEvent(){
 	var title = $("#title").val();
@@ -392,8 +397,13 @@ carlendar/getEventById",
 			}
 			$("#timeduration").html(timeduration);
 			$("#note_show").val(calEvent.entrynote);
-			$("#entryimg").attr("src","<?php echo @constant('WEBSITE_URL');?>
+			if(calEvent.color == "#fb7b0e"){
+				$("#entryimg").attr("src",calEvent.entryimg);
+			}else{
+				$("#entryimg").attr("src","<?php echo @constant('WEBSITE_URL');?>
 "+calEvent.entryimg);
+			}
+		
 			currentCalEvent = calEvent;
 		},
 		error:function(){
@@ -405,36 +415,92 @@ carlendar/getEventById",
   	
 }
 
+
+
+//保存票务事件的note信息
+function submitComEventNote(){
+	var param;
+	var rember = $("#comeventemail").prop("checked")==true?'1':'2';
+	var note = $("#comeventnote").val();
+	param={"note":note,"rember":rember,"id":currentCalEvent.id};
+	$.ajax({
+		url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/editeComEventNote",
+		type:"post",
+		data:param,
+		success:function(data){
+			$("#tCevent_box").hide();
+		}});
+}
+//删除票务事件的note信息
+function deleteComEventNote(){
+	var param;
+	param={"id":currentCalEvent.id};
+	$.ajax({
+		url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/deleteComEventNote",
+		type:"post",
+		data:param,
+		success:function(data){
+			$("#tCevent_box").hide();
+		}});
+}
+function clearComEventEdit(){
+	$("#comeventnote").val("");
+	$("#comeventemail").prop("checked",false);
+}
+
 function popUpdateWin(calEvent){
-	$("#tcbox_addentity").show();
-	$("#title").val(calEvent.title);
-	$("#allday").prop("checked",false);
-	$("#fromdate").val(calEvent.start.pattern("yyyy-MM-dd"));
-	if(calEvent.end!=null){
-		var fromtime = calEvent.start.pattern("HH:mm");
-		var totime = calEvent.end.pattern("HH:mm");
+
+	if(calEvent.color == "#fb7b0e"){
 		
-		if(fromtime=="00:00"&&totime==fromtime){
-			$("#allday").prop("checked",true);
+		$("#tCevent_box").show();
+		clearComEventEdit();
+
+		$("#comeventnote").val(currentCalEvent.entrynote);
+		if( currentCalEvent.emailreminder==1){
+			$("#comeventemail").prop("checked",true);
 		}else{
-			$("#fromtime").val(calEvent.start.pattern("HH:mm"));
-			$("#totime").val(calEvent.end.pattern("HH:mm"));
+			$("#comeventemail").prop("checked",false);
 		}
-		$("#todate").val(calEvent.end.pattern("yyyy-MM-dd"));
+		
 	}else{
-		$("#allday").prop("checked",true);
+		$("#tcbox_addentity").show();
+		$("#title").val(calEvent.title);
+		$("#allday").prop("checked",false);
+		$("#fromdate").val(calEvent.start.pattern("yyyy-MM-dd"));
+		if(calEvent.end!=null){
+			var fromtime = calEvent.start.pattern("HH:mm");
+			var totime = calEvent.end.pattern("HH:mm");
+			
+			if(fromtime=="00:00"&&totime==fromtime){
+				$("#allday").prop("checked",true);
+			}else{
+				$("#fromtime").val(calEvent.start.pattern("HH:mm"));
+				$("#totime").val(calEvent.end.pattern("HH:mm"));
+			}
+			$("#todate").val(calEvent.end.pattern("yyyy-MM-dd"));
+		}else{
+			$("#allday").prop("checked",true);
+		}
+		$("#note").val(calEvent.entrynote);
+		var reminder = calEvent.emailreminder;
+		$("#rember").prop("checked",reminder=='1'?true:false);
+		$("#location").val(calEvent.entrylocation);
+		
+		$("#saveEvent").attr("un",calEvent.id);
 	}
-	$("#note").val(calEvent.entrynote);
-	var reminder = calEvent.emailreminder;
-	$("#rember").prop("checked",reminder=='1'?true:false);
-	$("#location").val(calEvent.entrylocation);
 	
-	$("#saveEvent").attr("un",calEvent.id);
 }
 
 function deleteCalEvent(){
 	
-	var param={"type":1,"entryid":currentCalEvent.id};
+	var param;
+	if(currentCalEvent.color){
+		param={"type":2,"entryid":currentCalEvent.id};
+	}else{
+		param={"type":1,"entryid":currentCalEvent.id};
+	}
 	$.ajax({
 		url:"<?php echo @constant('WEBSITE_URL');?>
 carlendar/deleteEventById",
@@ -559,7 +625,8 @@ userevent"
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
 					class="gigs-tck-table mt15 ">
 					<tr>
-						<td width="50" align="right" valign="top"><img id="entryimg" height="110" width="110" 
+						<td width="50" align="right" valign="top"><img id="entryimg"
+							height="110" width="110"
 							src="<?php echo @constant('WEBSITE_URL');?>
 public/images/calendar-ioc.gif" /></td>
 						<td align="left">
@@ -588,6 +655,40 @@ public/images/calendar-ioc.gif" /></td>
 		</div>
 	</div>
 
+	<div id="tCevent_box">
+		<div id="tccontent">
+			<div class="row3 map gigs_tck">
+				<span class="fl pl">Edit Entry</span><a href="#" class="fr pr"
+					onclick="javascript:closewin('tCevent_box');">X</a>
+			</div>
+			<form>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0"
+					class="gigs-tck-table mt15 ">
+					<tr>
+						<td width="50" align="right" valign="top"><span class="fontsize14">Note</span></td>
+						<td align="left"><textarea class="textarea" id="comeventnote"></textarea>
+						</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+							type="checkbox" id="comeventemail" align="middle"><span
+							class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span></td>
+					</tr>
+				</table>
+			</form>
+			<div class="row3 map gigs_top">
+				<span class="fl"><a href="#"
+					class="btn btn-black-2 btn-Calendar ml15" id="saveComEventNote">Save</a><font><a
+						href="#" class="cancel"
+						onclick="javascript:closewin('tCevent_box');">cancel</a></font></span>
+				<span class="fr pr"><a href="#" class="btn btn-red btn-Calendar"
+					id="deleteComEventNote">Delete</a></span>
+			</div>
+		</div>
+	</div>
+
 
 
 	<!-- 添加事件的弹出窗口 -->
@@ -607,7 +708,7 @@ public/images/calendar-ioc.gif" /></td>
 				<tr>
 					<td width="77" align="right" valign="middle">&nbsp;</td>
 					<td align="left"><input type="checkbox" align="middle" id="allday"><span
-							class="fontsize12">&nbsp;&nbsp;&nbsp;All Day</span></td>
+						class="fontsize12">&nbsp;&nbsp;&nbsp;All Day</span></td>
 				</tr>
 				<tr>
 					<td width="77" align="right" valign="middle">From&nbsp;&nbsp;</td>
@@ -660,7 +761,7 @@ public/images/time-iocx.gif" /></a></span>
 				<tr>
 					<td width="77" align="right" valign="middle">&nbsp;</td>
 					<td align="left"><input type="checkbox" align="middle" id="rember"><span
-							class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span></td>
+						class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span></td>
 				</tr>
 			</table>
 			<div class="row3 map gigs_top">
