@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 04:09:12
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 14:34:38
          compiled from "G:\phpserver\tickets\templates\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6836521c69bc3ebee2-33341521%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ee918a1c369862bfb18a9a1c1303d79c203aab9f' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\login.tpl',
-      1 => 1378958825,
+      1 => 1379492869,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>login</title>
+<title>Search4gigs Login – Music, tickets and cultural events on your calendar.</title>
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo @constant('WEBSITE_URL');?>
