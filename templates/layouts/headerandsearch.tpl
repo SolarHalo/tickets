@@ -33,32 +33,7 @@
     </div>
 </div>
 <script  type="text/javascript">
-$(function($) {
-
-	function check( ){
-		var keyword = $("#keyword").val();
-		var location = $("#location").val();
-		var fromDate = $("#fromDate").val();
-		var toDate = $("#toDate").val();
-		
-		if(keyword == "Search by keyword"){
-			$("#keyword").val("");
-		}
-		
-		if("Search by location" == location){
-			$("#location").val("");
-		}
-		
-		if("Date From" == fromDate){
-			$("#fromDate").val("");
-		}
-		
-		if("SDate To" == toDate){
-			$("#toDate").val("");
-		}
-		
-		return true;
-	}
+$(function($) {  
 	
 	function mouseEvent(objId,objVal){
 		   
@@ -82,6 +57,30 @@ $(function($) {
 			mouseEvent("fromDate","Date From");
 			mouseEvent("toDate","SDate To");
 });
+function check( ){
+	var keyword = $("#keyword").val();
+	var location = $("#location").val();
+	var fromDate = $("#fromDate").val();
+	var toDate = $("#toDate").val();
+	
+	if(keyword == "Search by keyword"){
+		$("#keyword").val("");
+	}
+	
+	if("Search by location" == location){
+		$("#location").val("");
+	}
+	
+	if("Date From" == fromDate){
+		$("#fromDate").val("");
+	}
+	
+	if("SDate To" == toDate){
+		$("#toDate").val("");
+	}
+	
+	return true;
+}
 		
 			</script>
 <div class="search">

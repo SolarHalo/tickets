@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 14:34:38
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-20 09:57:57
          compiled from "G:\phpserver\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28905521c65d4aa37b3-57099622%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4fc9ad758920aaa4926b2b4d8b5229b81cc343e9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1379514671,
+      1 => 1379671069,
       2 => 'file',
     ),
   ),
@@ -69,32 +69,7 @@ public/images/logo.png" class="index-logo" /></a>
     </div>
 </div>
 <script  type="text/javascript">
-$(function($) {
-
-	function check( ){
-		var keyword = $("#keyword").val();
-		var location = $("#location").val();
-		var fromDate = $("#fromDate").val();
-		var toDate = $("#toDate").val();
-		
-		if(keyword == "Search by keyword"){
-			$("#keyword").val("");
-		}
-		
-		if("Search by location" == location){
-			$("#location").val("");
-		}
-		
-		if("Date From" == fromDate){
-			$("#fromDate").val("");
-		}
-		
-		if("SDate To" == toDate){
-			$("#toDate").val("");
-		}
-		
-		return true;
-	}
+$(function($) {  
 	
 	function mouseEvent(objId,objVal){
 		   
@@ -118,6 +93,30 @@ $(function($) {
 			mouseEvent("fromDate","Date From");
 			mouseEvent("toDate","SDate To");
 });
+function check( ){
+	var keyword = $("#keyword").val();
+	var location = $("#location").val();
+	var fromDate = $("#fromDate").val();
+	var toDate = $("#toDate").val();
+	
+	if(keyword == "Search by keyword"){
+		$("#keyword").val("");
+	}
+	
+	if("Search by location" == location){
+		$("#location").val("");
+	}
+	
+	if("Date From" == fromDate){
+		$("#fromDate").val("");
+	}
+	
+	if("SDate To" == toDate){
+		$("#toDate").val("");
+	}
+	
+	return true;
+}
 		
 			</script>
 <div class="search">
