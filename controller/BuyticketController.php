@@ -1,7 +1,7 @@
 <?php
 class BuyticketController extends  Controller{
 	public function index($params){ 
-		$pid = $params[0];   
+		$pid = $params['pid'];   
 		$db = $this->getDB(); 
 		$res = $db->get_results("select click_count,aw_deep_link from products where aw_product_id='$pid'"); 
 		$count = 0; 

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 14:34:48
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-20 03:12:54
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1379514671,
+      1 => 1379646759,
       2 => 'file',
     ),
   ),
@@ -53,8 +53,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/js/jquery.ui.datepicker.js"></script>
 	
-	<script  type="text/javascript">
-	
+	<script  type="text/javascript"> 
 	function buyTickets(pid){
 		$.post(
 			'<?php echo @constant('WEBSITE_URL');?>
@@ -73,6 +72,7 @@ ticket/buyTickets',
 	}
 	
 	function addCalendat(pid){
+		console.log("add calendar");
 		$.post(
 			'<?php echo @constant('WEBSITE_URL');?>
 ticket/addCalendat',
@@ -218,10 +218,10 @@ ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?
 	                		<td colspan="2">&nbsp;</td>
 	                      	<td>
 	                      		<p class="mt15">
-	                      			<a href="javascript:addCalendat(\'<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
-\')" class="btn btn-range btn-Calendar">Add to Calendat</a>
+	                      			<a href="javascript:addCalendat('<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
+')" class="btn btn-range btn-Calendar">Add to Calendat</a>
 	                      			<a href="<?php echo @constant('WEBSITE_URL');?>
-buyticket/index/pid=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
+buyticket/index/?pid=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
 " class="back btn btn-black"><strong>Buy Tickets</strong></a>
 	                      		</p>
 	                      	</td>

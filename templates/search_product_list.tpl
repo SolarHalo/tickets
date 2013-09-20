@@ -12,8 +12,7 @@
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
 	
-	<script  type="text/javascript">
-	
+	<script  type="text/javascript"> 
 	function buyTickets(pid){
 		$.post(
 			'{{$smarty.const.WEBSITE_URL}}ticket/buyTickets',
@@ -31,6 +30,7 @@
 	}
 	
 	function addCalendat(pid){
+		console.log("add calendar");
 		$.post(
 			'{{$smarty.const.WEBSITE_URL}}ticket/addCalendat',
 			{'pid':pid},
@@ -149,8 +149,8 @@
 	                		<td colspan="2">&nbsp;</td>
 	                      	<td>
 	                      		<p class="mt15">
-	                      			<a href="javascript:addCalendat(\'{{$d['aw_product_id']}}\')" class="btn btn-range btn-Calendar">Add to Calendat</a>
-	                      			<a href="{{$smarty.const.WEBSITE_URL}}buyticket/index/pid={{$d['aw_product_id']}}" class="back btn btn-black"><strong>Buy Tickets</strong></a>
+	                      			<a href="javascript:addCalendat('{{$d['aw_product_id']}}')" class="btn btn-range btn-Calendar">Add to Calendat</a>
+	                      			<a href="{{$smarty.const.WEBSITE_URL}}buyticket/index/?pid={{$d['aw_product_id']}}" class="back btn btn-black"><strong>Buy Tickets</strong></a>
 	                      		</p>
 	                      	</td>
 	                	</tr> 
