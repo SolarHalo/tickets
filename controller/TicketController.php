@@ -249,7 +249,7 @@ class TicketController extends  Controller{
 	
 	public function info($param){
 
-		$id = $param[0];
+		$id = $param['id'];
 		$this->getSmarty();
 		
 		$this->smarty->assign ( 'keyword', "Search by keyword" );
