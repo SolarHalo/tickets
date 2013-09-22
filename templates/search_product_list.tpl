@@ -149,7 +149,7 @@
 	                		<td colspan="2">&nbsp;</td>
 	                      	<td>
 	                      		<p class="mt15">
-	                      			<a href="javascript:addCalendat('{{$d['aw_product_id']}}')" class="btn btn-range btn-Calendar">Add to Calendat</a>
+	                      			<a href="javascript:addCalendat('{{$d['aw_product_id']}}')" class="btn btn-range btn-Calendar">Add to Calendar</a>
 	                      			<a href="{{$smarty.const.WEBSITE_URL}}buyticket/index/?pid={{$d['aw_product_id']}}" class="back btn btn-black"><strong>Buy Tickets</strong></a>
 	                      		</p>
 	                      	</td>
