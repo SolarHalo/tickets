@@ -57,7 +57,7 @@ $(function($) {
 			mouseEvent("fromDate","Date From");
 			mouseEvent("toDate","SDate To");
 });
-function check( ){
+function check( form ){
 	var keyword = $("#keyword").val();
 	var location = $("#location").val();
 	var fromDate = $("#fromDate").val();
@@ -78,7 +78,7 @@ function check( ){
 	if("SDate To" == toDate){
 		$("#toDate").val("");
 	}
-	
+	//alert($("#keyword").val());
 	return true;
 }
 		
@@ -93,7 +93,7 @@ function check( ){
                         <td><input type="text" name="location" id="location" value="{{$location}}" class="searchinput textinput-w" tabindex=4/></td>
                         <td><input type="text" name="fromDate" id="fromDate" value="{{$fromDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=5/></td>
                         <td><input type="text" name="toDate" id="toDate" value="{{$toDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=6/></td>
-                        <td><input type="submit"   value="Search" onclick="check()" class="input-style2" /></td>
+                        <td><input type="submit"   value="Search" onclick="check(this)" class="input-style2" /></td>
                     </tr>
                 </table>
                </form>

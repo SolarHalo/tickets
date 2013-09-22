@@ -20,7 +20,7 @@
  	 * @param  $url 网页的URL
  	 */
  	function __construct($url){ 
- 		  $this->url = $url;
+ 		  $this->url = urldecode($url);
  		  $this->urlToArray();
  	}
  	
