@@ -142,6 +142,8 @@
 		                      			{{$d['product_name']}}
 		                      		</a>
 	                        	</span><br />
+	                        	
+	                        	{{$d['promotional_text']}} &nbsp;&nbsp;{{$d['display_price']}}
 	                        		
 	                        </td>
 		               	</tr>
