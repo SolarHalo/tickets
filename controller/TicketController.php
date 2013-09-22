@@ -196,7 +196,7 @@ class TicketController extends  Controller{
 			$fromDate = "Date From";
 		}
 		if($toDate == null || $toDate == "" ){
-			$toDate = "SDate To";
+			$toDate = "Date To";
 		}
 		
 		$totalPage = ceil($records/$pageSize);
@@ -255,7 +255,7 @@ class TicketController extends  Controller{
 		$this->smarty->assign ( 'keyword', "Search by keyword" );
 		$this->smarty->assign ( 'location', "Search by location" );
 		$this->smarty->assign ( 'fromDate', "Date From" );
-		$this->smarty->assign ( 'toDate', "SDate To" );
+		$this->smarty->assign ( 'toDate', "Date To" );
 		
 		$this->smarty->assign ( 'id', $id );
 		$this->smarty->display("product_info.tpl");

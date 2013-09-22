@@ -44,7 +44,7 @@
                     	<td><input type="text" value="Search by keyword" class="searchinput textinput-w" /></td>
                         <td><input type="text" value="Search by location" class="searchinput textinput-w" /></td>
                         <td><input type="text" value="Date From" class="searchinput textinput-w2" /></td>
-                        <td><input type="text" value="SDate To" class="searchinput textinput-w2" /></td>
+                        <td><input type="text" value="Date To" class="searchinput textinput-w2" /></td>
                         <td><input type="button" value="Search" class="input-style2" /></td>
                     </tr>
                 </table>

@@ -55,7 +55,7 @@ $(function($) {
 			mouseEvent("keyword","Search by keyword");
 			mouseEvent("location","Search by location");
 			mouseEvent("fromDate","Date From");
-			mouseEvent("toDate","SDate To");
+			mouseEvent("toDate","Date To");
 });
 function check( form ){
 	var keyword = $("#keyword").val();
@@ -75,7 +75,7 @@ function check( form ){
 		$("#fromDate").val("");
 	}
 	
-	if("SDate To" == toDate){
+	if("Date To" == toDate){
 		$("#toDate").val("");
 	}
 	//alert($("#keyword").val());

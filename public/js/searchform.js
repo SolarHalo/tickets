@@ -4,7 +4,7 @@ var setting = null;
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
 			
-			if(toDate != null && "" != toDate && "SDate To" != toDate){
+			if(toDate != null && "" != toDate && "Date To" != toDate){
 				$('#fromDate').datepicker('option', 'maxDate',toDate);  
 			}
 			
@@ -41,7 +41,7 @@ var setting = null;
 		mouseEvent("keyword","Search by keyword");
 		mouseEvent("location","Search by location");
 		mouseEvent("fromDate","Date From");
-		mouseEvent("toDate","SDate To");*/
+		mouseEvent("toDate","Date To");*/
 	});
 	function check( ){
 		var keyword = $("#keyword").val();
@@ -61,7 +61,7 @@ var setting = null;
 			$("#fromDate").val("");
 		}
 		
-		if("SDate To" == toDate){
+		if("Date To" == toDate){
 			$("#toDate").val("");
 		}
 		
@@ -82,6 +82,6 @@ var setting = null;
 		}
 		
 		if("" == $("#toDate").val()){
-			$("#toDate").val("SDate To");
+			$("#toDate").val("Date To");
 		}
 	}

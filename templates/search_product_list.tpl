@@ -60,7 +60,7 @@
 			location = "";
 		}
 		
-		if(toDate == null || toDate == undefined || "SDate To" == toDate){
+		if(toDate == null || toDate == undefined || "Date To" == toDate){
 			toDate = "";
 		}
 		
@@ -77,7 +77,7 @@
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
 			
-			if(toDate != null && "" != toDate && "SDate To" != toDate){
+			if(toDate != null && "" != toDate && "Date To" != toDate){
 				$('#fromDate').datepicker('option', 'maxDate',toDate);  
 			}
 			
@@ -136,7 +136,7 @@
 	                      			<img src="{{$d['aw_thumb_url']}}" width="92" height="92" class="btn" />
 	                      		</a>
 	                      	</td>
-	                      	<td>{{$d['category_name']}} > Comedy<br />
+	                      	<td>{{$d['category_name']}}<br />
 	                        	<span>
 	                        		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}">
 		                      			{{$d['product_name']}}
