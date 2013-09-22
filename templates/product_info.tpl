@@ -29,7 +29,7 @@
 			function(obj){
 				var html = "<h1>" + obj.product_name +"</h1>" +
                     "<p class=\"add\">"+obj.promotional_text+"</p>" +
-                    "<p class=\"time\">"+ obj.time+" BST <a href=\"#\">+ 1 more dates</a></p>" +
+                    "<p class=\"time\">"+ obj.time+" BST </p>" +
                     "<p class=\"mt15\"><a href=\"#\" class=\"btn btn-range\">Add to Calendar</a></p>" ;
 				$("#info-show").html(html);
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
