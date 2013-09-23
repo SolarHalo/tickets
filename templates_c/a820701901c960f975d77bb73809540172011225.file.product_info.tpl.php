@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 13:52:11
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 14:00:13
          compiled from "F:\PHP_WorkSapce\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:302555231cbec2155e1-51561933%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a820701901c960f975d77bb73809540172011225' => 
     array (
       0 => 'F:\\PHP_WorkSapce\\tickets\\templates\\product_info.tpl',
-      1 => 1379339526,
+      1 => 1379339607,
       2 => 'file',
     ),
   ),
@@ -106,20 +106,7 @@ ticket/queryById',
 			<a class="addthis_button_compact"></a>
 			<a class="addthis_counter addthis_bubble_style"></a>
 			</div>
-			<script type="text/javascript">
-
-		//	var addthis_share = {
-				//	
-				//		url : 'https://mail.google.com',
-			//			title: 'scknaslkcnalksncaksnclasncaknclksnc',
-			//			description: 'skcaskclaknscklasnclkansclkansclkansclkanscknaskcnaslkcnaskcnlsakncaksnclkasncl',
-			//		}
-//						var addthis_config =
-//						{
-//						   ui_508_compliant: true
-//						}
-		var addthis_config = {"data_track_addressbar":true};
-			</script>
+			<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-522dce200590139f"></script>
 				<!-- AddThis Button END -->
             </div>
