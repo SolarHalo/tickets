@@ -433,10 +433,10 @@ select, input[type="file"] {
 	font-size:16px;
 }
 .map div {
-	padding:15px;
+/*	padding:15px;
 	background:#fff;
 	border:1px solid #ebebeb;
-	margin:15px 0 80px;
+	margin:15px 0 80px; */
 }
 .events-r {
 	width:188px;

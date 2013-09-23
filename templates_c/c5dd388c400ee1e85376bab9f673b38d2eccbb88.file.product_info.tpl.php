@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 14:05:59
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 15:53:16
          compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
-      1 => 1379945120,
+      1 => 1379951569,
       2 => 'file',
     ),
   ),
@@ -89,6 +89,7 @@ ticket/queryById',
                     "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"<?php echo @constant('WEBSITE_URL');?>
 buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
 				$("#info-show").html(html);
+				
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +
 //	                "	<li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
@@ -105,6 +106,22 @@ buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><stron
 /public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
 				$("#img-list").prepend(str);
+				
+				
+				html = "<font>Description</font>: "+obj.description + "<br />"+
+                    "	<table cellpadding=\"0\" cellspacing=\"0\" class=\"mt15\">"+
+                    "  		<tr>"+
+                    "	       	<td width=\"140\"><font>time</font></td>"+
+                    "       	<td>"+obj.time+"</td>"+
+                    "   	</tr>"+
+                    "    	<tr>"+
+                    "        	<td width=\"140\"><font>Prices</font></td>"+
+                    "        	<td> "+obj.display_price+" </td>"+
+                    "    	</tr>"+
+                    "	</table>";
+				$("#info-other").html(html);
+				
+				
 			},
 			"json"
 		);
@@ -142,7 +159,10 @@ buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><stron
                     -->
                 </div>
                 <div class="hr mt15"></div>
-                <div class="row2 mt15"> 
+                <div class="row2 mt15" id="info-other">
+                
+               	 	<!-- 
+               	 	
                     <font>Featuring</font>: Wade, Van Gerwen, Hankey, Nicholson, George, Joplin.<br />
                     <font>Tickets available from</font>: Modus Darts on <font>08450 180 180</font> 
                     <table cellpadding="0" cellspacing="0" class="mt15">
@@ -155,6 +175,8 @@ buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><stron
                             <td>VIPs - £50, Terrace £25, Balcony - 20</td>
                         </tr>
                     </table>
+                    
+                    -->
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
