@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 16:05:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 15:01:08
          compiled from "G:\phpserver\tickets\templates\usercarlendar_event_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18887521c5da350c828-68681888%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3a9bb68e758352ee54ecb9dcc27d66267ce5def9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\usercarlendar_event_list.tpl',
-      1 => 1379001707,
+      1 => 1379948373,
       2 => 'file',
     ),
   ),
@@ -63,7 +63,7 @@ userevent/getAllUserEvent",
 					html+="<tr>"+
            " <td class=\"tdT\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table map\">"+
                 "<tr class=\"tdT\">"+
-                  "<td><p><a href=\"#\" class=\"list-time timebtn_bg\">"+fromdate.toTimeString()+"</a></p></td>"+
+                  "<td><p><a href=\"#\" class=\"list-time timebtn_bg\">"+handTimeStr(fromdate.toTimeString())+"</a></p></td>"+
                  " <td><img src="+obj[i].imgurl+" width=\"92\" height=\"92\" class=\"btn\" /></td>"+
                   "<td>"+catory_name+" > Comedy<br />"+
                   "  <span>"+obj[i].ename+"</span><br />"+
@@ -83,7 +83,9 @@ userevent/getAllUserEvent",
 		});
 	});
 	
-	
+	function handTimeStr(timeStr){
+		return timeStr.substring(0,8);
+	}
 	//string 转 date
 	function strToDate(sdate){
     	var d = new Date(Date.parse(sdate.replace(/-/g,"/"))); 
