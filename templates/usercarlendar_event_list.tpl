@@ -38,8 +38,8 @@
 					html+="<tr>"+
            " <td class=\"tdT\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table map\">"+
                 "<tr class=\"tdT\">"+
-                  "<td><p><a href=\"#\" class=\"list-time timebtn_bg\">"+handTimeStr(fromdate.toTimeString())+"</a></p></td>"+
-                 " <td><img src="+obj[i].imgurl+" width=\"92\" height=\"92\" class=\"btn\" /></td>"+
+                  "<td width=60><p><a href=\"#\" class=\"list-time timebtn_bg\">"+handTimeStr(fromdate.toTimeString())+"</a></p></td>"+
+                 " <td width=98><img src="+obj[i].imgurl+" width=\"92\" height=\"92\" class=\"btn\" /></td>"+
                   "<td>"+catory_name+" > Comedy<br />"+
                   "  <span>"+obj[i].ename+"</span><br />"+
                   descr+".</td>"+
@@ -61,6 +61,7 @@
 	function handTimeStr(timeStr){
 		return timeStr.substring(0,8);
 	}
+	
 	//string 转 date
 	function strToDate(sdate){
     	var d = new Date(Date.parse(sdate.replace(/-/g,"/"))); 
