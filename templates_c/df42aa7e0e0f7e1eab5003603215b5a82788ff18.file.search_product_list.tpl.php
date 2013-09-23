@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-20 03:12:54
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 13:47:57
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1379646759,
+      1 => 1379861885,
       2 => 'file',
     ),
   ),
@@ -104,7 +104,7 @@ login";
 			location = "";
 		}
 		
-		if(toDate == null || toDate == undefined || "SDate To" == toDate){
+		if(toDate == null || toDate == undefined || "Date To" == toDate){
 			toDate = "";
 		}
 		
@@ -121,7 +121,7 @@ login";
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
 			
-			if(toDate != null && "" != toDate && "SDate To" != toDate){
+			if(toDate != null && "" != toDate && "Date To" != toDate){
 				$('#fromDate').datepicker('option', 'maxDate',toDate);  
 			}
 			
@@ -202,7 +202,7 @@ ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?
 	                      		</a>
 	                      	</td>
 	                      	<td><?php echo $_smarty_tpl->tpl_vars['d']->value['category_name'];?>
- > Comedy<br />
+<br />
 	                        	<span>
 	                        		<a href="<?php echo @constant('WEBSITE_URL');?>
 ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
@@ -211,6 +211,10 @@ ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?
 
 		                      		</a>
 	                        	</span><br />
+	                        	
+	                        	<?php echo $_smarty_tpl->tpl_vars['d']->value['promotional_text'];?>
+ &nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['d']->value['display_price'];?>
+
 	                        		
 	                        </td>
 		               	</tr>
@@ -219,7 +223,7 @@ ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?
 	                      	<td>
 	                      		<p class="mt15">
 	                      			<a href="javascript:addCalendat('<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
-')" class="btn btn-range btn-Calendar">Add to Calendat</a>
+')" class="btn btn-range btn-Calendar">Add to Calendar</a>
 	                      			<a href="<?php echo @constant('WEBSITE_URL');?>
 buyticket/index/?pid=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
 " class="back btn btn-black"><strong>Buy Tickets</strong></a>

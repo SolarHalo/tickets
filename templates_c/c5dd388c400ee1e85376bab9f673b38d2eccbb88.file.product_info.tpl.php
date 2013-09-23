@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-16 14:02:07
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 14:05:59
          compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
-      1 => 1379339983,
+      1 => 1379945120,
       2 => 'file',
     ),
   ),
@@ -45,7 +45,27 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/js/jquery.ui.datepicker.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/js/searchform.js"></script>
+ <script  type="text/javascript"> 
  
+	function addCalendat(pid){
+		console.log("add calendar");
+		$.post(
+			'<?php echo @constant('WEBSITE_URL');?>
+ticket/addCalendat',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					alert("success");
+				}else{
+					window.location.href="<?php echo @constant('WEBSITE_URL');?>
+login";
+				}
+				
+			},
+			"json"
+		);
+	} 
+ </script>
 </head>
 
 <body>
@@ -65,8 +85,9 @@ ticket/queryById',
 			function(obj){
 				var html = "<h1>" + obj.product_name +"</h1>" +
                     "<p class=\"add\">"+obj.promotional_text+"</p>" +
-                    "<p class=\"time\">"+ obj.time+" BST <a href=\"#\">+ 1 more dates</a></p>" +
-                    "<p class=\"mt15\"><a href=\"#\" class=\"btn btn-range\">Add to Calendar</a></p>" ;
+                    "<p class=\"time\">"+ obj.time+" BST </p>" +
+                    "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"<?php echo @constant('WEBSITE_URL');?>
+buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
 				$("#info-show").html(html);
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +
@@ -83,7 +104,7 @@ ticket/queryById',
 //	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
 /public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
-				$("#img-list").before(str);
+				$("#img-list").prepend(str);
 			},
 			"json"
 		);
@@ -144,8 +165,9 @@ ticket/queryById',
 
                     </div>
                 </div>
-            </div>
-            <div class="events-r mt15">
+            </div> 
+        </div> 
+         <div class="events-r mt15">
             	<div class="r-row rw-bg">
                 	<h3>flagship  event</h3>
                     <font>August 25th, 20:00hrs</font>
@@ -165,7 +187,6 @@ ticket/queryById',
                     <a href="#" class="Fbot mt15">View Details</a>
                 </div>
             </div>
-        </div> 
     </div> 
 </div>
 <div class="footer">

@@ -12,7 +12,25 @@
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
+ <script  type="text/javascript"> 
  
+	function addCalendat(pid){
+		console.log("add calendar");
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}ticket/addCalendat',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					alert("success");
+				}else{
+					window.location.href="{{$smarty.const.WEBSITE_URL}}login";
+				}
+				
+			},
+			"json"
+		);
+	} 
+ </script>
 </head>
 
 <body>
@@ -30,7 +48,7 @@
 				var html = "<h1>" + obj.product_name +"</h1>" +
                     "<p class=\"add\">"+obj.promotional_text+"</p>" +
                     "<p class=\"time\">"+ obj.time+" BST </p>" +
-                    "<p class=\"mt15\"><a href=\"#\" class=\"btn btn-range\">Add to Calendar</a></p>" ;
+                    "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"{{$smarty.const.WEBSITE_URL}}buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
 				$("#info-show").html(html);
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +
@@ -41,7 +59,7 @@
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc05.gif\" /></a></li>"+
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
-				$("#img-list").before(str);
+				$("#img-list").prepend(str);
 			},
 			"json"
 		);
@@ -100,8 +118,9 @@
                     	{{include file="map.tpl" }}
                     </div>
                 </div>
-            </div>
-            <div class="events-r mt15">
+            </div> 
+        </div> 
+         <div class="events-r mt15">
             	<div class="r-row rw-bg">
                 	<h3>flagship  event</h3>
                     <font>August 25th, 20:00hrs</font>
@@ -121,7 +140,6 @@
                     <a href="#" class="Fbot mt15">View Details</a>
                 </div>
             </div>
-        </div> 
     </div> 
 </div>
 <div class="footer">
