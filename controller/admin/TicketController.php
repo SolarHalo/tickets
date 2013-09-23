@@ -157,7 +157,7 @@ class TicketController extends Controller{
 		foreach ($res as $re){
 			$result =  array(
 					"aw_product_id"=>$re->aw_product_id,
-					"product_name"=>$re->category_name,
+					"product_name"=>$re->product_name,
 					"product_type"=>$re->product_type,
 					"aw_deep_link"=>$re->aw_deep_link,
 					"aw_image_url"=>$re->aw_image_url,

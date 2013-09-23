@@ -2,7 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
+<title>Search4gigs – Music, tickets and cultural events on your calendar.</title>
+<meta name="description" content="Search4gigs – Search and find tickets for all types of events. Search and add sport, music or cultural events to your calendar." />
+<meta name="keywords" content="Search4gigs, events, sport events, music events, cultural events, manage calendar, music tickets, online tickets." />
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
@@ -20,7 +22,7 @@
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
 			
-			if(toDate != null && "" != toDate && "SDate To" != toDate){
+			if(toDate != null && "" != toDate && "Date To" != toDate){
 				$('#fromDate').datepicker('option', 'maxDate',toDate);  
 			}
 			
@@ -57,7 +59,7 @@
 		mouseEvent("keyword","Search by keyword");
 		mouseEvent("location","Search by location");
 		mouseEvent("fromDate","Date From");
-		mouseEvent("toDate","SDate To");
+		mouseEvent("toDate","Date To");
 	});
 
 
@@ -81,7 +83,7 @@
 			$("#fromDate").val("");
 		}
 		
-		if("SDate To" == toDate){
+		if("Date To" == toDate){
 			$("#toDate").val("");
 		}
 		
@@ -133,14 +135,14 @@
 <div id="indexsearch" class="search">
 	<div>
     	<div>
-        	<form action="{{$smarty.const.WEBSITE_URL}}ticket" method="post">
+        	<form action="{{$smarty.const.WEBSITE_URL}}ticket/index/" method="get">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
                     	<td><input type="text" id="keyword" name="keyword" value="Search by keyword" class="searchinput textinput-w" tabindex=1 /></td>
                         <td><input type="text" id="location" name="location" value="Search by location" class="searchinput textinput-w" tabindex=2/></td>
                         <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" tabindex=3/></td>
-                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=4/></td>
+                        <td><input type="text" name="toDate" id="toDate" value="Date To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=4/></td>
                         <td><input type="submit" value="Search" onclick="check()" class="input-style2" /></td>
                     </tr>
                 </table>

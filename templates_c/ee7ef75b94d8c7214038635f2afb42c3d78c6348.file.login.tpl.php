@@ -1,29 +1,29 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 14:34:38
-         compiled from "G:\phpserver\tickets\templates\login.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:6836521c69bc3ebee2-33341521%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-19 15:08:09
+         compiled from "E:\phpweb\tickets\templates\login.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:56675231cebc842c00-68333407%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    'ee918a1c369862bfb18a9a1c1303d79c203aab9f' => 
+    'ee7ef75b94d8c7214038635f2afb42c3d78c6348' => 
     array (
-      0 => 'G:\\phpserver\\tickets\\templates\\login.tpl',
-      1 => 1379492869,
+      0 => 'E:\\phpweb\\tickets\\templates\\login.tpl',
+      1 => 1379519829,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '6836521c69bc3ebee2-33341521',
+  'nocache_hash' => '56675231cebc842c00-68333407',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_521c69bc4d92e7_87567030',
+  'unifunc' => 'content_5231cebc8ffd79_13454605',
   'variables' => 
   array (
     'errortip' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_521c69bc4d92e7_87567030')) {function content_521c69bc4d92e7_87567030($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_5231cebc8ffd79_13454605')) {function content_5231cebc8ffd79_13454605($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

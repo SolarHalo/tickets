@@ -20,7 +20,7 @@
  	 * @param  $url 网页的URL
  	 */
  	function __construct($url){ 
- 		  $this->url = $url;
+ 		  $this->url = urldecode($url);
  		  $this->urlToArray();
  	}
  	
@@ -45,12 +45,18 @@
 	}
 	
 	function paramToArray($paramStr){
+		
+		if(strpos($paramStr,"?") == 0){
+			$paramStr = substr($paramStr,1);
+		}
+		
 		$values = array();
 		if(!empty($paramStr)){
 			$paramValuePairs = explode("&", $paramStr);
 			foreach($paramValuePairs as $paramValuePair ){
 				$pv = explode("=", $paramValuePair);
-				array_push($values, $pv[1]);
+				//array_push($values, $pv[1]);
+				$values[$pv[0]] = $pv[1];
 			}
 		}else{
 			$values = null;

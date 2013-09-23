@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-30 19:05:30
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 16:22:28
          compiled from "E:\phpweb\tickets\templates\layouts\footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13352521cac279010a2-06629485%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4481e8392b488874fe0547d5988ba4dbeb219fe2' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\layouts\\footer.tpl',
-      1 => 1377782799,
+      1 => 1378995457,
       2 => 'file',
     ),
   ),
@@ -21,11 +21,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521cac27902299_59339518')) {function content_521cac27902299_59339518($_smarty_tpl) {?><div class="footer">
 	<div>
-    	<a href="#">User guide</a>  |  
-        <a href="#">About us</a>  |  
-        <a href="#">Cookies policy</a>  |  
-        <a href="#">Privacy policy</a>  |  
-        <a href="#">Terms and Conditions</a>
+    	<a href="<?php echo @constant('WEBSITE_URL');?>
+about">User guide</a>  |  
+        <a href="<?php echo @constant('WEBSITE_URL');?>
+about">About us</a>  |  
+        <a href="<?php echo @constant('WEBSITE_URL');?>
+about">Cookies policy</a>  |  
+        <a href="<?php echo @constant('WEBSITE_URL');?>
+about">Privacy policy</a>  |  
+        <a href="<?php echo @constant('WEBSITE_URL');?>
+about">Terms and Conditions</a>
     </div>
 </div>
 

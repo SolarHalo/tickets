@@ -33,7 +33,8 @@
     </div>
 </div>
 <script  type="text/javascript">
-$(function($) {
+$(function($) {  
+	
 	function mouseEvent(objId,objVal){
 		   
 				var foucusFun = function(){
@@ -54,13 +55,37 @@ $(function($) {
 			mouseEvent("keyword","Search by keyword");
 			mouseEvent("location","Search by location");
 			mouseEvent("fromDate","Date From");
-			mouseEvent("toDate","SDate To");
+			mouseEvent("toDate","Date To");
 });
+function check( form ){
+	var keyword = $("#keyword").val();
+	var location = $("#location").val();
+	var fromDate = $("#fromDate").val();
+	var toDate = $("#toDate").val();
+	
+	if(keyword == "Search by keyword"){
+		$("#keyword").val("");
+	}
+	
+	if("Search by location" == location){
+		$("#location").val("");
+	}
+	
+	if("Date From" == fromDate){
+		$("#fromDate").val("");
+	}
+	
+	if("Date To" == toDate){
+		$("#toDate").val("");
+	}
+	//alert($("#keyword").val());
+	return true;
+}
 		
 			</script>
 <div class="search">
 	<div>
-    	<div><form action="{{$smarty.const.WEBSITE_URL}}ticket" name="searchform" method="post">
+    	<div><form action="{{$smarty.const.WEBSITE_URL}}ticket/index/" name="searchform" method="get">
             	<table>
                 	<tr>
                     	<td><font class="fontstyle">Find&nbsp;&nbsp;an&nbsp;&nbsp;event</font></td>
@@ -68,7 +93,7 @@ $(function($) {
                         <td><input type="text" name="location" id="location" value="{{$location}}" class="searchinput textinput-w" tabindex=4/></td>
                         <td><input type="text" name="fromDate" id="fromDate" value="{{$fromDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=5/></td>
                         <td><input type="text" name="toDate" id="toDate" value="{{$toDate}}" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=6/></td>
-                        <td><input type="submit"   value="Search" class="input-style2" /></td>
+                        <td><input type="submit"   value="Search" onclick="check(this)" class="input-style2" /></td>
                     </tr>
                 </table>
                </form>

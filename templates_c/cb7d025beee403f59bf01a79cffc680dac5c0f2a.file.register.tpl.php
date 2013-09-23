@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-30 19:05:30
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 14:47:46
          compiled from "E:\phpweb\tickets\templates\register.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:295925220d0dad1aa77-91879365%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cb7d025beee403f59bf01a79cffc680dac5c0f2a' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\register.tpl',
-      1 => 1377782799,
+      1 => 1378995457,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_5220d0dad6d646_16063030',
+  'variables' => 
+  array (
+    'errortip' => 0,
+  ),
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5220d0dad6d646_16063030')) {function content_5220d0dad6d646_16063030($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,7 +34,21 @@ public/style/reset.css" type="text/css" rel="stylesheet" />
 public/style/style.css" type="text/css" rel="stylesheet" /> 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
-
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/func.css" type="text/css" rel="stylesheet" /> 
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
+<script src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery-1.10.1.min.js" type="text/javascript"></script> 
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script>
+ 
 </head>
 
 <body>
@@ -40,31 +58,33 @@ public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" />
     <div class="content">
     	<div class="login-l login">
         	<h6>REGISTER&nbsp;&nbsp;FOR&nbsp;&nbsp;SEARCH4GIGS</h6>
+        	<?php echo $_smarty_tpl->tpl_vars['errortip']->value;?>
+
         	<form  id="registerform" action="<?php echo @constant('WEBSITE_URL');?>
-/register/handreg" method="post">
+register" method="post">
             <table> 
 				<tr>
-                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" /></td> 
+                    <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" tabindex=11 /></td> 
                 </tr>
                 <tr>
-                    <td><span>Email Address</span><input type="text" class="input-style3 validate[required,custom[email]] text-input" name="email" /></td> 
+                    <td><span>Email Address</span><input type="text" class="input-style3 validate[required,custom[email]] text-input" name="email" tabindex=12/></td> 
                 </tr>
 				<tr>
-                    <td><span>Password</span><input type="password" class="input-style3 validate[required] text-input" id="password" name="password"/></td>  
+                    <td><span>Password</span><input type="password" class="input-style3 validate[required,minSize[6]] text-input" id="password" name="password" tabindex=13/></td>  
                 </tr>
                 <tr>
-                    <td><span>Password Confirmation</span><input type="password" class="input-style3 validate[required,equals[password]] text-input" name="repassword" /></td>  
+                    <td><span>Password Confirmation</span><input type="password" class="input-style3 validate[required,equals[password],minSize[6]] text-input" name="repassword" tabindex=14/></td>  
                 </tr>
                 <tr>
-                    <td><span>First Name</span><input type="text" class="input-style3 validate[required] text-input" name="firstname"/></td>  
+                    <td><span>First Name</span><input type="text" class="input-style3 validate[required] text-input" name="firstname" tabindex=15/></td>  
                 </tr>
                 <tr>
-                    <td><span>Last Name</span><input type="text" class="input-style3 validate[required] text-input" name="lastname"/></td>  
+                    <td><span>Last Name</span><input type="text" class="input-style3 validate[required] text-input" name="lastname" tabindex=16/></td>  
                 </tr>
                 <tr>
                     <td><span>Birth Date</span>
                     	<div class="controls">
-							<select id="id_birthdate_0" name="birthdate_0" class="validate[required]" name="day">
+							<select id="id_birthdate_0" name="day" class="validate[required]" tabindex=17 >
                             <option selected="selected" value="">Day</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -98,7 +118,7 @@ public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" />
                             <option value="30">30</option>
                             <option value="31">31</option>
                             </select>
-                            <select id="id_birthdate_1" name="birthdate_1"  class="validate[required]" name="month">
+                            <select id="id_birthdate_1" class="validate[required]" name="month" tabindex=18>
                             <option selected="selected" value="" >Month</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -113,7 +133,7 @@ public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" />
                             <option value="11">11</option>
                             <option value="12">12</option>
                             </select>
-                            <select id="id_birthdate_2" name="birthdate_2"  class="validate[required]" name="year">
+                            <select id="id_birthdate_2"  class="validate[required]" name="year" tabindex=19>
                             <option selected="selected" value="">Year</option>
                             <option value="2013">2013</option>
                             <option value="2012">2012</option>
@@ -230,7 +250,7 @@ public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" />
                     <a href="#" class="link_style01">Cookies Policy</a> *</font></span></td>  
                 </tr>
                 <tr>
-                    <td><input type="submit" class="input-style1 submit" value="sign&nbsp;&nbsp;in" /></td>  
+                    <td><input type="submit" class="input-style1 submit" value="REGISTER" tabindex=20/></td>  
                 </tr>
             </table>          
             </form>
@@ -239,7 +259,8 @@ public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" />
         	<h6>ARE&nbsp;&nbsp;YOU&nbsp;&nbsp;A&nbsp;&nbsp;NEW&nbsp;&nbsp;USER?</h6>
             <table> 
 				<tr>
-                    <td><span>Sign up to Search4Gigs right here...</span><a href="#" class="input-style1">register</a></td> 
+                    <td><span>Sign up to Search4Gigs right here...</span><a href="<?php echo @constant('WEBSITE_URL');?>
+login" class="input-style1">SIGN IN</a></td> 
                 </tr> 
                 <tr><td height="30"></td></tr>
             </table>     

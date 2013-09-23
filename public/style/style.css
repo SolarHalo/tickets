@@ -1248,9 +1248,13 @@ div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:
 	list-style:disc;
 	text-indent:-0.3px;
 	}
-
-
-
+ 
+.list_result tr td table tr td span a{
+font-size:24px;
+}
+.list_result tr td table tr td span a:hover{
+color:#ff7201;
+}
 
 
 
