@@ -48,7 +48,7 @@
 				var html = "<h1>" + obj.product_name +"</h1>" +
                     "<p class=\"add\">"+obj.promotional_text+"</p>" +
                     "<p class=\"time\">"+ obj.time+" BST </p>" +
-                    "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"{{$smarty.const.WEBSITE_URL}}buyticket/index/?pid="+obj.aw_product_id+"\" class=\"btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
+                    "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"{{$smarty.const.WEBSITE_URL}}buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
 				$("#info-show").html(html);
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +

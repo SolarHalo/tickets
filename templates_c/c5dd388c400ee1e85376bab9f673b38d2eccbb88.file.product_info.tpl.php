@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 13:54:08
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 14:05:59
          compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
-      1 => 1379944366,
+      1 => 1379945120,
       2 => 'file',
     ),
   ),
@@ -86,8 +86,8 @@ ticket/queryById',
 				var html = "<h1>" + obj.product_name +"</h1>" +
                     "<p class=\"add\">"+obj.promotional_text+"</p>" +
                     "<p class=\"time\">"+ obj.time+" BST </p>" +
-                    "<p class=\"mt15\"><a href=\"#\" class=\"btn btn-range\">Add to Calendar</a><a href=\"<?php echo @constant('WEBSITE_URL');?>
-buyticket/index/?pid="+obj.aw_product_id+"\" class=\"back btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
+                    "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"<?php echo @constant('WEBSITE_URL');?>
+buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
 				$("#info-show").html(html);
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +
