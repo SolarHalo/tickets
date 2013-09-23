@@ -1,21 +1,21 @@
-function oauth() {
+function Oauth() {
     this.init();
 }
 
 /**初始化一些事件, 或者加载页面*/
-oauth.prototype.init = function() {
+Oauth.prototype.init = function() {
     var that = this;
-    $('#fbLogin').click(function(event){
+    $('table.bor-none td .btn-blue').click(function(event){
         event.stopPropagation();
         event.preventDefault();
-        oauth.prototype.checkFbHashLogin();
-        oauth.prototype.facebookLogin();
+       // Oauth.prototype.checkFbHashLogin();
+        Oauth.prototype.facebookLogin();
     });
 };
 
 /**Facebook 认证 start*/
-oauth.prototype.facebookLogin = function(){//访问令牌
-    var appID = '<YOUR CLIENT ID>';
+Oauth.prototype.facebookLogin = function(){//访问令牌
+    var appID = '155660824640623';
     var path = 'https://www.facebook.com/dialog/oauth?';
     var queryParams = ['client_id=' + appID,
     'redirect_uri=' + window.location,
@@ -25,7 +25,7 @@ oauth.prototype.facebookLogin = function(){//访问令牌
     window.location.replace(url);
 };
 
-oauth.prototype.checkFbHashLogin = function() {//检查和使用令牌
+Oauth.prototype.checkFbHashLogin = function() {//检查和使用令牌
     if (window.location.hash.length > 3) {
         var hash = window.location.hash.substring(1);
         if(hash.split('=')[0] == 'access_token'){
@@ -40,10 +40,11 @@ oauth.prototype.checkFbHashLogin = function() {//检查和使用令牌
         }
     }
 };
-oauth.prototype.displayUser = function(user) {//回调函数，用户信息转化
+Oauth.prototype.displayUser = function(user) {//回调函数，用户信息转化
     setTimeout(function () { }, 1000);
     if (user.id != null && user.id != "undefined") {
        //.....
+    	console.log(user.id);
     }else {
         alert('user error');
     }
@@ -51,7 +52,7 @@ oauth.prototype.displayUser = function(user) {//回调函数，用户信息转�
 /**Facebook 认证 end*/
 
 $(function() {
-    var oauth = new oauth();
+    var oauth = new Oauth();
 });
 
 String.prototype.trim = function(){

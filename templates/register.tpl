@@ -14,8 +14,6 @@
 <script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
 <script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
 
-<script src="{{$smarty.const.WEBSITE_URL}}/public/js/oauth/oauth.js"></script>
- 
 </head>
 
 <body>
