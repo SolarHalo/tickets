@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-20 09:57:57
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 13:44:29
          compiled from "G:\phpserver\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:28905521c65d4aa37b3-57099622%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4fc9ad758920aaa4926b2b4d8b5229b81cc343e9' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1379671069,
+      1 => 1379861885,
       2 => 'file',
     ),
   ),
@@ -91,9 +91,9 @@ $(function($) {
 			mouseEvent("keyword","Search by keyword");
 			mouseEvent("location","Search by location");
 			mouseEvent("fromDate","Date From");
-			mouseEvent("toDate","SDate To");
+			mouseEvent("toDate","Date To");
 });
-function check( ){
+function check( form ){
 	var keyword = $("#keyword").val();
 	var location = $("#location").val();
 	var fromDate = $("#fromDate").val();
@@ -111,10 +111,10 @@ function check( ){
 		$("#fromDate").val("");
 	}
 	
-	if("SDate To" == toDate){
+	if("Date To" == toDate){
 		$("#toDate").val("");
 	}
-	
+	//alert($("#keyword").val());
 	return true;
 }
 		
@@ -134,7 +134,7 @@ ticket/index/" name="searchform" method="get">
 " onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=5/></td>
                         <td><input type="text" name="toDate" id="toDate" value="<?php echo $_smarty_tpl->tpl_vars['toDate']->value;?>
 " onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=6/></td>
-                        <td><input type="submit"   value="Search" onclick="check()" class="input-style2" /></td>
+                        <td><input type="submit"   value="Search" onclick="check(this)" class="input-style2" /></td>
                     </tr>
                 </table>
                </form>
