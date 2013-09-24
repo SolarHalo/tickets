@@ -53,12 +53,18 @@ function displayUser(user) {//回调函数，用户信息转化
     	console.log(user.gender);
     	console.log(user.locale);
     	console.log(user.age_range);
-    	
+    	$.post("{{$smarty.const.WEBSITE_URL}}register/addUser4FaceBook", { userID: user.id, username: user.username} );
     }else {
         alert('user error');
     }
 }
 /**Facebook 认证 end*/
+
+/**Facebook 认证成功之后的处理 start*/
+Oauth.prototype.login_search4gigs = function() {
+	
+}
+/**Facebook 认证成功之后的处理 end*/
 
 $(function() {
     var oauth = new Oauth();
