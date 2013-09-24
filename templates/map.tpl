@@ -136,7 +136,6 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
        function loadDatas(datas,proty){
     	   deleteOverlays();
 		   if(datas){
-			   alert(datas)
 			   for (i in datas) {
 				  var address = datas[i][proty];
 				  if(address){
