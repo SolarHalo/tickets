@@ -8,7 +8,7 @@
 //  
 define('ADMIN_TITLE', "后台管理中心");
 define('PROJECT_NAME', "通用封装框架");
-define('WEBSITE_URL','http://localhost/');
+define('WEBSITE_URL','http://search4gigs.com/');
                 
  
 //for include smarty 

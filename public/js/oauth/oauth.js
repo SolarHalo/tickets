@@ -5,11 +5,12 @@ function Oauth() {
 /**初始化一些事件, 或者加载页面*/
 Oauth.prototype.init = function() {
     var that = this;
-  Oauth.prototype.checkFbHashLogin();
+ 
     $('table.bor-none td .btn-blue').click(function(event){
         event.stopPropagation();
+        
+        Oauth.prototype.checkFbHashLogin();
         Oauth.prototype.facebookLogin();
-//        Oauth.prototype.checkFbHashLogin();
     });
 };
 
@@ -18,7 +19,7 @@ Oauth.prototype.facebookLogin = function(){//访问令牌
     var appID = '155660824640623';
     var path = 'https://www.facebook.com/dialog/oauth?';
     var queryParams = ['client_id=' + appID,
-    'redirect_uri=' + 'http://search4gigs.com/login',
+    'redirect_uri=' + 'http://search4gigs.com',
     'response_type=token'];
     var query = queryParams.join('&');
     var url = path + query;
