@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-04 17:39:11
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 15:44:20
          compiled from "E:\phpweb\tickets\templates\map.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:119665225e736142f67-83673444%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c34bd2c336a32f1c2142d1a34dd4dcf5161dd098' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\map.tpl',
-      1 => 1378308311,
+      1 => 1380030252,
       2 => 'file',
     ),
   ),
@@ -53,8 +53,10 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
         };
        map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+
+       searchaddress("Citibank Cevahir Alisveris Merkezi ATM, 34330 İstanbul");
       }
-      google.maps.event.addDomListener(window, 'load', initialize);
+    //  google.maps.event.addDomListener(window, 'load', initialize);
 
       /**
       	*渲染图标
@@ -90,7 +92,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       */
       function searchaddress(address){  
   	    if (geocoder) {  
-  	        geocoder.geocode( { 'address': address,"language":"zh_cn"}, function(results, status) {  
+  	        geocoder.geocode( { 'address': address}, function(results, status) {  
   	            if (status == google.maps.GeocoderStatus.OK) {  
   	                if(results[0]){  
   	  	                for(var i=0;i<results.length;i++){
@@ -119,7 +121,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       }
     </script>
 </head>
-<body>
+<body onload="initialize()">
 	<div id="map-canvas" />
 </body>
 </html><?php }} ?>

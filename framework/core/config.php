@@ -14,22 +14,22 @@ define('WEBSITE_URL','http://localhost/');
 //for include smarty 
 ini_set('include_path', ini_get('include_path').PATH_SEPARATOR.SMARTY_DIR);
  
-//$CONFIG['DB']= array(
-//		'db_host'           =>      'localhost',
-//		'db_user'           =>      'root',
-//		'db_password'       =>      '',
-//		'db_database'       =>      'event',
-//		'db_table_prefix'   =>      'app_',
-//		'db_charset'        =>      'urf8'
-//);
- $CONFIG['DB']= array(
-     'db_host'           =>      '109.123.92.158',
-     'db_user'           =>      'root', 
-     'db_password'       =>      'root',
-     'db_database'       =>      'events', 
-     'db_table_prefix'   =>      'app_',
-     'db_charset'        =>      'urf8'   
- );
+$CONFIG['DB']= array(
+		'db_host'           =>      'localhost',
+		'db_user'           =>      'root',
+		'db_password'       =>      '',
+		'db_database'       =>      'event',
+		'db_table_prefix'   =>      'app_',
+		'db_charset'        =>      'urf8'
+);
+//  $CONFIG['DB']= array(
+//      'db_host'           =>      '109.123.92.158',
+//      'db_user'           =>      'root', 
+//      'db_password'       =>      'root',
+//      'db_database'       =>      'events', 
+//      'db_table_prefix'   =>      'app_',
+//      'db_charset'        =>      'urf8'   
+//  );
 $CONFIG['SMARTY']= array(
     'templates'         =>      PROJECT.'/templates/',
     'templates_c'       =>      PROJECT.'/templates_c/',

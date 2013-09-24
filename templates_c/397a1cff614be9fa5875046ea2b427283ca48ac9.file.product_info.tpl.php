@@ -1,30 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 17:20:30
+         compiled from "E:\phpweb\tickets\templates\product_info.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:23907524049cfd64234-07964762%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '397a1cff614be9fa5875046ea2b427283ca48ac9' => 
+    array (
+      0 => 'E:\\phpweb\\tickets\\templates\\product_info.tpl',
+      1 => 1379949622,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '23907524049cfd64234-07964762',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_524049cfdc5c15_00013032',
+  'variables' => 
+  array (
+    'id' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_524049cfdc5c15_00013032')) {function content_524049cfdc5c15_00013032($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>index</title>
-	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
-	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
-	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
+	<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+	<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" /> 
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
 	
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
-	<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-1.8.1.min.js" ></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script>
  
 </head>
 
 <body>
 
 
-﻿{{include file='layouts/headerandsearch.tpl'}} 
+﻿<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 
 <script  type="text/javascript">
-	var postData = {'id':'{{$id}}'};
+	var postData = {'id':'<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+'};
 	$(function($) {
 		$.post(
-			'{{$smarty.const.WEBSITE_URL}}ticket/queryById',
+			'<?php echo @constant('WEBSITE_URL');?>
+ticket/queryById',
 			postData,
 			function(obj){
 				var html = "<h1>" + obj.product_name +"</h1>" +
@@ -34,12 +70,18 @@
 				$("#info-show").html(html);
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +
-//	                "	<li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc01.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc02.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc03.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc04.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc05.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc06.gif\" /></a></li>"+
+//	                "	<li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc01.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc02.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc03.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc04.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc05.gif\" /></a></li>"+
+//	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
+/public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
 				$("#img-list").before(str);
 				// searchaddress(obj.promotional_text);
@@ -97,8 +139,10 @@
                 <div class="row3 map">
                 	<span>View Map</span>
                     <div   style="width: 507px; height: 339px">
-                    	<!-- <img src="{{$smarty.const.WEBSITE_URL}}/public/photo/mapphoto.png" /> -->
-                    	{{include file="map.tpl" }}
+                    	<!-- <img src="<?php echo @constant('WEBSITE_URL');?>
+/public/photo/mapphoto.png" /> -->
+                    	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
                     </div>
                 </div>
             </div>
@@ -137,4 +181,4 @@
 <script type="text/javascript">
 </script>
 </body>
-</html>     
+</html>     <?php }} ?>

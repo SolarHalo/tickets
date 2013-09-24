@@ -32,8 +32,10 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
         };
        map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+
+       searchaddress("Citibank Cevahir Alisveris Merkezi ATM, 34330 İstanbul");
       }
-      google.maps.event.addDomListener(window, 'load', initialize);
+    //  google.maps.event.addDomListener(window, 'load', initialize);
 
       /**
       	*渲染图标
@@ -69,7 +71,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       */
       function searchaddress(address){  
   	    if (geocoder) {  
-  	        geocoder.geocode( { 'address': address,"language":"zh_cn"}, function(results, status) {  
+  	        geocoder.geocode( { 'address': address}, function(results, status) {  
   	            if (status == google.maps.GeocoderStatus.OK) {  
   	                if(results[0]){  
   	  	                for(var i=0;i<results.length;i++){
@@ -98,7 +100,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       }
     </script>
 </head>
-<body>
+<body onload="initialize()">
 	<div id="map-canvas" />
 </body>
 </html>

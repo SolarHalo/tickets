@@ -48,7 +48,7 @@
 			   <!--- END --->
         </div>
         
-        <div style="width: 700px; height: 350px">
+        <div style="width: 500px; height: 350px">
         	{{include file="map.tpl" }}
         
         </div>
