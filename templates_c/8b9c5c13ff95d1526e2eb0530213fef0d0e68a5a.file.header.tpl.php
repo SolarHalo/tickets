@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-18 14:38:34
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 15:00:43
          compiled from "G:\phpserver\tickets\templates\layouts\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:20897521c591a720310-02750838%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8b9c5c13ff95d1526e2eb0530213fef0d0e68a5a' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1379514671,
+      1 => 1379861885,
       2 => 'file',
     ),
   ),
@@ -50,7 +50,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 			var toDate = $("#toDate").val();
 			var fromDate = $("#fromDate").val();
 			
-			if(toDate != null && "" != toDate && "SDate To" != toDate){
+			if(toDate != null && "" != toDate && "Date To" != toDate){
 				$('#fromDate').datepicker('option', 'maxDate',toDate);  
 			}
 			
@@ -87,7 +87,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 		mouseEvent("keyword","Search by keyword");
 		mouseEvent("location","Search by location");
 		mouseEvent("fromDate","Date From");
-		mouseEvent("toDate","SDate To");
+		mouseEvent("toDate","Date To");
 	});
 
 
@@ -111,7 +111,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 			$("#fromDate").val("");
 		}
 		
-		if("SDate To" == toDate){
+		if("Date To" == toDate){
 			$("#toDate").val("");
 		}
 		
@@ -181,7 +181,7 @@ ticket/index/" method="get">
                     	<td><input type="text" id="keyword" name="keyword" value="Search by keyword" class="searchinput textinput-w" tabindex=1 /></td>
                         <td><input type="text" id="location" name="location" value="Search by location" class="searchinput textinput-w" tabindex=2/></td>
                         <td><input type="text" name="fromDate" id="fromDate" value="Date From" onchange="setting()" readonly="readonly"  class="searchinput textinput-w2" tabindex=3/></td>
-                        <td><input type="text" name="toDate" id="toDate" value="SDate To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=4/></td>
+                        <td><input type="text" name="toDate" id="toDate" value="Date To" onchange="setting()" readonly="readonly" class="searchinput textinput-w2" tabindex=4/></td>
                         <td><input type="submit" value="Search" onclick="check()" class="input-style2" /></td>
                     </tr>
                 </table>

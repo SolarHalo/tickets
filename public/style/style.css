@@ -433,10 +433,10 @@ select, input[type="file"] {
 	font-size:16px;
 }
 .map div {
-	padding:15px;
+/*	padding:15px;
 	background:#fff;
 	border:1px solid #ebebeb;
-	margin:15px 0 80px;
+	margin:15px 0 80px; */
 }
 .events-r {
 	width:188px;
@@ -1249,14 +1249,18 @@ div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:
 	text-indent:-0.3px;
 	}
  
-.list_result tr td table tr td span a{
+.list-tablep tr td span a{
 font-size:24px;
 }
-.list_result tr td table tr td span a:hover{
+.list-tablep tr td span a:hover{
 color:#ff7201;
 }
-
-
+p.mt15 a.ml15{
+margin-left:15px;
+}
+mt15 a.mt15{
+margin-top:15px;
+}
 
 
 

@@ -1,29 +1,67 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-22 14:41:37
+         compiled from "F:\PHP_WorkSapce\tickets\templates\register.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:9446523f01a1ad7375-89390230%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '315619311f3bb16ab0ca5c98512d0f9ab074ef17' => 
+    array (
+      0 => 'F:\\PHP_WorkSapce\\tickets\\templates\\register.tpl',
+      1 => 1379001288,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '9446523f01a1ad7375-89390230',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'errortip' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_523f01a297c6d7_98811871',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_523f01a297c6d7_98811871')) {function content_523f01a297c6d7_98811871($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Search4gigs Register – Music, tickets and cultural events on your calendar.</title>
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/func.css" type="text/css" rel="stylesheet" /> 
-<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
-<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery.ui.datepicker.css" />
-<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js" type="text/javascript"></script> 
-<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
-<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
-<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
-
+<title>index</title>
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css" type="text/css" rel="stylesheet" /> 
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/validationEngine.jquery.css" type="text/css" rel="stylesheet" /> 
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/func.css" type="text/css" rel="stylesheet" /> 
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/css/jquery.ui.datepicker.css" />
+<script src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery-1.10.1.min.js" type="text/javascript"></script> 
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery-ui.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/js/jquery.ui.datepicker.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script>
+ 
 </head>
 
 <body>
-{{include file='layouts/headerandsearch.tpl'}} 
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 <div class="mian">
     <div class="content">
     	<div class="login-l login">
         	<h6>REGISTER&nbsp;&nbsp;FOR&nbsp;&nbsp;SEARCH4GIGS</h6>
-        	{{$errortip}}
-        	<form  id="registerform" action="{{$smarty.const.WEBSITE_URL}}register" method="post">
+        	<?php echo $_smarty_tpl->tpl_vars['errortip']->value;?>
+
+        	<form  id="registerform" action="<?php echo @constant('WEBSITE_URL');?>
+register" method="post">
             <table> 
 				<tr>
                     <td><span>Username</span><input type="text" class="input-style3 validate[required] text-input"  name="username"   autofocus="true" tabindex=11 /></td> 
@@ -221,33 +259,41 @@
         	<h6>ARE&nbsp;&nbsp;YOU&nbsp;&nbsp;A&nbsp;&nbsp;NEW&nbsp;&nbsp;USER?</h6>
             <table> 
 				<tr>
-                    <td><span>Sign up to Search4Gigs right here...</span><a href="{{$smarty.const.WEBSITE_URL}}login" class="input-style1">SIGN IN</a></td> 
+                    <td><span>Sign up to Search4Gigs right here...</span><a href="<?php echo @constant('WEBSITE_URL');?>
+login" class="input-style1">SIGN IN</a></td> 
                 </tr> 
                 <tr><td height="30"></td></tr>
             </table>     
             <h6>OR.....</h6>
             <table class="bor-none"> 
 				<tr>
-                    <td><a href="#" class="btn btn-blue btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
+                    <td><a href="#" class="btn btn-blue btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
                 </tr>
                 <tr>
-                    <td><a href="#" class="btn btn-lc btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/in_iocn.gif" /> Log in with Linkedln</a></td> 
+                    <td><a href="#" class="btn btn-lc btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/in_iocn.gif" /> Log in with Linkedln</a></td> 
                 </tr>
                 <tr>
-                    <td><a href="#" class="btn btn-hui btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/tt_iocn.gif" /> Log in with Twitter</a></td> 
+                    <td><a href="#" class="btn btn-hui btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/tt_iocn.gif" /> Log in with Twitter</a></td> 
                 </tr>  
             </table>       
         </div>
     </div> 
 </div>
 
-<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
-<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine-en.js" type="text/javascript"></script>
-<script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery.validationEngine-en.js" type="text/javascript"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery.validationEngine.js" type="text/javascript"></script>
 <script type="text/javascript"> 
 $(document).ready(function(){
 	// binds form submission and fields to the validation engine
 	$("#registerform").validationEngine();
 }); 
 </script>
-{{include file='layouts/footer.tpl'}} 
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php }} ?>
