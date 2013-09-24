@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 17:43:01
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 18:10:28
          compiled from "E:\phpweb\tickets\templates\map.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:119665225e736142f67-83673444%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c34bd2c336a32f1c2142d1a34dd4dcf5161dd098' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\map.tpl',
-      1 => 1380037351,
+      1 => 1380039023,
       2 => 'file',
     ),
   ),
@@ -157,6 +157,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
        function loadDatas(datas,proty){
     	   deleteOverlays();
 		   if(datas){
+			   alert(datas)
 			   for (i in datas) {
 				  var address = datas[i][proty];
 				  if(address){
@@ -165,6 +166,10 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
 				}
 		   }
        }
+
+
+
+      
     </script>
 </head>
 <body onload="initialize()">

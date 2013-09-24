@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 15:50:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 15:06:09
          compiled from "G:\phpserver\tickets\templates\admin\users\users.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17398521ccac4da52e1-53793154%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '049547c7316be48b409d648d806e51def3bbb100' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\users\\users.tpl',
-      1 => 1377618268,
+      1 => 1380035167,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_521ccac4ea9ad2_77405534',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521ccac4ea9ad2_77405534')) {function content_521ccac4ea9ad2_77405534($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
@@ -33,7 +33,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<p class="stat"><!--span class="number"></span--></p>
 			</div>
 
-            <h1 class="page-title">后台管理员管理</h1>
+            <h1 class="page-title">注册用户管理</h1>
         </div>
         
 	
@@ -71,6 +71,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					
 			   <!--- END --->
         </div>
+        
+      
     </div>
 
  
@@ -78,7 +80,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo $_smarty_tpl->getSubTemplate ("admin/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <script type="text/javascript">
-
+searchaddress("北京小学");
  function  dateTimeFormat(value, rec, index) {
     if (value == undefined) {
         return "";
