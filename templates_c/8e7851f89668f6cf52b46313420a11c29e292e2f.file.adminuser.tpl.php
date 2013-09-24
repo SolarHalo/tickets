@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-08-27 15:50:32
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 14:21:25
          compiled from "G:\phpserver\tickets\templates\admin\users\adminuser.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:11354521ccac84d0b95-32552162%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '8e7851f89668f6cf52b46313420a11c29e292e2f' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\users\\adminuser.tpl',
-      1 => 1377618268,
+      1 => 1378436561,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_521ccac86213c0_71858638',
   'variables' => 
   array (
     'web_root' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.13',
-  'unifunc' => 'content_521ccac86213c0_71858638',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_521ccac86213c0_71858638')) {function content_521ccac86213c0_71858638($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
  <?php echo $_smarty_tpl->getSubTemplate ("admin/navibar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -70,7 +70,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			
 	}
 	function removeUser(){
-
 		$.messager.confirm('删除确定','确定要删除当前选择的记录!',function(r){
 		    if (r){
 		    	var select = getSelectUser();
