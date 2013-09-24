@@ -274,13 +274,21 @@ class TicketController extends  Controller{
 		$res = $db->get_results($sql);
 		
 		foreach ($res as $re){
+			$description = "No Description";
+			
+			if($re->description != null && "" != $re->description){
+				$description = $re->description;
+			}
+			
 			$result =  array(
 					"time"=>$re->time,
 					"aw_product_id"=>$re->aw_product_id,
 					"category_name"=>$re->category_name,
 					"promotional_text"=>$re->promotional_text,
 					"aw_image_url"=>$re->aw_image_url,
-					"product_name"=>$re->product_name
+					"product_name"=>$re->product_name,
+					"description"=>$description,
+					"display_price"=>$re->display_price
 			);
 			break;
 		}

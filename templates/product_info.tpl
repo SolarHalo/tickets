@@ -50,6 +50,7 @@
                     "<p class=\"time\">"+ obj.time+" BST </p>" +
                     "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"{{$smarty.const.WEBSITE_URL}}buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
 				$("#info-show").html(html);
+				
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +
 //	                "	<li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc01.gif\" /></a></li>"+
@@ -60,6 +61,22 @@
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
 				$("#img-list").prepend(str);
+				
+				
+				html = "<font>Description</font>: "+obj.description + "<br />"+
+                    "	<table cellpadding=\"0\" cellspacing=\"0\" class=\"mt15\">"+
+                    "  		<tr>"+
+                    "	       	<td width=\"140\"><font>time</font></td>"+
+                    "       	<td>"+obj.time+"</td>"+
+                    "   	</tr>"+
+                    "    	<tr>"+
+                    "        	<td width=\"140\"><font>Prices</font></td>"+
+                    "        	<td> "+obj.display_price+" </td>"+
+                    "    	</tr>"+
+                    "	</table>";
+				$("#info-other").html(html);
+				
+				
 			},
 			"json"
 		);
@@ -97,7 +114,10 @@
                     -->
                 </div>
                 <div class="hr mt15"></div>
-                <div class="row2 mt15"> 
+                <div class="row2 mt15" id="info-other">
+                
+               	 	<!-- 
+               	 	
                     <font>Featuring</font>: Wade, Van Gerwen, Hankey, Nicholson, George, Joplin.<br />
                     <font>Tickets available from</font>: Modus Darts on <font>08450 180 180</font> 
                     <table cellpadding="0" cellspacing="0" class="mt15">
@@ -110,6 +130,8 @@
                             <td>VIPs - £50, Terrace £25, Balcony - 20</td>
                         </tr>
                     </table>
+                    
+                    -->
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
