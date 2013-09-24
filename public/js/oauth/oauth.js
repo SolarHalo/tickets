@@ -5,11 +5,9 @@ function Oauth() {
 /**初始化一些事件, 或者加载页面*/
 Oauth.prototype.init = function() {
     var that = this;
- 
+    Oauth.prototype.checkFbHashLogin();
     $('table.bor-none td .btn-blue').click(function(event){
         event.stopPropagation();
-        
-        Oauth.prototype.checkFbHashLogin();
         Oauth.prototype.facebookLogin();
     });
 };
@@ -19,7 +17,7 @@ Oauth.prototype.facebookLogin = function(){//访问令牌
     var appID = '155660824640623';
     var path = 'https://www.facebook.com/dialog/oauth?';
     var queryParams = ['client_id=' + appID,
-    'redirect_uri=' + 'http://search4gigs.com',
+    'redirect_uri=' + 'http://search4gigs.com/login',
     'response_type=token'];
     var query = queryParams.join('&');
     var url = path + query;
@@ -32,7 +30,7 @@ Oauth.prototype.checkFbHashLogin = function() {//检查和使用令牌
         var hash = window.location.hash.substring(1);
         if(hash.split('=')[0] == 'access_token'){
             var path = "https://graph.facebook.com/me?";
-            var queryParams = [hash, 'callback=displayUser(user)'];
+            var queryParams = [hash, 'callback=displayUser'];
             var query = queryParams.join('&');
             var url = path + query;
             
@@ -47,6 +45,15 @@ function displayUser(user) {//回调函数，用户信息转化
     if (user.id != null && user.id != "undefined") {
        //.....
     	console.log(user.id);
+    	console.log(user.name);
+    	console.log(user.first_name);
+    	console.log(user.last_name);
+    	console.log(user.link);
+    	console.log(user.username);
+    	console.log(user.gender);
+    	console.log(user.locale);
+    	console.log(user.age_range);
+    	
     }else {
         alert('user error');
     }

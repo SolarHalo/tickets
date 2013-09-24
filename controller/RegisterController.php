@@ -57,4 +57,33 @@ class RegisterController extends  Controller{
  public function userSuccess($msg){
   	return "<div class='alert alert-success'>$msg</div>";
   }
+  
+  public  function addUser4FaceBook(){
+  	 $this->getSmarty(); 
+  	 
+  	 $user = array(
+		        'userid' => md5(uniqid()), 
+		  	    'username' => $_POST["username"],
+				'password' => md5($_POST["password"] ),
+				'firstname' => $_POST["lastname"],
+				'lastname' => $_POST["lastname"],
+				'email' => $_POST["email"],
+				'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) 
+  	 );
+  	 $userService->addUser($user);
+
+  	 if (!empty($user_info->username)) {
+  	 	$_SESSION['user'] = $user_info;
+  	 	$url = WEBSITE_URL."index";
+  	 	$redirect = "<script language='javascript' type='text/javascript'>";
+  	 	$redirect .= "window.location.href='$url'";
+  	 	$redirect .= "</script>";
+  	 	echo $redirect;
+
+  	 }else{
+  	 	$this->smarty->assign("errortip",$this->userExsist("username or password error"));
+  	 }
+  	 $this->smarty->display("login.tpl");
+
+  }
 }

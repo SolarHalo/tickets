@@ -51,7 +51,7 @@
              <h6>OR.....</h6>
             <table class="bor-none"> 
 				<tr>
-                    <td><a href="javascript:void(0);" target="_blank" class="btn btn-blue btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
+                    <td><a href="javascript:void(0);" class="btn btn-blue btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
                 </tr>
                 <tr>
                     <td><a href="#" class="btn btn-lc btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/in_iocn.gif" /> Log in with Linkedln</a></td> 
