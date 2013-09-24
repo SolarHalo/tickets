@@ -127,9 +127,9 @@
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
 		        		<tr>
 		               		<td class="tdC">{{$d['week']}}<br />
-		                  		<span>{{$d['date']}}</span><br />
+		                  		<span>{{$d['date']}}&nbsp;{{$d['month']}}</span><br />
 		                        <font>{{$d['time']}}</font>
-		                        <a href="#" class="time2">53 Dates</a>  
+		                       <!-- <a href="#" class="time2">53 Dates</a>  -->
 		               		</td>
 		               		<td>
 	                      		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}">
