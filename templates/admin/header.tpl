@@ -10,7 +10,8 @@
 
     <link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/bootstrap/css/bootstrap.css">
     
-    <link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/stylesheets_blacktie/theme.css">
+ <!--    <link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/stylesheets_blacktie/theme.css"> -->
+    <link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/stylesheets_{{$smarty.session.template}}/theme.css">
     <link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/other.css">
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
