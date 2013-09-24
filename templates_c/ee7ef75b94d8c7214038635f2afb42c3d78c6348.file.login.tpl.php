@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-19 15:08:09
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 16:45:41
          compiled from "E:\phpweb\tickets\templates\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:56675231cebc842c00-68333407%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ee7ef75b94d8c7214038635f2afb42c3d78c6348' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\login.tpl',
-      1 => 1379519829,
+      1 => 1380030458,
       2 => 'file',
     ),
   ),
@@ -48,6 +48,9 @@ public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 /public/assets/js/jquery.ui.datepicker.js"></script>
 <script src="<?php echo @constant('WEBSITE_URL');?>
 /public/js/searchform.js"></script>
+
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/oauth/oauth.js"></script>
 </head> 
 <body> 
 <?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -87,7 +90,7 @@ register" class="input-style1">register</a></td>
              <h6>OR.....</h6>
             <table class="bor-none"> 
 				<tr>
-                    <td><a href="#" class="btn btn-blue btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
+                    <td><a href="javascript:void(0);" target="_blank" class="btn btn-blue btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
                 </tr>
                 <tr>
