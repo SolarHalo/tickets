@@ -93,6 +93,13 @@
             </div>
         </div> 
     </div> 
+      
+        <div style="width: 500px; height: 350px">
+          <script type="text/javascript">
+        </script>
+        	{{include file="map.tpl" }}
+        
+        </div>
 </div>
 <link href="{{$smarty.const.WEBSITE_URL}}public/style/jquery.slideBox.css" rel="stylesheet" type="text/css" />
 <script src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
