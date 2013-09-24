@@ -252,6 +252,20 @@ class TicketController extends  Controller{
 		$id = $param['id'];
 		$this->getSmarty();
 		
+		$sql = "select DATE_FORMAT(products.specifications,\"%W %d %b %Y %H:%i\") as time,products.aw_product_id, products.product_name,".
+				"event_category.category_name,products.aw_thumb_url,products.aw_image_url,products.display_price,products.promotional_text,products.specifications,products.description ".
+				"from products products LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id where products.aw_product_id = '$id' ";
+		
+		$db = $this->getDB();
+		$res = $db->get_results($sql);
+		
+		$title = "";
+		foreach ($res as $re){
+			$title = $re->category_name." , ".$re->product_name." , ".$re->time;
+		}
+		
+		$this->smarty->assign ( 'title', $title );
+		
 		$this->smarty->assign ( 'keyword', "Search by keyword" );
 		$this->smarty->assign ( 'location', "Search by location" );
 		$this->smarty->assign ( 'fromDate', "Date From" );
