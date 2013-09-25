@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>gigs_login</title>
+{{include file='layouts/title.tpl'}} 
 <link href="style/reset.css" type="text/css" rel="stylesheet" />
 <link href="style/style.css" type="text/css" rel="stylesheet" />
 <SCRIPT type="text/javascript">

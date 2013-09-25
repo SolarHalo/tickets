@@ -21,11 +21,13 @@ body {
 	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA&sensor=false">
     </script>
 <script type="text/javascript">
-var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
+		var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
 
-	
+	  var activeicon = "{{$smarty.const.WEBSITE_URL}}public/images/marker-active.png";
       var map;
       var markersArray = [];
+      var markerDatasArray ={};
+      
       var geocoder = new google.maps.Geocoder(); //申明地址解析对象  
       function initialize() {
         var haightAshbury = new google.maps.LatLng(52.928775,6.249504);
@@ -35,12 +37,9 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map =  new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-        
       }
 
       function addMarker(map,latLng,title) {
-
     	  if(title)  
     		  marker = new google.maps.Marker({  
                   icon: this.icon,  
@@ -57,6 +56,45 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
         markersArray.push(marker);
       }
 
+
+
+
+      //显示当前的id的marker状态
+      function showCurrentKeyMarker(key){
+    	  noActiveAllMarkers();
+    	  var add = markerDatasArray[key];
+    	  if(add){
+    		  var curmarker = getAddRessMaker(add);
+    		  activeMarker(curmarker);
+    	  }
+      }
+
+	 function getAddRessMaker(address){
+		 if (markersArray) {
+             for (i in markersArray) {
+              if(address == markersArray[i].getTitle()){
+                  return markersArray[i];
+            	}
+           }
+		 }
+	 }
+		
+      function activeMarker(marker) {
+          if(marker){
+    		  marker.setIcon(activeicon);
+    		  marker.setMap(map);
+    		  marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+          }
+      }
+      //关闭当前的所有markers变成正常状态
+      function noActiveAllMarkers() {
+    	  if (markersArray) {
+              for (i in markersArray) {
+                markersArray[i].setIcon(this.icon);
+              }
+            }
+      }
+      
       // Removes the overlays from the map, but keeps them in the array
       function clearOverlays() {
         if (markersArray) {
@@ -82,6 +120,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
             markersArray[i].setMap(null);
           }
           markersArray.length = 0;
+          markerDatasArray={};
         }
       }
      
@@ -89,7 +128,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       /**
       设置显示的地址.通过地址,获取google服务,渲染图标
       */
-      function searchaddress(address){  
+      function searchaddress(address,title){  
     	  var iID=setInterval(loadServicedata, 500);
     	  function loadServicedata()
     	  {
@@ -98,9 +137,11 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       	  	        geocoder.geocode( { 'address': address}, function(results, status) {  
       	  	            if (status == google.maps.GeocoderStatus.OK) {  
       	  	                if(results[0]){  
+          	  	               
       	  	  	                for(var i=0;i<1;i++){
       	  	                    var point = results[i].geometry.location;  
       	  	                    map.setCenter(point);  
+          	  	                markerDatasArray[title] = results[i].formatted_address;
       	  	                    addMarker(map,point,results[i].formatted_address);
       	    	               // google.maps.event.addListener(marker, 'click', toggleBounce);
       	  	                    }
@@ -123,11 +164,15 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       *设置地图的等级
       */ 
       function setRoom(room){
-          if(map){
-              map.setZoom(room);
-            }else{
-                console.log("no map");
-            }
+    	  var ziID=setInterval(setRoomnow, 500);
+    	  function setRoomnow()
+    	  {
+    		  if(map){
+                  map.setZoom(room);
+                  clearInterval(ziID);
+                } 
+    	  }
+        
       }
 
 
@@ -140,13 +185,13 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
 		   if(datas){
 			   for (i in datas) {
 				  var address = datas[i][proty];
-				  
+				  var key =  datas[i]["aw_product_id"];
 				  if(address){
-					  searchaddress(address);
+					  searchaddress(address,key);
 				  }
 				}
 		   }
-		   setRoom(12);
+		  
        }
 
 

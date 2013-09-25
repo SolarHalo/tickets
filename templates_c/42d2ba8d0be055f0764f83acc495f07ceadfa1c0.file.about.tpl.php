@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 03:15:15
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 15:20:22
          compiled from "G:\phpserver\tickets\templates\about.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1019552312f8628fc55-79989050%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '42d2ba8d0be055f0764f83acc495f07ceadfa1c0' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\about.tpl',
-      1 => 1378955712,
+      1 => 1380122385,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/title.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo @constant('WEBSITE_URL');?>
@@ -53,29 +54,31 @@ public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 <div class="mian">
     <div class="content">
     	<div class="article">
-        	<h5>Daybees Privacy Policy</h5>
+        		<h5>ABOUT US</h5>
             <p>
-            	Taptron Limited ("We") are committed to protecting and respecting your privacy.
+            	At Search4gigs it's our mission to make your search for events or tickets much easier than ever before! Search4gigs will help you to find out about the latest gigs, tickets or events going on plus you will also be able to save any events on your calendar so there will be no excuses for missing a show again.
             </p>
             <p>
-            	This policy (together with our terms of use and cookie policy sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us. 
-                Please read the following carefully to understand our views and practices regarding your personal data and how we will treat it.
-            </p>
-            <h5>Daybees Privacy Policy</h5>
+            	Search4hgigs has a database of over half a million events around the globe so you will always be able to find something you like.
+            </p> 
             <p>
-            	Taptron Limited ("We") are committed to protecting and respecting your privacy.
+            	When you register at Search4gigs you will also receive newsletters about your favourite events from your chosen venues, artists or events so you will never miss an event again.
+            </p>
+            <p>
+            	Some of the cool features included in Search4gigs are:
             </p>
             <ul>
             	<li>
-                	Information that you provide by filling in forms and registration details on our site Daybees.com (and such related domain names) ("our site"). 
-                    This includes information provided at the time of registering to use our site, subscribing to our service, posting material, interacting with our  
-                    site or requesting further services.
+                	Massive database of events around the globe.
                 </li>
       			<li>
-                	 If you contact us, we may keep a record of that correspondence.
+                	Export your favourite events into your calendars and set reminders.
                 </li>
                 <li>
-                	 We may also ask you to complete surveys that we use for research purposes, although you do not have to respond to them.
+                	Maps including all geographic locations.
+                </li>
+                <li>
+                	Ability to purchase tickets and compare prices.
                 </li>
             </ul>
         </div>

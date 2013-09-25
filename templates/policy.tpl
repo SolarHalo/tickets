@@ -21,33 +21,29 @@
 <div class="mian">
     <div class="content">
     	<div class="article">
-        		<h5>ABOUT US</h5>
+        	 	<h5>COOKIES POLICY</h5>
             <p>
-            	At Search4gigs it's our mission to make your search for events or tickets much easier than ever before! Search4gigs will help you to find out about the latest gigs, tickets or events going on plus you will also be able to save any events on your calendar so there will be no excuses for missing a show again.
+            	Our site uses cookies to differentiate between the users visiting us. This helps us to create the best user experience possible and improve our website. By continuing to navigate the website you are agreeing to our use of cookies.
             </p>
             <p>
-            	Search4hgigs has a database of over half a million events around the globe so you will always be able to find something you like.
+            	A cookie contains a small file of several digits that we store on your browser or computer for a limited period of time.
             </p> 
+            <h5>At Search4gigs we use the following cookies:</h5>
             <p>
-            	When you register at Search4gigs you will also receive newsletters about your favourite events from your chosen venues, artists or events so you will never miss an event again.
+            	<u>Necessary ones</u>: The essential cookies for our website to run smoothly. This would include, for example, the cookies that would enable you to register on our website.
             </p>
             <p>
-            	Some of the cool features included in Search4gigs are:
+            	<u>Targeting ones</u>: These are the cookies that record your first visit to the website and that we could use for retargeting advertising purposes.
             </p>
-            <ul>
-            	<li>
-                	Massive database of events around the globe.
-                </li>
-      			<li>
-                	Export your favourite events into your calendars and set reminders.
-                </li>
-                <li>
-                	Maps including all geographic locations.
-                </li>
-                <li>
-                	Ability to purchase tickets and compare prices.
-                </li>
-            </ul>
+            <p>
+            	<u>Functionality ones</u>: These are the cookies that recognise you as a returning user and which could be used for internal advertising purposes.
+            </p>
+            <p>
+            	You can block cookies by changing the privacy configuration settings on your browser, however we don't suggest you to do this as you won't be able to enjoy the full experience when using our website.
+            </p>
+            <p>
+            	Please be aware that any third party companies working with us may also use their own cookies, over which we don't have any control whatsoever.
+            </p>
         </div>
     </div>
 	<div class="h-blackbg"></div>

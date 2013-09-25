@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Search4gigs Search – Music, tickets and cultural events on your calendar.</title>
+{{include file='layouts/title.tpl'}} 
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
@@ -108,9 +108,10 @@
 		loadDatas(eval(pdata),"promotional_text");
 	});
 
-	 
-	 
-
+ 
+	function productOver(e){
+		showCurrentKeyMarker(e);
+	}
 	</script>
 </head> 
 <body>
@@ -118,12 +119,17 @@
 <div class="mian">
   <div class="content">
     <div class="events">
-      <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
+      <div class="sub-nav"> <span>
+      	<a href="{{$smarty.const.WEBSITE_URL}}">Home</a> 
+      	{{if $curCat != null  and $curCat != "" }}
+      	/ <a href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}">{{$curCategory_name}}</a> 
+      	{{/if}}
+      	</span></div>
       <div class="events-l mt15">
-      <div style="width:260px;height: 265px;">
+      <div style="width:190px;height: 265px;">
       	{{include file="map.tpl" }}
       </div>
-      
+      </div>
 <!--        <img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" width="160" height="265" class="img-sidebar" /> -->
         <ul id="cat-list" class="gigs-title map">
          	<span>Categories</span>
@@ -145,7 +151,7 @@
        
        {{foreach $data as $d}}
        	
-	       	<tr>
+	       	<tr >
 	       		<td>
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
 		        		<tr>
@@ -161,7 +167,7 @@
 	                      	</td>
 	                      	<td>{{$d['category_name']}}<br />
 	                        	<span>
-	                        		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}">
+	                        		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}" name= {{$d['aw_product_id']}} onmouseover='productOver(name)' >
 		                      			{{$d['product_name']}}
 		                      		</a>
 	                        	</span><br />

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 10:02:18
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 15:52:01
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1380103331,
+      1 => 1380124305,
       2 => 'file',
     ),
   ),
@@ -20,23 +20,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'data' => 0,
+    'curCat' => 0,
+    'curCategory_name' => 0,
     'cats' => 0,
     'c' => 0,
     'totalEvent' => 0,
     'd' => 0,
     'pager' => 0,
-    'curCat' => 0,
     'pagers' => 0,
     'index' => 0,
     'totalPage' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_521c65da9bd235_83690997')) {function content_521c65da9bd235_83690997($_smarty_tpl) {?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_521c65da9bd235_83690997')) {function content_521c65da9bd235_83690997($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Search4gigs Search – Music, tickets and cultural events on your calendar.</title>
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/title.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 	<link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="<?php echo @constant('WEBSITE_URL');?>
@@ -154,9 +156,10 @@ login";
 		loadDatas(eval(pdata),"promotional_text");
 	});
 
-	 
-	 
-
+ 
+	function productOver(e){
+		showCurrentKeyMarker(e);
+	}
 	</script>
 </head> 
 <body>
@@ -165,13 +168,22 @@ login";
 <div class="mian">
   <div class="content">
     <div class="events">
-      <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
+      <div class="sub-nav"> <span>
+      	<a href="<?php echo @constant('WEBSITE_URL');?>
+">Home</a> 
+      	<?php if ($_smarty_tpl->tpl_vars['curCat']->value!=null&&$_smarty_tpl->tpl_vars['curCat']->value!=''){?>
+      	/ <a href="<?php echo @constant('WEBSITE_URL');?>
+ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['curCat']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['curCategory_name']->value;?>
+</a> 
+      	<?php }?>
+      	</span></div>
       <div class="events-l mt15">
-      <div style="width:260px;height: 265px;">
+      <div style="width:190px;height: 265px;">
       	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
       </div>
-      
+      </div>
 <!--        <img src="<?php echo @constant('WEBSITE_URL');?>
 public/photo/photo1.gif" width="160" height="265" class="img-sidebar" /> -->
         <ul id="cat-list" class="gigs-title map">
@@ -207,7 +219,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['d']->key => $_smarty_tpl->tpl_vars['d
 $_smarty_tpl->tpl_vars['d']->_loop = true;
 ?>
        	
-	       	<tr>
+	       	<tr >
 	       		<td>
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
 		        		<tr>
@@ -233,7 +245,8 @@ ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?
 	                        	<span>
 	                        		<a href="<?php echo @constant('WEBSITE_URL');?>
 ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
-">
+" name= <?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
+ onmouseover='productOver(name)' >
 		                      			<?php echo $_smarty_tpl->tpl_vars['d']->value['product_name'];?>
 
 		                      		</a>

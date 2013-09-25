@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 03:07:13
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 15:09:35
          compiled from "G:\phpserver\tickets\templates\layouts\footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32128521c59993d9db1-00851834%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c4c3a4e984093c124c1ce7c8257e0fb6293ca748' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\layouts\\footer.tpl',
-      1 => 1378955231,
+      1 => 1380121770,
       2 => 'file',
     ),
   ),
@@ -26,11 +26,11 @@ about">User guide</a>  |
         <a href="<?php echo @constant('WEBSITE_URL');?>
 about">About us</a>  |  
         <a href="<?php echo @constant('WEBSITE_URL');?>
-about">Cookies policy</a>  |  
+about/policy">Cookies policy</a>  |  
         <a href="<?php echo @constant('WEBSITE_URL');?>
-about">Privacy policy</a>  |  
+about/policy">Privacy policy</a>  |  
         <a href="<?php echo @constant('WEBSITE_URL');?>
-about">Terms and Conditions</a>
+about/terms">Terms and Conditions</a>
     </div>
 </div>
 
