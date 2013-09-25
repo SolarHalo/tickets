@@ -154,6 +154,8 @@ class TicketController extends  Controller{
 		$data = array();
 		
 		$descLen = 40 ;
+		$category_name = "";
+		
 		foreach ($res as $re){
 				
 			$desc = $re->description;
@@ -175,6 +177,8 @@ class TicketController extends  Controller{
 					"display_price"=>$re->display_price
 						
 			);
+			
+			$category_name = $re->category_name;
 		}
 		
 		//============================
@@ -211,6 +215,7 @@ class TicketController extends  Controller{
 		$this->smarty->assign ( 'totalPage', $totalPage );
 		$this->smarty->assign ( 'pager', $pager );
 		$this->smarty->assign ( 'curCat', $cat );
+		$this->smarty->assign ( 'curCategory_name',$category_name);
 		
 		
 		$display = 9 ;
