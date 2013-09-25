@@ -40,8 +40,6 @@
 
 <script  type="text/javascript">
 
-
-	var postData = {'id':'{{$id}}'};
 	$(function($) {
 	
 		//var source =new Array();
