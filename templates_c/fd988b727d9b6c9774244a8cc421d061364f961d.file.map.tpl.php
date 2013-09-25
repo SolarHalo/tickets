@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-11 03:46:19
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 16:27:56
          compiled from "G:\phpserver\tickets\templates\map.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:5429522fe78b5aff72-00253643%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fd988b727d9b6c9774244a8cc421d061364f961d' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\map.tpl',
-      1 => 1378436561,
+      1 => 1380036585,
       2 => 'file',
     ),
   ),
@@ -15,9 +15,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_522fe78b659eb9_56389917',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_522fe78b659eb9_56389917')) {function content_522fe78b659eb9_56389917($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -53,8 +53,10 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
         };
        map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);
+
+       searchaddress("Citibank Cevahir Alisveris Merkezi ATM, 34330 İstanbul");
       }
-      google.maps.event.addDomListener(window, 'load', initialize);
+    //  google.maps.event.addDomListener(window, 'load', initialize);
 
       /**
       	*渲染图标
@@ -90,7 +92,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       */
       function searchaddress(address){  
   	    if (geocoder) {  
-  	        geocoder.geocode( { 'address': address,"language":"zh_cn"}, function(results, status) {  
+  	        geocoder.geocode( { 'address': address}, function(results, status) {  
   	            if (status == google.maps.GeocoderStatus.OK) {  
   	                if(results[0]){  
   	  	                for(var i=0;i<results.length;i++){
@@ -119,7 +121,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       }
     </script>
 </head>
-<body>
+<body onload="initialize()">
 	<div id="map-canvas" />
 </body>
 </html><?php }} ?>

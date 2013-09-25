@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 15:06:09
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 15:31:08
          compiled from "G:\phpserver\tickets\templates\admin\users\users.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17398521ccac4da52e1-53793154%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '049547c7316be48b409d648d806e51def3bbb100' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\admin\\users\\users.tpl',
-      1 => 1380035167,
+      1 => 1380036631,
       2 => 'file',
     ),
   ),
@@ -72,7 +72,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			   <!--- END --->
         </div>
         
-      
+ 
     </div>
 
  
@@ -80,8 +80,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php echo $_smarty_tpl->getSubTemplate ("admin/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <script type="text/javascript">
-searchaddress("北京小学");
- function  dateTimeFormat(value, rec, index) {
+  function  dateTimeFormat(value, rec, index) {
     if (value == undefined) {
         return "";
     }

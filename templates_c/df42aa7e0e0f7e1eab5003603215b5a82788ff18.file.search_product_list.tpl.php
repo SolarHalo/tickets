@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 13:47:57
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 16:28:52
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1379861885,
+      1 => 1380036585,
       2 => 'file',
     ),
   ),
@@ -188,10 +188,11 @@ $_smarty_tpl->tpl_vars['d']->_loop = true;
 		               		<td class="tdC"><?php echo $_smarty_tpl->tpl_vars['d']->value['week'];?>
 <br />
 		                  		<span><?php echo $_smarty_tpl->tpl_vars['d']->value['date'];?>
+&nbsp;<?php echo $_smarty_tpl->tpl_vars['d']->value['month'];?>
 </span><br />
 		                        <font><?php echo $_smarty_tpl->tpl_vars['d']->value['time'];?>
 </font>
-		                        <a href="#" class="time2">53 Dates</a>  
+		                       <!-- <a href="#" class="time2">53 Dates</a>  -->
 		               		</td>
 		               		<td>
 	                      		<a href="<?php echo @constant('WEBSITE_URL');?>
