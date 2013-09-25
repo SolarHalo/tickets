@@ -60,7 +60,8 @@
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc05.gif\" /></a></li>"+
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
-				$("#img-list").before(str);
+				$("#img-list").prepend(str);
+				//$("#img-list").before(str);
 				
 				html = "<font>Description</font>: "+obj.description + "<br />"+
                     "	<table cellpadding=\"0\" cellspacing=\"0\" class=\"mt15\">"+

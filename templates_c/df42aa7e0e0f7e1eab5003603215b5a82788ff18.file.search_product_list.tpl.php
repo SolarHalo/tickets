@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 14:03:33
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 14:20:31
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1380117779,
+      1 => 1380117921,
       2 => 'file',
     ),
   ),
@@ -167,7 +167,7 @@ login";
     <div class="events">
       <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
       <div class="events-l mt15">
-      <div style="width:260px;height: 265px;">
+      <div style="width:190px;height: 265px;">
       	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
       </div>
