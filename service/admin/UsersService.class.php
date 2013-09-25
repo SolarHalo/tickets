@@ -45,6 +45,17 @@ class UsersService{
 		
 		return $this->dbutil->get_row("select * from users where email='".$email."'");
 	}
+	
+  /**
+	 * 根据ID获取用户信息
+	 * Enter description here ...
+	 * @param unknown_type $name
+	 */
+	function getUserInfoByID($userID){
+		
+		return $this->dbutil->get_row("select * from users where userid='".$userID."'");
+	}
+	
 	public function userPage($start , $page_size ){
 		$limit ="";
 		if($page_size){

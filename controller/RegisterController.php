@@ -57,4 +57,31 @@ class RegisterController extends  Controller{
  public function userSuccess($msg){
   	return "<div class='alert alert-success'>$msg</div>";
   }
+  
+  public  function addUser4FaceBook(){
+  	 $this->getSmarty(); 
+  	 require_once SERVICE . DS . 'admin' . DS . 'UsersService.class.php';
+	 $userService = new UsersService( $this->getDB());
+  	 $user_info = $userService->getUserInfoByID($_POST["userID"]);
+	 if(empty($user_info->usrname)){
+	 		//不存在，就天添加用户
+	  	 $user = array(
+			        'userid' => $_POST["userID"], 
+			  	    'username' => $_POST["username"],
+					'password' => md5($_POST["password"] ),
+					'firstname' => $_POST["lastname"],
+					'lastname' => $_POST["lastname"],
+					'email' => $_POST["email"],
+					'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) 
+	  	 );
+	  	 $userService->addUser($user);
+  		 $user_info = $userService->getUserInfoByID($_POST["userID"]);
+	 }
+  	 $_SESSION['user'] = $user_info;
+  	 $url = WEBSITE_URL."index";
+  	 $redirect = "<script language='javascript' type='text/javascript'>";
+  	 $redirect .= "window.location.href='$url'";
+  	 $redirect .= "</script>";
+  	 echo $redirect;
+  }
 }

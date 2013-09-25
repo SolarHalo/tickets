@@ -60,12 +60,7 @@
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc05.gif\" /></a></li>"+
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
-
-				//$("#img-list").before(str);
-				// searchaddress(obj.promotional_text);
-
-				$("#img-list").prepend(str);
-				
+				$("#img-list").before(str);
 				
 				html = "<font>Description</font>: "+obj.description + "<br />"+
                     "	<table cellpadding=\"0\" cellspacing=\"0\" class=\"mt15\">"+
@@ -79,7 +74,10 @@
                     "    	</tr>"+
                     "	</table>";
 				$("#info-other").html(html);
-				
+					var source =new Array();
+					source.push(obj);
+				   //searchaddress(obj.promotional_text);
+					loadDatas(source,"promotional_text");
 			},
 			"json"
 		);
@@ -138,7 +136,7 @@
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
-                    <div   style="width: 507px; height: 339px">
+                    <div   style="  height: 339px">
                     	<!-- <img src="{{$smarty.const.WEBSITE_URL}}/public/photo/mapphoto.png" /> -->
                     	{{include file="map.tpl" }}
                     </div>
