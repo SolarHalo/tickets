@@ -69,7 +69,7 @@ class RegisterController extends  Controller{
 			        'userid' => $_POST["userID"], 
 			  	    'username' => $_POST["username"],
 					'password' => md5($_POST["password"] ),
-					'firstname' => $_POST["lastname"],
+					'firstname' => $_POST["firstname"],
 					'lastname' => $_POST["lastname"],
 					'email' => $_POST["email"],
 					'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) 
@@ -78,10 +78,6 @@ class RegisterController extends  Controller{
   		 $user_info = $userService->getUserInfoByID($_POST["userID"]);
 	 }
   	 $_SESSION['user'] = $user_info;
-  	 $url = WEBSITE_URL."index";
-  	 $redirect = "<script language='javascript' type='text/javascript'>";
-  	 $redirect .= "window.location.href='$url'";
-  	 $redirect .= "</script>";
-  	 echo $redirect;
+  	 echo "success";
   }
 }

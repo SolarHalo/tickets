@@ -41,12 +41,11 @@
 <script  type="text/javascript">
 
 	$(function($) {
-	
 		//var source =new Array();
 		//source.push(obj);
 		//loadDatas(source,"promotional_text");
-		
 	});
+	
 </script>
 <div class="mian">
     <div class="content">

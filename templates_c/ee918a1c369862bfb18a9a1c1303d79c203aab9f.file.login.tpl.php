@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 13:42:38
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 14:03:23
          compiled from "G:\phpserver\tickets\templates\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6836521c69bc3ebee2-33341521%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ee918a1c369862bfb18a9a1c1303d79c203aab9f' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\login.tpl',
-      1 => 1380029273,
+      1 => 1380098127,
       2 => 'file',
     ),
   ),
@@ -90,7 +90,7 @@ register" class="input-style1">register</a></td>
              <h6>OR.....</h6>
             <table class="bor-none"> 
 				<tr>
-                    <td><a href="javascript:void(0);" target="_blank" class="btn btn-blue btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
+                    <td><a href="javascript:void(0);" class="btn btn-blue btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
 public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
                 </tr>
                 <tr>
