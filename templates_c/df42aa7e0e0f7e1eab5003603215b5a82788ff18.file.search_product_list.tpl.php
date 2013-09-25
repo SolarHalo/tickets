@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 15:32:27
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 15:52:01
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1380123142,
+      1 => 1380124305,
       2 => 'file',
     ),
   ),
@@ -156,9 +156,10 @@ login";
 		loadDatas(eval(pdata),"promotional_text");
 	});
 
-	 
-	 
-
+ 
+	function productOver(e){
+		showCurrentKeyMarker(e);
+	}
 	</script>
 </head> 
 <body>
@@ -218,7 +219,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['d']->key => $_smarty_tpl->tpl_vars['d
 $_smarty_tpl->tpl_vars['d']->_loop = true;
 ?>
        	
-	       	<tr>
+	       	<tr >
 	       		<td>
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
 		        		<tr>
@@ -244,7 +245,8 @@ ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?
 	                        	<span>
 	                        		<a href="<?php echo @constant('WEBSITE_URL');?>
 ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
-">
+" name= <?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?>
+ onmouseover='productOver(name)' >
 		                      			<?php echo $_smarty_tpl->tpl_vars['d']->value['product_name'];?>
 
 		                      		</a>
