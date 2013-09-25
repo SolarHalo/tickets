@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 16:06:14
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 17:31:18
          compiled from "E:\phpweb\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24466524049c5609f58-72188520%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5706c5401558cd8de5d8d07fc3db49b1e7540106' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\search_product_list.tpl',
-      1 => 1380117649,
+      1 => 1380123060,
       2 => 'file',
     ),
   ),
@@ -156,11 +156,11 @@ login";
 
  
 	function productOver(e){
-		alert(e);
+		showCurrentKeyMarker(e);
 	}
 
 	function productOut(e){
-		alert(e);
+		//noActiveAllMarkers();
 	}
 	</script>
 </head> 
@@ -172,11 +172,11 @@ login";
     <div class="events">
       <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
       <div class="events-l mt15">
-      <div style="width:260px;height: 265px;">
+      <div style="width:190px;height: 265px;">
       	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
       </div>
-      
+      </div>
 <!--        <img src="<?php echo @constant('WEBSITE_URL');?>
 public/photo/photo1.gif" width="160" height="265" class="img-sidebar" /> -->
         <ul id="cat-list" class="gigs-title map">
