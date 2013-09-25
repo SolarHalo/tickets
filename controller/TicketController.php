@@ -252,7 +252,7 @@ class TicketController extends  Controller{
 		$id = $param['id'];
 		$this->getSmarty();
 		
-		$sql = "select DATE_FORMAT(products.specifications,\"%W %d %b %Y %H:%i\") as time,products.aw_product_id, products.product_name,".
+		$sql = "select DATE_FORMAT(products.specifications,\"%W %d %b %Y %H:%i\") as time,products.aw_product_id, products.product_name,products.category_id,".
 				"event_category.category_name,products.aw_thumb_url,products.aw_image_url,products.display_price,products.promotional_text,products.specifications,products.description ".
 				"from products products LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id where products.aw_product_id = '$id' ";
 		
@@ -260,11 +260,41 @@ class TicketController extends  Controller{
 		$res = $db->get_results($sql);
 		
 		$title = "";
+		$category_id=""; 
+		$category_name="";
+		$product_name ="";
+		$promotional_text = "";
+		$time = "";
+		$aw_image_url = "";
+		$description = "No Description";
+		$display_price = "";
+		
 		foreach ($res as $re){
 			$title = $re->category_name." , ".$re->product_name." , ".$re->time;
+			$category_id = $re->category_id;
+			$category_name = $re->category_name;
+			$product_name = $re->product_name;
+			$promotional_text = $re->promotional_text;
+			$time = $re->time;
+			$aw_image_url = $re->aw_image_url;
+			
+			if($re->description != null && "" != $re->description){
+				$description = $re->description;
+			}
+			
+			$display_price =  $re->display_price ; 
 		}
 		
 		$this->smarty->assign ( 'title', $title );
+		$this->smarty->assign ( 'category_id', $category_id );
+		$this->smarty->assign ( 'category_name', $category_name );
+		$this->smarty->assign ( 'product_name', $product_name );
+		$this->smarty->assign ( 'promotional_text',$promotional_text );
+		$this->smarty->assign ( 'time',$time );
+		$this->smarty->assign ( 'aw_image_url',$aw_image_url );
+		$this->smarty->assign ( 'description',$description );
+		$this->smarty->assign ( 'display_price',$display_price );
+		
 		
 		$this->smarty->assign ( 'keyword', "Search by keyword" );
 		$this->smarty->assign ( 'location', "Search by location" );
