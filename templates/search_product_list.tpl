@@ -108,9 +108,10 @@
 		loadDatas(eval(pdata),"promotional_text");
 	});
 
-	 
-	 
-
+ 
+	function productOver(e){
+		showCurrentKeyMarker(e);
+	}
 	</script>
 </head> 
 <body>
@@ -150,7 +151,7 @@
        
        {{foreach $data as $d}}
        	
-	       	<tr>
+	       	<tr >
 	       		<td>
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
 		        		<tr>
@@ -166,7 +167,7 @@
 	                      	</td>
 	                      	<td>{{$d['category_name']}}<br />
 	                        	<span>
-	                        		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}">
+	                        		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}" name= {{$d['aw_product_id']}} onmouseover='productOver(name)' >
 		                      			{{$d['product_name']}}
 		                      		</a>
 	                        	</span><br />
