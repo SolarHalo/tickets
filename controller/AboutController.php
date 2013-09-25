@@ -4,5 +4,12 @@ class AboutController extends  Controller{
 		 $this->getSmarty(); 
  		 $this->smarty->display("about.tpl"); 
 	}
-   
+	public function terms(){
+		 $this->getSmarty(); 
+ 		 $this->smarty->display("term.tpl"); 
+	}
+    public function policy(){
+		 $this->getSmarty(); 
+ 		 $this->smarty->display("policy.tpl"); 
+	}
 }

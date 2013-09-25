@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 03:18:34
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 15:03:28
          compiled from "G:\phpserver\tickets\templates\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:27571521c57859b84c8-84292440%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '55659d26ffea283a5eba1858979b871588c88abc' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\index.tpl',
-      1 => 1378955211,
+      1 => 1380121403,
       2 => 'file',
     ),
   ),
@@ -132,6 +132,8 @@ about" class="a-but">View Details</A>
             </div>
         </div> 
     </div> 
+      
+       
 </div>
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/jquery.slideBox.css" rel="stylesheet" type="text/css" />
