@@ -61,7 +61,6 @@ body {
 
       //显示当前的id的marker状态
       function showCurrentKeyMarker(key){
-          console.log(key+":::"+markerDatasArray[key])
     	  noActiveAllMarkers();
     	  var add = markerDatasArray[key];
     	  if(add){
@@ -143,7 +142,6 @@ body {
       	  	                    var point = results[i].geometry.location;  
       	  	                    map.setCenter(point);  
           	  	                markerDatasArray[title] = results[i].formatted_address;
-          	  	                console.log(title+"---"+markerDatasArray.title)
       	  	                    addMarker(map,point,results[i].formatted_address);
       	    	               // google.maps.event.addListener(marker, 'click', toggleBounce);
       	  	                    }
