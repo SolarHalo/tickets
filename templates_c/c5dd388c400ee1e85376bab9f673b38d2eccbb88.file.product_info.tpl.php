@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 15:53:16
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 16:27:56
          compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
-      1 => 1379951569,
+      1 => 1380036585,
       2 => 'file',
     ),
   ),
@@ -105,6 +105,10 @@ buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><stron
 //	                "   <li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
 /public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
+<<<<<<< HEAD
+				$("#img-list").before(str);
+				// searchaddress(obj.promotional_text);
+=======
 				$("#img-list").prepend(str);
 				
 				
@@ -122,6 +126,7 @@ buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><stron
 				$("#info-other").html(html);
 				
 				
+>>>>>>> da686a6e6881fcf14f0520b4df8a7a21c335ee41
 			},
 			"json"
 		);
@@ -180,7 +185,7 @@ buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><stron
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
-                    <div class="mt15" style="width: 407px; height: 339px">
+                    <div   style="width: 507px; height: 339px">
                     	<!-- <img src="<?php echo @constant('WEBSITE_URL');?>
 /public/photo/mapphoto.png" /> -->
                     	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -221,7 +226,6 @@ buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><stron
     </div>
 </div>
 <script type="text/javascript">
-searchaddress("北京小学");
 </script>
 </body>
 </html>     <?php }} ?>

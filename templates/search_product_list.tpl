@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -91,13 +91,21 @@
 		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
+	      
+		     
 		var pdata = '{{json_encode($data)}}';
+	  //(pdata);
+	  var regex = /<\S*\s*[\/]?>/gi; 
+	  var regex2 = /\n/gi;
+	  pdata = pdata.replace(regex, "");
+	  pdata = pdata.replace(regex2, ""); 
+		  
 	//	alert(pdata)
-		var source = eval("var source ="+pdata);
-		alert(source)
+		// eval("var source ="+pdata); 
+		//console.log(source);
 		//source  = eval('(' + '{{json_encode($data)}}' + ')');
 		//alert(source)
-		loadDatas(source,"promotional_text");
+		loadDatas(eval(pdata),"promotional_text");
 	});
 
 	 
@@ -112,7 +120,7 @@
     <div class="events">
       <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
       <div class="events-l mt15">
-      <div style="width: 260px;height: 265px;">
+      <div style="width:260px;height: 265px;">
       	{{include file="map.tpl" }}
       </div>
       

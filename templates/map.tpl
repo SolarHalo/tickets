@@ -18,7 +18,7 @@ body {
 }
 </style>
 <script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA&sensor=false">
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA&sensor=false">
     </script>
 <script type="text/javascript">
 var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
@@ -30,7 +30,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       function initialize() {
         var haightAshbury = new google.maps.LatLng(52.928775,6.249504);
         var mapOptions = {
-          zoom: 12,
+          zoom: 1,
           center: haightAshbury,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -125,6 +125,8 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       function setRoom(room){
           if(map){
               map.setZoom(room);
+            }else{
+                console.log("no map");
             }
       }
 
@@ -138,11 +140,13 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
 		   if(datas){
 			   for (i in datas) {
 				  var address = datas[i][proty];
+				  
 				  if(address){
 					  searchaddress(address);
 				  }
 				}
 		   }
+		   setRoom(12);
        }
 
 

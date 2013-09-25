@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 13:47:57
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 10:02:18
          compiled from "G:\phpserver\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:32710521c65da8ecf03-78998980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'df42aa7e0e0f7e1eab5003603215b5a82788ff18' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\search_product_list.tpl',
-      1 => 1379861885,
+      1 => 1380103331,
       2 => 'file',
     ),
   ),
@@ -19,10 +19,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_521c65da9bd235_83690997',
   'variables' => 
   array (
+    'data' => 0,
     'cats' => 0,
     'c' => 0,
     'totalEvent' => 0,
-    'data' => 0,
     'd' => 0,
     'pager' => 0,
     'curCat' => 0,
@@ -32,7 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_521c65da9bd235_83690997')) {function content_521c65da9bd235_83690997($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_521c65da9bd235_83690997')) {function content_521c65da9bd235_83690997($_smarty_tpl) {?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -135,8 +135,28 @@ login";
 		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
-		
+	      
+		     
+		var pdata = '<?php echo json_encode($_smarty_tpl->tpl_vars['data']->value);?>
+';
+	  //(pdata);
+	  var regex = /<\S*\s*[\/]?<?php ?>>/gi; 
+	  var regex2 = /\n/gi;
+	  pdata = pdata.replace(regex, "");
+	  pdata = pdata.replace(regex2, ""); 
+		  
+	//	alert(pdata)
+		// eval("var source ="+pdata); 
+		//console.log(source);
+		//source  = eval('(' + '<?php echo json_encode($_smarty_tpl->tpl_vars['data']->value);?>
+' + ')');
+		//alert(source)
+		loadDatas(eval(pdata),"promotional_text");
 	});
+
+	 
+	 
+
 	</script>
 </head> 
 <body>
@@ -146,8 +166,14 @@ login";
   <div class="content">
     <div class="events">
       <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
-      <div class="events-l mt15"> <img src="<?php echo @constant('WEBSITE_URL');?>
-public/photo/photo1.gif" width="160" height="265" class="img-sidebar" />
+      <div class="events-l mt15">
+      <div style="width:260px;height: 265px;">
+      	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+      </div>
+      
+<!--        <img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo1.gif" width="160" height="265" class="img-sidebar" /> -->
         <ul id="cat-list" class="gigs-title map">
          	<span>Categories</span>
          	
@@ -188,10 +214,11 @@ $_smarty_tpl->tpl_vars['d']->_loop = true;
 		               		<td class="tdC"><?php echo $_smarty_tpl->tpl_vars['d']->value['week'];?>
 <br />
 		                  		<span><?php echo $_smarty_tpl->tpl_vars['d']->value['date'];?>
+&nbsp;<?php echo $_smarty_tpl->tpl_vars['d']->value['month'];?>
 </span><br />
 		                        <font><?php echo $_smarty_tpl->tpl_vars['d']->value['time'];?>
 </font>
-		                        <a href="#" class="time2">53 Dates</a>  
+		                       <!-- <a href="#" class="time2">53 Dates</a>  -->
 		               		</td>
 		               		<td>
 	                      		<a href="<?php echo @constant('WEBSITE_URL');?>
