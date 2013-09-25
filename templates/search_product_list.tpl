@@ -119,7 +119,12 @@
 <div class="mian">
   <div class="content">
     <div class="events">
-      <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
+      <div class="sub-nav"> <span>
+      	<a href="{{$smarty.const.WEBSITE_URL}}">Home</a> 
+      	{{if $curCat != null  and $curCat != "" }}
+      	/ <a href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}">{{$curCategory_name}}</a> 
+      	{{/if}}
+      	</span></div>
       <div class="events-l mt15">
       <div style="width:190px;height: 265px;">
       	{{include file="map.tpl" }}
