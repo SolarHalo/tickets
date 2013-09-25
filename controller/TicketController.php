@@ -270,7 +270,6 @@ class TicketController extends  Controller{
 		$display_price = "";
 		
 		foreach ($res as $re){
-			$title = $re->category_name." , ".$re->product_name." , ".$re->time;
 			$category_id = $re->category_id;
 			$category_name = $re->category_name;
 			$product_name = $re->product_name;
@@ -285,7 +284,6 @@ class TicketController extends  Controller{
 			$display_price =  $re->display_price ; 
 		}
 		
-		$this->smarty->assign ( 'title', $title );
 		$this->smarty->assign ( 'category_id', $category_id );
 		$this->smarty->assign ( 'category_name', $category_name );
 		$this->smarty->assign ( 'product_name', $product_name );
