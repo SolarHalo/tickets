@@ -91,8 +91,18 @@
 		$.datepicker.setDefaults($.datepicker.regional['zh-CN']);
 		$("#fromDate" ).datepicker();
 		$("#toDate" ).datepicker();
-		
+		var pdata = '{{json_encode($data)}}';
+	//	alert(pdata)
+		var source = eval("var source ="+pdata);
+		alert(source)
+		//source  = eval('(' + '{{json_encode($data)}}' + ')');
+		//alert(source)
+		loadDatas(source,"promotional_text");
 	});
+
+	 
+	 
+
 	</script>
 </head> 
 <body>
@@ -101,7 +111,12 @@
   <div class="content">
     <div class="events">
       <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
-      <div class="events-l mt15"> <img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" width="160" height="265" class="img-sidebar" />
+      <div class="events-l mt15">
+      <div style="width: 260px;height: 265px;">
+      	{{include file="map.tpl" }}
+      </div>
+      
+<!--        <img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" width="160" height="265" class="img-sidebar" /> -->
         <ul id="cat-list" class="gigs-title map">
          	<span>Categories</span>
          	

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
+	<title>{{$title}}</title>
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
@@ -60,12 +60,7 @@
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc05.gif\" /></a></li>"+
 //	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc06.gif\" /></a></li>"+
 //	                "</ul>";
-<<<<<<< HEAD
 				$("#img-list").before(str);
-				// searchaddress(obj.promotional_text);
-=======
-				$("#img-list").prepend(str);
-				
 				
 				html = "<font>Description</font>: "+obj.description + "<br />"+
                     "	<table cellpadding=\"0\" cellspacing=\"0\" class=\"mt15\">"+
@@ -79,9 +74,10 @@
                     "    	</tr>"+
                     "	</table>";
 				$("#info-other").html(html);
-				
-				
->>>>>>> da686a6e6881fcf14f0520b4df8a7a21c335ee41
+					var source =new Array();
+					source.push(obj);
+				   //searchaddress(obj.promotional_text);
+					loadDatas(source,"promotional_text");
 			},
 			"json"
 		);
@@ -140,7 +136,7 @@
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
-                    <div   style="width: 507px; height: 339px">
+                    <div   style="  height: 339px">
                     	<!-- <img src="{{$smarty.const.WEBSITE_URL}}/public/photo/mapphoto.png" /> -->
                     	{{include file="map.tpl" }}
                     </div>

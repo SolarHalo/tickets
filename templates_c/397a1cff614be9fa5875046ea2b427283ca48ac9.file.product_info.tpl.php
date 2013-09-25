@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 17:20:30
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 18:38:15
          compiled from "E:\phpweb\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:23907524049cfd64234-07964762%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '397a1cff614be9fa5875046ea2b427283ca48ac9' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\product_info.tpl',
-      1 => 1379949622,
+      1 => 1380040681,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_524049cfdc5c15_00013032',
   'variables' => 
   array (
+    'title' => 0,
     'id' => 0,
   ),
   'has_nocache_code' => false,
@@ -27,7 +28,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
+	<title><?php echo $_smarty_tpl->tpl_vars['title']->value;?>
+</title>
 	<link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="<?php echo @constant('WEBSITE_URL');?>
@@ -45,7 +47,27 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/js/jquery.ui.datepicker.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/js/searchform.js"></script>
+ <script  type="text/javascript"> 
  
+	function addCalendat(pid){
+		console.log("add calendar");
+		$.post(
+			'<?php echo @constant('WEBSITE_URL');?>
+ticket/addCalendat',
+			{'pid':pid},
+			function(obj){
+				if(obj.res){
+					alert("success");
+				}else{
+					window.location.href="<?php echo @constant('WEBSITE_URL');?>
+login";
+				}
+				
+			},
+			"json"
+		);
+	} 
+ </script>
 </head>
 
 <body>
@@ -66,8 +88,10 @@ ticket/queryById',
 				var html = "<h1>" + obj.product_name +"</h1>" +
                     "<p class=\"add\">"+obj.promotional_text+"</p>" +
                     "<p class=\"time\">"+ obj.time+" BST </p>" +
-                    "<p class=\"mt15\"><a href=\"#\" class=\"btn btn-range\">Add to Calendar</a></p>" ;
+                    "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"<?php echo @constant('WEBSITE_URL');?>
+buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
 				$("#info-show").html(html);
+				
 				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
 //	                "<ul class=\"share\">" +
 //	                "	<li><a href=\"#\"><img src=\"<?php echo @constant('WEBSITE_URL');?>
@@ -85,6 +109,29 @@ ticket/queryById',
 //	                "</ul>";
 				$("#img-list").before(str);
 				// searchaddress(obj.promotional_text);
+
+				//$("#img-list").before(str);
+				// searchaddress(obj.promotional_text);
+
+				$("#img-list").prepend(str);
+				
+				
+				html = "<font>Description</font>: "+obj.description + "<br />"+
+                    "	<table cellpadding=\"0\" cellspacing=\"0\" class=\"mt15\">"+
+                    "  		<tr>"+
+                    "	       	<td width=\"140\"><font>time</font></td>"+
+                    "       	<td>"+obj.time+"</td>"+
+                    "   	</tr>"+
+                    "    	<tr>"+
+                    "        	<td width=\"140\"><font>Prices</font></td>"+
+                    "        	<td> "+obj.display_price+" </td>"+
+                    "    	</tr>"+
+                    "	</table>";
+				$("#info-other").html(html);
+					var source =new Array();
+					source.push(obj);
+				   //searchaddress(obj.promotional_text);
+					loadDatas(source,"promotional_text");
 			},
 			"json"
 		);
@@ -122,7 +169,10 @@ ticket/queryById',
                     -->
                 </div>
                 <div class="hr mt15"></div>
-                <div class="row2 mt15"> 
+                <div class="row2 mt15" id="info-other">
+                
+               	 	<!-- 
+               	 	
                     <font>Featuring</font>: Wade, Van Gerwen, Hankey, Nicholson, George, Joplin.<br />
                     <font>Tickets available from</font>: Modus Darts on <font>08450 180 180</font> 
                     <table cellpadding="0" cellspacing="0" class="mt15">
@@ -135,18 +185,21 @@ ticket/queryById',
                             <td>VIPs - £50, Terrace £25, Balcony - 20</td>
                         </tr>
                     </table>
+                    
+                    -->
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
-                    <div   style="width: 507px; height: 339px">
+                    <div   style="  height: 339px">
                     	<!-- <img src="<?php echo @constant('WEBSITE_URL');?>
 /public/photo/mapphoto.png" /> -->
                     	<?php echo $_smarty_tpl->getSubTemplate ("map.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
                     </div>
                 </div>
-            </div>
-            <div class="events-r mt15">
+            </div> 
+        </div> 
+         <div class="events-r mt15">
             	<div class="r-row rw-bg">
                 	<h3>flagship  event</h3>
                     <font>August 25th, 20:00hrs</font>
@@ -166,7 +219,6 @@ ticket/queryById',
                     <a href="#" class="Fbot mt15">View Details</a>
                 </div>
             </div>
-        </div> 
     </div> 
 </div>
 <div class="footer">
