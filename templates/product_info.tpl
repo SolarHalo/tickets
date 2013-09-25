@@ -41,9 +41,11 @@
 <script  type="text/javascript">
 
 	$(function($) {
-		//var source =new Array();
-		//source.push(obj);
-		//loadDatas(source,"promotional_text");
+		var source = new Array();
+		var obj = new Array();
+		obj['promotional_text'] = '{{$promotional_text}}';
+		source.push(obj);
+		loadDatas(source,"promotional_text");
 	});
 	
 </script>
