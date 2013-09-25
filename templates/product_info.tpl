@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>{{$title}}</title>
+	<title>{{$category_name}} , {{$product_name}} , {{$time}}</title>
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css" type="text/css" rel="stylesheet" /> 
 	<link rel="stylesheet" href="{{$smarty.const.WEBSITE_URL}}/public/assets/css/jquery-ui.css" />
@@ -39,67 +39,33 @@
 ﻿{{include file='layouts/headerandsearch.tpl'}} 
 
 <script  type="text/javascript">
-	var postData = {'id':'{{$id}}'};
+
 	$(function($) {
-		$.post(
-			'{{$smarty.const.WEBSITE_URL}}ticket/queryById',
-			postData,
-			function(obj){
-				var html = "<h1>" + obj.product_name +"</h1>" +
-                    "<p class=\"add\">"+obj.promotional_text+"</p>" +
-                    "<p class=\"time\">"+ obj.time+" BST </p>" +
-                    "<p class=\"mt15\"><a href=\"javascript:addCalendat('"+obj.aw_product_id+"')\" class=\"btn btn-range\">Add to Calendar</a><a href=\"{{$smarty.const.WEBSITE_URL}}buyticket/index/?pid="+obj.aw_product_id+"\" class=\"ml15 btn btn-black\"><strong>Buy Tickets</strong></a></p>" ;
-				$("#info-show").html(html);
-				
-				var str = "<img src=\""+ obj.aw_image_url +"\" width=\"160\" height=\"265\" class=\"img-sidebar\" />";
-//	                "<ul class=\"share\">" +
-//	                "	<li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc01.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc02.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc03.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc04.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc05.gif\" /></a></li>"+
-//	                "   <li><a href=\"#\"><img src=\"{{$smarty.const.WEBSITE_URL}}/public/images/ioc06.gif\" /></a></li>"+
-//	                "</ul>";
-				$("#img-list").prepend(str);
-				//$("#img-list").before(str);
-				
-				html = "<font>Description</font>: "+obj.description + "<br />"+
-                    "	<table cellpadding=\"0\" cellspacing=\"0\" class=\"mt15\">"+
-                    "  		<tr>"+
-                    "	       	<td width=\"140\"><font>time</font></td>"+
-                    "       	<td>"+obj.time+"</td>"+
-                    "   	</tr>"+
-                    "    	<tr>"+
-                    "        	<td width=\"140\"><font>Prices</font></td>"+
-                    "        	<td> "+obj.display_price+" </td>"+
-                    "    	</tr>"+
-                    "	</table>";
-				$("#info-other").html(html);
-					var source =new Array();
-					source.push(obj);
-				   //searchaddress(obj.promotional_text);
-					loadDatas(source,"promotional_text");
-			},
-			"json"
-		);
+		var source = new Array();
+		var obj = new Array();
+		obj['promotional_text'] = '{{$promotional_text}}';
+		source.push(obj);
+		loadDatas(source,"promotional_text");
 	});
+	
 </script>
 <div class="mian">
     <div class="content">
     	<div class="events">
         	<div class="sub-nav">
-            	<span><a href="#">Home</a>  /  <a href="#">Search</a>  /  The Big Guns</a></span>
+            	<span><a href="{{$smarty.const.WEBSITE_URL}}">Home</a>  /  <a href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$category_id}}">{{$category_name}}</a>  /  {{$product_name}}</a></span>
                 <a href="#" class="back btn btn-black">&lt;&lt;Search Results</a>
             </div>
         	<div class="events-l mt15" id='img-list'>
+        		<img src="{{$aw_image_url}}" width="160" height="265" class="img-sidebar" />
 				<!-- AddThis Button BEGIN -->
-			<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-			<a class="addthis_button_preferred_1"></a>
-			<a class="addthis_button_preferred_2"></a>
-			<a class="addthis_button_preferred_3"></a>
-			<a class="addthis_button_preferred_4"></a>
-			<a class="addthis_button_compact"></a>
-			<a class="addthis_counter addthis_bubble_style"></a>
+				<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+				<a class="addthis_button_preferred_1"></a>
+				<a class="addthis_button_preferred_2"></a>
+				<a class="addthis_button_preferred_3"></a>
+				<a class="addthis_button_preferred_4"></a>
+				<a class="addthis_button_compact"></a>
+				<a class="addthis_counter addthis_bubble_style"></a>
 			</div>
 			<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 			<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-522dce200590139f"></script>
@@ -107,33 +73,27 @@
             </div>
             <div class="events-c">
             	<div class="row" id="info-show">
-            		<!--
-            		<h1>The Big Guns</h1>
-                    <p class="add">Princes Hall, Princes Way, Aldershot, GU11 1NX, Hampshire, UK</p>
-                    <p class="time">Saturday, 31 Aug 2013 19:30 BST <a href="#">+ 1 more dates</a></p>
-                    <p class="mt15"><a href="#" class="btn btn-range">Add to Calendar</a></p>
-                    
-                    -->
+            		<h1>{{$product_name}}</h1>
+                    <p class="add">{{$promotional_text}}</p>
+                    <p class="time">{{$time}} BST <!--<a href="#">+ 1 more dates</a>--></p>
+                    <p class="mt15"><a href="javascript:addCalendat('"+obj.aw_product_id+"')" class="btn btn-range">Add to Calendar</a></p>
                 </div>
                 <div class="hr mt15"></div>
                 <div class="row2 mt15" id="info-other">
                 
-               	 	<!-- 
-               	 	
-                    <font>Featuring</font>: Wade, Van Gerwen, Hankey, Nicholson, George, Joplin.<br />
-                    <font>Tickets available from</font>: Modus Darts on <font>08450 180 180</font> 
+                    <font>Description</font>: {{$description}}<br />
+                    <!--<font>Tickets available from</font>: Modus Darts on <font>08450 180 180</font> -->
                     <table cellpadding="0" cellspacing="0" class="mt15">
                         <tr>
-                            <td width="140"><font>Running time</font></td>
-                            <td>120mins</td>
+                            <td width="140"><font>Time</font></td>
+                            <td>{{$time}}</td>
                         </tr>
                         <tr>
                             <td width="140"><font>Prices</font></td>
-                            <td>VIPs - £50, Terrace £25, Balcony - 20</td>
+                            <td>{{$display_price}}</td>
                         </tr>
                     </table>
                     
-                    -->
                 </div>
                 <div class="row3 map">
                 	<span>View Map</span>
