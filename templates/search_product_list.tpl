@@ -128,7 +128,7 @@
       <div style="width:190px;height: 265px;">
       	{{include file="map.tpl" }}
       </div>
-      
+      </div>
 <!--        <img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" width="160" height="265" class="img-sidebar" /> -->
         <ul id="cat-list" class="gigs-title map">
          	<span>Categories</span>

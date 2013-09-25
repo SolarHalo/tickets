@@ -53,7 +53,12 @@ function displayUser(user) {//回调函数，用户信息转化
     	console.log(user.gender);
     	console.log(user.locale);
     	console.log(user.age_range);
-    	$.post("{{$smarty.const.WEBSITE_URL}}register/addUser4FaceBook", { userID: user.id, username: user.username} );
+    	$.post("{{$smarty.const.WEBSITE_URL}}register/addUser4FaceBook", { userID: user.id, username: user.username}, 
+    			function(json){
+    				if(json=='success'){
+    					windown.href.location = '{{$smarty.const.WEBSITE_URL}}index';
+    				}
+    			});
     }else {
         alert('user error');
     }
