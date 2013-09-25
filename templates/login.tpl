@@ -21,6 +21,8 @@
 <div class="mian">
     <div class="content">
     	<div class="login-l login">
+    	    <input type="hidden" id="addUser4FaceBook" value="{{$smarty.const.WEBSITE_URL}}register/addUser4FaceBook">
+        	<input type="hidden" id="url" value="{{$smarty.const.WEBSITE_URL}}">
         	<h6>sign&nbsp;&nbsp;in</h6>
         	{{$errortip}}
         	<form id="loginform" name="loginform" method="post">

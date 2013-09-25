@@ -62,22 +62,23 @@ class RegisterController extends  Controller{
   	 $this->getSmarty(); 
   	 require_once SERVICE . DS . 'admin' . DS . 'UsersService.class.php';
 	 $userService = new UsersService( $this->getDB());
-  	 $user_info = $userService->getUserInfoByID($_POST["userID"]);
+  	 $user_info = $userService->getUserInfoByID($_POST["userid"]);
 	 if(empty($user_info->usrname)){
 	 		//不存在，就天添加用户
 	  	 $user = array(
-			        'userid' => $_POST["userID"], 
+			        'userid' => $_POST["userid"], 
 			  	    'username' => $_POST["username"],
-					'password' => md5($_POST["password"] ),
+			/*		'password' => md5($_POST["password"] ),*/
 					'firstname' => $_POST["firstname"],
 					'lastname' => $_POST["lastname"],
-					'email' => $_POST["email"],
-					'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) 
+					'email' => $_POST["email"]
+					/*,
+					'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) */
 	  	 );
 	  	 $userService->addUser($user);
-  		 $user_info = $userService->getUserInfoByID($_POST["userID"]);
+  		 $user_info = $userService->getUserInfoByID($_POST["userid"]);
 	 }
   	 $_SESSION['user'] = $user_info;
-  	 echo "success";
+  	 echo  json_encode("success");
   }
 }

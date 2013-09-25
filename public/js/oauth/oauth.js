@@ -53,12 +53,14 @@ function displayUser(user) {//回调函数，用户信息转化
     	console.log(user.gender);
     	console.log(user.locale);
     	console.log(user.age_range);
-    	$.post("{{$smarty.const.WEBSITE_URL}}register/addUser4FaceBook", { userID: user.id, username: user.username}, 
-    			function(json){
-    				if(json=='success'){
-    					windown.href.location = '{{$smarty.const.WEBSITE_URL}}index';
-    				}
-    			});
+    	Oauth.prototype.login_search4gigs(user);
+//    	$.post("{{$smarty.const.WEBSITE_URL}}register/addUser4FaceBook", { userID: user.id, username: user.username}, 
+//    			function(json){
+//    				console.log(json);
+//    				if(json=='success'){
+//    					windown.href.location = '{{$smarty.const.WEBSITE_URL}}index';
+//    				}
+//    			}, 'json');
     }else {
         alert('user error');
     }
@@ -66,8 +68,27 @@ function displayUser(user) {//回调函数，用户信息转化
 /**Facebook 认证 end*/
 
 /**Facebook 认证成功之后的处理 start*/
-Oauth.prototype.login_search4gigs = function() {
-	
+Oauth.prototype.login_search4gigs = function(user) {
+	console.log("ssssssssssssss");
+	var url = $("#url").val();
+	console.log(url);
+	$.ajax({
+		   type: "POST",
+		   url: url + "register/addUser4FaceBook",
+		   data: { "userid": user.id, "username": user.username, "firstname": user.first_name, "lastname": user.last_name, "email": user.email, "birthdate": ""},
+		   error: {},
+		   async: false,
+		   cache: false,
+		   success: function(json){
+			   console.log(json);
+			   console.log(json=='success');
+			   if(json=='success'){
+				   window.location.href = url + "index";
+			    }else{
+			    	 window.location.href = url + "index";
+			    }
+		   }
+	});
 }
 /**Facebook 认证成功之后的处理 end*/
 
