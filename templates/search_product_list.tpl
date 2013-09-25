@@ -108,9 +108,14 @@
 		loadDatas(eval(pdata),"promotional_text");
 	});
 
-	 
-	 
+ 
+	function productOver(e){
+		alert(e);
+	}
 
+	function productOut(e){
+		alert(e);
+	}
 	</script>
 </head> 
 <body>
@@ -120,7 +125,7 @@
     <div class="events">
       <div class="sub-nav"> <span><a href="#">Home</a> / <a href="#">Search</a> /  The Big Guns</a></span></div>
       <div class="events-l mt15">
-      <div style="width:260px;height: 265px;">
+      <div style="width:190px;height: 265px;">
       	{{include file="map.tpl" }}
       </div>
       
@@ -145,7 +150,7 @@
        
        {{foreach $data as $d}}
        	
-	       	<tr>
+	       	<tr >
 	       		<td>
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="gigs-table list-tablep">
 		        		<tr>
@@ -161,7 +166,7 @@
 	                      	</td>
 	                      	<td>{{$d['category_name']}}<br />
 	                        	<span>
-	                        		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}">
+	                        		<a href="{{$smarty.const.WEBSITE_URL}}ticket/info/?id={{$d['aw_product_id']}}" name= {{$d['aw_product_id']}} onmouseover='productOver(name)'  onmouseout='productOut(name)'>
 		                      			{{$d['product_name']}}
 		                      		</a>
 	                        	</span><br />

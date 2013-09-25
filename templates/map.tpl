@@ -35,8 +35,6 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map =  new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-        
       }
 
       function addMarker(map,latLng,title) {
@@ -123,11 +121,15 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       *设置地图的等级
       */ 
       function setRoom(room){
-          if(map){
-              map.setZoom(room);
-            }else{
-                console.log("no map");
-            }
+    	  var ziID=setInterval(setRoomnow, 500);
+    	  function setRoomnow()
+    	  {
+    		  if(map){
+                  map.setZoom(room);
+                  clearInterval(ziID);
+                } 
+    	  }
+        
       }
 
 
@@ -146,7 +148,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
 				  }
 				}
 		   }
-		   setRoom(12);
+		  
        }
 
 
@@ -155,6 +157,6 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
     </script>
 </head>
 <body onload="initialize()">
-	<div id="map-canvas" />
+	<div id="map-canvas"></div>
 </body>
 </html>

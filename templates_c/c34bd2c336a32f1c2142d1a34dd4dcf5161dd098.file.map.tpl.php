@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 18:10:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 16:09:07
          compiled from "E:\phpweb\tickets\templates\map.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:119665225e736142f67-83673444%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c34bd2c336a32f1c2142d1a34dd4dcf5161dd098' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\map.tpl',
-      1 => 1380039023,
+      1 => 1380118120,
       2 => 'file',
     ),
   ),
@@ -39,7 +39,7 @@ body {
 }
 </style>
 <script type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA&sensor=false">
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA&sensor=false">
     </script>
 <script type="text/javascript">
 var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
@@ -51,7 +51,7 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       function initialize() {
         var haightAshbury = new google.maps.LatLng(52.928775,6.249504);
         var mapOptions = {
-          zoom: 12,
+          zoom: 1,
           center: haightAshbury,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -144,9 +144,15 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
       *设置地图的等级
       */ 
       function setRoom(room){
-          if(map){
-              map.setZoom(room);
-            }
+    	  var ziID=setInterval(setRoomnow, 500);
+    	  function setRoomnow()
+    	  {
+    		  if(map){
+                  map.setZoom(room);
+                  clearInterval(ziID);
+                } 
+    	  }
+        
       }
 
 
@@ -157,14 +163,15 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
        function loadDatas(datas,proty){
     	   deleteOverlays();
 		   if(datas){
-			   alert(datas)
 			   for (i in datas) {
 				  var address = datas[i][proty];
+				  
 				  if(address){
 					  searchaddress(address);
 				  }
 				}
 		   }
+		  
        }
 
 
@@ -173,6 +180,6 @@ var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
     </script>
 </head>
 <body onload="initialize()">
-	<div id="map-canvas" />
+	<div id="map-canvas"></div>
 </body>
 </html><?php }} ?>
