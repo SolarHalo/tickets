@@ -62,7 +62,9 @@ class RegisterController extends  Controller{
   	 $this->getSmarty(); 
   	 require_once SERVICE . DS . 'admin' . DS . 'UsersService.class.php';
 	 $userService = new UsersService( $this->getDB());
-  	 $user_info = $userService->getUserInfoByID($_POST["userid"]);
+	 $userID = $_POST["userid"];
+  	 $user_info = $userService->getUserInfoByID($userID);
+
 	 if(empty($user_info->usrname)){
 	 		//不存在，就天添加用户
 	  	 $user = array(
@@ -76,9 +78,9 @@ class RegisterController extends  Controller{
 					'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) */
 	  	 );
 	  	 $userService->addUser($user);
-  		 $user_info = $userService->getUserInfoByID($_POST["userid"]);
+  		 $user_info = $user;
 	 }
   	 $_SESSION['user'] = $user_info;
-  	 echo  json_encode("success");
+  	 echo "OK";
   }
 }
