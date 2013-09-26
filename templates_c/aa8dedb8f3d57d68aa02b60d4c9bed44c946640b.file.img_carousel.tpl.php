@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 17:14:45
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 17:48:06
          compiled from "E:\phpweb\tickets\templates\admin\users\img_carousel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17361521f59489301c6-29107373%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'aa8dedb8f3d57d68aa02b60d4c9bed44c946640b' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\users\\img_carousel.tpl',
-      1 => 1380208483,
+      1 => 1380210199,
       2 => 'file',
     ),
   ),
@@ -111,11 +111,11 @@ fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP�
 	}
 	function deleteItem(){
 
-		$.messager.confirm('删除确定','确定要删除当前选择的记录!',function(r){
+		$.messager.confirm('Confirm','Delete the currently selected record!',function(r){
 		    if (r){
 		    	var select = getSelect();
 				if(select == null || select.length == 0 ){
-					$.messager.alert('错误','请选择要删除的记录!');
+					$.messager.alert('ERROR','Please select the record!');
 					return;
 				}
 				$.ajax({  
@@ -205,26 +205,26 @@ admin/imgcarousel/getpage',fitColumns:true,singleSelect:true"
 				<thead>
 					<tr>
 						<th data-options="field:'id',width:100,checkbox:true"></th>
-						<th data-options="field:'title',width:100">Title名称</th>
-						<th data-options="field:'url',width:100">地址</th>
-						<th data-options="field:'imgname',width:100">图片名称</th>
-						<th data-options="field:'product_time',width:100">时间</th>
-						<th data-options="field:'showindex',width:100">显示位置</th>
-						<th data-options="field:'updatetime',width:100">最后修改时间</th>
-						<th data-options="field:'desc',width:100">描述</th>
+						<th data-options="field:'title',width:100">Title</th>
+						<th data-options="field:'url',width:100">Url</th>
+						<th data-options="field:'imgname',width:100">Imgname</th>
+						<th data-options="field:'product_time',width:100">Time</th>
+						<th data-options="field:'showindex',width:100">Showindex</th>
+						<th data-options="field:'updatetime',width:100">Updatetime</th>
+						<th data-options="field:'desc',width:100">Desc</th>
 					</tr>
 				</thead>
 			</table>
 
 			<div id="toolbar">
 				<a href="#" class="easyui-linkbutton" iconCls="icon-add"
-					plain="true" onclick="addWindow()">添加</a> <a href="#"
+					plain="true" onclick="addWindow()">Add</a> <a href="#"
 					class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-					onclick="editWindow()">修改</a> <a href="#" class="easyui-linkbutton"
-					iconCls="icon-remove" plain="true" onclick="deleteItem()">删除</a>
+					onclick="editWindow()">Edit</a> <a href="#" class="easyui-linkbutton"
+					iconCls="icon-remove" plain="true" onclick="deleteItem()">Remove</a>
 			</div>
 
-			<div id="win_add" class="easyui-window" title="添加"
+			<div id="win_add" class="easyui-window" title="Add"
 				style="width: 600px; height: 425px"
 				data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,modal:true">
 				<div class="easyui-layout" data-options="fit:true">
@@ -234,7 +234,7 @@ admin/imgcarousel/getpage',fitColumns:true,singleSelect:true"
 								type="text" id="imgname" name="imgname" hidden="true">
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="Text input">Title名称:</label>
+							<label class="control-label" for="Text input">Title:</label>
 							<div class="controls">
 								<input type="text" class="easyui-validatebox"
 									data-options="required:true" id="title" name="title"
@@ -244,12 +244,12 @@ admin/imgcarousel/getpage',fitColumns:true,singleSelect:true"
 
 
 						<div class="control-group">
-							<label class="control-label" for="Text input">图片选择:</label>
+							<label class="control-label" for="Text input">Image:</label>
 							<div class="controls">
 								<input type="text" id="file_show"
 									class="input-style4 textinput-w3" readOnly="true" /> <input
 									type="button" class="btn btn-small" id="selectfile"
-									value="选择上传文件" />
+									value="select image" />
 							</div>
 						</div>
 
@@ -270,7 +270,7 @@ admin/imgcarousel/getpage',fitColumns:true,singleSelect:true"
 						</div>
 
 						<div class="control-group">
-							<label class="control-label" for="Text input">显示位置:</label>
+							<label class="control-label" for="Text input">Showindex:</label>
 							<div class="controls">
 								<select id="showindex" name="showindex">
 									<option selected="selected">1</option>
@@ -294,23 +294,23 @@ admin/imgcarousel/getpage',fitColumns:true,singleSelect:true"
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="Text input">时间:</label>
+							<label class="control-label" for="Text input">Time:</label>
 							<div class="controls">
 								<input id="product_time" name="product_time"></input>
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label" for="Text input">描述:</label>
+							<label class="control-label" for="Text input">Desc:</label>
 							<div class="controls">
 								<textarea rows="2" id="desc" name="desc"></textarea>
 							</div>
 						</div>
 						<div class="form-actions" id="div_add">
 							<button type="button" style="width: 100px;"
-								class="btn btn-primary" onclick="addItem()">保存</button>
+								class="btn btn-primary" onclick="addItem()">Save</button>
 							<button type="button" onclick="win_close()" style="width: 100px;"
-								class="btn">取消</button>
+								class="btn">Cancle</button>
 						</div>
 
 					</form>
