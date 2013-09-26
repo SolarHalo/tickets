@@ -62,9 +62,6 @@ function displayUser(user) {//回调函数，用户信息转化
 
 /**Facebook 认证成功之后的处理 start*/
 Oauth.prototype.login_search4gigs = function(user) {
-	console.log("ssssssssssssss");
-	var url = $("#url").val();
-	console.log(url);
 	$.ajax({
 		   type: "POST",
 		   url: "/register/addUser4FaceBook",
@@ -73,7 +70,8 @@ Oauth.prototype.login_search4gigs = function(user) {
 		   async: false,
 		   cache: false,
 		   success: function(json){
-			   if(json=='OK'){
+			   console.log(json);
+			   if(json.trim()=='OK'){
 				   window.location.href = "/index";
 			    }else{
 			    	 alert("登陆失败!");

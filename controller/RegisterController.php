@@ -65,7 +65,7 @@ class RegisterController extends  Controller{
 	 $userID = $_POST["userid"];
   	 $user_info = $userService->getUserInfoByID($userID);
 
-	 if(empty($user_info->usrname)){
+	 if(empty($user_info)){
 	 		//不存在，就天添加用户
 	  	 $user = array(
 			        'userid' => $_POST["userid"], 
