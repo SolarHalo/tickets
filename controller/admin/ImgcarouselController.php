@@ -35,180 +35,54 @@ class ImgcarouselController extends Controller {
 		
 		$imgService = new ImgcarouserlService ( $this->getDB () );
 		
-		global $uploadfile;
-		global $file_name;
 		
-		global $returnValue;
-		if ($_FILES ['file'] ['name'] != '') {
-			if ($_FILES ['file'] ['error'] > 0) {
-				switch ($_FILES ['file'] ['error']) {
-					case 1 :
-						$returnValue = "文件大小超过了PHP.ini中的文件限制！";
-						break;
-					case 2 :
-						$returnValue = "文件大小超过了浏览器限制！";
-						break;
-					case 3 :
-						$returnValue = "文件部分被上传！";
-						break;
-					case 4 :
-						$returnValue = "没有找到要上传的文件！";
-						break;
-					case 5 :
-						$returnValue = "服务器临时文件夹丢失，请重新上传！";
-						break;
-					case 6 :
-						$returnValue = "文件写入到临时文件夹出错！";
-						break;
-				}
+		$id = $_POST ["id"];
+		if( empty($id)){
+			$input_data = array (
+					'id' => md5 ( uniqid () ),
+					'title' => $_POST ["title"],
+					'url' => $_POST ["url"],
+					'imgname' => $_POST ["imgname"],
+					'showindex' => $_POST ["showindex"],
+					'updatetime' => date ( 'Y-m-d H:i:s' ),
+					'product_time' => $_POST ["product_time"],
+					'desc' => $_POST ["desc"]
+			);
+			$data = $imgService->addItem ( $input_data );
+		}else{
+			$item = $imgService->getAdminByID ( $id );
+			$oldimg = $_POST ["imgname"];
+			if ($oldimg == $item->imgname) {
 			} else {
-				if ($_FILES ['file'] ['type'] == 'image/jpeg' or $_FILES ['file'] ['type'] == 'image/pjpeg' or $_FILES ['file'] ['type'] == 'image/gif' or  $_FILES ['file'] ['type'] == 'image/png'  && $_FILES ['file'] ['size'] < 20480) {
-					
-					$title = $_POST ["title"];
-					
-					$value = $imgService->getAdminByName ( $title );
-					if ($value) { 
-						$returnValue = "存在相同title的记录，请修改title！";
-					
-					} else { 
-						$dirroot =  PROJECT.DS."uploads/arousel/";
-						$filename = explode ( ".", $_FILES ['file'] ['name'] );
-						
-						$filename [0] = strtotime ( date ( 'Y-m-d' ) ) . "-" . rand (); // 设置随机数长度
-						
-						$file_name = implode ( ".", $filename );
-						// // $name1=$name.".Mcncc";
-						$uploadfile = $dirroot . $file_name;
-						
-						move_uploaded_file ( $_FILES ['file'] ['tmp_name'], $uploadfile );
-						
-						$desc = $_POST ["desc"];
-						$input_data = array (
-								'id' => md5 ( uniqid () ),
-								'title' => $_POST ["title"],
-								'url' =>$_POST ["url"],
-								'imgname' => $file_name,
-								'showindex' => $_POST ["showindex"],
-								'updatetime' => date ( 'Y-m-d H:i:s' ),
-								'product_time' =>  $_POST ["product_time"],
-								'desc' => $_POST ["desc"] 
-						);
-						$id = $imgService->addItem ( $input_data );
-						
-						$returnValue = "添加成功 ";
-					}
-				} else {
-					$returnValue = " 请上传小于2MB的jpeg或Gif类型的附件); 此文件类型为：".$_FILES ['file'] ['type'] ."大小为:".$_FILES ['file'] ['size'];
-				}
+				unlink ($item->imgname );
 			}
-		} else {
-			$returnValue = " 请上传文件！ ";
+			$input_data = array (
+					'title' => $_POST ["title"],
+					'url' => $_POST ["url"],
+					'imgname' => $oldimg,
+					'showindex' => $_POST ["showindex"],
+					'updatetime' => date ( 'Y-m-d H:i:s' ),
+					'product_time' => $_POST ["product_time"],
+					'desc' => $_POST ["desc"]
+			);
+			
+			$input_condition = array (
+					'id' => $_POST ["id"]
+			);
+			$data = $imgService->edit ( $input_data, $input_condition );
 		}
-		echo "<script>window.parent.CallbackFunction('$returnValue');</script>";
-		// $alert_html =
-		// HtmlWrap::alert("error",ErrorMessage::USER_OR_PWD_WRONG);
-		// $this->smarty->assign("osadmin_action_alert",$alert_html);
-		// $this->smarty->display ( "admin/users/img_carousel.tpl" );
+		echo "1";
 	}
 	
-	public function editData() {
-		$this->getSmarty ();
-		require_once SERVICE . DS . 'admin' . DS . 'ImgcarouserlService.class.php';
-		if (! CommonBase::isPost ()) {
-			$this->smarty->display ( "admin/users/img_carousel.tpl" );
-			return;
-		}
-		
-		$imgService = new ImgcarouserlService ( $this->getDB () );
-		
-		global $uploadfile;
-		global $file_name;
-		
-		global $returnValue;
-		if ($_FILES ['file'] ['name'] != '') {
-			if ($_FILES ['file'] ['error'] > 0) {
-				switch ($_FILES ['file'] ['error']) {
-					case 1 :
-						$returnValue = "文件大小超过了PHP.ini中的文件限制！";
-						break;
-					case 2 :
-						$returnValue = "文件大小超过了浏览器限制！";
-						break;
-					case 3 :
-						$returnValue = "文件部分被上传！";
-						break;
-					case 4 :
-						$returnValue = "没有找到要上传的文件！";
-						break;
-					case 5 :
-						$returnValue = "服务器临时文件夹丢失，请重新上传！";
-						break;
-					case 6 :
-						$returnValue = "文件写入到临时文件夹出错！";
-						break;
-				}
-			} else {
-				if ($_FILES ['file'] ['type'] == 'image/jpeg' or $_FILES ['file'] ['type'] == 'image/pjpeg' or $_FILES ['file'] ['type'] == 'image/gif' or  $_FILES ['file'] ['type'] == 'image/png'  && $_FILES ['file'] ['size'] < 20480) {
-									
-					$title = $_POST ["title"];
-					$id = $_POST ["id"];
-					$value = $imgService->valiteTitle($id, $title);
-					if ($value) {
-						$returnValue = "存在相同title的记录，请修改title！";
-					
-					} else {
-						$item = $imgService->getAdminByID($id);
-						$dirroot = PROJECT.DS."uploads/arousel/";
-						unlink($dirroot .$item->imgname);
-						
-						
-						$filename = explode ( ".", $_FILES ['file'] ['name'] );
-						
-						$filename [0] = strtotime ( date ( 'Y-m-d' ) ) . "-" . rand (); // 设置随机数长度
-						
-						$file_name = implode ( ".", $filename );
-						// // $name1=$name.".Mcncc";
-						$uploadfile = $dirroot . $file_name;
-						
-						move_uploaded_file ( $_FILES ['file'] ['tmp_name'], $uploadfile );
-						
-						$desc = $_POST ["desc"];
-						$input_data = array (
-								'title' => $_POST ["title"],
-								'url' => $_POST ["url"],
-								'imgname' => $file_name,
-								'showindex' => $_POST ["showindex"],
-								'updatetime' => date ( 'Y-m-d H:i:s' ),
-								'product_time' =>  $_POST ["product_time"], 
-								'desc' => $_POST ["desc"] 
-						);
-						
-						$input_condition = array (
-								'id' => $_POST ["id"]
-						);
-						$id = $imgService->edit($input_data, $input_condition);
-						
-						$returnValue = "修改成功 ";
-					}
-				} else {
-					$returnValue = " 请上传小于2MB的jpeg或Gif类型的附件); 此文件类型为：".$_FILES ['file'] ['type'] ."大小为:".$_FILES ['file'] ['size'];
-									}
-			}
-		} else {
-			$returnValue = " 请上传文件！ ";
-		}
-		echo "<script>window.parent.CallbackFunction('$returnValue');</script>";
-	}
-	
+	 
 	public function delete() {
 		$this->getSmarty ();
 		require_once SERVICE . DS . 'admin' . DS . 'ImgcarouserlService.class.php';
 		$imgService = new ImgcarouserlService ( $this->getDB () );
 		$id = $_POST ['id'];
 		
-		$item = $imgService->getAdminByID($id);
-		$dirroot = "uploads/arousel/";
-		unlink($dirroot .$item->imgname);
+		$item = $imgService->getAdminByID ( $id );
+		unlink ($item->imgname );
 		$user_id = $imgService->deleteItem ( $id );
 		echo 1;
 	}

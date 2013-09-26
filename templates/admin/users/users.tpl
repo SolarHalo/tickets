@@ -9,7 +9,7 @@
 			<p class="stat"><!--span class="number"></span--></p>
 			</div>
 
-            <h1 class="page-title">注册用户管理</h1>
+            <h1 class="page-title">Registered User Management</h1>
         </div>
         
 	
@@ -31,12 +31,12 @@
 				<thead>
 					<tr>
 						<th data-options="field:'userid',hidden:true,width:100"></th>
-						<th data-options="field:'username',width:100">登陆名</th>
-						<th data-options="field:'email',width:100">邮箱</th>
-						<th data-options="field:'firstname',width:100">名字</th>
-						<th data-options="field:'lastname',width:100">姓氏</th>
-						<th data-options="field:'birthdate',width:120" ,formatter="dateTimeFormat">生日</th>
-						<th data-options="field:'desc',width:100">描述</th>
+						<th data-options="field:'username',width:100">Username</th>
+						<th data-options="field:'email',width:100">Email</th>
+						<th data-options="field:'firstname',width:100">Firstname</th>
+						<th data-options="field:'lastname',width:100">Lastname</th>
+						<th data-options="field:'birthdate',width:120" ,formatter="dateTimeFormat">Birthdate</th>
+						<th data-options="field:'desc',width:100">Desc</th>
 
 
 					</tr>

@@ -42,7 +42,6 @@ class ImgcarouserlService{
 	}
 	
 	public function addItem($data){
-		print($data);
 		return	$this->dbutil->insert("img_carousel", $data);
 	}
 

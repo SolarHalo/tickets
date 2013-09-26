@@ -27,6 +27,7 @@ class EventController extends Controller{
 		
 		$eventId = $_POST["eventId"];
 		$eventDesc = $_POST["eventDesc"];
+		$eventDesc = htmlspecialchars($eventDesc);
 		
 		$db = $this->getDB ();
 		

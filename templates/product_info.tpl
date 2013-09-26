@@ -76,7 +76,10 @@
             		<h1>{{$product_name}}</h1>
                     <p class="add">{{$promotional_text}}</p>
                     <p class="time">{{$time}} BST <!--<a href="#">+ 1 more dates</a>--></p>
-                    <p class="mt15"><a href="javascript:addCalendat('"+obj.aw_product_id+"')" class="btn btn-range">Add to Calendar</a></p>
+                    <p class="mt15">
+	                    <a href="javascript:addCalendat('{{$id}}')" class="btn btn-range">Add to Calendar</a>
+	                    <a href="{{$smarty.const.WEBSITE_URL}}buyticket/index/?pid={{$id}}" class="ml15 btn btn-black"><strong>Buy Tickets</strong></a>
+                    </p>
                 </div>
                 <div class="hr mt15"></div>
                 <div class="row2 mt15" id="info-other">
