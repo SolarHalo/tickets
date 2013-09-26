@@ -2,34 +2,38 @@
 class IndexController extends Controller {
 	public function index() {
 		$this->getSmarty ();
-	 
+		
 		require_once SERVICE . DS . 'admin' . DS . 'ImgcarouserlService.class.php';
 		// START 数据库查询及分页数据
 		$imgService = new ImgcarouserlService ( $this->getDB () );
 		$items = $imgService->getIndexPage ( 20 );
-		$source="";
+		$source = "";
 		if ($items) {
 			
 			foreach ( $items as $item ) {
-		 
+				if (strlen ( $item->desc ) > 100) {
+					$desc = substr_replace ( $item->desc, '....', 100 );
+				} else {
+					$desc = $item->desc;
+				}
 				$source .= "
- 		<LI><A href=\"$item->url\"  target=\"_blank\"><IMG src= \"uploads/arousel/$item->imgname\"/></A>
+ 		<LI><A href=\"$item->url\"  target=\"_blank\"><IMG src= \"$item->imgname\"/></A>
  		<div>
  		<h3>$item->title</h3>
  		<span class=\"time\">$item->product_time</span>
  		
- 		<p> $item->desc
+ 		<p> $desc
  		</p>
  			<A href=\"$item->url\" class=\"a-but\">View Details</A>
  		</div>
  		</LI>
  		";
 			}
-// 			print($source);
+			// print($source);
 			$this->smarty->assign ( 'imagesources', $source );
 		
 		}
-	  
+		
 		$this->smarty->display ( "index.tpl" );
 	}
 	

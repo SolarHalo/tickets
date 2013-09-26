@@ -24,6 +24,8 @@ body {
 		var key = 'AIzaSyAWmJ21oU_HjdLgc8ZfPzDn92ziu_yI_bA';
 
 	  var activeicon = "{{$smarty.const.WEBSITE_URL}}public/images/marker-active.png";
+	  var noactiveicon = "{{$smarty.const.WEBSITE_URL}}public/images/marker-non-active.png";
+	
       var map;
       var markersArray = [];
       var markerDatasArray ={};
@@ -42,7 +44,7 @@ body {
       function addMarker(map,latLng,title) {
     	  if(title)  
     		  marker = new google.maps.Marker({  
-                  icon: this.icon,  
+                  icon: noactiveicon,  
                   position: latLng,  
                   map: map,  
                   title:title  
@@ -83,14 +85,15 @@ body {
           if(marker){
     		  marker.setIcon(activeicon);
     		  marker.setMap(map);
-    		  marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+    		  marker.setZIndex(google.maps.Marker.MAX_ZINDEX + markersArray.length);
           }
       }
       //关闭当前的所有markers变成正常状态
       function noActiveAllMarkers() {
     	  if (markersArray) {
               for (i in markersArray) {
-                markersArray[i].setIcon(this.icon);
+                markersArray[i].setIcon(noactiveicon);
+                markersArray[i].setZIndex(google.maps.Marker.MAX_ZINDEX -i);
               }
             }
       }
