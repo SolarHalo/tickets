@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-04 17:16:32
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 17:47:18
          compiled from "E:\phpweb\tickets\templates\admin\users\adminuser.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:22942521cc711340b80-05464773%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd4d2726b9b60c573c085307f324a11c72095e753' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\users\\adminuser.tpl',
-      1 => 1378302899,
+      1 => 1380210034,
       2 => 'file',
     ),
   ),
@@ -56,7 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	function editUser(){
 		var select = getSelectUser();
 		if(select == null || select.length == 0 ){
-			$.messager.alert('错误','请选择要修改的记录!');
+			$.messager.alert('ERROR','Please select the record!');
 			return;
 		}
 
@@ -70,11 +70,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			
 	}
 	function removeUser(){
-		$.messager.confirm('删除确定','确定要删除当前选择的记录!',function(r){
+		$.messager.confirm('Confirm','Delete the currently selected record!',function(r){
 		    if (r){
 		    	var select = getSelectUser();
 				if(select == null || select.length == 0 ){
-					$.messager.alert('错误','请选择要删除的记录!');
+					$.messager.alert('ERROR','Please select the record!');
 					return;
 				}
 				$.ajax({  
@@ -84,7 +84,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 user/delete',
 		            data: { id: select[0].id },  
 		            success: function (data) {  
-		                $.messager.alert("消息", "删除成功!", "info");  
+		                $.messager.alert("Message", "Success!", "info");  
 		             	$('#grid').datagrid('reload'); 
 		            },  
 		            error: function () {  
@@ -110,11 +110,11 @@ user/add',
 		    },
 		    success:function(data){
 			    if(data <0){
-			    	$.messager.alert('错误','存在相同的用户!');
+			    	$.messager.alert('ERROR','The same user!');
 			    	return;
 				 }
 		    	win_close();
-		    	$.messager.alert('成功','添加成功!');
+		    	$.messager.alert('Message','Success!');
 		    	$('#grid').datagrid('reload'); 
 		    	
 		    }
@@ -135,7 +135,7 @@ user/editData',
            	data: $("#form").serialize(),
             success: function (data) {  
             	
-		    	$.messager.alert('成功','修改成功!'); 
+            	$.messager.alert('Message','Success!');
              	$('#grid').datagrid('reload'); 
             },  
             error: function () {  
@@ -164,7 +164,7 @@ user/editData',
 			</p>
 		</div>
 
-		<h1 class="page-title">后台管理员管理</h1>
+		<h1 class="page-title">Background Administrators  Manage</h1>
 	</div>
 
 	<!-- <ul class="breadcrumb">
@@ -190,13 +190,13 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 					<tr>
 					<th data-options="field:'passwd',hidden:true"></th>
 						<th data-options="field:'id',width:100,checkbox:true"></th>
-						<th data-options="field:'user_name',width:100">登陆名</th>
-						<th data-options="field:'real_name',width:100">姓名</th>
-						<th data-options="field:'mobile',width:100">手机</th>
-						<th data-options="field:'email',width:100">邮箱</th>
-						<th data-options="field:'login_time',width:100">登陆时间</th>
-						<th data-options="field:'login_ip',width:100">登陆IP</th>
-						<th data-options="field:'user_desc',width:100">描述</th>
+						<th data-options="field:'user_name',width:100">UserName</th>
+						<th data-options="field:'real_name',width:100">RealName</th>
+						<th data-options="field:'mobile',width:100">Mobile</th>
+						<th data-options="field:'email',width:100">Email</th>
+						<th data-options="field:'login_time',width:100">LoginTime</th>
+						<th data-options="field:'login_ip',width:100">LoginIP</th>
+						<th data-options="field:'user_desc',width:100">Desc</th>
 
 
 					</tr>
@@ -205,14 +205,14 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 
 			<div id="toolbar">
 				<a href="#" class="easyui-linkbutton" iconCls="icon-add"
-					plain="true" onclick="newUser()">添加新用户</a> <a href="#"
+					plain="true" onclick="newUser()">Add</a> <a href="#"
 					class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-					onclick="editUser()">修改用户信息</a> <a href="#"
+					onclick="editUser()">Edit</a> <a href="#"
 					class="easyui-linkbutton" iconCls="icon-remove" plain="true"
-					onclick="removeUser()">删除用户</a>
+					onclick="removeUser()">Remove</a>
 			</div>
 
-			<div id="win_add" class="easyui-window" title="添加新用户"
+			<div id="win_add" class="easyui-window" title="Add"
 				style="width: 600px; height: 425px"
 				data-options="iconCls:'icon-save',collapsible:false,minimizable:false,maximizable:false,modal:true">
 				<div class="easyui-layout" data-options="fit:true">
@@ -221,61 +221,61 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 							<input type="text" name="id" hidden="true">
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="Text input">登陆名:</label>
+							<label class="control-label" for="Text input">UserName:</label>
 							<div class="controls">
 								<input type="text" class="easyui-validatebox"
 									data-options="required:true" id="user_name" name="user_name"
-									placeholder="请输入名称">
+									placeholder="Input  UserName">
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="inputPassword">密码:</label>
+							<label class="control-label" for="inputPassword">Passwd:</label>
 							<div class="controls">
 								<input type="password" class="easyui-validatebox"
 									data-options="required:true" id="passwd" name="passwd"
-									placeholder="请输入密码">
+									placeholder="passwd">
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label" for="Text input">姓名:</label>
+							<label class="control-label" for="Text input">RealName:</label>
 							<div class="controls">
 								<input type="text" id="real_name" name="real_name"
-									placeholder="姓名">
+									placeholder="RealName">
 							</div>
 						</div>
 
 						<div class="control-group">
-							<label class="control-label" for="Text input">手机:</label>
+							<label class="control-label" for="Text input">Mobile:</label>
 							<div class="controls">
 								<input type="text" id="mobile" name="mobile"
-									placeholder="手机">
+									placeholder="mobile">
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="inputEmail">邮件:</label>
+							<label class="control-label" for="inputEmail">Email:</label>
 							<div class="controls">
 								<input type="text" id="email" name="email"
 									placeholder="Email">
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="Text input">描述:</label>
+							<label class="control-label" for="Text input">Desc:</label>
 							<div class="controls">
 								<textarea rows="2" name="user_desc"></textarea>
 							</div>
 						</div>
 						<div class="form-actions" id="div_add">
 							<button type="button" style="width: 100px;"
-								class="btn btn-primary" onclick="addNewUser()">添加</button>
+								class="btn btn-primary" onclick="addNewUser()">Add</button>
 							<button type="button" onclick="win_close()" style="width: 100px;"
-								class="btn">取消</button>
+								class="btn">Cancle</button>
 						</div>
 						<div class="form-actions" id="div_edit">
 							<button type="button" style="width: 100px;"
-								class="btn btn-primary" onclick="editCurUser()">修改</button>
+								class="btn btn-primary" onclick="editCurUser()">Edit</button>
 							<button type="button" onclick="win_close()" style="width: 100px;"
-								class="btn">取消</button>
+								class="btn">Cancle</button>
 						</div>
 					</form>
 				</div>

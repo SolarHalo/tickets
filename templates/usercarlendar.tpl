@@ -64,15 +64,15 @@
         onSubmit: function (file, ext) {//提交文件时执行的方法
         	if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
 				//ext是后缀名
-        		button.value = "正在上传…";
+        		button.value = "upload…";
         		button.disabled = "disabled";
 			}else{	
-				alert("不支持的文件格式！只能上传jpg|jpeg|png|gif") ;
+				alert("Support jpg|jpeg|png|gif") ;
 				return false;
 			}
         },
         onComplete: function (file, response) {//文件提交完成后可执行的方法
-            button.text('浏览');
+            button.text('Select');
             this.enable();
 			var data=eval("("+response+")");
 			if(data.type==0){
@@ -190,7 +190,7 @@ function submitEvent(){
 		}
 	}else{
 		if($.trim(fromdate).length<0){
-			alert("请填写起始时间");
+			alert("Please fill out the starting time");
 			return ;
 		}
 		if(fromtime.length<1){

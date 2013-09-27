@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 17:43:33
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 15:55:04
          compiled from "E:\phpweb\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24466524049c5609f58-72188520%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5706c5401558cd8de5d8d07fc3db49b1e7540106' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\search_product_list.tpl',
-      1 => 1380123783,
+      1 => 1380203654,
       2 => 'file',
     ),
   ),
@@ -33,11 +33,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_524049c570deb8_57709652')) {function content_524049c570deb8_57709652($_smarty_tpl) {?>﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_524049c570deb8_57709652')) {function content_524049c570deb8_57709652($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Search4gigs Search – Music, tickets and cultural events on your calendar.</title>
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/title.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 	<link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 	<link href="<?php echo @constant('WEBSITE_URL');?>

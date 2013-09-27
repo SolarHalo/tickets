@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 16:28:38
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 16:09:28
          compiled from "E:\phpweb\tickets\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:76025219818ddd2944-65894916%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9ef0e8a64eb6b54178aefb29a1922b94924dfe06' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\header.tpl',
-      1 => 1378995457,
+      1 => 1380037788,
       2 => 'file',
     ),
   ),
@@ -38,8 +38,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/lib/bootstrap/css/bootstrap.css">
     
+ <!--    <link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/stylesheets_blacktie/theme.css"> -->
     <link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
-/public/assets/stylesheets_blacktie/theme.css">
+/public/assets/stylesheets_<?php echo $_SESSION['template'];?>
+/theme.css">
     <link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/lib/font-awesome/css/font-awesome.css">
 	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 17:39:18
+<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 16:05:19
          compiled from "E:\phpweb\tickets\templates\map.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:119665225e736142f67-83673444%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c34bd2c336a32f1c2142d1a34dd4dcf5161dd098' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\map.tpl',
-      1 => 1380123552,
+      1 => 1380204309,
       2 => 'file',
     ),
   ),
@@ -46,6 +46,9 @@ body {
 
 	  var activeicon = "<?php echo @constant('WEBSITE_URL');?>
 public/images/marker-active.png";
+	  var noactiveicon = "<?php echo @constant('WEBSITE_URL');?>
+public/images/marker-non-active.png";
+	
       var map;
       var markersArray = [];
       var markerDatasArray ={};
@@ -64,7 +67,7 @@ public/images/marker-active.png";
       function addMarker(map,latLng,title) {
     	  if(title)  
     		  marker = new google.maps.Marker({  
-                  icon: this.icon,  
+                  icon: noactiveicon,  
                   position: latLng,  
                   map: map,  
                   title:title  
@@ -83,7 +86,6 @@ public/images/marker-active.png";
 
       //显示当前的id的marker状态
       function showCurrentKeyMarker(key){
-          console.log(key+":::"+markerDatasArray[key])
     	  noActiveAllMarkers();
     	  var add = markerDatasArray[key];
     	  if(add){
@@ -106,14 +108,15 @@ public/images/marker-active.png";
           if(marker){
     		  marker.setIcon(activeicon);
     		  marker.setMap(map);
-    		  marker.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+    		  marker.setZIndex(google.maps.Marker.MAX_ZINDEX + markersArray.length);
           }
       }
       //关闭当前的所有markers变成正常状态
       function noActiveAllMarkers() {
     	  if (markersArray) {
               for (i in markersArray) {
-                markersArray[i].setIcon(this.icon);
+                markersArray[i].setIcon(noactiveicon);
+                markersArray[i].setZIndex(google.maps.Marker.MAX_ZINDEX -i);
               }
             }
       }
@@ -165,7 +168,6 @@ public/images/marker-active.png";
       	  	                    var point = results[i].geometry.location;  
       	  	                    map.setCenter(point);  
           	  	                markerDatasArray[title] = results[i].formatted_address;
-          	  	                console.log(title+"---"+markerDatasArray.title)
       	  	                    addMarker(map,point,results[i].formatted_address);
       	    	               // google.maps.event.addListener(marker, 'click', toggleBounce);
       	  	                    }
