@@ -16,8 +16,11 @@ class IndexController extends Controller {
 				} else {
 					$desc = $item->desc;
 				}
+			    if (strlen ( $item->title ) > 16) {
+					$item->title = substr_replace (  $item->title, '....', 16 );
+				}  
 				$source .= "
- 		<LI><A href=\"$item->url\"  target=\"_blank\"><IMG src= \"$item->imgname\"/></A>
+ 		<LI><A href=\"$item->url\"  target=\"_blank\"><IMG src= \"".WEBSITE_URL."uploads/arousel/$item->imgname\"/></A>
  		<div>
  		<h3>$item->title</h3>
  		<span class=\"time\">$item->product_time</span>

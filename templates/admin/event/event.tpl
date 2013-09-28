@@ -9,7 +9,7 @@
 			</p>
 		</div>
 
-		<h1 class="page-title">活动信息查看</h1>
+		<h1 class="page-title">event detail</h1>
 	</div>
 
 	<!-- <ul class="breadcrumb">
@@ -20,7 +20,7 @@
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="bb-alert alert alert-info" style="display: none;">
-				<span>操作成功</span>
+				<span>success</span>
 			</div>
 			<hr>
 	<table id="grid"></table>
@@ -29,7 +29,7 @@
 	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
     		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    		<h3 id="myModalLabel">修改活动描述</h3>
+    		<h3 id="myModalLabel">modify event description</h3>
  		</div>
   		<div class="modal-body">
   			<input id="eventId" name="eventId" type="hidden"/>
@@ -40,8 +40,8 @@
  
   		</div>
   		<div class="modal-footer">
-    		<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    		<button id="saveDesc" class="btn btn-primary">保存</button>
+    		<button class="btn" data-dismiss="modal" aria-hidden="true">close</button>
+    		<button id="saveDesc" class="btn btn-primary">save</button>
   		</div>
 	</div>
 	
@@ -70,7 +70,7 @@
 		eval("var obj = "+str);
 		var result = "<select>";
 		
-		result +="<option value=''>选择...</option>";
+		result +="<option value=''>Please select...</option>";
 		
 		for(var key = 0;key < obj.length;key++){
 			result +="<option value='"+obj[key].id+"'>"+obj[key].value+"</option>";
@@ -87,7 +87,7 @@
 		width:1000,
 		rowNum: 20,
 		rowList: [10,20,30],
-		colNames:['活动id','活动名称','活动类型',"描述","操作"],
+		colNames:['event id','event name','category name',"description","operation"],
 		colModel:[
 			{name:'event_id',index:'events.event_id', width:100,hidden:true,search:false,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'event_name',index:'events.event_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
@@ -97,7 +97,7 @@
 					dataUrl:'{{$smarty.const.WEBSITE_URL}}admin/event/queryCategory',
 					buildSelect:function(str){
 						eval(" var obj = " + str);
-						var result = "<select><option value=''>请选择... ...</option>";
+						var result = "<select><option value=''>Please select... ...</option>";
 						for(var i = 0 ; i < obj.length; i++){
 							result += "<option value='" + obj[i][0] + "'>" + obj[i][1] + "</option>";		
 						}		
@@ -109,9 +109,9 @@
 			{name:'description',index:'events.description', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'op',index:'op', width:80,search:false,sortable:false,
 				formatter:function(cellvalue, options, rowObject){
-					var res =  "<a href=\"{{$smarty.const.WEBSITE_URL}}admin/ticket/index/?event="+cellvalue+"\">查看票务</a> | ";
+					var res =  "<a href=\"{{$smarty.const.WEBSITE_URL}}admin/ticket/index/?event="+cellvalue+"\">more products</a> | ";
 					
-					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"','"+rowObject[3]+"');\">修改活动描述</a>";
+					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"','"+rowObject[3]+"');\">modify event description</a>";
 					
 					return res ;
 				}
@@ -121,7 +121,7 @@
 		//sortorder:'desc',
 		pager: "#gridPager",
 		viewrecords: true,
-		caption: "活动信息展示" 
+		caption: "event display" 
 	});
 	
 	
