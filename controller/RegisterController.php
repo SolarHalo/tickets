@@ -78,7 +78,7 @@ class RegisterController extends  Controller{
 					'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) */
 	  	 );
 	  	 $userService->addUser($user);
-  		 $user_info = $user;
+  		 $user_info = (object)$user;
 	 }
   	 $_SESSION['user'] = $user_info;
   	 echo "OK";
