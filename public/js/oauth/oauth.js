@@ -2,6 +2,10 @@ function Oauth() {
     this.init();
 }
 
+Oauth.prototype.googleClientId = "1023096353620.apps.googleusercontent.com";
+Oauth.prototype.googleApiKey = "bqeTMEn4PxA6HNUrcM7S9Gpl";
+Oauth.prototype.googleScopes = 'https://www.googleapis.com/auth/plus.me';  
+
 /**初始化一些事件, 或者加载页面*/
 Oauth.prototype.init = function() {
     var that = this;
@@ -9,6 +13,11 @@ Oauth.prototype.init = function() {
     $('table.bor-none td .btn-blue').click(function(event){
         event.stopPropagation();
         Oauth.prototype.facebookLogin();
+    });
+    
+    $('table.bor-none td .btn-lc').click(function(event){
+        event.stopPropagation();
+        Oauth.prototype.handleAuthClick();
     });
 };
 
@@ -43,25 +52,13 @@ Oauth.prototype.checkFbHashLogin = function() {//检查和使用令牌
 function displayUser(user) {//回调函数，用户信息转化
     setTimeout(function () { }, 1000);
     if (user.id != null && user.id != "undefined") {
-       //.....
-    	console.log(user.id);
-    	console.log(user.name);
-    	console.log(user.first_name);
-    	console.log(user.last_name);
-    	console.log(user.link);
-    	console.log(user.username);
-    	console.log(user.gender);
-    	console.log(user.locale);
-    	console.log(user.age_range);
     	Oauth.prototype.login_search4gigs(user);
     }else {
         alert('user error');
     }
 }
-/**Facebook 认证 end*/
 
-/**Facebook 认证成功之后的处理 start*/
-Oauth.prototype.login_search4gigs = function(user) {
+Oauth.prototype.login_search4gigs = function(user) {//Facebook 认证成功之后的处理
 	$.ajax({
 		   type: "POST",
 		   url: "/register/addUser4FaceBook",
@@ -78,8 +75,46 @@ Oauth.prototype.login_search4gigs = function(user) {
 			    }
 		   }
 	});
+};
+
+/**Facebook 认证 end*/
+
+
+/**google 认证 start*/
+Oauth.prototype.handleClientLoad = function() {//设置google api key
+    gapi.client.setApiKey(googleApiKey);
 }
-/**Facebook 认证成功之后的处理 end*/
+  
+
+Oauth.prototype.handleAuthResult = function(authResult) {//授权的结果
+    if (authResult && !authResult.error) {
+        makeApiCall();
+    } 
+}
+   
+
+Oauth.prototype.handleAuthClick = function(event) { gapi.auth.authorize({ client_id: googleClientId, //点击页面的登陆按钮触发事件
+            scope: googleScopes, immediate: false }, handleAuthResult);
+    return false;
+}
+  
+
+Oauth.prototype.makeApiCall = function() {// 回调函数，处理请求
+    gapi.client.load('plus', 'v1', function () {
+        var request = gapi.client.plus.people.get({
+            'userId': 'me'
+        });
+  
+        request.execute(function (resp) {
+        	console.log(resp);
+        //Do Stuff
+         //You have access to user id, name, display name, gender, emails, etc.
+        //For more info visit https://developers.google.com/+/api/latest/people#resource 
+ 
+        });
+    });
+}
+/**google 认证 end*/
 
 $(function() {
     var oauth = new Oauth();
