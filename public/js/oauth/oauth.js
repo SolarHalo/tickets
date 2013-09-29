@@ -3,7 +3,7 @@ function Oauth() {
 }
 
 Oauth.prototype.googleClientId = "1023096353620.apps.googleusercontent.com";
-Oauth.prototype.googleApiKey = "bqeTMEn4PxA6HNUrcM7S9Gpl";
+Oauth.prototype.googleApiKey = "AIzaSyDp0bqNPcrWPG_3NdIiG6AWCoULvgl-R5w";
 Oauth.prototype.googleScopes = 'https://www.googleapis.com/auth/plus.me';  
 
 /**初始化一些事件, 或者加载页面*/
@@ -82,19 +82,19 @@ Oauth.prototype.login_search4gigs = function(user) {//Facebook 认证成功之�
 
 /**google 认证 start*/
 Oauth.prototype.handleClientLoad = function() {//设置google api key
-    gapi.client.setApiKey(googleApiKey);
+    gapi.client.setApiKey(Oauth.prototype.googleApiKey);
 }
   
 
 Oauth.prototype.handleAuthResult = function(authResult) {//授权的结果
     if (authResult && !authResult.error) {
-        makeApiCall();
+    	Oauth.prototype.makeApiCall();
     } 
 }
    
 
-Oauth.prototype.handleAuthClick = function(event) { gapi.auth.authorize({ client_id: googleClientId, //点击页面的登陆按钮触发事件
-            scope: googleScopes, immediate: false }, handleAuthResult);
+Oauth.prototype.handleAuthClick = function(event) { gapi.auth.authorize({ client_id: Oauth.prototype.googleClientId, //点击页面的登陆按钮触发事件
+            scope: Oauth.prototype.googleScopes, immediate: false }, Oauth.prototype.handleAuthResult);
     return false;
 }
   

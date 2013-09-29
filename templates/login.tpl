@@ -15,6 +15,7 @@
 <script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
 
 <script src="{{$smarty.const.WEBSITE_URL}}/public/js/oauth/oauth.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> 
 </head> 
 <body> 
 {{include file='layouts/headerandsearch.tpl'}} 
