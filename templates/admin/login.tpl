@@ -17,20 +17,20 @@
     <div class="dialog">
 		{{$admin_action_alert}}	
         <div class="block">
-            <p class="block-heading">登入</p>
+            <p class="block-heading">login in</p>
             <div class="block-body">
                 <form name="loginForm" method="post" action="">
-                    <label>账号</label>
+                    <label>Account</label>
                     <input type="text" class="span12" name="user_name" value="{{$_POST.user_name}}" required="true" autofocus="true">
-                    <label>密码</label>
+                    <label>password</label>
                     <input type="password" class="span12" name="password" value = "{{$_POST.password}}" required="true" >
                     
-                     <label>验证码</label>
-					<input type="text" name="verify_code" class="span4" placeholder="输入验证码" autocomplete="off" required="required">
-					<a href="#"><img title="验证码" id="verify_code" src="{{$smarty.const.WEBSITE_URL}}/framework/util/verify_code_cn.php" style="vertical-align:top"></a>
-					<div class="clearfix"><input type="checkbox" name="remember" value="remember-me"> 记住我 
-					<span class="label label-info">一个月内不用再次登入</span>
-					<input type="submit" class="btn btn-primary pull-right" name="loginSubmit" value="登入"/></div>
+                     <label>Verification code</label>
+					<input type="text" name="verify_code" class="span4" placeholder="input verification code" autocomplete="off" required="required">
+					<a href="#"><img title="Verification code" id="verify_code" src="{{$smarty.const.WEBSITE_URL}}/framework/util/verify_code_cn.php" style="vertical-align:top"></a>
+					<div class="clearfix"><input type="checkbox" name="remember" value="remember-me"> Remember me
+					<span class="label label-info">Do not have to log in again within a month</span>
+					<input type="submit" class="btn btn-primary pull-right" name="loginSubmit" value="login"/></div>
 					
                 </form>
             </div>

@@ -14,13 +14,13 @@
         </div>
         
 		<ul class="breadcrumb">
-            <li><a href="<{$smarty.const.ADMIN_URL}><{$content_header.module_url}>">首页 </a> <span class="divider">/</span></li> 
-			<li class="active"><a href="<{$smarty.const.ADMIN_URL}><{$content_header.father_menu_url}>">快捷操作</a> <span class="divider">/</span></li> 
+            <li><a href="<{$smarty.const.ADMIN_URL}><{$content_header.module_url}>">index </a> <span class="divider">/</span></li> 
+			<li class="active"><a href="<{$smarty.const.ADMIN_URL}><{$content_header.father_menu_url}>">Shortcut menu</a> <span class="divider">/</span></li> 
         </ul>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="bb-alert alert alert-info" style="display: none;">
-			<span>操作成功</span>
+			<span>success</span>
 		</div>
 <!--- START 以上内容不需更改，保证该TPL页内的标签匹配即可 --->
 
@@ -28,13 +28,13 @@
 {{$admin_quick_note}}
 
 	<div class="block">
-        <a href="#page-menu" class="block-heading" data-toggle="collapse">快捷菜单</a>
+        <a href="#page-menu" class="block-heading" data-toggle="collapse">Shortcut menu</a>
         <div id="page-menu" class="block-body collapse in">
 		<h3>
 		 
 			<span>
 				<a href="{{$smarty.const.WEBSITE_URL}}admin/ticket">
-				查看票务信息
+				tickets info
 				</a>
 			</span>&nbsp; 
 			 
@@ -43,18 +43,18 @@
     </div>
 	
 	<div class="block">
-        <a href="#page-stats" class="block-heading" data-toggle="collapse">当前用户信息</a>
+        <a href="#page-stats" class="block-heading" data-toggle="collapse">user info</a>
         <div id="page-stats" class="block-body collapse in">
 			
                <table class="table table-striped">  
 						     
 							 <tr>
-						        <td>用户名</td>
-						        <td>真实姓名</td>
-						        <td>手机号</td>
+						        <td>user name</td>
+						        <td>name</td>
+						        <td>phone</td>
 						        <td>Email</td>
-						        <td>登录时间</td>
-						        <td>登录IP</td>
+						        <td>login time</td>
+						        <td>login IP</td>
 					          </tr>
 						      <tr>
 						        <td>{{$user_info.user_name}}</td>
@@ -69,7 +69,7 @@
 		</div>
 		<div class="alert alert-success">
 			<button type="button" class="close" data-dismiss="alert">×</button>
-			<strong>注意！</strong>请保管好您的个人信息，一点发生密码泄露请紧急联系管理员。</div>
+			<strong>notice!</strong>Please take good care of your personal information, that an emergency occurs, please contact the administrator password leak.</div>
         </div>
     </div>
 	

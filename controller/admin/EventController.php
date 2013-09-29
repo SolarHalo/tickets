@@ -7,6 +7,25 @@ class EventController extends Controller{
 		//$this->smarty->assign ( 'web_root' , WEBSITE_URL);
 		$this->smarty->display("admin/event/event.tpl");
 	}
+	
+	public function queryEventById(){
+		$eventId = $_POST["eventId"];
+		
+		$db = $this->getDB ();
+		
+		$res = $db->get_results(" select description from events where event_id='$eventId' ");
+	
+		$result = array();
+		$result['success'] = false;
+		
+		foreach ($res as $re){
+			$result['description'] = $re->description;
+			$result['success'] = true;
+		}
+		echo json_encode($result);
+		
+	}
+	
 	public function queryCategory(){
 	
 		$result = array();
