@@ -111,7 +111,7 @@
 				formatter:function(cellvalue, options, rowObject){
 					var res =  "<a href=\"{{$smarty.const.WEBSITE_URL}}admin/ticket/index/?event="+cellvalue+"\">more products</a> | ";
 					
-					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"','"+rowObject[3]+"');\">modify event description</a>";
+					res += "<a href=\"#\"   onclick=\"mdfdesc('"+cellvalue+"');\">modify event description</a>";
 					
 					return res ;
 				}
@@ -129,11 +129,26 @@
 		
 	jQuery("#grid").jqGrid('filterToolbar',{searchOperators :true,stringResult: true,searchOnEnter : true
 	});
-	function mdfdesc(id,desc){
+	function mdfdesc(id){
 		console.log(id);
 		$("#eventId").val(id);
-		$("#eventDesc").val(desc);
-		$('#myModal').modal('show');
+		$.post(
+			'{{$smarty.const.WEBSITE_URL}}admin/event/queryEventById',
+			{'eventId':id},
+			function(obj){
+				if(obj.success){
+					$('#myModal').modal('hide');
+					$("#grid").trigger("reloadGrid"); 
+					
+					//
+					$("#eventDesc").val(obj.description);
+					$('#myModal').modal('show');
+				}
+			},
+			"json"
+		);
+		
+		
 	 };
 	</script>
  </div> 

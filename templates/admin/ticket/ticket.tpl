@@ -9,7 +9,7 @@
 			</p>
 		</div>
 
-		<h1 class="page-title">products detail</h1>
+		<h1 class="page-title">tickets detail</h1>
 	</div>
 	 
  
@@ -17,7 +17,7 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">products detail</h3>
+    <h3 id="myModalLabel">tickets detail</h3>
   </div>
   <div class="modal-body">
     <p><table class='table' id="producttable">
@@ -136,7 +136,7 @@
 		sortorder:'desc',
 		pager: "#gridPager",
 		viewrecords: true,
-		caption: "products display" 
+		caption: "tickets display" 
 	});
 	
 	
