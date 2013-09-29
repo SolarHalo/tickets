@@ -21,7 +21,7 @@
 <div class="mian">
     <div class="content">
     	<div class="article">
-        	 	<h5>COOKIES POLICY</h5>
+        	 <h5>COOKIES POLICY</h5>
             <p>
             	Our site uses cookies to differentiate between the users visiting us. This helps us to create the best user experience possible and improve our website. By continuing to navigate the website you are agreeing to our use of cookies.
             </p>
