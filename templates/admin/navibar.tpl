@@ -24,8 +24,8 @@
 
                         <ul class="dropdown-menu">
                             <li><a href="{{$smarty.const.WEBSITE_URL}}admin/set/index/?t=default">default</li>
-                            <li><a href="{{$smarty.const.WEBSITE_URL}}admin/set/index/?t=blacktie">Blue</a></li>
-                            <li><a href="{{$smarty.const.WEBSITE_URL}}admin/set/index/?t=wintertide">Black</a></li>
+                            <li><a href="{{$smarty.const.WEBSITE_URL}}admin/set/index/?t=blacktie">Black</a></li>
+                            <li><a href="{{$smarty.const.WEBSITE_URL}}admin/set/index/?t=wintertide">Gray</a></li>
 							<li><a href="{{$smarty.const.WEBSITE_URL}}admin/set/index/?t=schoolpainting">Green</a></li>
                         </ul>
                     </li>
