@@ -18,7 +18,7 @@ class FileuploadController extends Controller {
 			move_uploaded_file ( $_FILES ['msUploadFile'] ['tmp_name'], $uploadfile );
 			$fileload->type = "1";
 			$fileload->message = "上传成功！ ";
-			$fileload->filename = $dirroot . $file_name;
+			$fileload->filename =  $file_name;
 		} else {
 			$fileload->type = "0";
 			$fileload->message = "请上传小于2MB的jpeg或Gif类型的附件);";
