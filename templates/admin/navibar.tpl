@@ -1,4 +1,4 @@
-﻿  <body class=""> 
+  <body class=""> 
   <!--<![endif]-->
 <div class="navbar">
         <div class="navbar-inner">
