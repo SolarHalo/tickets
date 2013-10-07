@@ -167,7 +167,7 @@
             </td>
           </tr>
           <tr>
-            <td>
+            <td>{{$cccc}}
             <p class="mt15 gigs-fy"> 
             <a href="#" class="btn-hs btn-Calendar">1</a> 
             <a href="#" class="btn-hs btn-Calendar">2</a> 
