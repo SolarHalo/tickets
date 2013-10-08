@@ -12,4 +12,8 @@ class AboutController extends  Controller{
 		 $this->getSmarty(); 
  		 $this->smarty->display("policy.tpl"); 
 	}
+    public function privacy(){
+		 $this->getSmarty(); 
+ 		 $this->smarty->display("privacy.tpl"); 
+	}
 }
