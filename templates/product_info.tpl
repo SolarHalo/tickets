@@ -46,6 +46,7 @@
 		obj['promotional_text'] = '{{$promotional_text}}';
 		source.push(obj);
 		loadDatas(source,"promotional_text");
+		setRoom(16);
 	});
 	
 </script>
