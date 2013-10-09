@@ -109,7 +109,7 @@ class TicketController extends  Controller{
 			}
 		}
 		
-		$recordsSql = $recordsSql." order by products.specifications desc limit $start,$pageSize";
+		$recordsSql = $recordsSql." order by abs(UNIX_TIMESTAMP(now())- UNIX_TIMESTAMP(products.specifications)) limit $start,$pageSize";
 		$categorySql = $categorySql." GROUP BY p.category_id ) products on products.category_id = event_category.category_id ";
 		
 		$db = $this->getDB();
