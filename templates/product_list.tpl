@@ -167,7 +167,7 @@
             </td>
           </tr>
           <tr>
-            <td>
+            <td>{{$cccc}}
             <p class="mt15 gigs-fy"> 
             <a href="#" class="btn-hs btn-Calendar">1</a> 
             <a href="#" class="btn-hs btn-Calendar">2</a> 
@@ -202,8 +202,4 @@
     </div>
   </div>
 </div>
-<div class="footer">
-  <div> <a href="#">User guide</a> | <a href="#">About us</a> | <a  href="#">Cookies policy</a> | <a href="#">Privacy policy</a> | <a href="#">Terms and Conditions</a> </div>
-</div>
-</body>
-</html>
+{{include file='layouts/footer.tpl'}} 

@@ -40,20 +40,20 @@ class TicketController extends  Controller{
 				"products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications,products.description from products products ".
 				"LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id ";
 		$categorySql = "select event_category.category_id ,event_category.category_name ,products.total from event_category event_category LEFT JOIN ".
-				"(select COUNT(category_id) as total,category_id from products " ;
+				"(select COUNT(p.category_id) as total,p.category_id from products p " ;
 		
 		$hasWhere = false;
 		
 		if($keyword != null && $keyword != ""){
 			if(!$hasWhere){
-				$counterSql = $counterSql." where products.product_name like '%$keyword%' ";
-				$recordsSql = $recordsSql." where products.product_name like '%$keyword%' ";
-				$categorySql = $categorySql." where product_name like '%$keyword%' ";
+				$counterSql = $counterSql." where products.product_name like '%$keyword%' or event_category.category_name = '$keyword' ";
+				$recordsSql = $recordsSql." where products.product_name like '%$keyword%' or event_category.category_name = '$keyword' ";
+				$categorySql = $categorySql." left join event_category e on p.category_id = e.category_id where p.product_name like '%$keyword%' or e.category_name = '$keyword' ";
 				$hasWhere = true;
 			}else{
-				$counterSql = $counterSql." and products.product_name like '%$keyword%' ";
-				$recordsSql = $recordsSql." and products.product_name like '%$keyword%' ";
-				$categorySql = $categorySql." and product_name like '%$keyword%' ";
+				$counterSql = $counterSql." and products.product_name like '%$keyword%' or event_category.category_name = '$keyword' ";
+				$recordsSql = $recordsSql." and products.product_name like '%$keyword%' or event_category.category_name = '$keyword' ";
+				$categorySql = $categorySql." and p.product_name like '%$keyword%' or e.category_name = '$keyword' ";
 			}
 		}
 		
@@ -74,12 +74,12 @@ class TicketController extends  Controller{
 			if(!$hasWhere){
 				$counterSql = $counterSql." where products.promotional_text like '%$location%' ";
 				$recordsSql = $recordsSql." where products.promotional_text like '%$location%' ";
-				$categorySql = $categorySql." where promotional_text like '%$location%' ";
+				$categorySql = $categorySql." where p.promotional_text like '%$location%' ";
 				$hasWhere = true;
 			}else{
 				$counterSql = $counterSql." and products.promotional_text like '%$location%' ";
 				$recordsSql = $recordsSql." and products.promotional_text like '%$location%' ";
-				$categorySql = $categorySql." and promotional_text like '%$location%' ";
+				$categorySql = $categorySql." and p.promotional_text like '%$location%' ";
 			}
 		}
 		
@@ -87,12 +87,12 @@ class TicketController extends  Controller{
 			if(!$hasWhere){
 				$counterSql = $counterSql." where  products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 				$recordsSql = $recordsSql." where  products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
-				$categorySql = $categorySql." where  specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+				$categorySql = $categorySql." where  p.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 				$hasWhere = true;
 			}else{
 				$counterSql = $counterSql." and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 				$recordsSql = $recordsSql." and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
-				$categorySql = $categorySql." and specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+				$categorySql = $categorySql." and p.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 			}
 		}
 		
@@ -100,17 +100,17 @@ class TicketController extends  Controller{
 			if(!$hasWhere){
 				$counterSql = $counterSql." where products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 				$recordsSql = $recordsSql." where products.specifications < str_to_date($toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
-				$categorySql = $categorySql." where specifications < str_to_date($toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+				$categorySql = $categorySql." where p.specifications < str_to_date($toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 				$hasWhere = true;
 			}else{
 				$counterSql = $counterSql." and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 				$recordsSql = $recordsSql." and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
-				$categorySql = $categorySql." and specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+				$categorySql = $categorySql." and p.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 			}
 		}
 		
-		$recordsSql = $recordsSql." limit $start,$pageSize";
-		$categorySql = $categorySql." GROUP BY category_id ) products on products.category_id = event_category.category_id ";
+		$recordsSql = $recordsSql." order by abs(UNIX_TIMESTAMP(now())- UNIX_TIMESTAMP(products.specifications)) limit $start,$pageSize";
+		$categorySql = $categorySql." GROUP BY p.category_id ) products on products.category_id = event_category.category_id ";
 		
 		$db = $this->getDB();
 		

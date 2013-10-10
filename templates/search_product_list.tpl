@@ -172,7 +172,7 @@
 		                      		</a>
 	                        	</span><br />
 	                        	
-	                        	{{$d['promotional_text']}} &nbsp;&nbsp;{{$d['display_price']}}
+	                        	{{$d['promotional_text']}} &nbsp;&nbsp;From: {{$d['display_price']}}
 	                        		
 	                        </td>
 		               	</tr>
