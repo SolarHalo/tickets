@@ -4,7 +4,10 @@ function Oauth() {
 
 Oauth.prototype.googleClientId = "1023096353620.apps.googleusercontent.com";
 Oauth.prototype.googleApiKey = "AIzaSyDp0bqNPcrWPG_3NdIiG6AWCoULvgl-R5w";
-Oauth.prototype.googleScopes = 'https://www.googleapis.com/auth/plus.me';  
+Oauth.prototype.googleScopes = 'https://www.googleapis.com/auth/userinfo.email';  
+Oauth.prototype.user = {};
+
+Oauth.prototype.desc = "";
 
 /**初始化一些事件, 或者加载页面*/
 Oauth.prototype.init = function() {
@@ -27,10 +30,10 @@ Oauth.prototype.facebookLogin = function(){//访问令牌
     var path = 'https://www.facebook.com/dialog/oauth?';
     var queryParams = ['client_id=' + appID,
     'redirect_uri=' + 'http://search4gigs.com/login',
+    'scope=' + 'email,read_stream',
     'response_type=token'];
     var query = queryParams.join('&');
     var url = path + query;
-    console.log(url);
     window.location.replace(url);
 };
 
@@ -52,6 +55,8 @@ Oauth.prototype.checkFbHashLogin = function() {//检查和使用令牌
 function displayUser(user) {//回调函数，用户信息转化
     setTimeout(function () { }, 1000);
     if (user.id != null && user.id != "undefined") {
+    	console.log(user);
+    	Oauth.prototype.desc = "facebook";
     	Oauth.prototype.login_search4gigs(user);
     }else {
         alert('user error');
@@ -62,7 +67,7 @@ Oauth.prototype.login_search4gigs = function(user) {//Facebook 认证成功之�
 	$.ajax({
 		   type: "POST",
 		   url: "/register/addUser4FaceBook",
-		   data: { "userid": user.id, "username": user.username, "firstname": user.first_name, "lastname": user.last_name, "email": user.email, "birthdate": ""},
+		   data: { "userid": user.id, "username": user.username, "firstname": user.first_name, "lastname": user.last_name, "email": user.email, "birthdate": "", "desc": Oauth.prototype.desc},
 		   error: {},
 		   async: false,
 		   cache: false,
@@ -106,11 +111,24 @@ Oauth.prototype.makeApiCall = function() {// 回调函数，处理请求
         });
   
         request.execute(function (resp) {
-        	console.log(resp);
-        //Do Stuff
-         //You have access to user id, name, display name, gender, emails, etc.
-        //For more info visit https://developers.google.com/+/api/latest/people#resource 
- 
+        	Oauth.prototype.user.id = resp.id;
+        	Oauth.prototype.user.username = resp.displayName;
+        	Oauth.prototype.user.first_name = resp.name.familyName;
+        	Oauth.prototype.user.lastname = resp.name.givenName;
+        	Oauth.prototype.user.birthdate = "";
+        	gapi.client.load('oauth2', 'v2', function() {
+          	  gapi.client.oauth2.userinfo.get().execute(function(resp) {
+          	    Oauth.prototype.user.email = resp.email;
+          	    if (Oauth.prototype.user.id != null && Oauth.prototype.user.id != "undefined") {
+          	    	Oauth.prototype.desc = "google";
+          	    	Oauth.prototype.login_search4gigs(Oauth.prototype.user);
+          	    }else {
+          	        alert('user error');
+          	    }
+          	    
+          	  })
+          	});
+        	
         });
     });
 }

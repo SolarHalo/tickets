@@ -14,6 +14,8 @@
 <script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
 <script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
 
+<script src="{{$smarty.const.WEBSITE_URL}}/public/js/oauth/oauth.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> 
 </head>
 
 <body>
@@ -228,14 +230,11 @@
             <h6>OR.....</h6>
             <table class="bor-none"> 
 				<tr>
-                    <td><a href="#" class="btn btn-blue btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
+                    <td><a href="javascript:void(0);" class="btn btn-blue btn-Calendar" ><img src="{{$smarty.const.WEBSITE_URL}}public/images/fb_iocn.gif" /> Login with Facebook</a></td> 
                 </tr>
                 <tr>
-                    <td><a href="#" class="btn btn-lc btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/in_iocn.gif" /> Log in with Linkedln</a></td> 
+                    <td><a href="javascript:void(0);" class="btn btn-lc btn-Calendar" ><img src="{{$smarty.const.WEBSITE_URL}}public/images/in_iocn.gif" /> Login with google+</a></td> 
                 </tr>
-                <tr>
-                    <td><a href="#" class="btn btn-hui btn-Calendar"><img src="{{$smarty.const.WEBSITE_URL}}public/images/tt_iocn.gif" /> Log in with Twitter</a></td> 
-                </tr>  
             </table>       
         </div>
     </div> 

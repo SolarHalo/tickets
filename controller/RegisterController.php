@@ -73,7 +73,8 @@ class RegisterController extends  Controller{
 			/*		'password' => md5($_POST["password"] ),*/
 					'firstname' => $_POST["firstname"],
 					'lastname' => $_POST["lastname"],
-					'email' => $_POST["email"]
+					'email' => $_POST["email"],
+	  	 			'desc' => $_POST["desc"]
 					/*,
 					'birthdate' =>date("Y-m-d H:i:s",mktime(0,0,0,$_POST["month"],$_POST["day"],$_POST["year"])) */
 	  	 );
