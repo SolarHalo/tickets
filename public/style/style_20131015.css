@@ -31,7 +31,7 @@
 	text-align:right;
 }
 .index-manage a {
-	font-size:13px;
+	font-size:12px;
 	color:#fff;
 }
 #head div ul {
@@ -52,10 +52,10 @@
 	padding:0;
 }
 li.navlist a {
-	font-size:24px;
+	font-size:23px;
 	box-shadow:0px -1px 0px rgba(0, 0, 0, 0.7);
 	color:#fff;
-	padding:15px 27px 5px;
+	padding:15px 34px 5px;
 	display:block;
 	margin-top:2px;
 	line-height:24px;/*word-spacing:0.4em;
@@ -63,7 +63,7 @@ li.navlist a {
 	transition: all 0.2s ease-in-out 0.1s;
 }
 li.navlist a font {
-	font-size:13px;
+	font-size:12px;
 	color:#ff7201;
 	transition: all 0.2s ease-in-out 0.1s;
 }
@@ -83,7 +83,7 @@ li.navlist a:hover {
 	margin-top:24px;
 	}
 .navuserlogin .btn-blue{
-	font-size:13px;
+	font-size:12px;
 	}
 .navuserlogin .username{
 	background-color:#342e2b;
@@ -153,7 +153,7 @@ li.navlist a:hover {
 	padding:0 18px;
 	height:27px;
 	line-height:27px;
-	font-size:17px;
+	font-size:16px;
 	color:#FFF;
 	background-image:url(../images/focusbg.png);
 	background-position:0 -175px;
@@ -172,7 +172,7 @@ li.navlist a:hover {
 	cursor:pointer;
 	height:30px;
 	line-height:30px;
-	font-size:19px;
+	font-size:18px;
 	color:#FFF;
 	background-image:url(../images/focusbg.png);
 	background-position:0 -238px;
@@ -183,7 +183,7 @@ li.navlist a:hover {
 }
 .fontstyle {
 	font-family:"bebasfont";
-	font-size:17px;
+	font-size:16px;
 	color:#fff;
 }
 .searchinput {
@@ -191,7 +191,7 @@ li.navlist a:hover {
 	border-radius:14px 14px 14px 14px;
 	border:0;
 	font-family:"Titillium";
-	font-size:15px;
+	font-size:14px;
 	color:#141414;
 	line-height:30px;
 	height:30px;
@@ -206,7 +206,7 @@ li.navlist a:hover {
 	background:url(../images/content_bg.gif) repeat-x;
 }
 .content {
-	width:990px;
+	width:905px;
 	margin:0 auto 30px;
 	background:url(../images/content_bg2.gif);
 	border-radius:12px 12px 12px 12px;
@@ -226,12 +226,12 @@ li.navlist a:hover {
 .footer div {
 	width:960px;
 	margin:0 auto;
-	font-size:9px;
+	font-size:8px;
 	color:#000;
 }
 .footer div a {
 	font-family:"Titillium";
-	font-size:11px;
+	font-size:10px;
 	color:#000;
 	font-weight:bold;
 	margin:0 5px;
@@ -240,18 +240,18 @@ li.navlist a:hover {
 	text-decoration:underline;
 }
 .login {
-	width:425px;
+	width:390px;
 	margin:35px 0 40px 55px;
 	padding:25px 0 100px;
 	float:left;
 }
 .login h6 {
 	color:#f38b33;
-	font-size:25px;
+	font-size:24px;
 }
 .login h6.layer-r{
 	color:#000;
-	font-size:25px;
+	font-size:24px;
 	font-family:"Titillium";
 	}
 .login-l {
@@ -268,12 +268,12 @@ li.navlist a:hover {
 .login-l table td span, .login-r table td span {
 	display:block;
 	color:#141414;
-	font-size:15px;
+	font-size:14px;
 	height:33px;
 	padding-top:19px;
 }
 .login-l table td span font {
-	font-size:13px;
+	font-size:12px;
 	color:#2c2c2c;
 	padding-left:5px;
 }
@@ -281,7 +281,7 @@ li.navlist a:hover {
 	font-family:"Titillium";
 }
 .time a, .login-l table td span a {
-	font-size:13px;
+	font-size:12px;
 	color:#f38b33;
 	margin-left:15px;
 }
@@ -298,7 +298,7 @@ li.navlist a:hover {
 	border-radius:12px 12px 12px 12px;
 	padding:0 12px;
 	line-height:42px;
-	font-size:19px;
+	font-size:18px;
 	font-family:"Titillium";
 }
 .login-l table td input.input-style1 {
@@ -320,7 +320,7 @@ select {
 	border: 1px solid #CCCCCC;
 	width: 220px;
 	padding:8px 8px;
-	font-size: 15px;
+	font-size: 14px;
 	border-radius:4px 4px 4px 4px;
 	color: #555555;
 	display: inline-block;
@@ -333,7 +333,7 @@ select, input[type="file"] {
 }
 .events {
 	padding:12px 15px 15px;
-	width:960px;
+	width:875px;
 	font-family:"Titillium";
 }
 .back {
@@ -343,7 +343,7 @@ select, input[type="file"] {
 	height:30px;
 	line-height:30px;
 	color:#bababa;
-	font-size:13px;
+	font-size:12px;
 	background:#fff;
 	border:1px solid #ebebeb;
 	border-radius: 8px 8px 8px 8px;
@@ -382,12 +382,12 @@ select, input[type="file"] {
 }
 .events-c {
 	float:left;
-	width:520px;
+	width:436px;
 	margin:15px 30px;
 }
 .events-c h1 {
 	font-family:"Titillium";
-	font-size:29px;
+	font-size:28px;
 	padding-top:20px;
 	font-variant:inherit;
 	color:#000;
@@ -395,7 +395,7 @@ select, input[type="file"] {
 #tccontent table tr td p.time,.row .add, .row .time {
 	line-height:27px;
 	color:#484848;
-	font-size:13px;
+	font-size:12px;
 	padding:5px 20px 0;
 	background-image:url(../images/ioc_bg.png);
 	background-repeat:no-repeat;
@@ -433,10 +433,10 @@ select, input[type="file"] {
 	margin-top:30px;
 }
 .map span {
-	font-size:21px;
+	font-size:20px;
 }
 .map font {
-	font-size:17px;
+	font-size:16px;
 }
 .map div {
 /*	padding:15px;
@@ -460,7 +460,7 @@ select, input[type="file"] {
 }
 .r-row font {
 	color:#ffcc00;
-	font-size:15px;
+	font-size:14px;
 }
 .rw-bg2 {
 	background:#fff;
@@ -468,7 +468,7 @@ select, input[type="file"] {
 	width:160px;
 }
 .r-row h3 {
-	font-size:19px;
+	font-size:18px;
 }
 .a-but,.r-row a {
 	width:100px;
@@ -476,7 +476,7 @@ select, input[type="file"] {
 	display:block;
 	background:#202020;
 	line-height:30px;
-	font-size:15px;
+	font-size:14px;
 	color:#fff;
 	text-align:center;
 }
@@ -507,7 +507,7 @@ select, input[type="file"] {
 	border-width: 1px;
 	cursor: pointer;
 	display: inline-block;
-	font-size:13px;
+	font-size:12px;
 	line-height: 20px;
 	margin-bottom: 0;
 	padding: 4px 12px;
@@ -538,7 +538,7 @@ select, input[type="file"] {
 	background-color: #37849a;
 	background-image: linear-gradient(to bottom, #59bedc, #37849a);
 	color: #fff;
-	font-size:13px;
+	font-size:12px;
 	border-color:#4c9db4;
 	}
 .btn-lc:hover{ 
@@ -549,7 +549,7 @@ select, input[type="file"] {
 	background-color: #e7e7e7;
 	background-image: linear-gradient(to bottom, #fcfcfc, #e7e7e7);
 	color: #333;
-	font-size:13px;
+	font-size:12px;
 	border-color:#ccc;
 	}
 .btn-hui:hover{ 
@@ -571,7 +571,7 @@ select, input[type="file"] {
 	height:30px;
 	line-height:30px;
 	color:#bababa;
-	font-size:13px;
+	font-size:12px;
 	border-radius: 8px 8px 8px 8px;
 }
 .gigs-1 a {
@@ -605,7 +605,7 @@ select, input[type="file"] {
 .gigs-title li {
 	border-bottom: dashed 1px #a8a8a8;
 	line-height:28px;
-	font-size:15px;
+	font-size:14px;
 }
 .gigs-title .gigs-ti-2 li{
 	border-top: dashed 1px #a8a8a8;
@@ -613,7 +613,7 @@ select, input[type="file"] {
 	}
 .gigs-title a {
 	padding:0 0 0 20px;
-	font-size:15px;
+	font-size:14px;
 }
 .gigs-title a:hover {
 	display:block;
@@ -639,12 +639,12 @@ select, input[type="file"] {
 	}
 .events-c2 {
 	float:left;
-	width:557px;
+	width:472px;
 	margin:0px 12px 15px;
 }
 .events-c3 {
 	float:left;
-	width:770px;
+	width:685px;
 	margin:0px;
 }
 .gigs_k {
@@ -655,18 +655,18 @@ select, input[type="file"] {
 }
 .events-c2 strong {
 	color:#fb8630;
-	font-size:13px;
+	font-size:12px;
 	margin: 0 0 0 8px;
 }
 .id_3 {
 	width:128px;
-	font-size:13px;
+	font-size:12px;
 	margin: 0 0 0 3px;
 	padding:10px 3px; 
 	font-family:"Titillium";
 }
 .gigs-table td {
-	padding:10px 8px;
+	padding: 0 8px;
 }
 .btn-black strong {
 	padding:0 15px;
@@ -688,7 +688,7 @@ select, input[type="file"] {
 	background-color: #f2f2f2;
 	background-image: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
 	color: #ff851e;
-	font-size:15px; 
+	font-size:14px; 
 	line-height: 20px; 
 	padding:8px;
 	border-right:1px solid #bbb;
@@ -710,7 +710,7 @@ select, input[type="file"] {
 .fy-size {
 	 color: #7C7C7C;
     float: left;
-    font-size: 15px;
+    font-size: 14px;
     height: 35px;
     line-height: 35px;
     margin:15px 0 0 15px;
@@ -728,7 +728,7 @@ select, input[type="file"] {
 	border-width: 1px;
 	cursor: pointer;
 	display: inline-block;
-	font-size:13px;
+	font-size:12px;
 	line-height: 30px;
 	margin-bottom: 0;
 	text-align: center;
@@ -742,20 +742,20 @@ select, input[type="file"] {
 	margin:0px 0 0;
 }
 .row4 span {
-	font-size:25px;
+	font-size:24px;
 	padding: 0 0 0 8px
 }
 .gigs-u-l td {
 	padding:8px;
 }
 .gigs-u-l b {
-	font-size:17px;
+	font-size:16px;
 }
 .btn-blue {
 	background-color: #195cc0;
 	background-image: linear-gradient(to bottom, #195cc0, #195cc0);
 	color: #fff;
-	font-size:15px;
+	font-size:14px;
 }
 .btn-blue:hover {
 	background-color: #0e4597;
@@ -781,7 +781,7 @@ select, input[type="file"] {
 	border-radius: 8px 8px 8px 8px;
 	border-style: solid;
 	border-width: 1px;
-	font-size:13px;
+	font-size:12px;
 	line-height: 30px;
 	margin-bottom: 0;
 	padding: 1px 0px;
@@ -829,7 +829,7 @@ select, input[type="file"] {
 	padding: 0 0 0 6px;
 	font-family:"Titillium";
 	color:#ff851e;
-	font-size:17px
+	font-size:16px
 }
 .tdT .map{
 	margin:15px 0 0;
@@ -843,7 +843,7 @@ select, input[type="file"] {
 	line-height:21px;
 	text-align:center;
 	background:#f58b35;
-	font-size:15px;
+	font-size:14px;
 	font-family:"Titillium";
 	color:#fff;
 	border-radius:5px;
@@ -852,7 +852,7 @@ select, input[type="file"] {
 	background-color:#195cc0;
 	}
 .aigs_k_title{
-	width:340px;
+	width:260px;
 	display:inline-block;
 	}
 .list-tablep{
@@ -864,10 +864,10 @@ select, input[type="file"] {
 	background:url(../images/colum_bg.gif);
 	}
 .list-tablep .tdC span{
-	font-size:19px;
+	font-size:18px;
 	}
 .list-tablep .tdC font{
-	font-size:15px;
+	font-size:14px;
 	}
 .list-tablep td{
 	padding:0 10px 0 0;
@@ -885,7 +885,7 @@ select, input[type="file"] {
 	border-width: 1px;
 	cursor: pointer;
 	display: inline-block;
-	font-size:13px;
+	font-size:12px;
 	line-height: 30px;
 	margin-bottom: 0;
 	text-align: center;
@@ -900,7 +900,7 @@ select, input[type="file"] {
 	background-color: #f2f2f2;
 	background-image: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
 	color: #464646;
-	font-size:13px; 
+	font-size:12px; 
 	line-height: 20px; 
 	padding:4px 8px;
 	border-right:1px solid #bbb;
@@ -1015,7 +1015,7 @@ a.right-by{
 	background-color: #db0031;
 	background-image: linear-gradient(to bottom, #db0031, #c00c34);
 	color: #fff;
-	font-size:15px;
+	font-size:14px;
 }
 .btn-red:hover{
 	background-color: #ca002d;
@@ -1055,16 +1055,16 @@ a.right-by{
 	line-height:1.7em;
 	}
 .fontsize14{
-	font-size:15px;
+	font-size:14px;
 	}
 
 .fontsize12{
-	font-size:13px;
+	font-size:12px;
 	}
 .time2{
 	border-radius:4px;
 	padding:6px 10px;
-	font-size:13px;
+	font-size:12px;
 	font-family:"Titillium";
 	color:#fff;
 	background:#aeaeae;
@@ -1097,7 +1097,6 @@ width:250px;
 	}
 #indexcontent{
 	background:none;
-	width:905px
 	}
 
 .inputborder{
@@ -1110,7 +1109,7 @@ width:250px;
 	height:42px;
 	border:none;
 	line-height:42px;
-	font-size:15px;
+	font-size:14px;
 	font-family:"Titillium";
 	color:#333;
 	}
@@ -1126,7 +1125,7 @@ width:250px;
 	}
 .table-edit td{
 	padding-bottom:15px;
-	font-size:17px;
+	font-size:16px;
 	color:#000;
 	}
 textarea.textinput-w3{
@@ -1144,11 +1143,11 @@ textarea.textinput-w3{
 .layer{
 	padding:35px 30px;
 	font-family:"Titillium";
-	font-size:17px;
+	font-size:16px;
 	color:#000;
 	}
 .layertitle{
-	font-size:19px;
+	font-size:18px;
 	}
 .layer table{
 	width:100%;
@@ -1158,7 +1157,7 @@ textarea.textinput-w3{
 	}
 
 .layer table tr a{
-	font-size:13px;
+	font-size:12px;
 	color:#115ca2;
 	}
 .layer table tr a:hover{
@@ -1196,7 +1195,7 @@ textarea.textinput-w3{
 .login-l table td span font.addtitle{
 	margin-left: -15px;
     margin-right: 5px;
-	font-size:17px;
+	font-size:16px;
 	vertical-align: -3px;
 	color:#d70000;
 	}
@@ -1205,7 +1204,7 @@ textarea.textinput-w3{
     border-radius: 50% 50% 50% 50%;
     color: #FFFFFF;
     display: inline-block;
-    font-size: 15px;
+    font-size: 14px;
     height: 20px;
     line-height: 20px;
     text-align: center;
@@ -1233,11 +1232,11 @@ div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:
 	padding:30px;
 	font-family:"Titillium";
 	color:#666;
-	font-size:15px;
+	font-size:14px;
 	}
 
 .article h5{
-	font-size:25px;
+	font-size:24px;
 	color:#000;
 	padding:5px 0 10px;
 	font-family:"Titillium";
@@ -1257,7 +1256,7 @@ div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:
 	}
  
 .list-tablep tr td span a{
-font-size:25px;
+font-size:24px;
 }
 .list-tablep tr td span a:hover{
 color:#ff7201;

@@ -3,7 +3,7 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fo
     padding: 0;
 }
 body, button, input, select, textarea {
-    font:13px/1.5 bebasfont,arial,simsun;
+    font: 12px/1.5 bebasfont,arial,simsun;
 }
 h1, h2, h3, h4, h5, h6 {
     font-size: 100%;
@@ -17,7 +17,7 @@ code, kbd, pre, samp {
     font-family: courier new,courier,monospace;
 }
 small {
-    font-size: 13px;
+    font-size: 12px;
 }
 ul, ol {
     list-style: none outside none;
@@ -46,6 +46,7 @@ address {
 }
 body { 
     color: #333333;
+    font: 12px/1.5 bebasfont,helvetica,Arial;
     margin: 0;
     padding: 0;
 	background:#0a0a0a;
@@ -59,7 +60,7 @@ hr {
 blockquote {
     border-left: 5px solid #AAAAAA;
     color: #666666;
-    font-size: 16px;
+    font-size: 15px;
     margin: 0 0 0 25px;
     padding: 8px 25px 8px 10px;
 }
@@ -155,7 +156,7 @@ p{
 	}
 .link_style01{
 	color:#ed1c24;
-	font-size:13px;
+	font-size:12px;
 	}
 .link_style01:hover{
 	color:#d10810;
@@ -233,11 +234,11 @@ input,textarea{
 	padding:10px 16px;
 	width:170px;
 	font-family:"Titillium";
-	font-size:15px;
+	font-size:14px;
 	height:160px;
 	}
 .row5 div p,#slide-box LI div p{
-	font-size:13px;
+	font-size:12px;
 	padding:10px 0 15px;
 	line-height:18px;
 	}
@@ -276,7 +277,7 @@ input,textarea{
 .row6 div{
 	width:202px; 
 	font-family:"Titillium";
-	font-size:13px;
+	font-size:12px;
 	}
 .row6 div a.a-but{
 	margin-left:15px;
