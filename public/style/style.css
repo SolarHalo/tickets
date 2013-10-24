@@ -1268,6 +1268,13 @@ margin-left:15px;
 mt15 a.mt15{
 margin-top:15px;
 }
+/*======20131024 add height====*/
+#slide-box LI div p{
+height:70px
+}
+.row5 div p, .row6 div p{
+height:90px
+}
 
 
 
