@@ -187,6 +187,8 @@ input,textarea{
 	CLEAR: both; BORDER-TOP: #151312 1px solid; DISPLAY: block; MARGIN: 0px 1px; OVERFLOW: hidden; HEIGHT: 0px
 }
 #slide-box .ks-switchable-triggers A {
+	transition: all 0.0s ease-in-out 0s;
+	
 	DISPLAY: block; Z-INDEX: 99; WIDTH: 50px; height:50px; POSITION: absolute; TOP: 205px; background-image:url(../images/lr-ioc.png);
 }
 
