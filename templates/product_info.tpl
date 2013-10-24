@@ -88,7 +88,7 @@
                         </tr>
                         <tr>
                             <td width="140"><font>Prices</font></td>
-                            <td>{{$display_price}}</td>
+                            <td>From {{$display_price}}</td>
                         </tr>
                     </table>
                     

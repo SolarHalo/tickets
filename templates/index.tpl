@@ -61,33 +61,32 @@
         <div class="row6">
         	<div>
                 <h3><img src="{{$smarty.const.WEBSITE_URL}}public/images/index-ioc01.gif" />find   an   event</h3> 
-                <p>Lorem ipsum dolor sit amet, 
-                    consectetur adipisicing elit, sed 
-                    do eiusmod tempor incididunt
+                <p>Search for events around the 
+                   globe and compare prices from 
+                   the biggest operators in the industry.
                 </p>
                 <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="{{$smarty.const.WEBSITE_URL}}public/images/index-ioc02.gif" />add   to   calendar</h3> 
-                <p>Lorem ipsum dolor sit amet, 
-                    consectetur adipisicing elit, sed 
-                    do eiusmod tempor incididunt
+                <p>Set reminders in your calendar
+                 and you will never miss any of your
+                  favorite events again.
                 </p>
                 <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="{{$smarty.const.WEBSITE_URL}}public/images/index-ioc03.gif" />iphone  /  android  app</h3> 
-                <p>Lorem ipsum dolor sit amet, 
-                    consectetur adipisicing elit, sed 
-                    do eiusmod tempor incididunt
+                <p>Iphone and Android apps coming
+                 soon to iTunes & Google Play.
                 </p>
                 <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
             <div>
                 <h3><img src="{{$smarty.const.WEBSITE_URL}}public/images/index-ioc04.gif" />view  video</h3> 
-                <p>Lorem ipsum dolor sit amet, 
-                    consectetur adipisicing elit, sed 
-                    do eiusmod tempor incididunt
+                <p>Share your favorite events
+                 with your friends on all major
+                  social media platforms.
                 </p>
                 <A href="{{$smarty.const.WEBSITE_URL}}about" class="a-but">View Details</A>
             </div>
