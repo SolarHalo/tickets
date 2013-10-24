@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 15:54:03
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:25:07
          compiled from "E:\phpweb\tickets\templates\layouts\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:29259521cac278edac9-74421513%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4c4f65794d7eae96d1722ae1b3426825597045e7' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\layouts\\header.tpl',
-      1 => 1379944269,
+      1 => 1382624645,
       2 => 'file',
     ),
   ),
@@ -124,7 +124,8 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 <body>
 <div id="head">
 	<div>
-        <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
+        <span class="index-manage"><a href="<?php echo @constant('WEBSITE_URL');?>
+carlendar"><font color="f7931d">Manage</font> your agenda +</a></span>
         <ul>
             <?php if (empty($_SESSION['user'])){?>
             <li>

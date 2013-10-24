@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 16:53:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:37:21
          compiled from "E:\phpweb\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:23907524049cfd64234-07964762%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '397a1cff614be9fa5875046ea2b427283ca48ac9' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\product_info.tpl',
-      1 => 1380120731,
+      1 => 1382624645,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'promotional_text' => 0,
     'category_id' => 0,
     'aw_image_url' => 0,
+    'id' => 0,
     'description' => 0,
     'display_price' => 0,
   ),
@@ -46,7 +47,6 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/css/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/css/jquery.ui.datepicker.css" />
-	
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/lib/jquery-1.8.1.min.js" ></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
@@ -55,8 +55,7 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/js/jquery.ui.datepicker.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/js/searchform.js"></script>
- <script  type="text/javascript"> 
- 
+ <script  type="text/javascript">  
 	function addCalendat(pid){
 		console.log("add calendar");
 		$.post(
@@ -76,13 +75,9 @@ login";
 		);
 	} 
  </script>
-</head>
-
-<body>
-
-
+</head> 
+<body> 
 ﻿<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
- 
 
 <script  type="text/javascript">
 
@@ -93,6 +88,7 @@ login";
 ';
 		source.push(obj);
 		loadDatas(source,"promotional_text");
+		setRoom(16);
 	});
 	
 </script>
@@ -132,7 +128,13 @@ ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['category_id']->value;?>
 </p>
                     <p class="time"><?php echo $_smarty_tpl->tpl_vars['time']->value;?>
  BST <!--<a href="#">+ 1 more dates</a>--></p>
-                    <p class="mt15"><a href="javascript:addCalendat('"+obj.aw_product_id+"')" class="btn btn-range">Add to Calendar</a></p>
+                    <p class="mt15">
+	                    <a href="javascript:addCalendat('<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+')" class="btn btn-range">Add to Calendar</a>
+	                    <a href="<?php echo @constant('WEBSITE_URL');?>
+buyticket/index/?pid=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+" class="ml15 btn btn-black"><strong>Buy Tickets</strong></a>
+                    </p>
                 </div>
                 <div class="hr mt15"></div>
                 <div class="row2 mt15" id="info-other">
@@ -148,7 +150,7 @@ ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['category_id']->value;?>
                         </tr>
                         <tr>
                             <td width="140"><font>Prices</font></td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['display_price']->value;?>
+                            <td>From <?php echo $_smarty_tpl->tpl_vars['display_price']->value;?>
 </td>
                         </tr>
                     </table>
@@ -187,16 +189,5 @@ ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['category_id']->value;?>
             </div>
     </div> 
 </div>
-<div class="footer">
-	<div>
-    	<a href="#">User guide</a>  |  
-        <a href="#">About us</a>  |  
-        <a  href="#">Cookies policy</a>  |  
-        <a href="#">Privacy policy</a>  |  
-        <a href="#">Terms and Conditions</a>
-    </div>
-</div>
-<script type="text/javascript">
-</script>
-</body>
-</html>     <?php }} ?>
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+   <?php }} ?>

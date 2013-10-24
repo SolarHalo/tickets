@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 15:55:04
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:37:03
          compiled from "E:\phpweb\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24466524049c5609f58-72188520%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5706c5401558cd8de5d8d07fc3db49b1e7540106' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\search_product_list.tpl',
-      1 => 1380203654,
+      1 => 1382624645,
       2 => 'file',
     ),
   ),
@@ -253,7 +253,7 @@ ticket/info/?id=<?php echo $_smarty_tpl->tpl_vars['d']->value['aw_product_id'];?
 	                        	</span><br />
 	                        	
 	                        	<?php echo $_smarty_tpl->tpl_vars['d']->value['promotional_text'];?>
- &nbsp;&nbsp;<?php echo $_smarty_tpl->tpl_vars['d']->value['display_price'];?>
+ &nbsp;&nbsp;From: <?php echo $_smarty_tpl->tpl_vars['d']->value['display_price'];?>
 
 	                        		
 	                        </td>

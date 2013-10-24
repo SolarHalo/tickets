@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-23 15:53:51
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:25:28
          compiled from "E:\phpweb\tickets\templates\layouts\headerandsearch.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:143215220d0dad747a3-80643685%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b30e124e63cc8d37c9e6d445426b8c25ece88a70' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\layouts\\headerandsearch.tpl',
-      1 => 1379944269,
+      1 => 1382624645,
       2 => 'file',
     ),
   ),
@@ -28,7 +28,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5220d0dadf88f7_62063880')) {function content_5220d0dadf88f7_62063880($_smarty_tpl) {?><div id="head">
 	<div>
-        <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
+        <span class="index-manage"><a href="<?php echo @constant('WEBSITE_URL');?>
+carlendar"><font color="f7931d">Manage</font> your agenda +</a></span>
         <ul>
            <?php if (empty($_SESSION['user'])){?>
             <li>

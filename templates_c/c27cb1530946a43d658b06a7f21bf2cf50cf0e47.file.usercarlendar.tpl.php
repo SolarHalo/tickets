@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-19 16:30:06
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:52:30
          compiled from "E:\phpweb\tickets\templates\usercarlendar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:60465231d15b7d7ba1-94253852%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c27cb1530946a43d658b06a7f21bf2cf50cf0e47' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\usercarlendar.tpl',
-      1 => 1379601000,
+      1 => 1382626342,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>user agenda manager</title>
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/title.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css"
@@ -103,15 +104,15 @@ fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP�
         onSubmit: function (file, ext) {//提交文件时执行的方法
         	if(ext && /^(jpg|jpeg|png|gif)$/.test(ext)){
 				//ext是后缀名
-        		button.value = "正在上传…";
+        		button.value = "upload…";
         		button.disabled = "disabled";
 			}else{	
-				alert("不支持的文件格式！只能上传jpg|jpeg|png|gif") ;
+				alert("Support jpg|jpeg|png|gif") ;
 				return false;
 			}
         },
         onComplete: function (file, response) {//文件提交完成后可执行的方法
-            button.text('浏览');
+            button.text('Select');
             this.enable();
 			var data=eval("("+response+")");
 			if(data.type==0){
@@ -230,7 +231,7 @@ function submitEvent(){
 		}
 	}else{
 		if($.trim(fromdate).length<0){
-			alert("请填写起始时间");
+			alert("Please fill out the starting time");
 			return ;
 		}
 		if(fromtime.length<1){
@@ -401,7 +402,7 @@ carlendar/getEventById",
 				$("#entryimg").attr("src",calEvent.entryimg);
 			}else{
 				$("#entryimg").attr("src","<?php echo @constant('WEBSITE_URL');?>
-"+calEvent.entryimg);
+uploads/arousel/"+calEvent.entryimg);
 			}
 		
 			currentCalEvent = calEvent;

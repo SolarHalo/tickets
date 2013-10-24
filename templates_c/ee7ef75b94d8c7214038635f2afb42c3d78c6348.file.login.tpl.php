@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-24 16:45:41
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:37:46
          compiled from "E:\phpweb\tickets\templates\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:56675231cebc842c00-68333407%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ee7ef75b94d8c7214038635f2afb42c3d78c6348' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\login.tpl',
-      1 => 1380030458,
+      1 => 1382624645,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Search4gigs Login – Music, tickets and cultural events on your calendar.</title>
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/title.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo @constant('WEBSITE_URL');?>
@@ -51,6 +52,7 @@ public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 
 <script src="<?php echo @constant('WEBSITE_URL');?>
 /public/js/oauth/oauth.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> 
 </head> 
 <body> 
 <?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
@@ -58,6 +60,10 @@ public/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 <div class="mian">
     <div class="content">
     	<div class="login-l login">
+    	    <input type="hidden" id="addUser4FaceBook" value="<?php echo @constant('WEBSITE_URL');?>
+register/addUser4FaceBook">
+        	<input type="hidden" id="url" value="<?php echo @constant('WEBSITE_URL');?>
+">
         	<h6>sign&nbsp;&nbsp;in</h6>
         	<?php echo $_smarty_tpl->tpl_vars['errortip']->value;?>
 
@@ -90,17 +96,14 @@ register" class="input-style1">register</a></td>
              <h6>OR.....</h6>
             <table class="bor-none"> 
 				<tr>
-                    <td><a href="javascript:void(0);" target="_blank" class="btn btn-blue btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
-public/images/fb_iocn.gif" /> Log in with Facebook</a></td> 
+                    <td><a href="javascript:void(0);" class="btn btn-blue btn-Calendar" ><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/fb_iocn.gif" /> Login with Facebook</a></td> 
                 </tr>
                 <tr>
-                    <td><a href="#" class="btn btn-lc btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
-public/images/in_iocn.gif" /> Log in with Linkedln</a></td> 
+                    <td><a href="javascript:void(0);" class="btn btn-lc btn-Calendar" ><img src="<?php echo @constant('WEBSITE_URL');?>
+public/images/in_iocn.gif" /> Login with google+</a></td> 
                 </tr>
-                <tr>
-                    <td><a href="#" class="btn btn-hui btn-Calendar"><img src="<?php echo @constant('WEBSITE_URL');?>
-public/images/tt_iocn.gif" /> Log in with Twitter</a></td> 
-                </tr>  
+                
             </table>       
         </div>
     </div>

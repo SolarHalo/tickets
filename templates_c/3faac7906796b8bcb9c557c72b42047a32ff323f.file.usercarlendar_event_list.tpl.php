@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-12 16:39:06
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:25:28
          compiled from "E:\phpweb\tickets\templates\usercarlendar_event_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:298905231d20ae86e18-15756470%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3faac7906796b8bcb9c557c72b42047a32ff323f' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\usercarlendar_event_list.tpl',
-      1 => 1378995457,
+      1 => 1380203654,
       2 => 'file',
     ),
   ),
@@ -15,15 +15,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
-  'has_nocache_code' => false,
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_5231d20af190c8_65242435',
+  'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5231d20af190c8_65242435')) {function content_5231d20af190c8_65242435($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>index</title>
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/title.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ 
 <link href="<?php echo @constant('WEBSITE_URL');?>
 public/style/reset.css" type="text/css" rel="stylesheet" />
 <link href="<?php echo @constant('WEBSITE_URL');?>
@@ -63,8 +64,8 @@ userevent/getAllUserEvent",
 					html+="<tr>"+
            " <td class=\"tdT\"><table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"gigs-table map\">"+
                 "<tr class=\"tdT\">"+
-                  "<td><p><a href=\"#\" class=\"list-time timebtn_bg\">"+fromdate.toTimeString()+"</a></p></td>"+
-                 " <td><img src="+obj[i].imgurl+" width=\"92\" height=\"92\" class=\"btn\" /></td>"+
+                  "<td width=60><p><a href=\"#\" class=\"list-time timebtn_bg\">"+handTimeStr(fromdate.toTimeString())+"</a></p></td>"+
+                 " <td width=98><img src="+obj[i].imgurl+" width=\"92\" height=\"92\" class=\"btn\" /></td>"+
                   "<td>"+catory_name+" > Comedy<br />"+
                   "  <span>"+obj[i].ename+"</span><br />"+
                   descr+".</td>"+
@@ -83,6 +84,9 @@ userevent/getAllUserEvent",
 		});
 	});
 	
+	function handTimeStr(timeStr){
+		return timeStr.substring(0,8);
+	}
 	
 	//string 转 date
 	function strToDate(sdate){

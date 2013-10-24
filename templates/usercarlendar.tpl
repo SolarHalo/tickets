@@ -357,7 +357,7 @@ function popupDetailWin(calEvent){
 			if(calEvent.color == "#fb7b0e"){
 				$("#entryimg").attr("src",calEvent.entryimg);
 			}else{
-				$("#entryimg").attr("src","{{$smarty.const.WEBSITE_URL}}"+calEvent.entryimg);
+				$("#entryimg").attr("src","{{$smarty.const.WEBSITE_URL}}uploads/arousel/"+calEvent.entryimg);
 			}
 		
 			currentCalEvent = calEvent;
