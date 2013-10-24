@@ -1276,7 +1276,12 @@ height:70px
 height:90px
 }
 
-
+#slide-box .ks-switchable-triggers .prev:hover {
+    background-position: right bottom; 
+}
+#slide-box .ks-switchable-triggers .next:hover {
+    background-position: right top; 
+}
 
 
 
