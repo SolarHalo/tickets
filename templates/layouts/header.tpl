@@ -96,7 +96,7 @@
 <body>
 <div id="head">
 	<div>
-        <span class="index-manage"><a href="#"><font color="f7931d">Manage</font> your agenda +</a></span>
+        <span class="index-manage"><a href="{{$smarty.const.WEBSITE_URL}}carlendar"><font color="f7931d">Manage</font> your agenda +</a></span>
         <ul>
             {{if empty($smarty.session.user) }}
             <li>
