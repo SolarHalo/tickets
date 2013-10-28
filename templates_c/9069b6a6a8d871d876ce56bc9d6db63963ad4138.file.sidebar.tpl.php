@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 16:09:28
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:57:56
          compiled from "E:\phpweb\tickets\templates\admin\sidebar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2457652198277be31c6-13960448%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9069b6a6a8d871d876ce56bc9d6db63963ad4138' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\sidebar.tpl',
-      1 => 1380037788,
+      1 => 1382624645,
       2 => 'file',
     ),
   ),
@@ -21,35 +21,29 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52198277bf9e07_50118957')) {function content_52198277bf9e07_50118957($_smarty_tpl) {?><div class="sidebar-nav"> 
 		
-	       <a href="#sidebar_menu_1" class="nav-header collapsed" data-toggle="collapse"><i class="icon-th"></i>票务信息管理<i class="icon-chevron-up"></i></a>
+	       <a href="#sidebar_menu_1" class="nav-header collapsed" data-toggle="collapse"><i class="icon-th"></i>Tickets Manager<i class="icon-chevron-up"></i></a>
 		 
 				<ul id="sidebar_menu_1" class="nav nav-list collapse in">
 					<li><a href="<?php echo @constant('WEBSITE_URL');?>
-admin/event">活动信息查看</a></li>
+admin/event">event info manager</a></li>
 					<li><a href="<?php echo @constant('WEBSITE_URL');?>
-admin/ticket">票务信息查看</a></li>
+admin/ticket">ticket info manager</a></li>
 					<li><a href="<?php echo @constant('WEBSITE_URL');?>
-admin/ticket">票务信息总体统计</a></li>
+admin/ticket">ticket statistics</a></li>
 					 
 				</ul> 
-	   <a href="#sidebar_menu_2" class="nav-header collapsed" data-toggle="collapse"><i class="icon-th"></i>用户信息管理<i class="icon-chevron-up"></i></a>
+	   <a href="#sidebar_menu_2" class="nav-header collapsed" data-toggle="collapse"><i class="icon-th"></i>User Manager<i class="icon-chevron-up"></i></a>
 		 
 				<ul id="sidebar_menu_2" class="nav nav-list collapse in">
 					<li><a href="<?php echo @constant('WEBSITE_URL');?>
-admin/adminuser">管理员用户</a></li>
+admin/adminuser">admin user</a></li>
 					<li><a href="<?php echo @constant('WEBSITE_URL');?>
-admin/users">前台注册用户</a></li>  
+admin/users">register user</a></li>  
 					<li><a href="<?php echo @constant('WEBSITE_URL');?>
-admin/imgcarousel">图片展示管理</a></li> 
+admin/imgcarousel">img manager</a></li> 
 				</ul> 
-		 <a href="#sidebar_menu_3" class="nav-header collapsed" data-toggle="collapse"><i class="icon-th"></i>系统管理 <i class="icon-chevron-up"></i></a>
 		 
-				<ul id="sidebar_menu_3" class="nav nav-list collapse in">
-					<li><a href="<?php echo @constant('WEBSITE_URL');?>
-admin/user">系统参数管理</a></li> 
-				 
-			 </ul> 
-        <a target="_blank" href="#" class="nav-header" ><i class="icon-question-sign"></i>帮助</a>
+        
 </div> 
  
 	<?php }} ?>

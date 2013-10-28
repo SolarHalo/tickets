@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-26 16:12:27
+<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:58:27
          compiled from "E:\phpweb\tickets\templates\admin\ticket\ticket.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:29848521f563231a842-52134862%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5fcb1818e3041ec1fdf6b0c014da341f5b601289' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\admin\\ticket\\ticket.tpl',
-      1 => 1379519829,
+      1 => 1382624645,
       2 => 'file',
     ),
   ),
@@ -36,7 +36,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			</p>
 		</div>
 
-		<h1 class="page-title">票务信息查看</h1>
+		<h1 class="page-title">tickets detail</h1>
 	</div>
 	 
  
@@ -44,18 +44,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">票务详细信息</h3>
+    <h3 id="myModalLabel">tickets detail</h3>
   </div>
   <div class="modal-body">
     <p><table class='table' id="producttable">
-	    		 <thead><tr><td>属性名称</td><td>属性值</td></tr></thead>
+	    		 <thead><tr><td>properties name</td><td>properties value</td></tr></thead>
 	    		  <tbody id="mybody">     
 	            </tbody>  
 	    		</table></p>
   </div>
   <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-    <button class="btn btn-primary">保存</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">close</button>
+    <button class="btn btn-primary">save</button>
   </div>
 </div>
 	 
@@ -68,7 +68,7 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="bb-alert alert alert-info" style="display: none;">
-				<span>操作成功</span>
+				<span>success</span>
 			</div>
 			<hr>
 	<table id="grid"></table>
@@ -78,7 +78,7 @@ admin/user">管理列表</a> <span class="divider">/</span></li>
 	
 	<script type="text/javascript">
 	function currencyFmatter(cellvalue, options, rowObject) { 
-	    return "<button class='btn' id='showdesc' onclick='showdesc(\""+rowObject[0]+"\");'>查看详情<buttton>";
+	    return "<button class='btn' id='showdesc' onclick='showdesc(\""+rowObject[0]+"\");'>more detail<buttton>";
 	}
 	function showdesc(id){
 		$.post(
@@ -113,7 +113,7 @@ admin/ticket/showproductinfo',
 		eval("var obj = "+str);
 		var result = "<select>";
 		
-		result +="<option value=''>选择...</option>";
+		result +="<option value=''>Please select...</option>";
 		
 		for(var key = 0;key < obj.length;key++){
 			result +="<option value='"+obj[key].id+"'>"+obj[key].value+"</option>";
@@ -133,9 +133,9 @@ admin/ticket/queryTicket',
 		width:1000,
 		rowNum: 20,
 		rowList: [10,20,30],
-		colNames:['票务编号','票务名称','票务类型',"联盟提供小图","票价","场地","时间","操作"],
+		colNames:['product id','product name','product type',"thumb","price","promotional text","specifications","operation"],
 		colModel:[
-			{name:'aw_product_id',index:'aw_product_id', width:50,hidden:false,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
+			{name:'aw_product_id',index:'aw_product_id', width:50,hidden:true,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'product_name',index:'products.product_name', width:80,search:true,searchoptions:{sopt: ['cn','eq', 'ne']}},
 			{name:'category_name',index:'event_category.category_id', width:80 ,search:true,stype:'select',
 				searchoptions:{
@@ -144,7 +144,7 @@ admin/ticket/queryTicket',
 admin/ticket/queryCategory',
 					buildSelect:function(str){
 						eval(" var obj = " + str);
-						var result = "<select><option value=''>请选择... ...</option>";
+						var result = "<select><option value=''>Please select... ...</option>";
 						for(var i = 0 ; i < obj.length; i++){
 							result += "<option value='" + obj[i][0] + "'>" + obj[i][1] + "</option>";		
 						}		
@@ -168,7 +168,7 @@ admin/ticket/queryCategory',
 		sortorder:'desc',
 		pager: "#gridPager",
 		viewrecords: true,
-		caption: "票务信息展示" 
+		caption: "tickets display" 
 	});
 	
 	

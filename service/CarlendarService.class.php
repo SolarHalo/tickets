@@ -1,12 +1,9 @@
 <?php
-
 class CarlendarService {
 	public $dbutil;
-	
 	public function __construct($dbutil) {
 		$this->dbutil = $dbutil;
 	}
-	
 	public function getUserCalEvent($userid) {
 		// get custom event
 		$sql = "select e.entryid id,entrytitle title,entryfrom start,entryto end,entrynote,entrylocation,emailreminder,entryimg from userentrys ue,entry e where ue.userid='$userid' and ue.entryid=e.entryid and ue.entrytype=1 and e.entryfrom is not null";
@@ -26,7 +23,6 @@ class CarlendarService {
 		$results = array_merge ( $custem_results, $product_results );
 		return $results;
 	}
-	
 	public function getUserCalEventByID($type, $id) {
 		$product_results;
 		if ($type == 1) {
@@ -52,19 +48,18 @@ class CarlendarService {
 	
 	/**
 	 * 新增票务事件到关系表
-	 * 
+	 *
 	 * @param unknown $productid        	
 	 * @param unknown $userid        	
 	 */
 	public function saveuserentrys($productid, $userid) {
-		
 		$sql = "insert into userentrys(userentryid,productid,entrytype) values($userid,'$productid','2')";
 		return $this->dbutil->query ( $sql );
 	}
 	
 	/**
 	 * 新增用户自定义事件，并新增关系
-	 * 
+	 *
 	 * @param unknown $entry        	
 	 * @param unknown $userid        	
 	 */
@@ -89,12 +84,11 @@ class CarlendarService {
 		$sql = "insert into userentrys(userid,entryid,entrytype) values('$userid','$entryid','1')";
 		$this->dbutil->query ( $sql );
 		return $entryid;
-	
 	}
 	
 	/**
 	 * 删除自定义事件，并级联删除中间表
-	 * 
+	 *
 	 * @param unknown $entryid        	
 	 * @param unknown $userid        	
 	 */
@@ -104,12 +98,11 @@ class CarlendarService {
 		
 		$sqlrs = "delete from userentrys where userid='$userid' and entryid='$entryid'";
 		$this->dbutil->query ( $sqlrs );
-	
 	}
 	
 	/**
 	 * 删除票务关系表
-	 * 
+	 *
 	 * @param unknown $productid        	
 	 * @param unknown $userid        	
 	 */
@@ -120,17 +113,15 @@ class CarlendarService {
 	
 	/**
 	 * 更新自定义事件
-	 * 
+	 *
 	 * @param unknown $entry        	
 	 */
 	public function updateCustomEventById($entry) {
-		
-		
 		$entryid = $entry->entryid;
 		
 		if (empty ( $entry->entryimg )) {
 			$sql = "update entry set entrytitle='$entry->entrytitle',entrynote='$entry->entrynote',emailreminder='$entry->emailreminder',entrylocation='$entry->entrylocation',";
-		}else{
+		} else {
 			$sql = "update entry set entrytitle='$entry->entrytitle',entryimg='$entry->entryimg',entrynote='$entry->entrynote',emailreminder='$entry->emailreminder',entrylocation='$entry->entrylocation',";
 		}
 		if (empty ( $entry->entryfrom )) {
@@ -145,23 +136,29 @@ class CarlendarService {
 		}
 		$sql .= " where entryid='$entryid'";
 		
-		print ($sql);
+		print ($sql) ;
 		$this->dbutil->query ( $sql );
-	
 	}
-	public function editeComEventNote($userid,$note,$rember,$proid) {
+	public function editeComEventNote($userid, $note, $rember, $proid) {
 		$sql = "update userentrys set note='$note',emailflag='$rember' where userid='$userid' and productid='$proid'";
-		print ($sql);
+		print ($sql) ;
 		$this->dbutil->query ( $sql );
 	}
-	
-	public function deleteComEventNote($userid,$proid) {
+	public function deleteComEventNote($userid, $proid) {
 		$sql = "update userentrys set note='',emailflag='2' where userid='$userid' and productid='$proid'";
-		print ($sql);
+		print ($sql) ;
 		$this->dbutil->query ( $sql );
 	}
-	
-
+	public function getAgendaList() {
+		$curdate = date ( 'Y-m-d H:i:s' );
+		$sql = "SELECT DATE_FORMAT(products.specifications,\"%W\") AS week, DATE_FORMAT(products.specifications,\"%b\") AS month, DATE_FORMAT(products.specifications,\"%d\") AS date ,DATE_FORMAT(products.specifications,\"%H:%i\") AS time ,
+				products.aw_product_id, products.product_name,event_category.category_name,
+				products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications,products.description FROM products products 
+				LEFT JOIN  event_category event_category  ON products.category_id = event_category.category_id WHERE products.specifications>='".$curdate."'  ORDER BY products.specifications LIMIT 10";
+		
+		$custem_results = $this->dbutil->get_results ( $sql );
+		return $custem_results;
+	}
 }
 
 ?>
