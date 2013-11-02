@@ -579,7 +579,7 @@ Date.prototype.pattern=function(fmt) {
     	<div class="events">
 						<div class="gigs-1">
 		                <span>
-		                    <a href="#" class="fl btn btn-black-2">New Calendar Entry</a>
+		                    <a href="#" id="newcaledar" class="fl btn btn-black-2">New Calendar Entry</a>
 		                    <a href="#" class="fl btn btn-black-3">Export your Calendar</a>
 		                </span>
 		                <p class=" mt15 gigs-top-xx fr"> 
