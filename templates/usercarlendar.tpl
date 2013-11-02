@@ -549,22 +549,23 @@ Date.prototype.pattern=function(fmt) {
 		 $('#calendar').fullCalendar( 'changeView', view );
 	 }
 	  
-	 $('#agendaDay').attr("class", "switch btn btn-small");
-	 $('#agendaWeek').attr("class", "switch btn btn-small");
-	 $('#month').attr("class", "switch btn btn-small");
-	 $('#agenda').attr("class", "switch btn btn-small");
+	 $('#agendaDay').attr("class", "btn-hs2 btn-Calendar left-by");
+	 $('#agendaWeek').attr("class", "btn-hs2 btn-Calendar");
+	 $('#month').attr("class", "btn-hs2 btn-Calendar");
+	 $('#agenda').attr("class", "btn-hs2 btn-Calendar right-by");
 	 //$('"#"+view+"').attr("class", "switch btn btn-small btn-primary");
-	if(view =="agendaDay"){
-		 $('#agendaDay').attr("class", "switch btn btn-small btn-primary");
+	if(view =="agendaDay"){ 
+		 $('#agendaDay').attr("class", "btn-hs2 btn-Calendar by-hover left-by");
+		 
 	}
 	if(view =="agendaWeek"){
-		 $('#agendaWeek').attr("class", "switch btn btn-small btn-primary");
+		 $('#agendaWeek').attr("class", "btn-hs2 by-hover btn-Calendar");
 	}
 	if(view =="month"){
-		 $('#month').attr("class", "switch btn btn-small btn-primary");
+		 $('#month').attr("class", "btn-hs2 by-hover btn-Calendar");
 	}
 	if(view =="agenda"){
-		 $('#agenda').attr("class", "switch btn btn-small btn-primary");
+		 $('#agenda').attr("class", "btn-hs2 btn-Calendar by-hover right-by");
 	}
 	
  }
