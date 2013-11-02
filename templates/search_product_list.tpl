@@ -249,7 +249,7 @@
         </div>
         <div class="r-row rw-bg2"> 
 	                   <div class="comiis_wrapad" id="slideContainer2">
-	                        <div id="frameHlicAe" class="frame cl">
+	                        <div id="frameHlicAe2" class="frame cl">
 	                            <div class="temp"></div>
 	                            <div class="block">
 	                                <div class="cl">
