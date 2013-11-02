@@ -11,6 +11,7 @@
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-1.8.1.min.js" ></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/js/slideshow.js" type="text/javascript"></script>
 	
 	<script  type="text/javascript"> 
 	function buyTickets(pid){
@@ -218,13 +219,34 @@
       </div>
       
       <div class="events-r mt15">
-        <div class="r-row rw-bg2"> <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; </div>
+        <div class="r-row rw-bg2"> 
+          <div class="comiis_wrapad" id="slideContainer">
+                        <div id="frameHlicAe" class="frame cl">
+                            <div class="temp"></div>
+                            <div class="block">
+                                <div class="cl">
+                                    <ul class="slideshow" id="slidesImgs">
+                                        <li><a href="/" target="_blank"><img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo.gif" width="160" height="265" alt="" /></a></li>
+                                        <li><a href="/" target="_blank"><img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" width="160" height="265" alt="" /></a></li>
+                                        <li><a href="/" target="_blank"><img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo2.gif" width="160" height="265" alt="" /></a></li>
+                                        <li><a href="/" target="_blank"><img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo5.gif" width="160" height="265" alt="" /></a></li> 
+                                    </ul>
+                                </div>
+                                <div class="slidebar" id="slideBar">
+                                    <ul>
+                                        <li class="on">1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>4</li>  
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        SlideShow(0);
+                    </script> 
+        </div>
         <div class="r-row rw-bg2"> <br />
           &nbsp; <br />
           &nbsp; <br />
