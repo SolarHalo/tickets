@@ -47,7 +47,7 @@ function SlideShow2(c) {
         n2[e2].className = "on";
         lastI2 = e2
     }
-    f[e2].style.display = "block";
+    f2[e2].style.display = "block";
     a2.onmouseover = k2;
     a2.onmouseout = b2;
     h2.onmouseover = function (i) {
