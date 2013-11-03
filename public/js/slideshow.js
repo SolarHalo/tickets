@@ -41,10 +41,10 @@ function SlideShow2(c) {
         clearInterval(m2)
     }
     function g2() {
-        f[lastI2].style.display = "none";
-        n[lastI2].className = "";
-        f[e2].style.display = "block";
-        n[e2].className = "on";
+        f2[lastI2].style.display = "none";
+        n2[lastI2].className = "";
+        f2[e2].style.display = "block";
+        n2[e2].className = "on";
         lastI2 = e2
     }
     f[e2].style.display = "block";
