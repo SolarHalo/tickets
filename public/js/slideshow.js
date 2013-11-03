@@ -30,7 +30,7 @@
 }
 ;
 function SlideShow2(c) {
-    var a2 = document.getElementById("slideContainer2"), f2 = document.getElementById("slidesImgs2").getElementsByTagName("li"), h2 = document.getElementById("slideBar2"), n2 = h.getElementsByTagName("li"), d2 = f.length, c2 = c2 || 3000, e2 = lastI2 = 0, j2, m2;
+    var a2 = document.getElementById("slideContainer2"), f2 = document.getElementById("slidesImgs2").getElementsByTagName("li"), h2 = document.getElementById("slideBar2"), n2 = h2.getElementsByTagName("li"), d2 = f2.length, c2 = c2 || 3000, e2 = lastI2 = 0, j2, m2;
     function b2() {
         m2 = setInterval(function () {
             e2 = e2 + 1 >= d2 ? e2 + 1 - d2 : e2 + 1;
