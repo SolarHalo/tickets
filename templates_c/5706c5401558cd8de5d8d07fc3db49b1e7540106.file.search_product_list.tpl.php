@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-10-24 22:37:03
+<?php /* Smarty version Smarty-3.1.13, created on 2013-11-03 22:38:33
          compiled from "E:\phpweb\tickets\templates\search_product_list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:24466524049c5609f58-72188520%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5706c5401558cd8de5d8d07fc3db49b1e7540106' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\search_product_list.tpl',
-      1 => 1382624645,
+      1 => 1383485832,
       2 => 'file',
     ),
   ),
@@ -54,6 +54,8 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/js/jquery-ui.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/js/jquery.ui.datepicker.js"></script>
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/slideshow.js" type="text/javascript"></script>
 	
 	<script  type="text/javascript"> 
 	function buyTickets(pid){
@@ -324,20 +326,70 @@ ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['curCat']->value;?>
       </div>
       
       <div class="events-r mt15">
-        <div class="r-row rw-bg2"> <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; </div>
-        <div class="r-row rw-bg2"> <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; <br />
-          &nbsp; </div>
+        <div class="r-row rw-bg2"> 
+                  <div class="comiis_wrapad" id="slideContainer">
+                        <div id="frameHlicAe" class="frame cl">
+                            <div class="temp"></div>
+                            <div class="block">
+                                <div class="cl">
+                                    <ul class="slideshow" id="slidesImgs">
+                                        <li><a href="/" target="_blank"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo.gif" width="160" height="265" alt="" /></a></li>
+                                        <li><a href="/" target="_blank"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo1.gif" width="160" height="265" alt="" /></a></li>
+                                        <li><a href="/" target="_blank"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo2.gif" width="160" height="265" alt="" /></a></li>
+                                        <li><a href="/" target="_blank"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo5.gif" width="160" height="265" alt="" /></a></li> 
+                                    </ul>
+                                </div>
+                                <div class="slidebar" id="slideBar">
+                                    <ul>
+                                        <li class="on">1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>4</li>  
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        SlideShow(0);
+                    </script> 
+        </div>
+        <div class="r-row rw-bg2"> 
+	                   <div class="comiis_wrapad" id="slideContainer2">
+	                        <div id="frameHlicAe2" class="frame cl">
+	                            <div class="temp"></div>
+	                            <div class="block">
+	                                <div class="cl">
+	                                    <ul class="slideshow" id="slidesImgs2">
+	                                        <li><a href="/" target="_blank"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo.gif" width="160" height="265" alt="" /></a></li>
+	                                        <li><a href="/" target="_blank"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo1.gif" width="160" height="265" alt="" /></a></li>
+	                                        <li><a href="/" target="_blank"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo2.gif" width="160" height="265" alt="" /></a></li>
+	                                        <li><a href="/" target="_blank"><img src="<?php echo @constant('WEBSITE_URL');?>
+public/photo/photo5.gif" width="160" height="265" alt="" /></a></li> 
+	                                    </ul>
+	                                </div>
+	                                <div class="slidebar" id="slideBar2">
+	                                    <ul>
+	                                        <li class="on">1</li>
+	                                        <li>2</li>
+	                                        <li>3</li>
+	                                        <li>4</li>  
+	                                    </ul>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <script type="text/javascript">
+	                        SlideShow2(0);
+	                    </script> 
+        </div>
       </div>
     </div>
   </div>

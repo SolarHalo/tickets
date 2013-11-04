@@ -149,14 +149,30 @@ class CarlendarService {
 		print ($sql) ;
 		$this->dbutil->query ( $sql );
 	}
-	public function getAgendaList() {
-		$curdate = date ( 'Y-m-d H:i:s' );
-		$sql = "SELECT DATE_FORMAT(products.specifications,\"%W\") AS week, DATE_FORMAT(products.specifications,\"%b\") AS month, DATE_FORMAT(products.specifications,\"%d\") AS date ,DATE_FORMAT(products.specifications,\"%H:%i\") AS time ,
-				products.aw_product_id, products.product_name,event_category.category_name,
-				products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications,products.description FROM products products 
-				LEFT JOIN  event_category event_category  ON products.category_id = event_category.category_id WHERE products.specifications>='".$curdate."'  ORDER BY products.specifications LIMIT 10";
-		
-		$custem_results = $this->dbutil->get_results ( $sql );
+	public function getAgendaList($userid) {
+$CURDATE = DATE ( 'Y-m-d H:i:s' );
+	$SQL = "SELECT DATE_FORMAT(t.entryfrom,\"%W\") AS week, DATE_FORMAT(t.entryfrom,\"%b\") AS month, DATE_FORMAT(t.entryfrom,\"%d\") AS date ,DATE_FORMAT(t.entryfrom,\"%H:%i\") AS time ,
+			t.entryid,t.entrytype,t.entrytitle,t.entryimg,
+		t.entrylocation,
+		t.entrynote
+	 FROM (
+	
+		SELECT p.aw_product_id AS entryid, e.entrytype,p.product_name AS entrytitle, p.aw_image_url AS entryimg,
+		p.promotional_text AS entrylocation,
+		p.description AS entrynote,
+		p.specifications AS  entryfrom
+	
+	  FROM products p ,userentrys e WHERE p.aw_product_id = e.productid   AND p.specifications >='".$CURDATE."' AND e.userid='".$userid."'
+	  UNION ALL
+	SELECT e.entryid,u.entrytype,e.entrytitle,e.entryimg,
+		e.entrylocation,
+		e.entrynote,
+	
+		e.entryfrom
+		FROM userentrys u ,entry e WHERE u.entryid = e.entryid  AND e.entryfrom >='".$CURDATE."' AND u.userid='".$userid."' ) t ORDER BY entryfrom";
+
+
+		$custem_results = $this->dbutil->get_results ($SQL);
 		return $custem_results;
 	}
 }

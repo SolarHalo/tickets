@@ -15,28 +15,42 @@ class CarlendarController extends Controller {
 	public function getAgenda() {
 		require_once SERVICE . DS . 'CarlendarService.class.php';
 		$service = new CarlendarService ( $this->getDB () );
-		$res = $service->getAgendaList ();
+		
+		$userId = $_SESSION ['user']->userid;
+		
+		$res = $service->getAgendaList ($userId);
 		
 		$data;
 		foreach ( $res as $re ) {
-			
-			$desc = $re->description;
+			print ($re->week);
+			$desc = $re->entrynote;
 			if ($desc != null && strlen ( $desc ) > $descLen) {
 				$desc = substr ( $desc, 0, $descLen ) . "... ...";
 			}
 			
+ 			$color = #fb7b0e;
+			$img;
+			//t.entryid,t.entrytype,t.entrytitle,t.entryimg, t.entrylocation, t.entrynote
+			if( $re->entrytype ==1){
+				//自定义
+				$img = WEBSITE_URL."uploads/arousel/".$re->entryimg;
+				$color = '#195cc0';
+			}else if($re->entrytype ==2){
+				$img =$re->entryimg;
+				$color = '#fb7b0e';
+			}
 			$data [] = array (
 					"week" => $re->week,
 					"month" => $re->month,
 					"date" => $re->date,
 					"time" => $re->time,
-					"aw_product_id" => $re->aw_product_id,
-					"product_name" => $re->product_name,
-					"aw_thumb_url" => $re->aw_thumb_url,
-					"category_name" => $re->category_name,
-					"promotional_text" => $re->promotional_text,
+					"aw_product_id" => $re->entryid,
+					"product_name" => $re->entrytitle,
+					"aw_thumb_url" => $img,
+					"promotional_text" => $re->entrylocation,
 					"description" => $desc,
-					"display_price" => $re->display_price 
+					"color" => $color,
+					"type" =>$re->entrytype
 			);
 		}
 		
@@ -58,11 +72,11 @@ class CarlendarController extends Controller {
 								<img src='" . $d ['aw_thumb_url'] . "' width='92' height='92'
 						class='btn' />
 						</a></td>
-						<td>" . $d ['category_name'] . "<br /> <span> <a
-						href='" . WEBSITE_URL . "ticket/info/?id=" . $d ['aw_product_id'] . " 
-						name=" . $d ['aw_product_id'] . " onmouseover='productOver(name)'>" . $d ['product_name'] . " </a>
-						</span><br /> " . $d ['promotional_text'] . " &nbsp;&nbsp;From:
-						" . $d ['display_price'] . "
+						<td>" . $d ['category_name'] . "<br /> <span> <a style='color:".$d['color']."'  href='#'
+						 onclick='showAngdeDetail(".$d['aw_product_id'].",".$d['type'].")'
+						name=" . $d ['aw_product_id'] . "  >" . $d ['product_name'] . " </a>
+						</span><br /> " . $d ['promotional_text'] . "  
+						 
 						</td> </tr> </table> <div class='table-xian'></div> </td> </tr>";
 		}
 		$return .= "</table > ";

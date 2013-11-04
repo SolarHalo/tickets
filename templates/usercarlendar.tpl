@@ -36,7 +36,7 @@
 <script
 	src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery.timepicker.js'></script>
 
- 
+
 <script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
 <script type="text/javascript"
 	src="{{$smarty.const.WEBSITE_URL}}public/assets/lib/ajaxupload.js"></script>
@@ -93,6 +93,10 @@
 		$("#tcbox").hide();
 		$("#tcbox_addentity").hide();
 		$("#tCevent_box").hide();
+		
+		$("#agebda_tcbox").hide();
+		$("#agebda_tcbox_addentity").hide();
+		$("#agebda_tCevent_box").hide();
         $("#newcaledar").click(function(){$("#tcbox_addentity").show();clearWinData();$("#saveEvent").removeAttr('un')});
         $("#saveEvent").bind('click',submitEvent);
 		displayevent();
@@ -170,7 +174,7 @@ function submitEvent(){
 	var totime = $("#totime").val();
 	var note = $("#note").val();
 	var rember = $("#rember").prop("checked")==true?'1':'2';
-	var location = $("#location").val();
+	var location = $("#location_text").val();
 	var from = fromdate;
 	var to = todate;
 	if(allday==true){
@@ -252,6 +256,9 @@ function submitEvent(){
 					},
 					true // make the event "stick"
 				);
+
+			if(current == "agenda"){
+				switchview("agenda");}
 		},
 		error:function(){
 			alert("update event fail");
@@ -296,7 +303,7 @@ function clearWinData(){
 	$("#todate").val("");
 	$("#totime").val("");
 	$("#note").val("");
-	$("#location").attr("value","");
+	$("#location_text").val("");
 	
 	$("#entryimg").val("");
 	$("#entryimg").val("");
@@ -304,15 +311,19 @@ function clearWinData(){
 	
 	$("#rember").prop("checked",false);
 }
-
-
 function popupDetailWin(calEvent){
-	var param;
-	if(calEvent.color == "#fb7b0e"){
-		 param={"type":2,"entryid":calEvent.id};
+	var type;
+	if(calEvent.color =="#fb7b0e"){
+		type = 2;
 	}else{
-		 param={"type":1,"entryid":calEvent.id};
-	}	
+		type= 1;}
+	getEventDetail(calEvent.id,type);
+}
+
+function getEventDetail(id,type){
+	var param;
+		 param={"type":type,"entryid":id};
+	 	
 	$.ajax({
 		url:"{{$smarty.const.WEBSITE_URL}}carlendar/getEventById",
 		type:"post",
@@ -401,6 +412,8 @@ function clearComEventEdit(){
 	$("#comeventemail").prop("checked",false);
 }
 
+
+
 function popUpdateWin(calEvent){
 
 	if(calEvent.color == "#fb7b0e"){
@@ -437,7 +450,7 @@ function popUpdateWin(calEvent){
 		$("#note").val(calEvent.entrynote);
 		var reminder = calEvent.emailreminder;
 		$("#rember").prop("checked",reminder=='1'?true:false);
-		$("#location").val(calEvent.entrylocation);
+		$("#location_text").val(calEvent.entrylocation);
 		
 		$("#saveEvent").attr("un",calEvent.id);
 	}
@@ -527,10 +540,12 @@ Date.prototype.pattern=function(fmt) {
 }
 
 
+
+ var current;
  function switchview(view){
-	
-	 console.log("--"+view);
+	 current = view;
 	 if(view =="agenda"){
+		 console.log("switchview--"+view);
 		 $('#agenda-with-pagination').css("display","block");
 		 $('#calendar').css("display","none");
 		 $.ajax({
@@ -570,232 +585,237 @@ Date.prototype.pattern=function(fmt) {
 	
  }
 
+
+ 
+ function  showAngdeDetail(id,type){
+ 	getEventDetail(id,type);
+  }
+ 
+ 
 </script>
 </head>
 
 <body>
 	{{include file='layouts/headerandsearch.tpl'}}
-<div class="mian">
-    <div class="content">
-    	<div class="events">
-						<div class="gigs-1">
-		                <span>
-		                    <a href="#" id="newcaledar" class="fl btn btn-black-2">New Calendar Entry</a>
-		                    <a href="#" class="fl btn btn-black-3">Export your Calendar</a>
-		                </span>
-		                <p class=" mt15 gigs-top-xx fr"> 
-		                     
-		                    <a class="btn-hs2 btn-Calendar left-by" id="agendaDay"
-							onclick="switchview(id)">Day</a> 
-							<a class="btn-hs2 btn-Calendar by-hover"
-							id="agendaWeek" onclick="switchview(id)">Week</a> 
-							<a id="month"
-							class="btn-hs2 btn-Calendar" id="month"
-							onclick="switchview(id)">Month</a>
-							 <a class="btn-hs2 btn-Calendar right-by" id="agenda" onclick="switchview(id)">Agenda</a>
-		                </p>
-            </div>
-				 
-		   <div class="mt15">
-            	<div id='calendar'></div>
-            	<div id="agenda-with-pagination" style="display: none;">
-					{{$listdatas}}
-				</div>
-            </div>
-		  <table class="gigs-u-l" style="margin:0;">
-                <tr>
-                  <td valign="center"><b>Legend:</b></td>
-                  <td><a href="#" class="btn btn-range btn-Calendar">Search4Gigs Event</a></td>
-                  <td><a href="#" class="btn btn-blue btn-Calendar">Private Event</a></td>
-                  <td valign="center">Manage Layers</td>
-                </tr>
-              </table>
-    	</div> 
-    </div> 
-</div>
-		<!-- 	<div class="mian"> -->
-		<!-- 		<div class="content"> -->
-		<!-- 			<div class="events"> -->
-		<!-- 				<div class="gigs-1"> -->
-		<!-- 					<span> <a href="javascript:void(0);" class="fl btn btn-black-2" -->
-		<!-- 						id="newcaledar">New Calendar Entry</a> <a href="#" -->
-		<!-- 						class="fl btn btn-black-3">Export your Calendar</a> -->
-		<!-- 					</span> -->
-		<!-- 					<p class=" mt15 gigs-top-xx fr"> -->
+	<div class="mian">
+		<div class="content">
+			<div class="events">
+				<div class="gigs-1">
+					<span> <a href="#" id="newcaledar" class="fl btn btn-black-2">New
+							Calendar Entry</a> <a href="#" class="fl btn btn-black-3">Export
+							your Calendar</a>
+					</span>
+					<p class=" mt15 gigs-top-xx fr">
 
-		<!-- 						<a href="{{$smarty.const.WEBSITE_URL}}userevent" -->
-		<!-- 							class="btn-hs2 btn-Calendar right-by">Agenda</a> -->
-		<!-- 					</p> -->
-		<!-- 				</div> -->
-		<!-- 				<div class="mt15"> -->
-		<!-- 					<div id='calendar'></div> -->
-		<!-- 				</div> -->
-		<!-- 				<table class="gigs-u-l" style="margin: 0"> -->
-		<!-- 					<tr> -->
-		<!-- 						<td valign="center"><b>Legend:</b></td> -->
-		<!-- 						<td><a href="#" class="btn btn-range btn-Calendar">Search4Gigs -->
-		<!-- 								Event</a></td> -->
-		<!-- 						<td><a href="#" class="btn btn-blue btn-Calendar">Private Event</a></td> -->
-		<!-- 						<td valign="center">Manage Layers</td> -->
-		<!-- 					</tr> -->
-		<!-- 				</table> -->
-		<!-- 			</div> -->
-		<!-- 		</div> -->
-		<!-- 	</div> -->
-
-		<!-- 事件详情的弹出窗口 -->
-		<div id="tcbox">
-			<div id="tccontent">
-				<div class="row3 map gigs_tck">
-					<span class="fl pl">Event Details</span><a href="#" class="fr pr"
-						onclick="javascript:closewin('tcbox');">X</a>
+						<a class="btn-hs2 btn-Calendar left-by" id="agendaDay"
+							onclick="switchview(id)">Day</a> <a class="btn-hs2 btn-Calendar"
+							id="agendaWeek" onclick="switchview(id)">Week</a> <a id="month"
+							class="btn-hs2 btn-Calendar by-hover" id="month"
+							onclick="switchview(id)">Month</a> <a
+							class="btn-hs2 btn-Calendar right-by" id="agenda"
+							onclick="switchview(id)">Agenda</a>
+					</p>
 				</div>
-				<form>
-					<table width="100%" border="0" cellspacing="0" cellpadding="0"
-						class="gigs-tck-table mt15 ">
-						<tr>
-							<td width="50" align="right" valign="top"><img id="entryimg"
-								height="110" width="110"
-								src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-ioc.gif" /></td>
-							<td align="left">
-								<h4 class="eventname">Lorem event title</h4>
-								<p class="time" id="timeduration">Saturday, 28 July 2013 19:30
-									BST</p>
-							</td>
-						</tr>
-					</table>
-					<table>
-						<tr>
 
-							<td class="time">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
-								class="input-style4 textinput-w3" id="note_show" readOnly="true" /></td>
-						</tr>
-					</table>
-				</form>
-				<div class="row3 map gigs_top">
-					<span class="fl"><a href="javascript:void(0);"
-						class="btn btn-blue btn-Calendar ml15 updateBtn">Edit</a><font><a
-							href="javascript:void(0);" class="cancel"
-							onclick="javascript:closewin('tcbox');">Cancle</a></font></span>
-					<span class="fr pr"><a href="javascript:void(0);"
-						class="btn btn-red btn-Calendar" id="delBtn">Delete</a></span>
+				<div class="mt15">
+					<div id='calendar'></div>
+					<div id="agenda-with-pagination" style="display: none;">
+						{{$listdatas}}</div>
 				</div>
+				<table class="gigs-u-l" style="margin: 0;">
+					<tr>
+						<td valign="center"><b>Legend:</b></td>
+						<td><a href="#" class="btn btn-range btn-Calendar">Search4Gigs
+								Event</a></td>
+						<td><a href="#" class="btn btn-blue btn-Calendar">Private Event</a></td>
+						<td valign="center">Manage Layers</td>
+					</tr>
+				</table>
 			</div>
 		</div>
+	</div>
+	<!-- 	<div class="mian"> -->
+	<!-- 		<div class="content"> -->
+	<!-- 			<div class="events"> -->
+	<!-- 				<div class="gigs-1"> -->
+	<!-- 					<span> <a href="javascript:void(0);" class="fl btn btn-black-2" -->
+	<!-- 						id="newcaledar">New Calendar Entry</a> <a href="#" -->
+	<!-- 						class="fl btn btn-black-3">Export your Calendar</a> -->
+	<!-- 					</span> -->
+	<!-- 					<p class=" mt15 gigs-top-xx fr"> -->
 
-		<div id="tCevent_box">
-			<div id="tccontent">
-				<div class="row3 map gigs_tck">
-					<span class="fl pl">Edit Entry</span><a href="#" class="fr pr"
-						onclick="javascript:closewin('tCevent_box');">X</a>
-				</div>
-				<form>
-					<table width="100%" border="0" cellspacing="0" cellpadding="0"
-						class="gigs-tck-table mt15 ">
-						<tr>
-							<td width="50" align="right" valign="top"><span
-								class="fontsize14">Note</span></td>
-							<td align="left"><textarea class="textarea" id="comeventnote"></textarea>
-							</td>
-						</tr>
-					</table>
-					<table>
-						<tr>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-								type="checkbox" id="comeventemail" align="middle"><span
-									class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span></td>
-						</tr>
-					</table>
-				</form>
-				<div class="row3 map gigs_top">
-					<span class="fl"><a href="#"
-						class="btn btn-black-2 btn-Calendar ml15" id="saveComEventNote">Save</a><font><a
-							href="#" class="cancel"
-							onclick="javascript:closewin('tCevent_box');">cancel</a></font></span>
-					<span class="fr pr"><a href="#" class="btn btn-red btn-Calendar"
-						id="deleteComEventNote">Delete</a></span>
-				</div>
+	<!-- 						<a href="{{$smarty.const.WEBSITE_URL}}userevent" -->
+	<!-- 							class="btn-hs2 btn-Calendar right-by">Agenda</a> -->
+	<!-- 					</p> -->
+	<!-- 				</div> -->
+	<!-- 				<div class="mt15"> -->
+	<!-- 					<div id='calendar'></div> -->
+	<!-- 				</div> -->
+	<!-- 				<table class="gigs-u-l" style="margin: 0"> -->
+	<!-- 					<tr> -->
+	<!-- 						<td valign="center"><b>Legend:</b></td> -->
+	<!-- 						<td><a href="#" class="btn btn-range btn-Calendar">Search4Gigs -->
+	<!-- 								Event</a></td> -->
+	<!-- 						<td><a href="#" class="btn btn-blue btn-Calendar">Private Event</a></td> -->
+	<!-- 						<td valign="center">Manage Layers</td> -->
+	<!-- 					</tr> -->
+	<!-- 				</table> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
+	<!-- 	</div> -->
+
+	<!-- 事件详情的弹出窗口 -->
+	<div id="tcbox">
+		<div id="tccontent">
+			<div class="row3 map gigs_tck">
+				<span class="fl pl">Event Details</span><a href="#" class="fr pr"
+					onclick="javascript:closewin('tcbox');">X</a>
 			</div>
-		</div>
-
-
-
-		<!-- 添加事件的弹出窗口 -->
-		<div id="tcbox_addentity">
-			<div id="tccontent">
-				<div class="row3 map gigs_tck">
-					<span class="fl pl">Edit Entry</span><a href="#" class="fr pr"
-						onclick="javascript:closewin('tcbox_addentity');">X</a>
-				</div>
+			<form>
 				<table width="100%" border="0" cellspacing="0" cellpadding="0"
-					class="table-edit mt15" style="border: none;">
+					class="gigs-tck-table mt15 ">
 					<tr>
-						<td width="77" align="right" valign="middle">Title&nbsp;&nbsp;</td>
-						<td align="left"><span class="inputborder"><input type="text"
-								class="input-style4 textinput-w3" id="title" /></span></td>
-					</tr>
-					<tr>
-						<td width="77" align="right" valign="middle">&nbsp;</td>
-						<td align="left"><input type="checkbox" align="middle" id="allday"><span
-								class="fontsize12">&nbsp;&nbsp;&nbsp;All Day</span></td>
-					</tr>
-					<tr>
-						<td width="77" align="right" valign="middle">From&nbsp;&nbsp;</td>
-						<td align="left"><span class="inputborder"><input type="text"
-								class="input-style4 textinput-w4" id="fromdate" readOnly="true" /><a
-								href="javascript:void(0);"><img
-									src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
-							<span class="inputborder"><input type="text"
-								class="input-style4 textinput-w4" id="fromtime" /><a
-								href="javascript:void(0);"><img
-									src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+						<td width="50" align="right" valign="top"><img id="entryimg"
+							height="110" width="110"
+							src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-ioc.gif" /></td>
+						<td align="left">
+							<h4 class="eventname">Lorem event title</h4>
+							<p class="time" id="timeduration">Saturday, 28 July 2013 19:30
+								BST</p>
 						</td>
 					</tr>
+				</table>
+				<table>
 					<tr>
-						<td width="77" align="right" valign="middle">To&nbsp;&nbsp;</td>
-						<td align="left"><span class="inputborder"><input type="text"
-								class="input-style4 textinput-w4" id="todate" readOnly="true" /><a
-								href="#"><img
-									src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
-							<span class="inputborder"><input type="text"
-								class="input-style4 textinput-w4" id="totime" /><a
-								href="javascript:void(0);"><img
-									src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="77" align="right" valign="middle">Location&nbsp;&nbsp;</td>
-						<td align="left"><span class="inputborder"><input type="text"
-								class="input-style4 textinput-w3" id="location" /></span></td>
-					</tr>
-					<tr>
-						<td width="77" align="right" valign="middle">Image&nbsp;&nbsp;</td>
 
-						<td align="left"><span class="inputborder"><input type="text"
-								id="file_show" class="input-style4 textinput-w3" readOnly="true" /></span>
-							<input type="button" class="btn btn-small" id="selectfile"
-							value="选择上传文件" /> <input type="text" id="entryimg"
-							style="display: none;"></input></td>
+						<td class="time">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text"
+							class="input-style4 textinput-w3" id="note_show" readOnly="true" /></td>
 					</tr>
+				</table>
+			</form>
+			<div class="row3 map gigs_top">
+				<span class="fl"><a href="javascript:void(0);"
+					class="btn btn-blue btn-Calendar ml15 updateBtn">Edit</a><font><a
+						href="javascript:void(0);" class="cancel"
+						onclick="javascript:closewin('tcbox');">Cancle</a></font></span> <span
+					class="fr pr"><a href="javascript:void(0);"
+					class="btn btn-red btn-Calendar" id="delBtn">Delete</a></span>
+			</div>
+		</div>
+	</div>
+
+	<div id="tCevent_box">
+		<div id="tccontent">
+			<div class="row3 map gigs_tck">
+				<span class="fl pl">Edit Entry</span><a href="#" class="fr pr"
+					onclick="javascript:closewin('tCevent_box');">X</a>
+			</div>
+			<form>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0"
+					class="gigs-tck-table mt15 ">
 					<tr>
-						<td width="77" align="right" valign="middle">Note&nbsp;&nbsp;</td>
-						<td align="left"><span class="inputborder"><textarea id="note"
-									style="height: 80px" class="input-style4 textinput-w3"></textarea></span>
+						<td width="50" align="right" valign="top"><span class="fontsize14">Note</span></td>
+						<td align="left"><textarea class="textarea" id="comeventnote"></textarea>
 						</td>
 					</tr>
+				</table>
+				<table>
 					<tr>
-						<td width="77" align="right" valign="middle">&nbsp;</td>
-						<td align="left"><input type="checkbox" align="middle" id="rember"><span
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+							type="checkbox" id="comeventemail" align="middle"><span
 								class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span></td>
 					</tr>
 				</table>
-				<div class="row3 map gigs_top">
-					<span class="fl"><a href="javascript:void(0);"
-						class="btn btn-black-2 btn-Calendar ml15" id="saveEvent">Save</a><font><a
-							href="javascript:void(0);" class="cancel"
-							onclick="javascript:closewin('tcbox_addentity');">cancel</a></font></span>
-				</div>
+			</form>
+			<div class="row3 map gigs_top">
+				<span class="fl"><a href="#"
+					class="btn btn-black-2 btn-Calendar ml15" id="saveComEventNote">Save</a><font><a
+						href="#" class="cancel"
+						onclick="javascript:closewin('tCevent_box');">cancel</a></font></span>
+				<span class="fr pr"><a href="#" class="btn btn-red btn-Calendar"
+					id="deleteComEventNote">Delete</a></span>
 			</div>
 		</div>
+	</div>
 
-		{{include file='layouts/footer.tpl'}}
+
+
+	<!-- 添加事件的弹出窗口 -->
+	<div id="tcbox_addentity">
+		<div id="tccontent">
+			<div class="row3 map gigs_tck">
+				<span class="fl pl">Edit Entry</span><a href="#" class="fr pr"
+					onclick="javascript:closewin('tcbox_addentity');">X</a>
+			</div>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0"
+				class="table-edit mt15" style="border: none;">
+				<tr>
+					<td width="77" align="right" valign="middle">Title&nbsp;&nbsp;</td>
+					<td align="left"><span class="inputborder"><input type="text"
+							class="input-style4 textinput-w3" id="title" /></span></td>
+				</tr>
+				<tr>
+					<td width="77" align="right" valign="middle">&nbsp;</td>
+					<td align="left"><input type="checkbox" align="middle" id="allday"><span
+							class="fontsize12">&nbsp;&nbsp;&nbsp;All Day</span></td>
+				</tr>
+				<tr>
+					<td width="77" align="right" valign="middle">From&nbsp;&nbsp;</td>
+					<td align="left"><span class="inputborder"><input type="text"
+							class="input-style4 textinput-w4" id="fromdate" readOnly="true" /><a
+							href="javascript:void(0);"><img
+								src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
+						<span class="inputborder"><input type="text"
+							class="input-style4 textinput-w4" id="fromtime" /><a
+							href="javascript:void(0);"><img
+								src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+					</td>
+				</tr>
+				<tr>
+					<td width="77" align="right" valign="middle">To&nbsp;&nbsp;</td>
+					<td align="left"><span class="inputborder"><input type="text"
+							class="input-style4 textinput-w4" id="todate" readOnly="true" /><a
+							href="#"><img
+								src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
+						<span class="inputborder"><input type="text"
+							class="input-style4 textinput-w4" id="totime" /><a
+							href="javascript:void(0);"><img
+								src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+					</td>
+				</tr>
+				<tr>
+					<td width="77" align="right" valign="middle">Location&nbsp;&nbsp;</td>
+					<td align="left"><span class="inputborder"><input type="text"
+							class="input-style4 textinput-w3" id="location_text" /></span></td>
+				</tr>
+				<tr>
+					<td width="77" align="right" valign="middle">Image&nbsp;&nbsp;</td>
+
+					<td align="left"><span class="inputborder"><input type="text"
+							id="file_show" class="input-style4 textinput-w3" readOnly="true" /></span>
+						<input type="button" class="btn btn-small" id="selectfile"
+						value="选择上传文件" /> <input type="text" id="entryimg"
+						style="display: none;"></input></td>
+				</tr>
+				<tr>
+					<td width="77" align="right" valign="middle">Note&nbsp;&nbsp;</td>
+					<td align="left"><span class="inputborder"><textarea id="note"
+								style="height: 80px" class="input-style4 textinput-w3"></textarea></span>
+					</td>
+				</tr>
+				<tr>
+					<td width="77" align="right" valign="middle">&nbsp;</td>
+					<td align="left"><input type="checkbox" align="middle" id="rember"><span
+							class="fontsize12">&nbsp;&nbsp;&nbsp;Email Reminder</span></td>
+				</tr>
+			</table>
+			<div class="row3 map gigs_top">
+				<span class="fl"><a href="javascript:void(0);"
+					class="btn btn-black-2 btn-Calendar ml15" id="saveEvent">Save</a><font><a
+						href="javascript:void(0);" class="cancel"
+						onclick="javascript:closewin('tcbox_addentity');">cancel</a></font></span>
+			</div>
+		</div>
+	</div>
+
+	{{include file='layouts/footer.tpl'}}
