@@ -258,7 +258,9 @@ function submitEvent(){
 				);
 
 			if(current == "agenda"){
-				switchview("agenda");}
+				switchview("agenda");
+			}
+			
 		},
 		error:function(){
 			alert("update event fail");
@@ -472,8 +474,14 @@ function deleteCalEvent(){
 		success:function(data){
 		    closewin('tcbox');
 			calendar.fullCalendar("removeEvents",currentCalEvent.id);
-			calendar.fullCalendar("rerenderEvents");
 		
+			if(current == "agenda"){
+				switchview("agenda");
+				$('#calendar').fullCalendar( 'refetchEvents' );
+				calendar.fullCalendar("rerenderEvents");
+				}
+			calendar.fullCalendar("rerenderEvents");
+			
 		},
 		error:function(){
 			alert("delete event fail");
@@ -562,6 +570,8 @@ Date.prototype.pattern=function(fmt) {
 		 $('#agenda-with-pagination').css("display","none");
 		 $('#calendar').css("display","block");
 		 $('#calendar').fullCalendar( 'changeView', view );
+		 calendar.fullCalendar("rerenderEvents");
+
 	 }
 	  
 	 $('#agendaDay').attr("class", "btn-hs2 btn-Calendar left-by");

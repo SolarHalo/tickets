@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-11-04 22:04:40
+<?php /* Smarty version Smarty-3.1.13, created on 2013-11-04 22:29:29
          compiled from "E:\phpweb\tickets\templates\usercarlendar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:60465231d15b7d7ba1-94253852%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c27cb1530946a43d658b06a7f21bf2cf50cf0e47' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\usercarlendar.tpl',
-      1 => 1383573870,
+      1 => 1383575366,
       2 => 'file',
     ),
   ),
@@ -303,7 +303,9 @@ carlendar/addEvent";
 				);
 
 			if(current == "agenda"){
-				switchview("agenda");}
+				switchview("agenda");
+			}
+			
 		},
 		error:function(){
 			alert("update event fail");
@@ -522,8 +524,14 @@ carlendar/deleteEventById",
 		success:function(data){
 		    closewin('tcbox');
 			calendar.fullCalendar("removeEvents",currentCalEvent.id);
-			calendar.fullCalendar("rerenderEvents");
 		
+			if(current == "agenda"){
+				switchview("agenda");
+				$('#calendar').fullCalendar( 'refetchEvents' );
+				calendar.fullCalendar("rerenderEvents");
+				}
+			calendar.fullCalendar("rerenderEvents");
+			
 		},
 		error:function(){
 			alert("delete event fail");
@@ -613,6 +621,8 @@ carlendar/getAgenda",
 		 $('#agenda-with-pagination').css("display","none");
 		 $('#calendar').css("display","block");
 		 $('#calendar').fullCalendar( 'changeView', view );
+		 calendar.fullCalendar("rerenderEvents");
+
 	 }
 	  
 	 $('#agendaDay').attr("class", "btn-hs2 btn-Calendar left-by");
