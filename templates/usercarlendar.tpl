@@ -630,7 +630,7 @@ Date.prototype.pattern=function(fmt) {
 				<div class="mt15">
 					<div id='calendar'></div>
 					<div id="agenda-with-pagination" style="display: none;">
-						{{$listdatas}}</div>
+						 </div>
 				</div>
 				<table class="gigs-u-l" style="margin: 0;">
 					<tr>

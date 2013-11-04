@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-11-04 22:29:29
+<?php /* Smarty version Smarty-3.1.13, created on 2013-11-04 23:49:51
          compiled from "E:\phpweb\tickets\templates\usercarlendar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:60465231d15b7d7ba1-94253852%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c27cb1530946a43d658b06a7f21bf2cf50cf0e47' => 
     array (
       0 => 'E:\\phpweb\\tickets\\templates\\usercarlendar.tpl',
-      1 => 1383575366,
+      1 => 1383580183,
       2 => 'file',
     ),
   ),
@@ -17,10 +17,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.13',
   'unifunc' => 'content_5231d15b8994c7_17885065',
-  'variables' => 
-  array (
-    'listdatas' => 0,
-  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5231d15b8994c7_17885065')) {function content_5231d15b8994c7_17885065($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -682,8 +678,7 @@ carlendar/getAgenda",
 				<div class="mt15">
 					<div id='calendar'></div>
 					<div id="agenda-with-pagination" style="display: none;">
-						<?php echo $_smarty_tpl->tpl_vars['listdatas']->value;?>
-</div>
+						 </div>
 				</div>
 				<table class="gigs-u-l" style="margin: 0;">
 					<tr>

@@ -22,7 +22,6 @@ class CarlendarController extends Controller {
 		
 		$data;
 		foreach ( $res as $re ) {
-			print ($re->week);
 			$desc = $re->entrynote;
 			if ($desc != null && strlen ( $desc ) > $descLen) {
 				$desc = substr ( $desc, 0, $descLen ) . "... ...";
@@ -54,7 +53,7 @@ class CarlendarController extends Controller {
 			);
 		}
 		
-		$return = "	<table id='list-result' width='100%' border='0' cellspacing='0'
+		$return = "<table id='list-result' width='100%' border='0' cellspacing='0'
 				cellpadding='0'>";
 		
 		foreach ( $data as $d ) {
