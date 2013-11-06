@@ -6,7 +6,7 @@ class FileuploadController extends Controller {
 		// $this->smarty->display("map.tpl");
 	}
 	
-	public function fileup() {
+		public function fileup() {
 		global $fileload;
 		if ($_FILES ['msUploadFile'] ['size'] < 1024 * 1024 * 2) {
 			
@@ -25,6 +25,8 @@ class FileuploadController extends Controller {
 		}
 		echo json_encode ( $fileload );
 	}
+ 
+	
 }
 
 
