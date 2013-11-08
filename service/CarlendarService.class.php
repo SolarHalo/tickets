@@ -150,7 +150,7 @@ class CarlendarService {
 		$this->dbutil->query ( $sql );
 	}
 	public function getAgendaList($userid) {
-$CURDATE = DATE ( 'Y-m-d H:i:s' );
+    $CURDATE = DATE ( 'Y-m-d' )." 00:00:00";
 	$SQL = "SELECT DATE_FORMAT(t.entryfrom,\"%W\") AS week, DATE_FORMAT(t.entryfrom,\"%b\") AS month, DATE_FORMAT(t.entryfrom,\"%d\") AS date ,DATE_FORMAT(t.entryfrom,\"%H:%i\") AS time ,
 			t.entryid,t.entrytype,t.entrytitle,t.entryimg,
 		t.entrylocation,
@@ -169,9 +169,8 @@ $CURDATE = DATE ( 'Y-m-d H:i:s' );
 		e.entrynote,
 	
 		e.entryfrom
-		FROM userentrys u ,entry e WHERE u.entryid = e.entryid  AND e.entryfrom >='".$CURDATE."' AND u.userid='".$userid."' ) t ORDER BY entryfrom";
-
-
+		FROM userentrys u ,entry e WHERE u.entryid = e.entryid  AND e.entryfrom >='".$CURDATE."' AND u.userid='".$userid."' ) t ORDER BY entryfrom"; 
+        
 		$custem_results = $this->dbutil->get_results ($SQL);
 		return $custem_results;
 	}

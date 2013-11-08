@@ -1,45 +1,82 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php /* Smarty version Smarty-3.1.13, created on 2013-11-08 09:25:11
+         compiled from "G:\phpserver\tickets\templates\usercarlendar.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:8562527ca2008ada21-98301337%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '6a97e8e78d745e3ee8e2cb58d571d361e3c7c676' => 
+    array (
+      0 => 'G:\\phpserver\\tickets\\templates\\usercarlendar.tpl',
+      1 => 1383902705,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '8562527ca2008ada21-98301337',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_527ca200bbd5b0_99622217',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_527ca200bbd5b0_99622217')) {function content_527ca200bbd5b0_99622217($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-{{include file='layouts/title.tpl'}}
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/title.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/reset.css"
+
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/reset.css"
 	type="text/css" rel="stylesheet" />
-<link href="{{$smarty.const.WEBSITE_URL}}public/style/style.css"
+<link href="<?php echo @constant('WEBSITE_URL');?>
+public/style/style.css"
 	type="text/css" rel="stylesheet" />
 <link
-	href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery.ui.datepicker.css"
+	href="<?php echo @constant('WEBSITE_URL');?>
+public/assets/css/jquery.ui.datepicker.css"
 	type="text/css" rel="stylesheet" />
 <link
-	href='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.css'
+	href='<?php echo @constant('WEBSITE_URL');?>
+public/fullcalendar/fullcalendar.css'
 	rel='stylesheet' />
 <link
-	href='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.print.css'
+	href='<?php echo @constant('WEBSITE_URL');?>
+public/fullcalendar/fullcalendar.print.css'
 	rel='stylesheet' media='print' />
 <link
-	href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery-ui.css"
+	href="<?php echo @constant('WEBSITE_URL');?>
+public/assets/css/jquery-ui.css"
 	type="text/css" rel="stylesheet" />
 <link
-	href="{{$smarty.const.WEBSITE_URL}}public/assets/css/jquery.timepicker.css"
+	href="<?php echo @constant('WEBSITE_URL');?>
+public/assets/css/jquery.timepicker.css"
 	type="text/css" rel="stylesheet" />
 <script
-	src="{{$smarty.const.WEBSITE_URL}}public/js/jquery-1.10.1.min.js"
+	src="<?php echo @constant('WEBSITE_URL');?>
+public/js/jquery-1.10.1.min.js"
 	type="text/javascript"></script>
 <script
-	src='{{$smarty.const.WEBSITE_URL}}public/jquery/jquery-ui-1.10.2.custom.min.js'></script>
-<script src='{{$smarty.const.WEBSITE_URL}}public/js/usercalendar.js'></script>
+	src='<?php echo @constant('WEBSITE_URL');?>
+public/jquery/jquery-ui-1.10.2.custom.min.js'></script>
+<script src='<?php echo @constant('WEBSITE_URL');?>
+public/js/usercalendar.js'></script>
 <script
-	src='{{$smarty.const.WEBSITE_URL}}public/fullcalendar/fullcalendar.min.js'></script>
+	src='<?php echo @constant('WEBSITE_URL');?>
+public/fullcalendar/fullcalendar.min.js'></script>
 
-<script src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery-ui.js'></script>
+<script src='<?php echo @constant('WEBSITE_URL');?>
+public/assets/js/jquery-ui.js'></script>
 <script
-	src='{{$smarty.const.WEBSITE_URL}}public/assets/js/jquery.timepicker.js'></script>
+	src='<?php echo @constant('WEBSITE_URL');?>
+public/assets/js/jquery.timepicker.js'></script>
 
 
-<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
+<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/searchform.js"></script>
 <script type="text/javascript"
-	src="{{$smarty.const.WEBSITE_URL}}public/assets/lib/ajaxupload.js"></script>
+	src="<?php echo @constant('WEBSITE_URL');?>
+public/assets/lib/ajaxupload.js"></script>
 
 <script>  
 
@@ -47,7 +84,8 @@
 	jQuery(function () {
    	 	var button = jQuery('#selectfile'), interval;//绑定事件
     	var load = new AjaxUpload(button, {//绑定AjaxUpload
-        action: "{{$smarty.const.WEBSITE_URL}}fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP等
+        action: "<?php echo @constant('WEBSITE_URL');?>
+fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP等
         type:"POST",//提交方式
         data:{//还可以提交的值
             module:"ajaxupload",
@@ -134,7 +172,8 @@
 				right: 'prev,next'
 			}, 
 			selectable: true,
-			events: "{{$smarty.const.WEBSITE_URL}}carlendar/getUserCalEvent",
+			events: "<?php echo @constant('WEBSITE_URL');?>
+carlendar/getUserCalEvent",
 			eventClick: function(calEvent, jsEvent, view) {
 				popupDetailWin(calEvent);
 		        //alert('Event: ' + calEvent.title+"--"+calEvent.start+"--"+calEvent.end+"--"+calEvent.entrynote);
@@ -224,9 +263,11 @@ function submitEvent(){
 	var url;
 	if(entryid!=null){
 		entry.entryid = entryid;
-		url = "{{$smarty.const.WEBSITE_URL}}carlendar/updateCustomEventById";
+		url = "<?php echo @constant('WEBSITE_URL');?>
+carlendar/updateCustomEventById";
 	}else{
-		url = "{{$smarty.const.WEBSITE_URL}}carlendar/addEvent";
+		url = "<?php echo @constant('WEBSITE_URL');?>
+carlendar/addEvent";
 	}
 	var param = {"entry":entry,"type":1};
 	
@@ -327,7 +368,8 @@ function getEventDetail(id,type){
 		 param={"type":type,"entryid":id};
 	 	
 	$.ajax({
-		url:"{{$smarty.const.WEBSITE_URL}}carlendar/getEventById",
+		url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/getEventById",
 		type:"post",
 		data:param,
 		success:function(data){
@@ -367,7 +409,8 @@ function getEventDetail(id,type){
 			if(calEvent.color == "#fb7b0e"){
 				$("#entryimg").attr("src",calEvent.entryimg);
 			}else{
-				$("#entryimg").attr("src","{{$smarty.const.WEBSITE_URL}}uploads/arousel/"+calEvent.entryimg);
+				$("#entryimg").attr("src","<?php echo @constant('WEBSITE_URL');?>
+uploads/arousel/"+calEvent.entryimg);
 			}
 		
 			currentCalEvent = calEvent;
@@ -390,7 +433,8 @@ function submitComEventNote(){
 	var note = $("#comeventnote").val();
 	param={"note":note,"rember":rember,"id":currentCalEvent.id};
 	$.ajax({
-		url:"{{$smarty.const.WEBSITE_URL}}carlendar/editeComEventNote",
+		url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/editeComEventNote",
 		type:"post",
 		data:param,
 		success:function(data){
@@ -402,7 +446,8 @@ function deleteComEventNote(){
 	var param;
 	param={"id":currentCalEvent.id};
 	$.ajax({
-		url:"{{$smarty.const.WEBSITE_URL}}carlendar/deleteComEventNote",
+		url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/deleteComEventNote",
 		type:"post",
 		data:param,
 		success:function(data){
@@ -468,7 +513,8 @@ function deleteCalEvent(){
 		param={"type":1,"entryid":currentCalEvent.id};
 	}
 	$.ajax({
-		url:"{{$smarty.const.WEBSITE_URL}}carlendar/deleteEventById",
+		url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/deleteEventById",
 		type:"post",
 		data:param,
 		success:function(data){
@@ -557,7 +603,8 @@ Date.prototype.pattern=function(fmt) {
 		 $('#agenda-with-pagination').css("display","block");
 		 $('#calendar').css("display","none");
 		 $.ajax({
-				url:"{{$smarty.const.WEBSITE_URL}}carlendar/getAgenda",
+				url:"<?php echo @constant('WEBSITE_URL');?>
+carlendar/getAgenda",
 				type:"post",
 				success:function(data){
 					 document.getElementById("agenda-with-pagination").innerHTML=data; 
@@ -606,13 +653,16 @@ Date.prototype.pattern=function(fmt) {
 </head>
 
 <body>
-	{{include file='layouts/headerandsearch.tpl'}}
+	<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 	<div class="mian">
 		<div class="content">
 			<div class="events">
 				<div class="gigs-1">
 					<span> <a href="#" id="newcaledar" class="fl btn btn-black-2">New
-							Calendar Entry</a> <a href="{{$smarty.const.WEBSITE_URL}}service/exportcalendar.php?userid={{$smarty.session.user->userid}}" class="fl btn btn-black-3">Export your Calendar</a>
+							Calendar Entry</a> <a href="<?php echo @constant('WEBSITE_URL');?>
+service/exportcalendar.php?userid=<?php echo $_SESSION['user']->userid;?>
+" class="fl btn btn-black-3">Export your Calendar</a>
 					</span>
 					<p class=" mt15 gigs-top-xx fr">
 
@@ -653,7 +703,8 @@ Date.prototype.pattern=function(fmt) {
 	<!-- 					</span> -->
 	<!-- 					<p class=" mt15 gigs-top-xx fr"> -->
 
-	<!-- 						<a href="{{$smarty.const.WEBSITE_URL}}userevent" -->
+	<!-- 						<a href="<?php echo @constant('WEBSITE_URL');?>
+userevent" -->
 	<!-- 							class="btn-hs2 btn-Calendar right-by">Agenda</a> -->
 	<!-- 					</p> -->
 	<!-- 				</div> -->
@@ -686,7 +737,8 @@ Date.prototype.pattern=function(fmt) {
 					<tr>
 						<td width="50" align="right" valign="top"><img id="entryimg"
 							height="110" width="110"
-							src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-ioc.gif" /></td>
+							src="<?php echo @constant('WEBSITE_URL');?>
+public/images/calendar-ioc.gif" /></td>
 						<td align="left">
 							<h4 class="eventname">Lorem event title</h4>
 							<p class="time" id="timeduration">Saturday, 28 July 2013 19:30
@@ -773,11 +825,13 @@ Date.prototype.pattern=function(fmt) {
 					<td align="left"><span class="inputborder"><input type="text"
 							class="input-style4 textinput-w4" id="fromdate" readOnly="true" /><a
 							href="javascript:void(0);"><img
-								src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
+								src="<?php echo @constant('WEBSITE_URL');?>
+public/images/calendar-iocx.gif" /></a></span>
 						<span class="inputborder"><input type="text"
 							class="input-style4 textinput-w4" id="fromtime" /><a
 							href="javascript:void(0);"><img
-								src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+								src="<?php echo @constant('WEBSITE_URL');?>
+public/images/time-iocx.gif" /></a></span>
 					</td>
 				</tr>
 				<tr>
@@ -785,11 +839,13 @@ Date.prototype.pattern=function(fmt) {
 					<td align="left"><span class="inputborder"><input type="text"
 							class="input-style4 textinput-w4" id="todate" readOnly="true" /><a
 							href="#"><img
-								src="{{$smarty.const.WEBSITE_URL}}public/images/calendar-iocx.gif" /></a></span>
+								src="<?php echo @constant('WEBSITE_URL');?>
+public/images/calendar-iocx.gif" /></a></span>
 						<span class="inputborder"><input type="text"
 							class="input-style4 textinput-w4" id="totime" /><a
 							href="javascript:void(0);"><img
-								src="{{$smarty.const.WEBSITE_URL}}public/images/time-iocx.gif" /></a></span>
+								src="<?php echo @constant('WEBSITE_URL');?>
+public/images/time-iocx.gif" /></a></span>
 					</td>
 				</tr>
 				<tr>
@@ -827,4 +883,5 @@ Date.prototype.pattern=function(fmt) {
 		</div>
 	</div>
 
-	{{include file='layouts/footer.tpl'}}
+	<?php echo $_smarty_tpl->getSubTemplate ('layouts/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

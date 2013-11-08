@@ -55,28 +55,31 @@ class CarlendarController extends Controller {
 		
 		$return = "<table id='list-result' width='100%' border='0' cellspacing='0'
 				cellpadding='0'>";
-		
-		foreach ( $data as $d ) {
-			
-			$return .= "<tr>
-				<td>
-				<table width='100%' border='0' cellspacing='0' cellpadding='0'
-						class='gigs-table list-tablep'>
-						<tr>
-						<td class='tdC'>" . $d ['week'] . "<br /> <span>" . $d ['date'] . "&nbsp;" . $d ['month'] . "</span><br />
-						<font>" . $d ['time'] . "</font> <!-- <a href='#' class='time2'>53 Dates</a>  -->
-						</td>
-						<td><a
-						href='" . WEBSITE_URL . "ticket/info/?id=" . $d ['aw_product_id'] . "'>
-								<img src='" . $d ['aw_thumb_url'] . "' width='92' height='92'
-						class='btn' />
-						</a></td>
-						<td>" . $d ['category_name'] . "<br /> <span> <a style='color:".$d['color']."'  href='#'
-						 onclick='showAngdeDetail(".$d['aw_product_id'].",".$d['type'].")'
-						name=" . $d ['aw_product_id'] . "  >" . $d ['product_name'] . " </a>
-						</span><br /> " . $d ['promotional_text'] . "  
-						 
-						</td> </tr> </table> <div class='table-xian'></div> </td> </tr>";
+		if(is_array($data)){
+			foreach( $data as $d ) {
+				
+				$return .= "<tr>
+					<td>
+					<table width='100%' border='0' cellspacing='0' cellpadding='0'
+							class='gigs-table list-tablep'>
+							<tr>
+							<td class='tdC'>" . $d ['week'] . "<br /> <span>" . $d ['date'] . "&nbsp;" . $d ['month'] . "</span><br />
+							<font>" . $d ['time'] . "</font> <!-- <a href='#' class='time2'>53 Dates</a>  -->
+							</td>
+							<td><a
+							href='" . WEBSITE_URL . "ticket/info/?id=" . $d ['aw_product_id'] . "'>
+									<img src='" . $d ['aw_thumb_url'] . "' width='92' height='92'
+							class='btn' />
+							</a></td>
+							<td>" . $d ['category_name'] . "<br /> <span> <a style='color:".$d['color']."'  href='#'
+							 onclick='showAngdeDetail(".$d['aw_product_id'].",".$d['type'].")'
+							name=" . $d ['aw_product_id'] . "  >" . $d ['product_name'] . " </a>
+							</span><br /> " . $d ['promotional_text'] . "  
+							 
+							</td> </tr> </table> <div class='table-xian'></div> </td> </tr>";
+			} 
+		}else{
+			$return .= "<tr><td> you don't have Agenda</td> </tr>";
 		}
 		$return .= "</table > ";
 		echo $return;
