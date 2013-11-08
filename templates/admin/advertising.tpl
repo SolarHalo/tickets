@@ -173,11 +173,11 @@ jQuery(function () {
 				<thead>
 					<tr>
 						<th data-options="field:'id',width:100,checkbox:true"></th>
-						<th data-options="field:'type',width:100">Type</th>
-						<th data-options="field:'url',width:100">LinkUrl</th>
-						<th data-options="field:'imgurl',width:100">Imgurl</th>
+						<th data-options="field:'type',width:100">site</th>
+						<th data-options="field:'url',width:100">LinkURL</th>
+						<th data-options="field:'imgurl',width:100">remote img url</th>
 						
-						<th data-options="field:'location',width:100">Location</th>
+						<th data-options="field:'location',width:100">Local File</th>
 						<th data-options="field:'index',width:100">Index</th>
 						<th data-options="field:'desc',width:100">Desc</th>
 					</tr>
@@ -203,7 +203,7 @@ jQuery(function () {
 								type="text" id="imgname" name="imgname" hidden="true">
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="Text input">Type:</label>
+							<label class="control-label" for="Text input">ad site:</label>
 							<div class="controls">
 								<select id="type" name="type">
 									<option value="search1">search1</option>
@@ -235,9 +235,9 @@ jQuery(function () {
 						<!-- 						</div> -->
 
 						<div class="control-group">
-							<label class="control-label" for="Text input">ImgUrl:</label>
+							<label class="control-label" for="Text input">remote img Url:</label>
 							<div class="controls">
-								<input id="imgurl" placeholder="Picture Network Address,Preferred!"  name="imgurl"></input>
+								<input id="imgurl" placeholder="if don't upload file,Picture fill Network Address,Preferred!"  name="imgurl"></input>
 							</div>
 						</div>
 						<div class="control-group">

@@ -18,8 +18,7 @@
 	src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
 <script
 	src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
-<script src="{{$smarty.const.WEBSITE_URL}}/public/js/slideshow.js"
-	type="text/javascript"></script>
+<script src="{{$smarty.const.WEBSITE_URL}}/public/js/slideshow.js" type="text/javascript"></script>
 
 <script type="text/javascript"> 
 	function buyTickets(pid){
@@ -39,7 +38,7 @@
 	}
 	
 	function addCalendat(pid){
-		console.log("add calendar");
+		//console.log("add calendar");
 		$.post(
 			'{{$smarty.const.WEBSITE_URL}}ticket/addCalendat',
 			{'pid':pid},
@@ -81,19 +80,18 @@
 	}
  
 	var setting = null;
-	$(function($) {
-		//加载广告
-		param={"type":"search1"};
+	$(function($) { 
+		param={"type":"search1","site":"search1"};
 	$.ajax({
 		url:"{{$smarty.const.WEBSITE_URL}}ticket/getAdvertising",
 		type:"post",
 		data:param,
 		success:function(data){
-			console.log(data);
+			//console.log(data);
 		    var divshow = $("#frameHlicAe");
             divshow.text("");// 清空数据
             divshow.append(data);
-            console.log(divshow);
+           // console.log(divshow);
             SlideShow(0);
 		//	 document.getElementById("frameHlicAe").innerHTML=data;
 		},
@@ -102,17 +100,18 @@
 		}
 		
 	});
-	param={"type":"search2"};
+	 
+	param={"type":"search2","site":"search2"};
 	$.ajax({
 		url:"{{$smarty.const.WEBSITE_URL}}ticket/getAdvertising",
 		type:"post",
 		data:param,
 		success:function(data){
-			console.log(data);
+			//console.log(data);
 		    var divshow = $("#frameHlicAe2");
             divshow.text("");// 清空数据
             divshow.append(data);
-            console.log(divshow);
+            //console.log(divshow);
             SlideShow2(0);
 		//	 document.getElementById("frameHlicAe").innerHTML=data;
 		},
@@ -270,66 +269,14 @@
 				<div class="r-row rw-bg2">
 					<div class="comiis_wrapad" id="slideContainer">
 						<div id="frameHlicAe" class="frame cl">
-<!-- 							<div class="temp"></div> -->
-<!-- 							<div class="block"> -->
-<!-- 								<div class="cl"> -->
-<!-- 									<ul class="slideshow" id="slidesImgs"> -->
-									 
-										<!--                                         <li><a href="/" target="_blank"><img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" width="160" height="265" alt="" /></a></li> -->
-										<!--                                         <li><a href="/" target="_blank"><img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo2.gif" width="160" height="265" alt="" /></a></li> -->
-										<!--                                         <li><a href="/" target="_blank"><img src="{{$smarty.const.WEBSITE_URL}}public/photo/photo5.gif" width="160" height="265" alt="" /></a></li>  -->
-<!-- 									</ul> -->
-<!-- 								</div> -->
-<!-- 								<div class="slidebar" id="slideBar"> -->
-<!-- 									<ul> -->
-<!-- 										<li class="on">1</li> -->
-<!-- 										<li>2</li> -->
-<!-- 										<li>3</li> -->
-<!-- 										<li>4</li> -->
-<!-- 									</ul> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
 						</div>
-					</div>
-					<script type="text/javascript">
-// 					 SlideShow(0);
-                    </script>
+					</div> 
 				</div>
 				<div class="r-row rw-bg2">
 					<div class="comiis_wrapad" id="slideContainer2">
-						<div id="frameHlicAe2" class="frame cl">
-<!-- 							<div class="temp"></div> -->
-<!-- 							<div class="block"> -->
-<!-- 								<div class="cl"> -->
-<!-- 									<ul class="slideshow" id="slidesImgs2"> -->
-<!-- 										<li><a href="/" target="_blank"><img -->
-<!-- 												src="{{$smarty.const.WEBSITE_URL}}public/photo/photo.gif" -->
-<!-- 												width="160" height="265" alt="" /></a></li> -->
-<!-- 										<li><a href="/" target="_blank"><img -->
-<!-- 												src="{{$smarty.const.WEBSITE_URL}}public/photo/photo1.gif" -->
-<!-- 												width="160" height="265" alt="" /></a></li> -->
-<!-- 										<li><a href="/" target="_blank"><img -->
-<!-- 												src="{{$smarty.const.WEBSITE_URL}}public/photo/photo2.gif" -->
-<!-- 												width="160" height="265" alt="" /></a></li> -->
-<!-- 										<li><a href="/" target="_blank"><img -->
-<!-- 												src="{{$smarty.const.WEBSITE_URL}}public/photo/photo5.gif" -->
-<!-- 												width="160" height="265" alt="" /></a></li> -->
-<!-- 									</ul> -->
-<!-- 								</div> -->
-<!-- 								<div class="slidebar" id="slideBar2"> -->
-<!-- 									<ul> -->
-<!-- 										<li class="on">1</li> -->
-<!-- 										<li>2</li> -->
-<!-- 										<li>3</li> -->
-<!-- 										<li>4</li> -->
-<!-- 									</ul> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
+						<div id="frameHlicAe2" class="frame cl"> 
 						</div>
-					</div>
-					<script type="text/javascript">
-// 	                        SlideShow2(0);
-	                    </script>
+					</div> 
 				</div>
 			</div>
 		</div>

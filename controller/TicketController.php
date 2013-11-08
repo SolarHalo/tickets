@@ -236,13 +236,14 @@ class TicketController extends Controller {
 	public function getAdvertising($param) {
 		$db = $this->getDB ();
 		$type = $_POST ['type'];
+		$site = $_POST ['site'];
 		// 加载广告数据
 		$adver_s1 = " SELECT * FROM advertising a WHERE TYPE='" . $type . "' ORDER BY a.index LIMIT 4";
 		$res_ad_s1 = $db->get_results ( $adver_s1 );
 		$result = "<div class='temp'></div>
 							<div class='block'>
 								<div class='cl'>
-									<ul class='slideshow' id='$type'>";
+									<ul class='slideshow' id='$site'>";
 		
 		
 		$index = 1;
@@ -251,7 +252,7 @@ class TicketController extends Controller {
 			if (empty ( $re_s1->imgurl )) {
 				$re_s1->imgurl = WEBSITE_URL . "uploads/arousel/" . $re_s1->location;
 			}
-			$result .= " <li><a href='" . $re_s1->url . "'  target='_blank'> <img src='" . $re_s1->imgurl . "'    width='160'height='265' alt='' /></a></li>";
+			$result .= " <li style='display:none'><a href='" . $re_s1->url . "'  target='_blank'> <img src='" . $re_s1->imgurl . "'    width='160'height='265' alt='' /></a></li>";
 			
 			if($index == 1){
 				$lilist.="<li class='on'>1</li>";
@@ -260,7 +261,7 @@ class TicketController extends Controller {
 			}
 			$index++;
 		}
-		$result .="	</ul> </div> <div class='slidebar' id='side_$type'> <ul> ".$lilist." </ul> </div> </div>";
+		$result .="	</ul> </div> <div class='slidebar' id='side_$site'> <ul> ".$lilist." </ul> </div> </div>";
 		echo $result;
 	}
 	public function info($param) {

@@ -11,9 +11,9 @@
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery-ui.js"></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/assets/js/jquery.ui.datepicker.js"></script>
 	<script src="{{$smarty.const.WEBSITE_URL}}/public/js/searchform.js"></script>
+	<script src="{{$smarty.const.WEBSITE_URL}}/public/js/slideshow.js" type="text/javascript"></script> 
  <script  type="text/javascript">  
-	function addCalendat(pid){
-		console.log("add calendar");
+	function addCalendat(pid){ 
 		$.post(
 			'{{$smarty.const.WEBSITE_URL}}ticket/addCalendat',
 			{'pid':pid},
@@ -30,8 +30,7 @@
 	} 
  </script>
 </head> 
-<body> 
-﻿{{include file='layouts/headerandsearch.tpl'}}
+<body>{{include file='layouts/headerandsearch.tpl'}}
 <script  type="text/javascript">
 
 	$(function($) {
@@ -41,6 +40,45 @@
 		source.push(obj);
 		loadDatas(source,"promotional_text");
 		setRoom(16);
+		//加载广告
+		param={"type":"product1","site":"search1"};
+	$.ajax({
+		url:"{{$smarty.const.WEBSITE_URL}}ticket/getAdvertising",
+		type:"post",
+		data:param,
+		success:function(data){
+			//console.log(data);
+		    var divshow = $("#frameHlicAe");
+            divshow.text("");// 清空数据
+            divshow.append(data);
+           // console.log(divshow);
+            SlideShow(0);
+		//	 document.getElementById("frameHlicAe").innerHTML=data;
+		},
+		error:function(){
+			console.log("con't get advertise product1");
+		}
+		
+	});
+	param={"type":"product2","site":"search2"};
+	$.ajax({
+		url:"{{$smarty.const.WEBSITE_URL}}ticket/getAdvertising",
+		type:"post",
+		data:param,
+		success:function(data){
+			//console.log(data);
+		    var divshow = $("#frameHlicAe2");
+            divshow.text("");// 清空数据
+            divshow.append(data);
+            //console.log(divshow);
+            SlideShow2(0);
+		//	 document.getElementById("frameHlicAe").innerHTML=data;
+		},
+		error:function(){
+		  console.log("con't get advertise product1");
+		}
+		
+	});
 	});
 	
 </script>
@@ -49,7 +87,7 @@
     	<div class="events">
         	<div class="sub-nav">
             	<span><a href="{{$smarty.const.WEBSITE_URL}}">Home</a>  /  <a href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$category_id}}">{{$category_name}}</a>  /  {{$product_name}}</a></span>
-                <a href="#" class="back btn btn-black">&lt;&lt;Search Results</a>
+                
             </div>
         	<div class="events-l mt15" id='img-list'>
         		<img src="{{$aw_image_url}}" width="160" height="265" class="img-sidebar" />
@@ -103,24 +141,21 @@
             </div> 
         </div> 
          <div class="events-r mt15">
-            	<div class="r-row rw-bg">
-                	<h3>flagship  event</h3>
-                    <font>August 25th, 20:00hrs</font>
-                    <p class="mt15">Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        ipisicing elit, sed  do eiusmod tempor inc
-                    </p>
-                    <a href="#" class="Fbot mt15">View Details</a>
-                </div>
-                <div class="r-row rw-bg">
-                	<h3>flagship  event</h3>
-                    <font>August 25th, 20:00hrs</font>
-                    <p class="mt15">Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        ipisicing elit, sed  do eiusmod tempor inc
-                    </p>
-                    <a href="#" class="Fbot mt15">View Details</a>
-                </div>
+            	<div class="r-row rw-bg2">
+	                <div class="comiis_wrapad" id="slideContainer">
+	  						<div id="frameHlicAe" class="frame cl"> 
+	 						</div>
+	 				</div>
+				</div>
+               
+                
+                <div class="r-row rw-bg2">
+	                <div class="comiis_wrapad" id="slideContainer2">
+	  						<div id="frameHlicAe2" class="frame cl"> 
+	 						</div>
+	 				</div>
+				</div>
+                 
             </div>
     </div> 
 </div>

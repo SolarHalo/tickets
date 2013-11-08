@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.13, created on 2013-09-25 15:33:07
+<?php /* Smarty version Smarty-3.1.13, created on 2013-11-08 08:24:35
          compiled from "G:\phpserver\tickets\templates\product_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:93315225a6bf457402-04173806%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c5dd388c400ee1e85376bab9f673b38d2eccbb88' => 
     array (
       0 => 'G:\\phpserver\\tickets\\templates\\product_info.tpl',
-      1 => 1380123183,
+      1 => 1383899071,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'promotional_text' => 0,
     'category_id' => 0,
     'aw_image_url' => 0,
+    'id' => 0,
     'description' => 0,
     'display_price' => 0,
   ),
@@ -46,7 +47,6 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/css/jquery-ui.css" />
 	<link rel="stylesheet" href="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/css/jquery.ui.datepicker.css" />
-	
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/assets/lib/jquery-1.8.1.min.js" ></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
@@ -55,10 +55,10 @@ public/style/style.css" type="text/css" rel="stylesheet" />
 /public/assets/js/jquery.ui.datepicker.js"></script>
 	<script src="<?php echo @constant('WEBSITE_URL');?>
 /public/js/searchform.js"></script>
- <script  type="text/javascript"> 
- 
-	function addCalendat(pid){
-		console.log("add calendar");
+	<script src="<?php echo @constant('WEBSITE_URL');?>
+/public/js/slideshow.js" type="text/javascript"></script> 
+ <script  type="text/javascript">  
+	function addCalendat(pid){ 
 		$.post(
 			'<?php echo @constant('WEBSITE_URL');?>
 ticket/addCalendat',
@@ -76,13 +76,8 @@ login";
 		);
 	} 
  </script>
-</head>
-
-<body>
-
-
-﻿<?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
- 
+</head> 
+<body><?php echo $_smarty_tpl->getSubTemplate ('layouts/headerandsearch.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 
 <script  type="text/javascript">
 
@@ -93,6 +88,48 @@ login";
 ';
 		source.push(obj);
 		loadDatas(source,"promotional_text");
+		setRoom(16);
+		//加载广告
+		param={"type":"product1","site":"search1"};
+	$.ajax({
+		url:"<?php echo @constant('WEBSITE_URL');?>
+ticket/getAdvertising",
+		type:"post",
+		data:param,
+		success:function(data){
+			//console.log(data);
+		    var divshow = $("#frameHlicAe");
+            divshow.text("");// 清空数据
+            divshow.append(data);
+           // console.log(divshow);
+            SlideShow(0);
+		//	 document.getElementById("frameHlicAe").innerHTML=data;
+		},
+		error:function(){
+			console.log("con't get advertise product1");
+		}
+		
+	});
+	param={"type":"product2","site":"search2"};
+	$.ajax({
+		url:"<?php echo @constant('WEBSITE_URL');?>
+ticket/getAdvertising",
+		type:"post",
+		data:param,
+		success:function(data){
+			//console.log(data);
+		    var divshow = $("#frameHlicAe2");
+            divshow.text("");// 清空数据
+            divshow.append(data);
+            //console.log(divshow);
+            SlideShow2(0);
+		//	 document.getElementById("frameHlicAe").innerHTML=data;
+		},
+		error:function(){
+		  console.log("con't get advertise product1");
+		}
+		
+	});
 	});
 	
 </script>
@@ -106,7 +143,7 @@ ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['category_id']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['category_name']->value;?>
 </a>  /  <?php echo $_smarty_tpl->tpl_vars['product_name']->value;?>
 </a></span>
-                <a href="#" class="back btn btn-black">&lt;&lt;Search Results</a>
+                
             </div>
         	<div class="events-l mt15" id='img-list'>
         		<img src="<?php echo $_smarty_tpl->tpl_vars['aw_image_url']->value;?>
@@ -132,7 +169,13 @@ ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['category_id']->value;?>
 </p>
                     <p class="time"><?php echo $_smarty_tpl->tpl_vars['time']->value;?>
  BST <!--<a href="#">+ 1 more dates</a>--></p>
-                    <p class="mt15"><a href="javascript:addCalendat('"+obj.aw_product_id+"')" class="btn btn-range">Add to Calendar</a></p>
+                    <p class="mt15">
+	                    <a href="javascript:addCalendat('<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+')" class="btn btn-range">Add to Calendar</a>
+	                    <a href="<?php echo @constant('WEBSITE_URL');?>
+buyticket/index/?pid=<?php echo $_smarty_tpl->tpl_vars['id']->value;?>
+" class="ml15 btn btn-black"><strong>Buy Tickets</strong></a>
+                    </p>
                 </div>
                 <div class="hr mt15"></div>
                 <div class="row2 mt15" id="info-other">
@@ -148,7 +191,7 @@ ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['category_id']->value;?>
                         </tr>
                         <tr>
                             <td width="140"><font>Prices</font></td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['display_price']->value;?>
+                            <td>From <?php echo $_smarty_tpl->tpl_vars['display_price']->value;?>
 </td>
                         </tr>
                     </table>
@@ -166,37 +209,23 @@ ticket/index/?cat=<?php echo $_smarty_tpl->tpl_vars['category_id']->value;?>
             </div> 
         </div> 
          <div class="events-r mt15">
-            	<div class="r-row rw-bg">
-                	<h3>flagship  event</h3>
-                    <font>August 25th, 20:00hrs</font>
-                    <p class="mt15">Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        ipisicing elit, sed  do eiusmod tempor inc
-                    </p>
-                    <a href="#" class="Fbot mt15">View Details</a>
-                </div>
-                <div class="r-row rw-bg">
-                	<h3>flagship  event</h3>
-                    <font>August 25th, 20:00hrs</font>
-                    <p class="mt15">Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        ipisicing elit, sed  do eiusmod tempor inc
-                    </p>
-                    <a href="#" class="Fbot mt15">View Details</a>
-                </div>
+            	<div class="r-row rw-bg2">
+	                <div class="comiis_wrapad" id="slideContainer">
+	  						<div id="frameHlicAe" class="frame cl"> 
+	 						</div>
+	 				</div>
+				</div>
+               
+                
+                <div class="r-row rw-bg2">
+	                <div class="comiis_wrapad" id="slideContainer2">
+	  						<div id="frameHlicAe2" class="frame cl"> 
+	 						</div>
+	 				</div>
+				</div>
+                 
             </div>
     </div> 
 </div>
-<div class="footer">
-	<div>
-    	<a href="#">User guide</a>  |  
-        <a href="#">About us</a>  |  
-        <a  href="#">Cookies policy</a>  |  
-        <a href="#">Privacy policy</a>  |  
-        <a href="#">Terms and Conditions</a>
-    </div>
-</div>
-<script type="text/javascript">
-</script>
-</body>
-</html>     <?php }} ?>
+<?php echo $_smarty_tpl->getSubTemplate ('layouts/footer.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+   <?php }} ?>
