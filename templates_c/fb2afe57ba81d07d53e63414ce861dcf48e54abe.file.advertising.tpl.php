@@ -1,15 +1,42 @@
-{{include file ="admin/header.tpl"}} {{include file
-="admin/navibar.tpl"}} {{include file ="admin/sidebar.tpl"}}
+<?php /* Smarty version Smarty-3.1.13, created on 2013-12-26 23:35:37
+         compiled from "E:\phpweb\tickets\templates\admin\advertising.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:148852bc4270300259-85796338%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'fb2afe57ba81d07d53e63414ce861dcf48e54abe' => 
+    array (
+      0 => 'E:\\phpweb\\tickets\\templates\\admin\\advertising.tpl',
+      1 => 1388072116,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '148852bc4270300259-85796338',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_52bc427034c3c0_11578395',
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_52bc427034c3c0_11578395')) {function content_52bc427034c3c0_11578395($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php echo $_smarty_tpl->getSubTemplate ("admin/navibar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php echo $_smarty_tpl->getSubTemplate ("admin/sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 
 
 <link rel="stylesheet" type="text/css"
-	href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/themes/bootstrap/easyui.css">
+	href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/bootstrap/easyui.css">
 <link rel="stylesheet" type="text/css"
-	href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
+	href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
 <script type="text/javascript"
-	src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
+	src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
 <script type="text/javascript"
-	src="{{$smarty.const.WEBSITE_URL}}public/assets/lib/ajaxupload.js"></script>
+	src="<?php echo @constant('WEBSITE_URL');?>
+public/assets/lib/ajaxupload.js"></script>
 <script type="text/javascript">
 
 
@@ -17,7 +44,8 @@
 jQuery(function () {
 	 	var button = jQuery('#selectfile');//绑定事件
 	var load = new AjaxUpload(button, {//绑定AjaxUpload
-    action: "{{$smarty.const.WEBSITE_URL}}fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP等
+    action: "<?php echo @constant('WEBSITE_URL');?>
+fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP等
     type:"POST",//提交方式
     data:{//还可以提交的值
         module:"ajaxupload",
@@ -94,7 +122,8 @@ jQuery(function () {
 				$.ajax({  
 		            type: "POST",  
 		            dataType: "json",  
-		            url: '{{$smarty.const.WEBSITE_URL}}admin/advertising/delete',
+		            url: '<?php echo @constant('WEBSITE_URL');?>
+admin/advertising/delete',
 		            data: { id: select[0].id },  
 		            success: function (data) {  
 		              //  $.messager.alert("消息", "删除成功!", "info");  
@@ -126,7 +155,8 @@ jQuery(function () {
 			 obj.index = $("#index").val();
 			 obj.imgurl =  $("input[id='imgurl']").val(); 
 			    $.post(
-						'{{$smarty.const.WEBSITE_URL}}admin/advertising/add',
+						'<?php echo @constant('WEBSITE_URL');?>
+admin/advertising/add',
 						obj,
 						function(data){ 
 							win_close();
@@ -166,7 +196,8 @@ jQuery(function () {
 
 			<!--- START 以上内容不需更改，保证该TPL页内的标签匹配即可 --->
 			<table id="grid"
-				data-options="url:'{{$smarty.const.WEBSITE_URL}}admin/advertising/getpage',fitColumns:true,singleSelect:true"
+				data-options="url:'<?php echo @constant('WEBSITE_URL');?>
+admin/advertising/getpage',fitColumns:true,singleSelect:true"
 				class="easyui-datagrid" style="width: 700px; height: 370px"
 				toolbar="#toolbar" iconCls="icon-save" pagination="true"
 				rownumbers="true">
@@ -285,4 +316,5 @@ jQuery(function () {
 				</div>
 
 				<!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
-				{{include file="admin/footer.tpl" }}
+				<?php echo $_smarty_tpl->getSubTemplate ("admin/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

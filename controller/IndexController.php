@@ -16,11 +16,11 @@ class IndexController extends Controller {
 				} else {
 					$desc = $item->desc;
 				}
-			    if (strlen ( $item->title ) > 16) {
-					$item->title = substr_replace (  $item->title, '....', 16 );
-				}  
+				if (strlen ( $item->title ) > 16) {
+					$item->title = substr_replace ( $item->title, '....', 16 );
+				}
 				$source .= "
- 		<LI><A href=\"$item->url\"  target=\"_blank\"><IMG src= \"".WEBSITE_URL."uploads/arousel/$item->imgname\"/></A>
+ 		<LI><A href=\"$item->url\"  target=\"_blank\"><IMG src= \"" . WEBSITE_URL . "uploads/arousel/$item->imgname\"/></A>
  		<div>
  		<h3>$item->title</h3>
  		<span class=\"time\">$item->product_time</span>
@@ -33,15 +33,36 @@ class IndexController extends Controller {
  		";
 			}
 			// print($source);
-			$this->smarty->assign ( 'imagesources', $source );
-		
+			
 		}
+		
+		$events = $imgService->getHomeEvents();
+		if (! empty ( $events )) {
+			foreach ( $events as $event) {
+				
+				if (strlen ( $event->description ) > 100) {
+					$event->description = substr_replace ( $event->description, '....', 100 );
+				} 
+				if (strlen ( $event->product_name ) > 16) {
+					$event->product_name = substr_replace ( $event->product_name, '....', 16 );
+				}
+				
+				$evdata [] = array (
+						"url" => WEBSITE_URL."ticket/info/?id=".$event->aw_product_id,
+						"name" => $event->product_name,
+						"desc" => $event->description,
+						"time" => $event->specifications
+				);
+			}
+		}
+		
+		
+		$this->smarty->assign ( 'events', $evdata );
+		$this->smarty->assign ( 'imagesources', $source );
 		
 		$this->smarty->display ( "index.tpl" );
 	}
-	
 	public function createItemLI($item) {
-		
 		return "
  		<LI><A href=\"#\"  target=\"_blank\"><IMG src=\".WEBSITE_URL.'uploads/arousel'.$item->imagename\"/></A>
  		<div>

@@ -1,15 +1,42 @@
-{{include file ="admin/header.tpl"}} {{include file
-="admin/navibar.tpl"}} {{include file ="admin/sidebar.tpl"}}
+<?php /* Smarty version Smarty-3.1.13, created on 2013-12-26 22:51:14
+         compiled from "E:\phpweb\tickets\templates\admin\users\img_carousel.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:107752bc4262704698-00179467%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'aa8dedb8f3d57d68aa02b60d4c9bed44c946640b' => 
+    array (
+      0 => 'E:\\phpweb\\tickets\\templates\\admin\\users\\img_carousel.tpl',
+      1 => 1380210570,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '107752bc4262704698-00179467',
+  'function' => 
+  array (
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.13',
+  'unifunc' => 'content_52bc4262779489_86381450',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_52bc4262779489_86381450')) {function content_52bc4262779489_86381450($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php echo $_smarty_tpl->getSubTemplate ("admin/navibar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+ <?php echo $_smarty_tpl->getSubTemplate ("admin/sidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
 
 
 <link rel="stylesheet" type="text/css"
-	href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/themes/bootstrap/easyui.css">
+	href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/bootstrap/easyui.css">
 <link rel="stylesheet" type="text/css"
-	href="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
+	href="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/themes/icon.css">
 <script type="text/javascript"
-	src="{{$smarty.const.WEBSITE_URL}}/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
+	src="<?php echo @constant('WEBSITE_URL');?>
+/public/assets/lib/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
 <script type="text/javascript"
-	src="{{$smarty.const.WEBSITE_URL}}public/assets/lib/ajaxupload.js"></script>
+	src="<?php echo @constant('WEBSITE_URL');?>
+public/assets/lib/ajaxupload.js"></script>
 <script type="text/javascript">
 
 
@@ -17,7 +44,8 @@
 jQuery(function () {
 	 	var button = jQuery('#selectfile');//绑定事件
 	var load = new AjaxUpload(button, {//绑定AjaxUpload
-    action: "{{$smarty.const.WEBSITE_URL}}fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP等
+    action: "<?php echo @constant('WEBSITE_URL');?>
+fileupload/fileup",//文件要上传到的处理页面,语言可以PHP,ASP,JSP等
     type:"POST",//提交方式
     data:{//还可以提交的值
         module:"ajaxupload",
@@ -74,13 +102,12 @@ jQuery(function () {
 		$("#form").form('clear');
 		$('#win_add').window('open'); 
 		$("input[id='id']").val(select[0].id);
-		$("select[id='type']").val(select[0].type);
+		$("input[id='title']").val(select[0].title);
 		$("input[id='url']").val(select[0].url);
-		$("input[id='imgname']").val(select[0].location);
-		$("input[id='imgurl']").val(select[0].imgurl);
-		
+		$("input[id='product_time']").val(select[0].product_time);
+		$("input[id='imgname']").val(select[0].imgname);
 		$("textarea[id='desc']").val(select[0].desc);
-		$("select[id='index']").val(select[0].index);
+		$("select[id='showindex']").val(select[0].showindex);
 	}
 	function deleteItem(){
 
@@ -94,7 +121,8 @@ jQuery(function () {
 				$.ajax({  
 		            type: "POST",  
 		            dataType: "json",  
-		            url: '{{$smarty.const.WEBSITE_URL}}admin/advertising/delete',
+		            url: '<?php echo @constant('WEBSITE_URL');?>
+admin/imgcarousel/delete',
 		            data: { id: select[0].id },  
 		            success: function (data) {  
 		              //  $.messager.alert("消息", "删除成功!", "info");  
@@ -119,14 +147,17 @@ jQuery(function () {
 			
 			 
 			 obj.id = $("input[id='id']").val();
-			 obj.type= $("#type").val();
+			 obj.title= $("input[id='title']").val();
 			 obj.url=$("input[id='url']").val();
-			 obj.location =$("input[id='imgname']").val();
+			 obj.product_time = $("input[id='product_time']").val();
+			 obj.imgname = $("input[id='imgname']").val();
 			 obj.desc = $("textarea[id='desc']").val();
-			 obj.index = $("#index").val();
-			 obj.imgurl =  $("input[id='imgurl']").val(); 
+			 obj.showindex = $("#showindex").val();
+			  
+		 
 			    $.post(
-						'{{$smarty.const.WEBSITE_URL}}admin/advertising/add',
+						'<?php echo @constant('WEBSITE_URL');?>
+admin/imgcarousel/add',
 						obj,
 						function(data){ 
 							win_close();
@@ -159,26 +190,27 @@ jQuery(function () {
 			</p>
 		</div>
 
-		<h1 class="page-title">Advertising Manager</h1>
+		<h1 class="page-title">后台管理员管理</h1>
 	</div>
 	<div class="container-fluid">
 		<div class="row-fluid">
 
 			<!--- START 以上内容不需更改，保证该TPL页内的标签匹配即可 --->
 			<table id="grid"
-				data-options="url:'{{$smarty.const.WEBSITE_URL}}admin/advertising/getpage',fitColumns:true,singleSelect:true"
+				data-options="url:'<?php echo @constant('WEBSITE_URL');?>
+admin/imgcarousel/getpage',fitColumns:true,singleSelect:true"
 				class="easyui-datagrid" style="width: 700px; height: 370px"
 				toolbar="#toolbar" iconCls="icon-save" pagination="true"
 				rownumbers="true">
 				<thead>
 					<tr>
 						<th data-options="field:'id',width:100,checkbox:true"></th>
-						<th data-options="field:'type',width:100">site</th>
-						<th data-options="field:'url',width:100">LinkURL</th>
-						<th data-options="field:'imgurl',width:100">remote img url</th>
-						
-						<th data-options="field:'location',width:100">Local File</th>
-						<th data-options="field:'index',width:100">Index</th>
+						<th data-options="field:'title',width:100">Title</th>
+						<th data-options="field:'url',width:100">Url</th>
+						<th data-options="field:'imgname',width:100">Imgname</th>
+						<th data-options="field:'product_time',width:100">Time</th>
+						<th data-options="field:'showindex',width:100">Showindex</th>
+						<th data-options="field:'updatetime',width:100">Updatetime</th>
 						<th data-options="field:'desc',width:100">Desc</th>
 					</tr>
 				</thead>
@@ -188,9 +220,8 @@ jQuery(function () {
 				<a href="#" class="easyui-linkbutton" iconCls="icon-add"
 					plain="true" onclick="addWindow()">Add</a> <a href="#"
 					class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-					onclick="editWindow()">Edit</a> <a href="#"
-					class="easyui-linkbutton" iconCls="icon-remove" plain="true"
-					onclick="deleteItem()">Remove</a>
+					onclick="editWindow()">Edit</a> <a href="#" class="easyui-linkbutton"
+					iconCls="icon-remove" plain="true" onclick="deleteItem()">Remove</a>
 			</div>
 
 			<div id="win_add" class="easyui-window" title="Add"
@@ -203,16 +234,11 @@ jQuery(function () {
 								type="text" id="imgname" name="imgname" hidden="true">
 						</div>
 						<div class="control-group">
-							<label class="control-label" for="Text input">ad site:</label>
+							<label class="control-label" for="Text input">Title:</label>
 							<div class="controls">
-								<select id="type" name="type">
-									<option value="search1">search1</option>
-									<option value="search2">search2</option>
-									<option value="product1">product1</option>
-									<option value="product2">product2</option>
-									
-									<option value="homeevent">homeevent</option>
-								</select>
+								<input type="text" class="easyui-validatebox"
+									data-options="required:true" id="title" name="title"
+									placeholder="Title">
 							</div>
 						</div>
 
@@ -237,23 +263,16 @@ jQuery(function () {
 						<!-- 						</div> -->
 
 						<div class="control-group">
-							<label class="control-label" for="Text input">remote img Url:</label>
+							<label class="control-label" for="Text input">Url:</label>
 							<div class="controls">
-								<input id="imgurl" placeholder="if don't upload file,Picture fill Network Address,Preferred!"  name="imgurl"></input>
+								<input id="url" name="url"></input>
 							</div>
 						</div>
-						<div class="control-group">
-							<label class="control-label" for="Text input">LinkUrl:</label>
-							<div class="controls">
-								<input id="url"  placeholder="if type is homeevent,insert product id!"  name="url"></input>
-							</div>
-						</div>
-						
 
 						<div class="control-group">
-							<label class="control-label" for="Text input">Index:</label>
+							<label class="control-label" for="Text input">Showindex:</label>
 							<div class="controls">
-								<select id="index" name="index">
+								<select id="showindex" name="showindex">
 									<option selected="selected">1</option>
 									<option>2</option>
 									<option>3</option>
@@ -264,10 +283,23 @@ jQuery(function () {
 									<option>8</option>
 									<option>9</option>
 									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+									<option>13</option>
+									<option>14</option>
+									<option>15</option>
+									<option>16</option>
+									<option>17</option>
 								</select>
 							</div>
 						</div>
-					 
+						<div class="control-group">
+							<label class="control-label" for="Text input">Time:</label>
+							<div class="controls">
+								<input id="product_time" name="product_time"></input>
+							</div>
+						</div>
+
 						<div class="control-group">
 							<label class="control-label" for="Text input">Desc:</label>
 							<div class="controls">
@@ -285,4 +317,5 @@ jQuery(function () {
 				</div>
 
 				<!--- END 以下内容不需更改，请保证该TPL页内的标签匹配即可 --->
-				{{include file="admin/footer.tpl" }}
+				<?php echo $_smarty_tpl->getSubTemplate ("admin/footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+<?php }} ?>

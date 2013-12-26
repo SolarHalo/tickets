@@ -67,5 +67,10 @@ class ImgcarouserlService{
 		return $this->dbutil->get_results($sql);
 	}
 	
+	public function getHomeEvents(){
+		$sql = "SELECT p.aw_product_id,p.product_name,p.description, p.specifications FROM advertising t LEFT JOIN  products p ON t.url = p.aw_product_id WHERE t.type='homeevent' ORDER BY t.index LIMIT 4 ";
+		return $this->dbutil->get_results($sql);
+	}
+	
 	
 }
