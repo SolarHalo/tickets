@@ -29,75 +29,39 @@ class TicketController extends Controller {
 		// ==================================================
 		
 		$start = ($pager - 1) * $pageSize;
-		$counterSql = "select count(products.aw_product_id) as total from products products LEFT JOIN event_category event_category on products.category_id = event_category.category_id ";
-		$recordsSql = "select DATE_FORMAT(products.specifications,\"%W\") as week, DATE_FORMAT(products.specifications,\"%b\") as month, DATE_FORMAT(products.specifications,\"%d\") as date ,DATE_FORMAT(products.specifications,\"%H:%i\") as time ," . "products.aw_product_id, products.product_name,event_category.category_name," . "products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications,products.description from products products " . "LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id ";
-		$categorySql = "select event_category.category_id ,event_category.category_name ,products.total from event_category event_category LEFT JOIN " . "(select COUNT(p.category_id) as total,p.category_id from products p ";
-		
-		$hasWhere = false;
+		$counterSql = "select count(products.aw_product_id) as total from products products LEFT JOIN event_category event_category on products.category_id = event_category.category_id    where 1=1 ";
+		$recordsSql = "select DATE_FORMAT(products.specifications,\"%W\") as week, DATE_FORMAT(products.specifications,\"%b\") as month, DATE_FORMAT(products.specifications,\"%d\") as date ,DATE_FORMAT(products.specifications,\"%H:%i\") as time ," . "products.aw_product_id, products.product_name,event_category.category_name," . "products.aw_thumb_url,products.display_price,products.promotional_text,products.specifications,products.description from products products " . "LEFT JOIN  event_category event_category  on products.category_id = event_category.category_id     where 1=1 ";
+		$categorySql = "select event_category.category_id ,event_category.category_name ,products.total from event_category event_category LEFT JOIN " . "(select COUNT(p.category_id) as total,p.category_id from products p    where 1=1 ";
 		
 		if ($keyword != null && $keyword != "") {
-			if (! $hasWhere) {
-				$counterSql = $counterSql . " where products.product_name like '%$keyword%' or event_category.category_name = '$keyword' ";
-				$recordsSql = $recordsSql . " where products.product_name like '%$keyword%' or event_category.category_name = '$keyword' ";
-				$categorySql = $categorySql . " left join event_category e on p.category_id = e.category_id where p.product_name like '%$keyword%' or e.category_name = '$keyword' ";
-				$hasWhere = true;
-			} else {
-				$counterSql = $counterSql . " and products.product_name like '%$keyword%' or event_category.category_name = '$keyword' ";
-				$recordsSql = $recordsSql . " and products.product_name like '%$keyword%' or event_category.category_name = '$keyword' ";
-				$categorySql = $categorySql . " and p.product_name like '%$keyword%' or e.category_name = '$keyword' ";
-			}
+			$counterSql = $counterSql . " and (products.product_name like '%$keyword%' or event_category.category_name = '$keyword') ";
+			$recordsSql = $recordsSql . " and (products.product_name like '%$keyword%' or event_category.category_name = '$keyword') ";
+			$categorySql = substr($categorySql,0,-11);
+			$categorySql = $categorySql . " left join event_category e on p.category_id = e.category_id where (p.product_name like '%$keyword%' or e.category_name = '$keyword') ";
 		}
 		
 		if ($cat != null && "" != $cat) {
-			if (! $hasWhere) {
-				$counterSql = $counterSql . " where products.category_id = '$cat' ";
-				$recordsSql = $recordsSql . " where products.category_id = '$cat' ";
-				// $categorySql = $categorySql." where category_id = '$cat' ";
-				$hasWhere = true;
-			} else {
-				$counterSql = $counterSql . " and products.category_id = '$cat' ";
-				$recordsSql = $recordsSql . " and products.category_id = '$cat' ";
-				// $categorySql = $categorySql." and category_id = '$cat' ";
-			}
+			$counterSql = $counterSql . " and products.category_id = '$cat' ";
+			$recordsSql = $recordsSql . " and products.category_id = '$cat' ";
+			//$categorySql = $categorySql." and category_id = '$cat' ";
 		}
 		
 		if ($location != null && $location != "") {
-			if (! $hasWhere) {
-				$counterSql = $counterSql . " where products.promotional_text like '%$location%' ";
-				$recordsSql = $recordsSql . " where products.promotional_text like '%$location%' ";
-				$categorySql = $categorySql . " where p.promotional_text like '%$location%' ";
-				$hasWhere = true;
-			} else {
-				$counterSql = $counterSql . " and products.promotional_text like '%$location%' ";
-				$recordsSql = $recordsSql . " and products.promotional_text like '%$location%' ";
-				$categorySql = $categorySql . " and p.promotional_text like '%$location%' ";
-			}
+			$counterSql = $counterSql . " and products.promotional_text like '%$location%' ";
+			$recordsSql = $recordsSql . " and products.promotional_text like '%$location%' ";
+			$categorySql = $categorySql . " and p.promotional_text like '%$location%' ";
 		}
 		
 		if ($fromDate != null && $fromDate != "") {
-			if (! $hasWhere) {
-				$counterSql = $counterSql . " where  products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
-				$recordsSql = $recordsSql . " where  products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
-				$categorySql = $categorySql . " where  p.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
-				$hasWhere = true;
-			} else {
-				$counterSql = $counterSql . " and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
-				$recordsSql = $recordsSql . " and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
-				$categorySql = $categorySql . " and p.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
-			}
+			$counterSql = $counterSql . " and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+			$recordsSql = $recordsSql . " and products.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
+			$categorySql = $categorySql . " and p.specifications > str_to_date('$fromDate','%Y-%m-%d') ";
 		}
 		
 		if ($toDate != null && $toDate != "") {
-			if (! $hasWhere) {
-				$counterSql = $counterSql . " where products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
-				$recordsSql = $recordsSql . " where products.specifications < str_to_date($toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
-				$categorySql = $categorySql . " where p.specifications < str_to_date($toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
-				$hasWhere = true;
-			} else {
-				$counterSql = $counterSql . " and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
-				$recordsSql = $recordsSql . " and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
-				$categorySql = $categorySql . " and p.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
-			}
+			$counterSql = $counterSql . " and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+			$recordsSql = $recordsSql . " and products.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
+			$categorySql = $categorySql . " and p.specifications < str_to_date('$toDate 23:59:59','%Y-%m-%d %H:%i:%s') ";
 		}
 		
 		$recordsSql = $recordsSql . " order by abs(UNIX_TIMESTAMP(now())- UNIX_TIMESTAMP(products.specifications)) limit $start,$pageSize";
