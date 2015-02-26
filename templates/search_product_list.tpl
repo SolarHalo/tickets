@@ -181,7 +181,7 @@
 				<ul id="cat-list" class="gigs-title map">
 					<span>Categories</span> {{foreach $cats as $c}}
 					<li><a
-						href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$c['category_id']}}')">{{$c['category_name']}}({{$c['total']}})</a></li>
+						href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$c['category_id']}}{{$searchkeyword}}">{{$c['category_name']}}({{$c['total']}})</a></li>
 					{{/foreach}}
 				</ul>
 
@@ -243,18 +243,18 @@
 							<p class="mt15 gigs-fy">
 
 								{{if $pager != 1}} <a
-									href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager=1')"
+									href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager=1{{$searchkeyword}}"
 									class="btn-hs btn-Calendar fontcolor">&lt;&lt;</a> <a
-									href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$pager-1}}')"
+									href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$pager-1}}{{$searchkeyword}}"
 									class="btn-hs btn-Calendar fontcolor">&lt;</a> {{/if}}
 
 								{{foreach from=$pagers item=index}} <a
-									href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$index}}')"
+									href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$index}}{{$searchkeyword}}"
 									class="btn-hs btn-Calendar">{{$index}}</a> {{/foreach}} {{if
 								$pager != $totalPage}} <a
-									href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$pager+1}}')"
+									href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$pager+1}}{{$searchkeyword}}"
 									class="btn-hs btn-Calendar fontcolor">&gt;</a> <a
-									href="javascript:search('{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$totalPage}}')"
+									href="{{$smarty.const.WEBSITE_URL}}ticket/index/?cat={{$curCat}}&pager={{$totalPage}}{{$searchkeyword}}"
 									class="btn-hs btn-Calendar fontcolor">&gt;&gt;</a> {{/if}}
 
 

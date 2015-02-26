@@ -9,6 +9,7 @@ class TicketController extends Controller {
 		$location = $param ['location'];
 		$fromDate = $param ['fromDate'];
 		$toDate = $param ['toDate'];
+		$searchkeyword = "&keyword=".$keyword."&location=".$location."&fromDate=".$fromDate."&toDate=".$toDate;
 		
 		$pager = $param ["pager"];
 		$pageSize = $param ["pageSize"];
@@ -164,7 +165,7 @@ class TicketController extends Controller {
 		$this->smarty->assign ( 'pager', $pager );
 		$this->smarty->assign ( 'curCat', $cat );
 		$this->smarty->assign ( 'curCategory_name', $category_name );
-		
+			$this->smarty->assign ( 'searchkeyword', $searchkeyword );	
 		$display = 9;
 		$start = 1;
 		$end = 1;
